@@ -150,17 +150,10 @@ section .cambio{
 
 #div7, #div0, #div5, #div10{
 	display: block;
-
-    
-        
 }
-
-
-
 
 #div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb{
     
     display:none;
     padding: 0px;
-
 }
