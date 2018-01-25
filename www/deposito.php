@@ -39,6 +39,7 @@ return false;
 		<script src="js/mostrar.js"></script>
 		<script src="js/calcular.js"></script>
 		<script src="js/calcular1.js"></script>
+		<script src="js/calcularofic.js"></script>
 		
 	</head>
 <body>
@@ -83,7 +84,7 @@ return false;
                     
                 </form >
                                                     
-                <form name="formul" method="post" action="guardarDatos.php">
+                <form name="formul0" method="post" action="guardarDatos.php">
                 
                         <div id="campos" class="">
 		    		    <label>Codigo Verde</label>
@@ -151,14 +152,16 @@ return false;
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta" required>
 				    </div>
-                   <div id="campos" class="" >
+                    <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos" onchange="calcular()" required>
+		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" required>
 	    			</div>
-                        <div id="campos" class="" >
+                    
+                    <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="text" class="form-control" name="bolivares" readonly>
+		    			<input type="text" class="form-control" name="bolivares2" readonly>
 	    			</div>
+	    			
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
     					<input type="Email" class="form-control" name="email" required>
@@ -168,7 +171,7 @@ return false;
     					<input type="text" class="form-control" name="telefono" requierd>
     				</div>                    
                     <div id="enviarp" method="post">
-    			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
+    			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     
 

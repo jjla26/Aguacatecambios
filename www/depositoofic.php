@@ -45,6 +45,7 @@ return false;
 		<script src="js/mostrar.js"></script>
 		<script src="js/calcular.js"></script>
 		<script src="js/calcular1.js"></script>
+		<script src="js/calcularofic.js"></script>
 		
 	</head>
 <body>
@@ -64,8 +65,7 @@ return false;
             <a href="#"><img src="img/logo.png"></a>
         </div>
 
-        
-        <div id="form" class=" col-xs-4 col-xs-offset-1">
+<div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Calculadora de cambios</h1>
             
                 <form name="formul">
@@ -116,15 +116,23 @@ return false;
             
         </div>
         
+
+
+        
+        
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
-                <form name="formul" method="post" action="guardarDatos.php">
+                <form name="formul0" method="post" action="guardarDatosOfic.php" target="request">
                 
+                    <div id="campos" class="">
+                        <label>Tasa de Cambio</label> 
+				    	<input type="text" class="form-control" name="tasa" required>
+                    </div>
                         
                         <div id="campos" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre" required>
                     </div>
                     <div id="campos" class="">
 				        <label>Cedula de Identidad</label>
@@ -183,38 +191,30 @@ return false;
 				    </div>
                    <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos" onchange="calcular()" required>
+		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" required>
 	    			</div>
                         <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="text" class="form-control" name="bolivares" readonly>
+		    			<input type="text" class="form-control" name="bolivares2" readonly>
 	    			</div>
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
-    					<input type="Email" class="form-control" name="email" required>
+    					<input type="Email" class="form-control" name="email">
     				</div>
                     <div id="campos" class="">
 				        <label>Teléfono de Quien Envía</label>
-    					<input type="text" class="form-control" name="telefono" requierd>
+    					<input type="text" class="form-control" name="telefono">
     				</div>                    
                     <div id="enviarp" method="post">
-    			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
+    			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
-                    
-
-
                     
                 </form>
                 
                 <h2>Revisa los Datos Antes de Enviar</h2>
 
-           
-            
         </div>
-        
-        
-        
-        
+        <iframe id="request"></iframe>
         
         <div id="form" class=" col-xs-4">
             <h1>Saldos Iniciales Cuentas Chile</h1>
@@ -224,15 +224,15 @@ return false;
                         
                     <div id="campos" class="">
                         <label>RUT</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Vista</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Ahorro</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
@@ -257,15 +257,15 @@ return false;
                         
                     <div id="campos" class="">
                         <label>RUT</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Vista</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Ahorro</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>                    
                     <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
@@ -290,15 +290,15 @@ return false;
                         
                         <div id="campos" class="">
                         <label>RUT</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Vista</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Ahorro</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>                
                     <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
@@ -323,31 +323,31 @@ return false;
                         
                     <div id="campos" class="">
                         <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Marola</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Sonaly</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>                    
                     <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
@@ -372,31 +372,31 @@ return false;
                         
                         <div id="campos" class="">
                         <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Marola</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Sonaly</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                                         
                     <div id="enviarp" method="post">
@@ -422,31 +422,31 @@ return false;
                         
                         <div id="campos" class="">
                         <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Marola</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Sonaly</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre" requiered>
+				    	<input type="text" class="form-control" name="nombre">
                     </div>
                                         
                     <div id="enviarp" method="post">
@@ -470,11 +470,11 @@ return false;
         
     </div>
 
-         <script>
-function myFunction() {
-    alert("Se enviaron los datos de transferencia al correo con tu ¡¡Codigo Verde!! IMPORTANTE: Si no llega el correo revisa la carpeta de spam o  contáctanos!");
-}
-</script>   
+    
+        
+        
+        
+    
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
     

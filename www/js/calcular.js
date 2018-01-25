@@ -5,6 +5,5 @@ function calcular(){
 	
 	document.formul.bolivares.value= total;
 	
-	
 }
 
