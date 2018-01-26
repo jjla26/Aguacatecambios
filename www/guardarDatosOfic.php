@@ -26,8 +26,8 @@ echo 'error';
 
 else{
 
-echo '<script>alert("Los datos han sido enviados satisfactoriamente!");window.location="depositoofic.php"</script>';
-
 }
 
 mysqli_close($conexion);
+
+?>

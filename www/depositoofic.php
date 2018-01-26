@@ -123,7 +123,7 @@ return false;
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
-                <form name="formul0" method="post" action="guardarDatosOfic.php" target="request">
+                <form name="formul0" method="post"  target="request" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
                         <label>Tasa de Cambio</label> 
@@ -215,6 +215,7 @@ return false;
 
         </div>
         <iframe id="request"></iframe>
+        <div id="response"></div>
         
         <div id="form" class=" col-xs-4">
             <h1>Saldos Iniciales Cuentas Chile</h1>
