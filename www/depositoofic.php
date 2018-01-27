@@ -192,7 +192,7 @@ return false;
 				    
 				    <div id="campos" class="">
 		    		   <label>Transferencia desde</label> 
-                       <select id="cambiar" name="banco" class="form-control" required>
+                       <select id="cambiar" name="banco1" class="form-control" required>
 				           <option value="3">Seleccionar</option>
 					       <option value="Banesco Carlos">Banesco Carlos</option>
                             <option value="Banesco Marola">Banesco Marola</option>            
