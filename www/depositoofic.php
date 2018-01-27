@@ -46,6 +46,7 @@ return false;
 		<script src="js/calcular.js"></script>
 		<script src="js/calcular1.js"></script>
 		<script src="js/calcularofic.js"></script>
+		<script src="js/cambiarcampos.js"></script>
 		
 	</head>
 <body>
@@ -191,10 +192,19 @@ return false;
 				    </div>
 				    
 				    <div id="campos" class="">
-		    		   <label>Transferencia desde</label> 
-                       <select id="cambiar" name="banco1" class="form-control" required>
-				           <option value="3">Seleccionar</option>
-					       <option value="Banesco Carlos">Banesco Carlos</option>
+		    		   <label>Transferimos desde banco</label> 
+                       <select id="cambiar" name="bancoorigen" class="form-control" onchange="cambiarcampos(this)" required>
+				           <option  value="3">Seleccionar</option>
+					       <option  value="Banesco">Banesco</option>
+                           <option  value="Banco Mercantil">Mercantil</option>            
+                        </select>
+				    </div>
+				    
+				    <div id="campos" class="">
+		    		   <label>Cuenta de</label> 
+                       <select id="cambiar" name="cuentaorigen" class="form-control" required>
+				           <option  value="3">Seleccionar</option>
+					       <option  value="Banesco Carlos">Banesco Carlos</option>
                             <option value="Banesco Marola">Banesco Marola</option>            
                             <option value="Banesco Sonalys">Banesco Sonalys</option>	
                             <option value="Banesco Juridica">Banesco Juridica</option>
