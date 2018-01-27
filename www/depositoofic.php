@@ -63,8 +63,8 @@ return false;
         <div id="login" >
             <div id="logo">
             <a href="#"><img src="img/logo.png"></a>
+            </div>
         </div>
-
 <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Calculadora de cambios</h1>
             
@@ -150,44 +150,58 @@ return false;
 				           <option value="3">Seleccionar</option>
 					       <option value="Banesco">Banesco</option>
                             <option value="Banco Mercantil">Banco Mercantil</option>            
-                            <option value="Banco Mercantil">100% BANCO</option>	
-                            <option value="Banco Mercantil">ABN AMRO BANK</option>
-                            <option value="Banco Mercantil">BANCAMIGA BANCO MICROFINANCIERO, C.A.</option>
-                            <option value="Banco Mercantil">BANCO ACTIVO BANCO COMERCIAL, C.A.</option>
-                            <option value="Banco Mercantil">BANCO AGRICOLA</option>
-                            <option value="Banco Mercantil">BANCO BICENTENARIO </option>
-                            <option value="Banco Mercantil">BANCO CARONI, c.A. BANCO UNIVERSAL</option>
-                            <option value="Banco Mercantil">BANCO CENTRAL DE VENEZUELA</option>
-                            <option value="Banco Mercantil">BANCO DE DESARROLLO DEL MICROEMPRESARIO</option>
-                            <option value="Banco Mercantil">BANCO DE VENEZUELA S.A.I.C.A.</option>
-                            <option value="Banco Mercantil">BANCO DEL CARIBE C.A.</option>
-                            <option value="Banco Mercantil">BANCO DEL PUEBLO SOBERANO C.A.</option>
-                            <option value="Banco Mercantil">BANCO DEL TESORO </option>
-                            <option value="Banco Mercantil">BANCO ESPIRITO SANTO S.A.</option>
-                            <option value="Banco Mercantil">BANCO EXTERIOR C.A.</option>
-                            <option value="Banco Mercantil">BANCO INTERNACIONAL DE DESARROLLO, C.A.</option>
-                            <option value="Banco Mercantil">BANCO MERCANTIL C.A.</option>
-                            <option value="Banco Mercantil">BANCO NACIONAL DE CREDITO </option>
-                            <option value="Banco Mercantil">BANCO OCCINDENTAL DE DESCUENTO </option>
-                            <option value="Banco Mercantil">BANCO PLAZA</option>
-                            <option value="Banco Mercantil">BANCO PROVINCIAL BBVA</option>
-                            <option value="Banco Mercantil">BANCO VENEZOLANO DE CREDITO S.A.</option>
-                            <option value="Banco Mercantil">BANCRECER S.A. BANCO DE DESARROLLO</option>
-                            <option value="Banco Mercantil">BANESCO</option>
-                            <option value="Banco Mercantil">BANFANB</option>
-                            <option value="Banco Mercantil">BANGENTE </option>
-                            <option value="Banco Mercantil">BANPLUS BANCO COMERCIAL C.A.</option>
-                            <option value="Banco Mercantil">CITIBANK</option>
-                            <option value="Banco Mercantil">DELSUR BANCO UNIVERSAL</option> 
-                            <option value="Banco Mercantil">FONDOCOMUN</option>
-                            <option value="Banco Mercantil">INSTITUO MUNICIPAL DE CREDITO POPULAR</option>
-                            <option value="Banco Mercantil">MIBANCO BANCO DE DESARROLLO, C.A.</option>
-                            <option value="Banco Mercantil">SOFITASA</option>
+                            <option value="100% BANCO">100% BANCO</option>	
+                            <option value="ABN AMRO BANK">ABN AMRO BANK</option>
+                            <option value="BANCAMIGA BANCO MICROFINANCIERO, C.A.">BANCAMIGA BANCO MICROFINANCIERO, C.A.</option>
+                            <option value="BANCO ACTIVO BANCO COMERCIAL, C.A.">BANCO ACTIVO BANCO COMERCIAL, C.A.</option>
+                            <option value="BANCO AGRICOLA">BANCO AGRICOLA</option>
+                            <option value="BANCO BICENTENARIO">BANCO BICENTENARIO </option>
+                            <option value="BANCO CARONI, c.A. BANCO UNIVERSAL">BANCO CARONI, c.A. BANCO UNIVERSAL</option>
+                            <option value="BANCO CENTRAL DE VENEZUELA">BANCO CENTRAL DE VENEZUELA</option>
+                            <option value="BANCO DE DESARROLLO DEL MICROEMPRESARIO">BANCO DE DESARROLLO DEL MICROEMPRESARIO</option>
+                            <option value="BANCO DE VENEZUELA S.A.I.C.A.">BANCO DE VENEZUELA S.A.I.C.A.</option>
+                            <option value="BANCO DEL CARIBE C.A.">BANCO DEL CARIBE C.A.</option>
+                            <option value="BANCO DEL PUEBLO SOBERANO C.A.">BANCO DEL PUEBLO SOBERANO C.A.</option>
+                            <option value="BANCO DEL TESORO">BANCO DEL TESORO </option>
+                            <option value="BANCO ESPIRITO SANTO S.A.">BANCO ESPIRITO SANTO S.A.</option>
+                            <option value="BANCO EXTERIOR C.A.">BANCO EXTERIOR C.A.</option>
+                            <option value="BANCO INTERNACIONAL DE DESARROLLO, C.A.">BANCO INTERNACIONAL DE DESARROLLO, C.A.</option>
+                            <option value="BANCO MERCANTIL C.A.">BANCO MERCANTIL C.A.</option>
+                            <option value="BANCO NACIONAL DE CREDITO ">BANCO NACIONAL DE CREDITO </option>
+                            <option value="BANCO OCCINDENTAL DE DESCUENTO ">BANCO OCCINDENTAL DE DESCUENTO </option>
+                            <option value="BANCO PLAZA">BANCO PLAZA</option>
+                            <option value="BANCO PROVINCIAL BBVA">BANCO PROVINCIAL BBVA</option>
+                            <option value="BANCO VENEZOLANO DE CREDITO S.A.">BANCO VENEZOLANO DE CREDITO S.A.</option>
+                            <option value="BANCRECER S.A. BANCO DE DESARROLLO">BANCRECER S.A. BANCO DE DESARROLLO</option>
+                            <option value="BANESCO">BANESCO</option>
+                            <option value="BANFANB">BANFANB</option>
+                            <option value="BANGENTE">BANGENTE </option>
+                            <option value="BANPLUS BANCO COMERCIAL C.A.">BANPLUS BANCO COMERCIAL C.A.</option>
+                            <option value="CITIBANK">CITIBANK</option>
+                            <option value="DELSUR BANCO UNIVERSAL">DELSUR BANCO UNIVERSAL</option> 
+                            <option value="FONDOCOMUN">FONDOCOMUN</option>
+                            <option value="INSTITUO MUNICIPAL DE CREDITO POPULAR">INSTITUO MUNICIPAL DE CREDITO POPULAR</option>
+                            <option value="MIBANCO BANCO DE DESARROLLO, C.A.">MIBANCO BANCO DE DESARROLLO, C.A.</option>
+                            <option value="SOFITASA">SOFITASA</option>
 					    </select>
 				    </div>
                     <div id="campos" class="">
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta" required>
+				    </div>
+				    
+				    <div id="campos" class="">
+		    		   <label>Transferencia desde</label> 
+                       <select id="cambiar" name="banco" class="form-control" required>
+				           <option value="3">Seleccionar</option>
+					       <option value="Banesco Carlos">Banesco Carlos</option>
+                            <option value="Banesco Marola">Banesco Marola</option>            
+                            <option value="Banesco Sonalys">Banesco Sonalys</option>	
+                            <option value="Banesco Juridica">Banesco Juridica</option>
+                            <option value="Mercantil Mariana">Mercantil Mariana</option>
+                            <option value="Mercantil Carlos">Mercantil Carlos</option>
+                            <option value="Mercantil Juridica">Mercantil Juridica</option>
+                        </select>
 				    </div>
                    <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
@@ -214,34 +228,61 @@ return false;
                 <h2>Revisa los Datos Antes de Enviar</h2>
 
         </div>
-        <iframe id="request"></iframe>
-        <div id="response"></div>
+        
         
         <div id="form" class=" col-xs-4">
             <h1>Saldos Iniciales Cuentas Chile</h1>
             
-                <form name="formul1" method="post" action="guardarDatos.php">
+                <form name="formul1" method="post" action="saldosiniciales.php">
                 
                         
                     <div id="campos" class="">
                         <label>RUT</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="inicial_rut">
                     </div>
                     <div id="campos" class="">
                         <label>Vista</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="inicial_vista">
                     </div>
                     <div id="campos" class="">
                         <label>Ahorro</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="inicial_ahorro">
                     </div>
+                    
+                    <h1>Saldos Iniciales Cuentas Venezuela</h1>
+                
+                        
+                    <div id="campos" class="">
+                        <label>Mercantil Mariana</label> 
+				    	<input type="text" class="form-control" name="inicial_mercantil_mariana">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Mercantil Carlos</label> 
+				    	<input type="text" class="form-control" name="inicial_mercantil_carlos">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Mercantil Juridica</label> 
+				    	<input type="text" class="form-control" name="inicial_mercantil_juridica">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Carlos</label> 
+				    	<input type="text" class="form-control" name="inicial_banesco_carlos">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Marola</label> 
+				    	<input type="text" class="form-control" name="inicial_banesco_marola">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Sonaly</label> 
+				    	<input type="text" class="form-control" name="inicial_banesco_sonalys">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Juridica</label> 
+				    	<input type="text" class="form-control" name="inicial_banesco_juridica">
+                    </div>                    
                     <div id="enviarp" method="post">
-    			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
+    			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
-                    
-
-
-                    
                 </form>
                 
                 <h2>Revisa los Datos Antes de Enviar</h2>
@@ -253,224 +294,133 @@ return false;
         <div id="form" class=" col-xs-4">
             <h1>Abonos Cuentas Chile</h1>
             
-                <form name="formul2" method="post" action="guardarDatos.php">
-                
-                        
+                <form name="formul2" method="post" action="abonos.php">
+    
                     <div id="campos" class="">
                         <label>RUT</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="abono_rut">
                     </div>
                     <div id="campos" class="">
                         <label>Vista</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="abono_vista">
                     </div>
                     <div id="campos" class="">
                         <label>Ahorro</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>                    
+				    	<input type="text" class="form-control" name="abono_ahorro">
+                    </div>   
+                    
+            <h1>Abonos Cuentas Venezuela</h1>
+
+                    <div id="campos" class="">
+                        <label>Mercantil Mariana</label> 
+				    	<input type="text" class="form-control" name="abono_mercantil_mariana">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Mercantil Carlos</label> 
+				    	<input type="text" class="form-control" name="abono_mercantil_carlos">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Mercantil Juridica</label> 
+				    	<input type="text" class="form-control" name="abono_mercantil_juridica">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Carlos</label> 
+				    	<input type="text" class="form-control" name="abono_banesco_carlos">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Marola</label> 
+				    	<input type="text" class="form-control" name="abono_banesco_marola">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Sonaly</label> 
+				    	<input type="text" class="form-control" name="abono_banesco_sonalys">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Juridica</label> 
+				    	<input type="text" class="form-control" name="abono_banesco_juridica">
+                    </div>
+                                        
                     <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
                     </div>
-                    
-
-
-                    
-                </form>
-                
-                <h2>asd</h2>
-
-           
             
-        </div>
-        
+                </form>
+               <h2>Revise los datos antes de enviar</h2>
+    
+
+        </div>            
+
+
+
         <div id="form" class=" col-xs-4">
             <h1>Debitos Cuentas Chile</h1>
             
-                <form name="formul3" method="post" action="guardarDatos.php">
+                <form name="formul3" method="post" action="debitos.php">
                 
                         
                         <div id="campos" class="">
                         <label>RUT</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_rut">
                     </div>
                     <div id="campos" class="">
                         <label>Vista</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_vista">
                     </div>
                     <div id="campos" class="">
                         <label>Ahorro</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_ahorro">
                     </div>                
-                    <div id="enviarp" method="post">
-    			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
-                    </div>
                     
-
-
-                    
-                </form>
-                
-                <h2>Revisa los Datos Antes de Enviar</h2>
-
-           
             
-        </div>
-        
-        <div id="form" class=" col-xs-4">
-            <h1>Saldos Iniciales Cuentas Venezuela</h1>
+                    <h1>Debitos Cuentas Venezuela</h1>
             
-                <form name="formul4" method="post" action="guardarDatos.php">
-                
-                        
                     <div id="campos" class="">
                         <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_mercantil_mariana">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_mercantil_carlos">
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_mercantil_juridica">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_banesco_carlos">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Marola</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_banesco_marola">
                     </div>
                     <div id="campos" class="">
-                        <label>Banesco Sonaly</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>                    
-                    <div id="enviarp" method="post">
-    			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
-                    </div>
-                    
-
-
-                    
-                </form>
-                
-                <h2>Revisa los Datos Antes de Enviar</h2>
-
-           
-            
-        </div>
-        
-        <div id="form" class=" col-xs-4">
-            <h1>Abonos Cuentas Venezuela</h1>
-            
-                <form name="formul5" method="post" action="guardarDatos.php">
-                
-                        
-                        <div id="campos" class="">
-                        <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Mercantil Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Marola</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Sonaly</label> 
-				    	<input type="text" class="form-control" name="nombre">
+                        <label>Banesco Sonalys</label> 
+				    	<input type="text" class="form-control" name="debito_banesco_sonalys">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre">
+				    	<input type="text" class="form-control" name="debito_banesco_juridica">
                     </div>
                                         
                     <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
                     </div>
-                    
-
-
-                    
-                </form>
                 
-                <h2>asd</h2>
-
-           
-            
-        </div>
-        
-        <div id="form" class=" col-xs-4">
-            <h1>Debitos Cuentas Venezuela</h1>
-            
-                <form name="formul6" method="post" action="guardarDatos.php">
-                
-                        
-                        <div id="campos" class="">
-                        <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Mercantil Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Carlos</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Marola</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Sonaly</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                    <div id="campos" class="">
-                        <label>Banesco Juridica</label> 
-				    	<input type="text" class="form-control" name="nombre">
-                    </div>
-                                        
-                    <div id="enviarp" method="post">
-    			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
-                    </div>
-                    
-
-
-                    
                 </form>
                 
                 <h2>Revisa los Datos Antes de Enviar</h2>
 
            
-            
         </div>
-        
-        
-        
-        
-        
-    </div>
+                    
 
+
+        
+        
+        
+        
+        
     
         
         

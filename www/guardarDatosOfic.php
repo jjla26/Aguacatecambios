@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 $tasa = $_POST['tasa'];
 $nombre = $_POST['nombre'];
