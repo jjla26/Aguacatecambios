@@ -191,26 +191,30 @@ return false;
 				    	<input type="text" class="form-control" name="cuenta" required>
 				    </div>
 				    
-				    <div id="campos" class="">
+				    <div id="" class="">
 		    		   <label>Transferimos desde banco</label> 
-                       <select id="cambiar" name="bancoorigen" class="form-control" onchange="cambiarcampos(this)" required>
+                       <select id="bancosOrigen" name="bancoorigen" class="form-control" onchange="cambiarcampos(this)" required>
 				           <option  value="3">Seleccionar</option>
 					       <option  value="Banesco">Banesco</option>
                            <option  value="Banco Mercantil">Mercantil</option>            
                         </select>
 				    </div>
 				    
-				    <div id="campos" class="">
+				    <div id="" class="">
 		    		   <label>Cuenta de</label> 
-                       <select id="cambiar" name="cuentaorigen" class="form-control" required>
-				           <option  value="3">Seleccionar</option>
-					       <option  value="Banesco Carlos">Banesco Carlos</option>
-                            <option value="Banesco Marola">Banesco Marola</option>            
-                            <option value="Banesco Sonalys">Banesco Sonalys</option>	
-                            <option value="Banesco Juridica">Banesco Juridica</option>
-                            <option value="Mercantil Mariana">Mercantil Mariana</option>
-                            <option value="Mercantil Carlos">Mercantil Carlos</option>
-                            <option value="Mercantil Juridica">Mercantil Juridica</option>
+                       <select id="cuentasOrigen" name="cuentaorigen" class="form-control" required>
+				            <option value="3">Seleccionar</option>
+					        <optgroup id="banescoCuentas" label="Cuentas Banesco">
+                                <option value="Banesco Carlos">Banesco Carlos</option>
+                                <option value="Banesco Marola">Banesco Marola</option>
+                                <option value="Banesco Sonalys">Banesco Sonalys</option>
+                                <option value="Banesco Juridica">Banesco Juridica</option>
+                              </optgroup>
+                              <optgroup id="mercantilCuentas" label="Cuentas Mercantil">
+                                <option value="Mercantil Mariana">Mercantil Mariana</option>
+                                <option value="Mercantil Carlos">Mercantil Carlos</option>
+                                <option value="Mercantil Juridica">Mercantil Juridica</option>
+                              </optgroup>
                         </select>
 				    </div>
                    <div id="campos" class="" >
