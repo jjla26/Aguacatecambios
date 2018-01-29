@@ -73,6 +73,7 @@ $abono_banesco_juridica1 = mysqli_fetch_array($abono_banesco_juridica1);
 $abono_banesco_juridica1= $abono_banesco_juridica1['saldo_banesco_juridica']+$debito_banesco_juridica;
 
 $ID=$ID+1;
+
 $insertar1 = "UPDATE saldos SET saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1' WHERE ID= '$ID'";
 
 $resultado1 = mysqli_query($conexion, $insertar1);

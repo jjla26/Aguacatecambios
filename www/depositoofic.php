@@ -193,7 +193,7 @@ return false;
 				    
 				    <div id="" class="">
 		    		   <label>Transferimos desde banco</label> 
-                       <select id="bancosOrigen" name="bancoorigen" class="form-control" onchange="cambiarcampos(this)" required>
+                       <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" required>
 				           <option  value="3">Seleccionar</option>
 					       <option  value="Banesco">Banesco</option>
                            <option  value="Banco Mercantil">Mercantil</option>            
@@ -202,7 +202,7 @@ return false;
 				    
 				    <div id="" class="">
 		    		   <label>Cuenta de</label> 
-                       <select id="cuentasOrigen" name="cuentaorigen" class="form-control" required>
+                       <select id="cuentasOrigen" name="cuentaOrigen" class="form-control" required>
 				            <option value="3">Seleccionar</option>
 					        <optgroup id="banescoCuentas" label="Cuentas Banesco">
                                 <option value="Banesco Carlos">Banesco Carlos</option>
