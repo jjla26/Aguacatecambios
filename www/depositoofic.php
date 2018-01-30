@@ -104,15 +104,16 @@ return false;
 									<a id="botones" class="btn btn-success col-xs-12 success" onclick="calcular();"> Calcular</a> 
 								</div>
 								<div id="div6" >
-									<a id="botones" class="btn btn-success col-xs-12 success" onclick="calcular1();"> Calcular</a> 
+									<a id="botones" class="btn btn-success col-xs-11 success" onclick="calcular1();"> Calcular</a> 
 								</div>
 								
 								
 								
 							</form>
+					
+					
                 
-                <h2>Revisa los Datos Antes de Enviar</h2>
-
+               
            
             
         </div>
@@ -145,11 +146,22 @@ return false;
 					    </select>
           	          <input id="cedula" type="text" class="form-control" name="iddoc" required>
 				    </div>
-                    <div id="campos" class="">
+				    <div id="" class="">
+		    		   <label>Forma de pago</label> 
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos(this)" required>
+				           <option  value="">Seleccionar</option>
+					       <option  value="Efectivo">Efectivo</option>
+                           <option  value="DepositoRut">Deposito a Cuenta Rut</option>
+                           <option  value="DepositoVista">Deposito a Cuenta Vista</option>
+                           <option  value="DepositoAhorro">Deposito a Cuenta Ahorro</option>
+                        </select>
+				    </div>
+				    
+                    <div id="BancoBeneficiario" class="">
 		    		   <label>Banco del Beneficiario</label> 
-                       <select id="cambiar" name="banco" class="form-control" required>
-				           <option value="3">Seleccionar</option>
-					       <option value="Banesco">Banesco</option>
+                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
+				           <option value="">Seleccionar</option>
+				            <option value="Banesco">Banesco</option>
                             <option value="Banco Mercantil">Banco Mercantil</option>            
                             <option value="100% BANCO">100% BANCO</option>	
                             <option value="ABN AMRO BANK">ABN AMRO BANK</option>
@@ -186,7 +198,7 @@ return false;
                             <option value="SOFITASA">SOFITASA</option>
 					    </select>
 				    </div>
-                    <div id="campos" class="">
+                    <div id="CuentaBeneficiario" class="">
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta" required>
 				    </div>
@@ -194,7 +206,7 @@ return false;
 				    <div id="" class="">
 		    		   <label>Transferimos desde banco</label> 
                        <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" required>
-				           <option  value="3">Seleccionar</option>
+				           <option  value="">Seleccionar</option>
 					       <option  value="Banesco">Banesco</option>
                            <option  value="Banco Mercantil">Mercantil</option>            
                         </select>
@@ -203,7 +215,7 @@ return false;
 				    <div id="" class="">
 		    		   <label>Cuenta de</label> 
                        <select id="cuentasOrigen" name="cuentaOrigen" class="form-control" required>
-				            <option value="3">Seleccionar</option>
+				            <option value="">Seleccionar</option>
 					        <optgroup id="banescoCuentas" label="Cuentas Banesco">
                                 <option value="Banesco Carlos">Banesco Carlos</option>
                                 <option value="Banesco Marola">Banesco Marola</option>
@@ -233,7 +245,7 @@ return false;
 				        <label>Teléfono de Quien Envía</label>
     					<input type="text" class="form-control" name="telefono">
     				</div>                    
-                    <div id="enviarp" method="post">
+                    <div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     
@@ -244,12 +256,15 @@ return false;
         </div>
         
         
-        <div id="form" class=" col-xs-4">
+        <div id="form" class=" col-xs-4 col-xs-offset-0">
             <h1>Saldos Iniciales Cuentas Chile</h1>
             
                 <form name="formul1" method="post" action="saldosiniciales.php">
                 
-                        
+                    <div id="campos" class="">
+                        <label>Efectivo</label> 
+				    	<input type="text" class="form-control" name="debito_rut">
+                    </div>    
                     <div id="campos" class="">
                         <label>RUT</label> 
 				    	<input type="text" class="form-control" name="inicial_rut">
@@ -309,7 +324,10 @@ return false;
             <h1>Abonos Cuentas Chile</h1>
             
                 <form name="formul2" method="post" action="abonos.php">
-    
+                    <div id="campos" class="">
+                        <label>Efectivo</label> 
+				    	<input type="text" class="form-control" name="debito_rut">
+                    </div>
                     <div id="campos" class="">
                         <label>RUT</label> 
 				    	<input type="text" class="form-control" name="abono_rut">
@@ -371,8 +389,11 @@ return false;
             
                 <form name="formul3" method="post" action="debitos.php">
                 
-                        
-                        <div id="campos" class="">
+                    <div id="campos" class="">
+                        <label>Efectivo</label> 
+				    	<input type="text" class="form-control" name="debito_rut">
+                    </div>    
+                    <div id="campos" class="">
                         <label>RUT</label> 
 				    	<input type="text" class="form-control" name="debito_rut">
                     </div>
