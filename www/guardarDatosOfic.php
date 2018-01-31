@@ -1,11 +1,17 @@
 <?php
+date_default_timezone_set('America/Santiago');
+$current_date = date("Y-m-d H:i:s");
+
+echo $current_date;
 
 $tasa = $_POST['tasa'];
+$rut = $_POST['rut'];
 $nombre = $_POST['nombre'];
 $tipodoc = $_POST['tipodoc']; 
 $iddoc = $_POST['iddoc'];
 $formaPago = $_POST['formaPago'];
 $banco = $_POST['banco'];
+$cuenta =$_POST['cuenta'];
 $bancoOrigen = $_POST['bancoOrigen'];
 $cuentaOrigen = $_POST['cuentaOrigen'];
 $pesos = $_POST['pesos2'];
@@ -53,7 +59,7 @@ $insertar1 = "INSERT INTO saldos( disp_banesco_sonalys)VALUES(($bolivaresCom*-1)
 $insertar1 = "INSERT INTO saldos( disp_banesco_juridica)VALUES(($bolivaresCom*-1))";
 }
 
-$insertar = "INSERT INTO Oficina(tasa,Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono) VALUES ('$tasa','$nombre','$tipodoc','$iddoc','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono')";
+$insertar = "INSERT INTO Oficina(tasa, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha) VALUES ('$tasa','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date')";
 
 include 'conexion.php';
 
@@ -129,7 +135,14 @@ $abono_mercantil_mariana1 = mysqli_query($conexion,$abono_mercantil_mariana1);
 $abono_mercantil_mariana1 = mysqli_fetch_array($abono_mercantil_mariana1);
 $abono_mercantil_mariana1= $abono_mercantil_mariana1['saldo_mercantil_mariana']-$bolivaresCom;
 
-if($bancoOrigen == $banco){
+}else{
+$abono_mercantil_mariana1 = "SELECT saldo_mercantil_mariana FROM saldos WHERE ID = '$ID'";
+$abono_mercantil_mariana1 = mysqli_query($conexion,$abono_mercantil_mariana1);
+$abono_mercantil_mariana1 = mysqli_fetch_array($abono_mercantil_mariana1);
+$abono_mercantil_mariana1= $abono_mercantil_mariana1['saldo_mercantil_mariana'];
+}
+
+if($bancoOrigen == $banco && $cuentaOrigen == "Mercantil Mariana"){
 $disponible_mercantil_mariana = "SELECT disp_mercantil_mariana FROM saldos WHERE ID = '$ID'";
 $disponible_mercantil_mariana = mysqli_query($conexion,$disponible_mercantil_mariana);
 $disponible_mercantil_mariana = mysqli_fetch_array($disponible_mercantil_mariana);
@@ -140,23 +153,23 @@ $disponible_mercantil_mariana = mysqli_query($conexion,$disponible_mercantil_mar
 $disponible_mercantil_mariana = mysqli_fetch_array($disponible_mercantil_mariana);
 $disponible_mercantil_mariana = $disponible_mercantil_mariana['disp_mercantil_mariana'];
 }  
- 
-    
-}else{
-$abono_mercantil_mariana1 = "SELECT saldo_mercantil_mariana FROM saldos WHERE ID = '$ID'";
-$abono_mercantil_mariana1 = mysqli_query($conexion,$abono_mercantil_mariana1);
-$abono_mercantil_mariana1 = mysqli_fetch_array($abono_mercantil_mariana1);
-$abono_mercantil_mariana1= $abono_mercantil_mariana1['saldo_mercantil_mariana'];
 
-    
-}
 
 if($cuentaOrigen =="Mercantil Carlos"){
 $abono_mercantil_carlos1 = "SELECT saldo_mercantil_carlos FROM saldos WHERE ID = '$ID'";
 $abono_mercantil_carlos1 = mysqli_query($conexion,$abono_mercantil_carlos1);
 $abono_mercantil_carlos1 = mysqli_fetch_array($abono_mercantil_carlos1);
 $abono_mercantil_carlos1= $abono_mercantil_carlos1['saldo_mercantil_carlos']-$bolivaresCom;
-if($bancoOrigen == $banco){
+
+    
+}else{
+$abono_mercantil_carlos1 = "SELECT saldo_mercantil_carlos FROM saldos WHERE ID = '$ID'";
+$abono_mercantil_carlos1 = mysqli_query($conexion,$abono_mercantil_carlos1);
+$abono_mercantil_carlos1 = mysqli_fetch_array($abono_mercantil_carlos1);
+$abono_mercantil_carlos1= $abono_mercantil_carlos1['saldo_mercantil_carlos'];
+}
+
+if($bancoOrigen == $banco && $cuentaOrigen =="Mercantil Carlos"){
 $disponible_mercantil_carlos = "SELECT disp_mercantil_carlos FROM saldos WHERE ID = '$ID'";
 $disponible_mercantil_carlos = mysqli_query($conexion,$disponible_mercantil_carlos);
 $disponible_mercantil_carlos = mysqli_fetch_array($disponible_mercantil_carlos);
@@ -166,21 +179,21 @@ $disponible_mercantil_carlos = "SELECT disp_mercantil_carlos FROM saldos WHERE I
 $disponible_mercantil_carlos = mysqli_query($conexion,$disponible_mercantil_carlos);
 $disponible_mercantil_carlos = mysqli_fetch_array($disponible_mercantil_carlos);
 $disponible_mercantil_carlos = $disponible_mercantil_carlos['disp_mercantil_carlos'];
-    
 }      
-}else{
-$abono_mercantil_carlos1 = "SELECT saldo_mercantil_carlos FROM saldos WHERE ID = '$ID'";
-$abono_mercantil_carlos1 = mysqli_query($conexion,$abono_mercantil_carlos1);
-$abono_mercantil_carlos1 = mysqli_fetch_array($abono_mercantil_carlos1);
-$abono_mercantil_carlos1= $abono_mercantil_carlos1['saldo_mercantil_carlos'];
-}
 
 if($cuentaOrigen =="Mercantil Juridica"){
 $abono_mercantil_juridica1 = "SELECT saldo_mercantil_juridica FROM saldos WHERE ID = '$ID'";
 $abono_mercantil_juridica1 = mysqli_query($conexion,$abono_mercantil_juridica1);
 $abono_mercantil_juridica1 = mysqli_fetch_array($abono_mercantil_juridica1);
 $abono_mercantil_juridica1= $abono_mercantil_juridica1['saldo_mercantil_juridica']-$bolivaresCom;
-if($bancoOrigen == $banco){
+    
+}else{
+$abono_mercantil_juridica1 = "SELECT saldo_mercantil_juridica FROM saldos WHERE ID = '$ID'";
+$abono_mercantil_juridica1 = mysqli_query($conexion,$abono_mercantil_juridica1);
+$abono_mercantil_juridica1 = mysqli_fetch_array($abono_mercantil_juridica1);
+$abono_mercantil_juridica1= $abono_mercantil_juridica1['saldo_mercantil_juridica'];
+}
+if($bancoOrigen == $banco & $cuentaOrigen =="Mercantil Juridica"){
 $disponible_mercantil_juridica = "SELECT disp_mercantil_juridica FROM saldos WHERE ID = '$ID'";
 $disponible_mercantil_juridica = mysqli_query($conexion,$disponible_mercantil_juridica);
 $disponible_mercantil_juridica = mysqli_fetch_array($disponible_mercantil_juridica);
@@ -191,14 +204,7 @@ $disponible_mercantil_juridica = mysqli_query($conexion,$disponible_mercantil_ju
 $disponible_mercantil_juridica = mysqli_fetch_array($disponible_mercantil_juridica);
 $disponible_mercantil_juridica = $disponible_mercantil_juridica['disp_mercantil_juridica'];
 }  
-    
-}else{
-$abono_mercantil_juridica1 = "SELECT saldo_mercantil_juridica FROM saldos WHERE ID = '$ID'";
-$abono_mercantil_juridica1 = mysqli_query($conexion,$abono_mercantil_juridica1);
-$abono_mercantil_juridica1 = mysqli_fetch_array($abono_mercantil_juridica1);
-$abono_mercantil_juridica1= $abono_mercantil_juridica1['saldo_mercantil_juridica'];
 
-}
 
 if($cuentaOrigen =="Banesco Carlos"){
 $abono_banesco_carlos1 = "SELECT saldo_banesco_carlos FROM saldos WHERE ID = '$ID'";
@@ -206,7 +212,13 @@ $abono_banesco_carlos1 = mysqli_query($conexion,$abono_banesco_carlos1);
 $abono_banesco_carlos1 = mysqli_fetch_array($abono_banesco_carlos1);
 $abono_banesco_carlos1= $abono_banesco_carlos1['saldo_banesco_carlos']-$bolivaresCom;
 
-if($bancoOrigen == $banco){
+}else{
+$abono_banesco_carlos1 = "SELECT saldo_banesco_carlos FROM saldos WHERE ID = '$ID'";
+$abono_banesco_carlos1 = mysqli_query($conexion,$abono_banesco_carlos1);
+$abono_banesco_carlos1 = mysqli_fetch_array($abono_banesco_carlos1);
+$abono_banesco_carlos1= $abono_banesco_carlos1['saldo_banesco_carlos'];
+}
+if($bancoOrigen == $banco && $cuentaOrigen =="Banesco Carlos"){
 $disponible_banesco_carlos = "SELECT disp_banesco_carlos FROM saldos WHERE ID = '$ID'";
 $disponible_banesco_carlos = mysqli_query($conexion,$disponible_banesco_carlos);
 $disponible_banesco_carlos = mysqli_fetch_array($disponible_banesco_carlos);
@@ -216,16 +228,9 @@ $disponible_banesco_carlos = "SELECT disp_banesco_carlos FROM saldos WHERE ID = 
 $disponible_banesco_carlos = mysqli_query($conexion,$disponible_banesco_carlos);
 $disponible_banesco_carlos = mysqli_fetch_array($disponible_banesco_carlos);
 $disponible_banesco_carlos = $disponible_banesco_carlos['disp_banesco_carlos'];
-    
-}  
-    
-}else{
-$abono_banesco_carlos1 = "SELECT saldo_banesco_carlos FROM saldos WHERE ID = '$ID'";
-$abono_banesco_carlos1 = mysqli_query($conexion,$abono_banesco_carlos1);
-$abono_banesco_carlos1 = mysqli_fetch_array($abono_banesco_carlos1);
-$abono_banesco_carlos1= $abono_banesco_carlos1['saldo_banesco_carlos'];
 
-}
+}  
+
 
 if($cuentaOrigen == "Banesco Marola"){
 $abono_banesco_marola1 = "SELECT saldo_banesco_marola FROM saldos WHERE ID = '$ID'";
@@ -233,7 +238,13 @@ $abono_banesco_marola1 = mysqli_query($conexion,$abono_banesco_marola1);
 $abono_banesco_marola1 = mysqli_fetch_array($abono_banesco_marola1);
 $abono_banesco_marola1= $abono_banesco_marola1['saldo_banesco_marola']-$bolivaresCom;
 
-if($bancoOrigen == $banco){
+}else{
+$abono_banesco_marola1 = "SELECT saldo_banesco_marola FROM saldos WHERE ID = '$ID'";
+$abono_banesco_marola1 = mysqli_query($conexion,$abono_banesco_marola1);
+$abono_banesco_marola1 = mysqli_fetch_array($abono_banesco_marola1);
+$abono_banesco_marola1= $abono_banesco_marola1['saldo_banesco_marola'];
+}
+if($bancoOrigen == $banco && $cuentaOrigen == "Banesco Marola"){
 $disponible_banesco_marola = "SELECT disp_banesco_marola FROM saldos WHERE ID = '$ID'";
 $disponible_banesco_marola = mysqli_query($conexion,$disponible_banesco_marola);
 $disponible_banesco_marola = mysqli_fetch_array($disponible_banesco_marola);
@@ -244,50 +255,53 @@ $disponible_banesco_marola = mysqli_query($conexion,$disponible_banesco_marola);
 $disponible_banesco_marola = mysqli_fetch_array($disponible_banesco_marola);
 $disponible_banesco_marola = $disponible_banesco_marola['disp_banesco_marola'];
 }  
-    
-}else{
-$abono_banesco_marola1 = "SELECT saldo_banesco_marola FROM saldos WHERE ID = '$ID'";
-$abono_banesco_marola1 = mysqli_query($conexion,$abono_banesco_marola1);
-$abono_banesco_marola1 = mysqli_fetch_array($abono_banesco_marola1);
-$abono_banesco_marola1= $abono_banesco_marola1['saldo_banesco_marola'];
 
-}
 
 if($cuentaOrigen == "Banesco Sonalys"){
 $abono_banesco_sonalys1 = "SELECT saldo_banesco_sonalys FROM saldos WHERE ID = '$ID'";
 $abono_banesco_sonalys1 = mysqli_query($conexion,$abono_banesco_sonalys1);
 $abono_banesco_sonalys1 = mysqli_fetch_array($abono_banesco_sonalys1);
 $abono_banesco_sonalys1= $abono_banesco_sonalys1['saldo_banesco_sonalys']-$bolivaresCom;
-if($bancoOrigen == $banco){
-$disponible_banesco_sonalys = "SELECT disp_banesco_sonalys FROM saldos WHERE ID = '$ID'";
-$disponible_banesco_sonalys = mysqli_query($conexion,$disponible_banesco_sonalys);
-$disponible_banesco_sonalys = mysqli_fetch_array($disponible_banesco_sonalys);
-$disponible_banesco_sonalys = $disponible_banesco_sonalys['disp_banesco_sonalys']-$bolivaresCom;
-}else{
-$disponible_banesco_sonalys = "SELECT disp_mercantil_mariana FROM saldos WHERE ID = '$ID'";
-$disponible_banesco_sonalys = mysqli_query($conexion,$disponible_banesco_sonalys);
-$disponible_banesco_sonalys = mysqli_fetch_array($disponible_banesco_sonalys);
-$disponible_banesco_sonalys = $disponible_banesco_sonalys['disp_banesco_sonalys'];
-}  
     
 }else{
 $abono_banesco_sonalys1 = "SELECT saldo_banesco_sonalys FROM saldos WHERE ID = '$ID'";
 $abono_banesco_sonalys1 = mysqli_query($conexion,$abono_banesco_sonalys1);
 $abono_banesco_sonalys1 = mysqli_fetch_array($abono_banesco_sonalys1);
 $abono_banesco_sonalys1= $abono_banesco_sonalys1['saldo_banesco_sonalys'];
-
 }
+if($bancoOrigen == $banco && $cuentaOrigen == "Banesco Sonalys"){
+$disponible_banesco_sonalys = "SELECT disp_banesco_sonalys FROM saldos WHERE ID = '$ID'";
+$disponible_banesco_sonalys = mysqli_query($conexion,$disponible_banesco_sonalys);
+$disponible_banesco_sonalys = mysqli_fetch_array($disponible_banesco_sonalys);
+$disponible_banesco_sonalys = $disponible_banesco_sonalys['disp_banesco_sonalys']-$bolivaresCom;
+}else{
+$disponible_banesco_sonalys = "SELECT disp_banesco_sonalys FROM saldos WHERE ID = '$ID'";
+$disponible_banesco_sonalys = mysqli_query($conexion,$disponible_banesco_sonalys);
+$disponible_banesco_sonalys = mysqli_fetch_array($disponible_banesco_sonalys);
+$disponible_banesco_sonalys = $disponible_banesco_sonalys['disp_banesco_sonalys'];
+}  
+
 
 if($cuentaOrigen == "Banesco Juridica"){
 $abono_banesco_juridica1 = "SELECT saldo_banesco_juridica FROM saldos WHERE ID = '$ID'";
 $abono_banesco_juridica1 = mysqli_query($conexion,$abono_banesco_juridica1);
 $abono_banesco_juridica1 = mysqli_fetch_array($abono_banesco_juridica1);
 $abono_banesco_juridica1= $abono_banesco_juridica1['saldo_banesco_juridica']-$bolivaresCom;
-if($bancoOrigen == $banco){
+
+}else{
+$abono_banesco_juridica1 = "SELECT saldo_banesco_juridica FROM saldos WHERE ID = '$ID'";
+$abono_banesco_juridica1 = mysqli_query($conexion,$abono_banesco_juridica1);
+$abono_banesco_juridica1 = mysqli_fetch_array($abono_banesco_juridica1);
+$abono_banesco_juridica1= $abono_banesco_juridica1['saldo_banesco_juridica'];    
+}
+
+if($bancoOrigen == $banco && $cuentaOrigen == "Banesco Juridica"){
 $disponible_banesco_juridica = "SELECT disp_banesco_juridica FROM saldos WHERE ID = '$ID'";
 $disponible_banesco_juridica = mysqli_query($conexion,$disponible_banesco_juridica);
 $disponible_banesco_juridica = mysqli_fetch_array($disponible_banesco_juridica);
 $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridica']-$bolivaresCom;
+
+    
 } else{
 $disponible_banesco_juridica = "SELECT disp_banesco_juridica FROM saldos WHERE ID = '$ID'";
 $disponible_banesco_juridica = mysqli_query($conexion,$disponible_banesco_juridica);
@@ -295,13 +309,6 @@ $disponible_banesco_juridica = mysqli_fetch_array($disponible_banesco_juridica);
 $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridica'];
 } 
     
-}else{
-$abono_banesco_juridica1 = "SELECT saldo_banesco_juridica FROM saldos WHERE ID = '$ID'";
-$abono_banesco_juridica1 = mysqli_query($conexion,$abono_banesco_juridica1);
-$abono_banesco_juridica1 = mysqli_fetch_array($abono_banesco_juridica1);
-$abono_banesco_juridica1= $abono_banesco_juridica1['saldo_banesco_juridica'];    
-
-}
 
 
 
@@ -323,7 +330,7 @@ echo 'error';
 else{
 
 
-echo '<script>window.location="depositoofic.php"</script>';
+//echo '<script>window.location="depositoofic.php"</script>';
 
     
 }

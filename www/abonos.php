@@ -22,10 +22,10 @@ $resultado = mysqli_query($conexion, $insertar);
 $ID=mysqli_insert_id($conexion)-1;
 
 
-$abono_efec1 = "SELECT saldo_rut FROM saldos WHERE ID = '$ID'";
+$abono_efec1 = "SELECT saldo_efec FROM saldos WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
-$abono_efec1 = $abono_efec1['saldo_rut']+$abono_efec;
+$abono_efec1 = $abono_efec1['saldo_efec']+$abono_efec;
 
 
 $abono_rut1 = "SELECT saldo_rut FROM saldos WHERE ID = '$ID'";

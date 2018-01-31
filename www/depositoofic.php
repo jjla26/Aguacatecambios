@@ -45,7 +45,7 @@ return false;
 		<script src="js/mostrar.js"></script>
 		<script src="js/calcular.js"></script>
 		<script src="js/calcular1.js"></script>
-		<script src="js/calcularofic.js"></script>
+		<script src="js/calcularofic.js?1.0.4"></script>
 		<script src="js/cambiarcampos.js"></script>
 		
 	</head>
@@ -107,9 +107,49 @@ return false;
 									<a id="botones" class="btn btn-success col-xs-11 success" onclick="calcular1();"> Calcular</a> 
 								</div>
 								
-								
-								
 							</form>
+							
+							<div id="campos" class="col-xs-6" >
+    				    <label>Cuenta RUT</label>
+		    			<input type="text" class="form-control" name="CuentaRut" readonly>
+	    			</div>
+                        <div id="campos" class="col-xs-6" >
+    				    <label>Cuenta Vista</label>
+		    			<input type="text" class="form-control" name="CuentaVista" readonly>
+	    			</div>
+                    <div id="campos" class="col-xs-6">
+				        <label>Cuenta Ahorros</label>
+    					<input type="Email" class="form-control" name="CuentaAhorros" readonly>
+    				</div>		
+    				<div id="campos" class="col-xs-6" >
+    				    <label>Banesco Juridica</label>
+		    			<input type="text" class="form-control" name="BanescoJuridica" readonly>
+	    			</div>
+	    			<div id="campos" class="col-xs-6" >
+    				    <label>Banesco Carlos</label>
+		    			<input type="text" class="form-control" name="BanescoCarlos" readonly>
+	    			</div>
+                    <div id="campos" class="col-xs-6">
+				        <label>Banesco Marola</label>
+    					<input type="Email" class="form-control" name="BanescoMarola" readonly>
+    				</div>
+    				<div id="campos" class="col-xs-6" >
+    				    <label>Banesco Sonalys</label>
+		    			<input type="text" class="form-control" name="BanescoSonalys" readonly>
+	    			</div>
+                        <div id="campos" class="col-xs-6" >
+    				    <label>Mercantil Carlos</label>
+		    			<input type="text" class="form-control" name="MercantilCarlos" readonly>
+	    			</div>
+                    <div id="campos" class="col-xs-6">
+				        <label>Mercantil Mariana</label>
+    					<input type="Email" class="form-control" name="MercantilMariana" readonly>
+    				</div>
+    				<div id="campos" class="col-xs-6">
+				        <label>Mercantil Juridica</label>
+    					<input type="Email" class="form-control" name="MercantilJuridica" readonly>
+    				</div>
+                       
 					
 					
                 
@@ -128,8 +168,22 @@ return false;
                 <form name="formul0" method="post"  target="request" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
-                        <label>Tasa de Cambio</label> 
-				    	<input type="text" class="form-control" name="tasa" required>
+                        <label>TASA</label> 
+				    	<input type="text" class="form-control" name="tasa" value="<?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?>" readonly>
+                    </div>
+                    
+                    <div id="campos" class="">
+                        <label>RUT, Pasaporte o Cedula</label> 
+				    	<input type="text" class="form-control" name="rut" required>
                     </div>
                         
                         <div id="campos" class="">
@@ -326,7 +380,7 @@ return false;
                 <form name="formul2" method="post" action="abonos.php">
                     <div id="campos" class="">
                         <label>Efectivo</label> 
-				    	<input type="text" class="form-control" name="debito_rut">
+				    	<input type="text" class="form-control" name="abono_efec">
                     </div>
                     <div id="campos" class="">
                         <label>RUT</label> 
@@ -391,7 +445,7 @@ return false;
                 
                     <div id="campos" class="">
                         <label>Efectivo</label> 
-				    	<input type="text" class="form-control" name="debito_rut">
+				    	<input type="text" class="form-control" name="debito_efec">
                     </div>    
                     <div id="campos" class="">
                         <label>RUT</label> 
