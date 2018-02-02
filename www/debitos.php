@@ -27,13 +27,13 @@ $abono_efec1 = "SELECT saldo_efec FROM saldos WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
 $abono_efec1 = $abono_efec1['saldo_efec']+$debito_efec;
-echo $abono_efect1;
+
 
 $abono_rut1 = "SELECT saldo_rut FROM saldos WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
 $abono_rut1= $abono_rut1['saldo_rut']+$debito_rut;
-echo $abono_rut1;
+
 
 $abono_vista1 = "SELECT saldo_vista FROM saldos WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);

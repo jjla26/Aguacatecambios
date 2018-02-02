@@ -1,50 +1,33 @@
 <?php
+
 date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d H:i:s");
 
-$cliente = $_POST['cliente'];
-$tasa = $_POST['tasa'];
-$rut = $_POST['rut'];
-$nombre = $_POST['nombre'];
-$tipodoc = $_POST['tipodoc']; 
-$iddoc = $_POST['iddoc'];
-$formaPago = $_POST['formaPago'];
-$banco = $_POST['banco'];
-$cuenta =$_POST['cuenta'];
-$bancoOrigen = $_POST['bancoOrigen'];
-$cuentaOrigen = $_POST['cuentaOrigen'];
-$pesos = $_POST['pesos2'];
-$bolivares = $_POST['bolivares2'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
+$ids= $_POST['ids'];
+$cuenta= $_POST['numCuenta'];
+$bolivares= $_POST['bs'];
+$bancoOrigen= $_POST['bancoOrg'];
+$cuentaOrigen = $_POST['cuentaOrg'];
 $estatus = $_POST['transf'];
-
-
-if($estatus == "Pendiente"){
-
-$insertar = "INSERT INTO Oficina(tasa, cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Email, Telefono, Fecha, estatus) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$email','$telefono','$current_date','$estatus')";
 
 include 'conexion.php';
 
-$resultado = mysqli_query($conexion, $insertar);
+$actualizar = "UPDATE Oficina SET Banco_origen='$bancoOrigen',Transferimos_desde ='$cuentaOrigen', Fecha='$current_date', estatus='Realizada'  WHERE ID= '$ids' " ;
 
-if (!$resultado)
+$actualizar=mysqli_query($conexion,$actualizar);
 
-echo 'error';
+$datos = "SELECT Forma_pago, Cuenta_destino, Banco_origen, Transferimos_desde, Cantidad_pesos, Cantidad_bs FROM Oficina WHERE ID='$ids'";
 
-else{
+$resultado = mysqli_query($conexion,$datos);
+    while ($row = mysqli_fetch_array($resultado)){
+        $formaPago = $row['Forma_pago'];
+        $banco = $row['Cuenta_destino'];
+        $bancoOrigen = $row['Banco_origen'];
+        $cuentaOrigen = $row['Transferimos_desde'];
+        $pesos = $row ['Cantidad_pesos'];
+        $bolivares = $row ['Cantidad_bs'];
 
-echo '<script>window.location="depositoofic.php"</script>';
-
-    
-}
-
-mysqli_close($conexion);
-
-}else{
-    
-
-
+    }
 
 if($banco !== $bancoOrigen ){
     if($bolivares >= 10000000){
@@ -61,8 +44,6 @@ if($banco !== $bancoOrigen ){
     }else{
         $bolivaresCom = $bolivares;
 }
-
-
 
 if($cuentaOrigen == "Mercantil Mariana"){
 $insertar1 = "INSERT INTO saldos( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
@@ -85,14 +66,6 @@ $insertar1 = "INSERT INTO saldos( disp_banesco_sonalys)VALUES(($bolivaresCom*-1)
 }elseif($cuentaOrigen == "Banesco Juridica"){
 $insertar1 = "INSERT INTO saldos( disp_banesco_juridica)VALUES(($bolivaresCom*-1))";
 }
-
-$insertar = "INSERT INTO Oficina(tasa, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus) VALUES ('$tasa','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus')";
-
-include 'conexion.php';
-
-
-$resultado = mysqli_query($conexion, $insertar);
-
 
 $resultado1 = mysqli_query($conexion, $insertar1);
 
@@ -337,9 +310,6 @@ $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridi
 } 
     
 
-
-
-
 $ID=$ID+1;
 
 $insertar3 = "UPDATE saldos SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica' WHERE ID= '$ID'";
@@ -349,7 +319,7 @@ $resultado3 = mysqli_query($conexion, $insertar3);
 
 
 
-if (!$resultado || !$resultado1 || !$resultado3)
+if (!$resultado || !$resultado1 || !$resultado3 || !$actualizar)
     
     
 echo 'error';
@@ -363,5 +333,4 @@ echo '<script>window.location="depositoofic.php"</script>';
 }
 
 mysqli_close($conexion);
-    
-}
+

@@ -2,12 +2,12 @@ function cambiarcampos2(obj){
     
     if (obj.value == "Pendiente"){
         
-        document.getElementById("bancosOrg").remove();
-        document.getElementById("cuentasOrg").remove();
+        document.getElementById("bancosOrg").style.display='none';
+        document.getElementById("cuentasOrg").style.display='none';
         
     }else{
-        document.getElementById("bancosOrg").add();
-        document.getElementById("cuentasOrg").add();
+        document.getElementById("bancosOrg").style.display='block';
+        document.getElementById("cuentasOrg").style.display='block';
       
     }
 }
