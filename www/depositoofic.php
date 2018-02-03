@@ -261,6 +261,20 @@ echo $saldo_necesario;
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
+            <form name="formul3" method="POST" action="buscarDatos.php">
+            
+            <div id="campos" class="">
+                        <label>RUT, Pasaporte o Cedula</label> 
+				    	<input type="text" class="form-control" name="rut" required>
+                    
+            </div>
+            
+            <div id="enviarp" method="post" class="">
+    		    	<button id="botones" class="form-control" >Buscar</button> 
+            </div>
+            
+            </form>
+            
                 <form name="formul0" method="POST" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
