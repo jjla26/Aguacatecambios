@@ -8,6 +8,8 @@ if(isset($_POST['submit'])){
    if( (isset($_POST['nombre'])) || (isset($_POST['password']))  || (isset($_POST['nuevopassword']))){
         
        $usuario = $_POST['nombre'];
+       $contrasenavieja= $POST['oldpw'];
+       $contrasenavieja=md5($contrasenavieja);
        $contrasena= $_POST['password'];
        $contrasena= md5($contrasena);
        $nuevacontrasena=$_POST['nuevopassword'];
@@ -17,8 +19,16 @@ if(isset($_POST['submit'])){
        include 'conexion.php';
 
        mysqli_select_db($conexion,'aguacatecambios');
-
-       $result = mysqli_query($conexion , "SELECT * FROM usuariosofic WHERE user = '$usuario' ");
+        
+        $pw = mysqli_query($conexion , "SELECT pw FROM usuariosofic WHERE user = '$usuario' ");
+        $pw = mysqli_fetch_array($pw);
+        $pw= $pw['pw'];
+        
+        if ($pw= $contrasenavieja){
+            
+        
+        
+        $result = mysqli_query($conexion , "SELECT * FROM usuariosofic WHERE user = '$usuario' ");
        
        if($row = mysqli_fetch_array($result)){
            
@@ -33,8 +43,11 @@ if(isset($_POST['submit'])){
        }else{
                echo '<script>alert("Usuario Incorrecto");window.location="passwordofic"</script>';
        }}else{
+           echo '<script>alert("Contraseña vieja incorrecta");window.location="passwordofic"</script>';
+       }}
+       else{
             header("location: passwordofic");
 
    }}else{
             header("location: passwordofic");
-    }        
+    }

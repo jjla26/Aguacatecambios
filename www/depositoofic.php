@@ -1,6 +1,6 @@
 <?php
 session_start();
-/*
+
 if (isset($_SESSION['user'])){
     $fechaGuardada = $_SESSION['ultimoAcceso'];
 
@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])){
         
     }else{
 $tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
-if($tiempo_transcurrido >= 240){ // 1 x 60 x 60 = 1 horas...
+if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
 session_destroy();
 
 echo '<script>alert("Su sesion ha caducado");window.location="empresas"</script>'; // 
@@ -24,7 +24,7 @@ return false;
 }else{
 return false;
 }
-*/
+
 ?>
 
 <!doctype html>
@@ -292,7 +292,8 @@ echo $tasa;
                     </div>
                     <div id="campos" class="">
                         <label>Cliente</label> 
-				    	<input type="text" class="form-control" name="cliente" required>
+				    	<input type="text" class="form-control" name="cliente" 
+				    	>
                     </div>
                     
                     <div id="campos" class="">
@@ -302,21 +303,21 @@ echo $tasa;
                         
                         <div id="campos" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
-				    	<input type="text" class="form-control" name="nombre" required>
+				    	<input type="text" class="form-control" name="nombre" >
                     </div>
                     <div id="campos" class="">
 				        <label>Cedula de Identidad</label>
-			   	       <select id="nacionalidad" name="tipodoc" class="form-control" required>
+			   	       <select id="nacionalidad" name="tipodoc" class="form-control">
 				            <option value=""></option>
 					        <option value="V">V</option>
                             <option value="E">E</option>            
                             <option value="J">J</option>
 					    </select>
-          	          <input id="cedula" type="text" class="form-control" name="iddoc" required>
+          	          <input id="cedula" type="text" class="form-control" name="iddoc" >
 				    </div>
 				    <div id="" class="">
 		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos(this)" required>
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos(this)" >
 				           <option  value="">Seleccionar</option>
 					       <option  value="Efectivo">Efectivo</option>
                            <option  value="DepositoRut">Deposito a Cuenta Rut</option>
@@ -327,7 +328,7 @@ echo $tasa;
 				    
                     <div id="BancoBeneficiario" class="">
 		    		   <label>Banco del Beneficiario</label> 
-                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
+                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" >
 				           <option value="">Seleccionar</option>
 				            <option value="Banesco">Banesco</option>
                             <option value="Banco Mercantil">Banco Mercantil</option>            
@@ -368,12 +369,12 @@ echo $tasa;
 				    </div>
                     <div id="CuentaBeneficiario" class="">
 				        <label>Numero de Cuenta Bancaria</label>
-				    	<input type="text" class="form-control" name="cuenta" required>
+				    	<input type="text" class="form-control" name="cuenta">
 				    </div>
 				   
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" required>
+		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" >
 	    			</div>
                     <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
@@ -383,7 +384,7 @@ echo $tasa;
 				    
 				    <div id="campos" class="">
 				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" required>
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)">
 				            <option value="Pendiente">Pendiente</option>
 				            <option value="Inmediata">Inmediata</option>
 					   </select>
@@ -679,14 +680,14 @@ echo $tasa;
                 
         	<tr>
         	<td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly required>
+    				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
 	    	</div></td>
             </td>   
         	<td><?php echo $row['Nombre_apellido'] ?></td>
             <td><?php echo $row['Cedula'] ?></td>
             <td><?php echo $row['Cuenta_destino'] ?></td>
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly required>
+    				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly >
 	    		</div></td>
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="pesos" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>

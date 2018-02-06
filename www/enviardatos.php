@@ -1,6 +1,6 @@
 <?php
 session_start();
-/*
+
 if (isset($_SESSION['user'])){
     $fechaGuardada = $_SESSION['ultimoAcceso'];
 
@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])){
         
     }else{
 $tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
-if($tiempo_transcurrido >= 240){ // 1 x 60 x 60 = 1 horas...
+if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
 session_destroy();
 
 echo '<script>alert("Su sesion ha caducado");window.location="empresas"</script>'; // 
@@ -24,7 +24,7 @@ return false;
 }else{
 return false;
 }
-*/
+
 ?>
 
 <!doctype html>
