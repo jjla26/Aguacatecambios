@@ -33,16 +33,21 @@ if($banco !== $bancoOrigen ){
     if($bolivares >= 10000000){
     $comision= 1659.0+27.0;
     $bolivaresCom = $bolivares+$comision; 
+    $actualizar = "UPDATE Oficina SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
+    $actualizar=mysqli_query($conexion,$actualizar);
     
-        
     }else{
     $comision=  27.0;
     $bolivaresCom = $bolivares+$comision; 
+    $actualizar = "UPDATE Oficina SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
+    $actualizar=mysqli_query($conexion,$actualizar);    
     
         
     }
     }else{
         $bolivaresCom = $bolivares;
+        $actualizar = "UPDATE Oficina SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
+        $actualizar=mysqli_query($conexion,$actualizar);
 }
 
 if($cuentaOrigen == "Mercantil Mariana"){

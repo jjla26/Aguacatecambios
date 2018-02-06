@@ -94,12 +94,13 @@ return false;
 		</thead>
 		
 		<?php
+		
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
             $rut= $_POST['rut'];
             
-            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM Oficina WHERE rut = '$rut'";
+            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM Oficina WHERE Telefono = '$rut' GROUP BY Numero_cuenta";
             
             include 'conexion.php';
             
@@ -144,7 +145,7 @@ return false;
 	    		        </div>
 	    		    </td>
                     <td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="numdest1" value="<?php echo $pesos=$row['Numero_cuenta'] ?>"  readonly required>
+    				        <input type="text" class="form-control" name="numdest1" value="<?php echo $row['Numero_cuenta'] ?>"  readonly required>
 	    			    </div>
 	    			</td>
 	    			<td><div id="campos" class="" >

@@ -2,8 +2,9 @@
 date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d H:i:s");
 
-$cliente = $_POST['cliente'];
+
 $tasa = $_POST['tasa'];
+$cliente = $_POST['cliente'];
 $rut = $_POST['rut'];
 $nombre = $_POST['nombre'];
 $tipodoc = $_POST['tipodoc']; 
@@ -86,7 +87,7 @@ $insertar1 = "INSERT INTO saldos( disp_banesco_sonalys)VALUES(($bolivaresCom*-1)
 $insertar1 = "INSERT INTO saldos( disp_banesco_juridica)VALUES(($bolivaresCom*-1))";
 }
 
-$insertar = "INSERT INTO Oficina(tasa, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus) VALUES ('$tasa','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus')";
+$insertar = "INSERT INTO Oficina(tasa,cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus')";
 
 include 'conexion.php';
 

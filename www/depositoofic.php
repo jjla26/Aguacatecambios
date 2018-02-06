@@ -297,7 +297,7 @@ echo $tasa;
                     
                     <div id="campos" class="">
                         <label>RUT, Pasaporte o Cedula</label> 
-				    	<input type="text" class="form-control" name="rut" required>
+				    	<input type="text" class="form-control" name="rut" >
                     </div>
                         
                         <div id="campos" class="">
@@ -308,9 +308,9 @@ echo $tasa;
 				        <label>Cedula de Identidad</label>
 			   	       <select id="nacionalidad" name="tipodoc" class="form-control" required>
 				            <option value=""></option>
-					        <option value="Venezolano">V</option>
-                            <option value="Extranjero">E</option>            
-                            <option value="Juridica">J</option>
+					        <option value="V">V</option>
+                            <option value="E">E</option>            
+                            <option value="J">J</option>
 					    </select>
           	          <input id="cedula" type="text" class="form-control" name="iddoc" required>
 				    </div>
@@ -384,9 +384,9 @@ echo $tasa;
 				    <div id="campos" class="">
 				        <label>Transferencia</label>
 			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" required>
+				            <option value="Pendiente">Pendiente</option>
 				            <option value="Inmediata">Inmediata</option>
-					        <option value="Pendiente">Pendiente</option>
-					    </select>
+					   </select>
           	        </div>
 				    
 				    <div id="bancosOrg" class="">
