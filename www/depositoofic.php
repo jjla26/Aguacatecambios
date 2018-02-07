@@ -672,6 +672,135 @@ echo $tasa;
 		
 		
 		</div>
+		
+		
+		
+        <div id="form2" class=" col-xs-12">
+        
+            <h1>No reportados</h1>
+
+        <table class="table table-striped">
+  	
+		<thead>
+		<tr>
+		    <th>ID</th>
+			<th>Nombre</th>
+			<th>Cedula</th>
+			<th>Banco</th>
+			<th>Numero de Cuenta</th>
+			<th>Pesos</th>
+			<th>Bolivares</th>
+			<th>Transferimos desde</th>
+			<th>Cuenta de</th>
+			<th>Estatus</th>
+			<th>Enviar</th>
+			
+
+			
+		</tr>
+		</thead>
+		
+		<?php
+            date_default_timezone_set('America/Santiago');
+            $current_date = date("Y-m-d H:i:s");
+            
+            $insertar= "SELECT ID, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'Pendiente'";
+            
+            include 'conexion.php';
+            
+            $tasa1 = "SELECT Tasa FROM Tasa";
+            $tasa1 = mysqli_query($conexion,$tasa1);
+            $tasa1 = mysqli_fetch_array($tasa1);
+            $tasa1 = $tasa1['Tasa'];
+            
+            $result = mysqli_query($conexion,$insertar);
+
+
+        		
+		while ($row = mysqli_fetch_array($result)){?>
+        	
+                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
+                
+        	<tr>
+        	<td><div id="campos" name="id" >
+    				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
+	    	</div></td>
+            </td>   
+        	<td><?php echo $row['Nombre_apellido'] ?></td>
+            <td><?php echo $row['Cedula'] ?></td>
+            <td><?php echo $row['Cuenta_destino'] ?></td>
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly >
+	    		</div></td>
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="pesos" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
+	    			</div></td>
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="bs" value= "<?php
+    		$bs=$row['Cantidad_bs'];
+    				    if($pesos==$bs){
+    				        include 'conexion.php';
+            
+            $tasa2 = "SELECT Tasa FROM Tasa";
+            $tasa2 = mysqli_query($conexion,$tasa2);
+            $tasa2 = mysqli_fetch_array($tasa2);
+            $tasa2 = $tasa2['Tasa'];
+    		echo $bs*$tasa2;		    
+    				        
+    				    }else{
+    		echo $bs;
+    				    };
+    				    ?>" readonly required>
+	    	</div></td>
+            
+            <td><div id="" class="">
+		    		 
+		    		 <select id="bancosOrigen2" name="bancoOrg" class="form-control" onchange="cambiarcampos3(this)" required>
+				           <option  value="">Seleccionar</option>
+					       <option  value="Banesco">Banesco</option>
+                           <option  value="Banco Mercantil">Mercantil</option>            
+                        </select>
+				    </div>
+				    
+				   
+                   </td>
+                <td> <div id="" class="">
+		    		    
+                       <select id="cuentasOrigen2" name="cuentaOrg" class="form-control" required>
+				            <option value="">Seleccionar</option>
+					        <optgroup id="banescoCuentas1" label="Cuentas Banesco">
+                                <option value="Banesco Carlos">Banesco Carlos</option>
+                                <option value="Banesco Marola">Banesco Marola</option>
+                                <option value="Banesco Sonalys">Banesco Sonalys</option>
+                                <option value="Banesco Juridica">Banesco Juridica</option>
+                              </optgroup>
+                              <optgroup id="mercantilCuentas1" label="Cuentas Mercantil">
+                                <option value="Mercantil Mariana">Mercantil Mariana</option>
+                                <option value="Mercantil Carlos">Mercantil Carlos</option>
+                                <option value="Mercantil Juridica">Mercantil Juridica</option>
+                              </optgroup>
+                        </select>
+				    </div>
+				</td>
+				<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
+	    			</div></td>
+                <td><div id="enviarp" method="post" >
+    			    	<button id="botones" class="form-control" >Enviar Datos</button> 
+                    </div>
+                </td>
+
+            </form>
+            </tr>
+ <?php } ?>
+
+
+</table>
+
+		
+		
+		
+		</div>
    
    
    
