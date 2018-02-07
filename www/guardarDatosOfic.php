@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+date_default_timezone_set('America/Santiago');
+$current_date = date("Y-m-d H:i:s");
+
+
 
 $usuario= $_SESSION['user'];
 $tasa = $_POST['tasa'];
@@ -21,9 +25,11 @@ $telefono = $_POST['telefono'];
 $estatus = $_POST['transf'];
 
 
+
+
 if($estatus == "Pendiente"){
 
-$insertar = "INSERT INTO Oficina(tasa, cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$email','$telefono','$current_date','$estatus','$user')";
+$insertar = "INSERT INTO Oficina(tasa, cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$email','$telefono','$current_date','$estatus','$usuario')";
 
 include 'conexion.php';
 
@@ -87,7 +93,7 @@ $insertar1 = "INSERT INTO saldos( disp_banesco_sonalys)VALUES(($bolivaresCom*-1)
 $insertar1 = "INSERT INTO saldos( disp_banesco_juridica)VALUES(($bolivaresCom*-1))";
 }
 
-$insertar = "INSERT INTO Oficina(tasa,cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$user')";
+$insertar = "INSERT INTO Oficina(tasa,cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
 
 include 'conexion.php';
 
@@ -343,7 +349,7 @@ $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridi
 
 $ID=$ID+1;
 
-$insertar3 = "UPDATE saldos SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica' WHERE ID= '$ID'";
+$insertar3 = "UPDATE saldos SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha='$current_date' WHERE ID= '$ID'";
 
 $resultado3 = mysqli_query($conexion, $insertar3);
 

@@ -11,3 +11,38 @@ function cambiarcampos(obj){
       
     }
 }
+
+function cambiarcampos4(){
+    
+        document.getElementById("b1").style.display='block';
+}
+
+function cambiarcampos5(){
+    
+        document.getElementById("b2").style.display='block';
+}
+
+function cambiarcampos6(){
+    
+        document.getElementById("b3").style.display='block';
+
+}
+function cambiarcampos7(){
+    
+        document.getElementById("b4").style.display='block';
+
+}
+function cambiarcampos8(){
+    
+        document.getElementById("b5").style.display='block';
+        
+}
+function cambiarcampos9(){
+    
+        document.getElementById("b6").style.display='block';
+
+}
+function cambiarcampos10(){
+    
+        document.getElementById("b7").style.display='block';
+}

@@ -11,9 +11,9 @@ $abono_banesco_carlos = $_POST['abono_banesco_carlos'];
 $abono_banesco_marola = $_POST['abono_banesco_marola'];
 $abono_banesco_sonalys = $_POST['abono_banesco_sonalys'];
 $abono_banesco_juridica = $_POST['abono_banesco_juridica'];
+$comentario= $_POST['comentario'];
 
-
-$insertar = "INSERT INTO saldos (abono_efec,abono_rut, abono_vista, abono_ahorro, abono_mercantil_mariana, abono_mercantil_carlos, abono_mercantil_juridica, abono_banesco_carlos, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, disp_mercantil_mariana, disp_mercantil_carlos, disp_mercantil_juridica, disp_banesco_carlos, disp_banesco_marola, disp_banesco_sonalys, disp_banesco_juridica) VALUES ('$abono_efec','$abono_rut','$abono_vista','$abono_ahorro','$abono_mercantil_mariana','$abono_mercantil_carlos','$abono_mercantil_juridica','$abono_banesco_carlos','$abono_banesco_marola','$abono_banesco_sonalys','$abono_banesco_juridica', '$abono_mercantil_mariana','$abono_mercantil_carlos','$abono_mercantil_juridica','$abono_banesco_carlos','$abono_banesco_marola','$abono_banesco_sonalys','$abono_banesco_juridica')";
+$insertar = "INSERT INTO saldos (abono_efec,abono_rut, abono_vista, abono_ahorro, abono_mercantil_mariana, abono_mercantil_carlos, abono_mercantil_juridica, abono_banesco_carlos, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, disp_mercantil_mariana, disp_mercantil_carlos, disp_mercantil_juridica, disp_banesco_carlos, disp_banesco_marola, disp_banesco_sonalys, disp_banesco_juridica, comentarios) VALUES ('$abono_efec','$abono_rut','$abono_vista','$abono_ahorro','$abono_mercantil_mariana','$abono_mercantil_carlos','$abono_mercantil_juridica','$abono_banesco_carlos','$abono_banesco_marola','$abono_banesco_sonalys','$abono_banesco_juridica', '$abono_mercantil_mariana','$abono_mercantil_carlos','$abono_mercantil_juridica','$abono_banesco_carlos','$abono_banesco_marola','$abono_banesco_sonalys','$abono_banesco_juridica','$comentario')";
 
 
 include 'conexion.php';

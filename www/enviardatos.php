@@ -60,7 +60,7 @@ return false;
          </div>
    
         <div id="enviarp">
-            <h4><a href="destroy.php">Cerrar Sesion</a></h4> 
+            <h4><a href="destroyofic.php">Cerrar Sesion</a></h4> 
         </div>
 
         <div id="login" >
