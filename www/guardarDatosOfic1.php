@@ -81,7 +81,7 @@ if($formaPago == "Efectivo"){
 $abono_efec1 = "SELECT saldo_efec FROM saldos WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
-$abono_efec1= $abono_efec1['saldo_efec']+$pesos;
+$abono_efec1= $abono_efec1['saldo_efec'];
 
 }else{
 $abono_efec1 = "SELECT saldo_efec FROM saldos WHERE ID = '$ID'";
@@ -96,7 +96,7 @@ if($formaPago == "DepositoRut"){
 $abono_rut1 = "SELECT saldo_rut FROM saldos WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
-$abono_rut1= $abono_rut1['saldo_rut']+$pesos;    
+$abono_rut1= $abono_rut1['saldo_rut'];    
     
 }else{
 $abono_rut1 = "SELECT saldo_rut FROM saldos WHERE ID = '$ID'";
@@ -109,7 +109,7 @@ if($formaPago == "DepositoVista"){
 $abono_vista1 = "SELECT saldo_vista FROM saldos WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);
 $abono_vista1 = mysqli_fetch_array($abono_vista1);
-$abono_vista1= $abono_vista1['saldo_vista']+$pesos;
+$abono_vista1= $abono_vista1['saldo_vista'];
 
 }else{
     
@@ -123,7 +123,7 @@ if($formaPago == "DepositoAhorro"){
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos WHERE ID = '$ID'";
 $abono_ahorro1 = mysqli_query($conexion,$abono_ahorro1);
 $abono_ahorro1 = mysqli_fetch_array($abono_ahorro1);
-$abono_ahorro1= $abono_ahorro1['saldo_ahorro']+$pesos;
+$abono_ahorro1= $abono_ahorro1['saldo_ahorro'];
 
 }else{
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos WHERE ID = '$ID'";

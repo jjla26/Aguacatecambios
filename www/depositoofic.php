@@ -675,7 +675,7 @@ echo $tasa;
 		
 		
 		
-        <div id="form2" class=" col-xs-12">
+        <div id="" class=" col-xs-12">
         
             <h1>No reportados</h1>
 
@@ -684,18 +684,10 @@ echo $tasa;
 		<thead>
 		<tr>
 		    <th>ID</th>
-			<th>Nombre</th>
-			<th>Cedula</th>
-			<th>Banco</th>
-			<th>Numero de Cuenta</th>
 			<th>Pesos</th>
 			<th>Bolivares</th>
-			<th>Transferimos desde</th>
-			<th>Cuenta de</th>
 			<th>Estatus</th>
 			<th>Enviar</th>
-			
-
 			
 		</tr>
 		</thead>
@@ -704,7 +696,7 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'Pendiente'";
+            $insertar= "SELECT ID, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'Pendiente'";
             
             include 'conexion.php';
             
@@ -719,19 +711,13 @@ echo $tasa;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
+                <form name="formul3" method="POST" action="guardarDatosOfic2.php">
                 
         	<tr>
         	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
 	    	</div></td>
-            </td>   
-        	<td><?php echo $row['Nombre_apellido'] ?></td>
-            <td><?php echo $row['Cedula'] ?></td>
-            <td><?php echo $row['Cuenta_destino'] ?></td>
-            <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly >
-	    		</div></td>
+            
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="pesos" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
 	    			</div></td>
@@ -753,36 +739,7 @@ echo $tasa;
     				    ?>" readonly required>
 	    	</div></td>
             
-            <td><div id="" class="">
-		    		 
-		    		 <select id="bancosOrigen2" name="bancoOrg" class="form-control" onchange="cambiarcampos3(this)" required>
-				           <option  value="">Seleccionar</option>
-					       <option  value="Banesco">Banesco</option>
-                           <option  value="Banco Mercantil">Mercantil</option>            
-                        </select>
-				    </div>
-				    
-				   
-                   </td>
-                <td> <div id="" class="">
-		    		    
-                       <select id="cuentasOrigen2" name="cuentaOrg" class="form-control" required>
-				            <option value="">Seleccionar</option>
-					        <optgroup id="banescoCuentas1" label="Cuentas Banesco">
-                                <option value="Banesco Carlos">Banesco Carlos</option>
-                                <option value="Banesco Marola">Banesco Marola</option>
-                                <option value="Banesco Sonalys">Banesco Sonalys</option>
-                                <option value="Banesco Juridica">Banesco Juridica</option>
-                              </optgroup>
-                              <optgroup id="mercantilCuentas1" label="Cuentas Mercantil">
-                                <option value="Mercantil Mariana">Mercantil Mariana</option>
-                                <option value="Mercantil Carlos">Mercantil Carlos</option>
-                                <option value="Mercantil Juridica">Mercantil Juridica</option>
-                              </optgroup>
-                        </select>
-				    </div>
-				</td>
-				<td><div id="campos" class="" >
+            				<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
 	    			</div></td>
                 <td><div id="enviarp" method="post" >
