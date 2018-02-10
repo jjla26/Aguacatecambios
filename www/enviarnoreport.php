@@ -70,21 +70,40 @@ return false;
         </div>
         
         <?php
-        $cliente = $_POST['cliente1'];
-        $rut= $_POST['rut1'];
-        $nombre= $_POST['nombre1'];
-        $nacionalidad= $_POST['nacionalidad1'];
-        $cedula= $_POST['cedula1'];
-        $bancodest= $_POST['cuentadest1'];
-        $numcuenta= $_POST['numdest1'];
-        $email= $_POST['email1'];
-        $telefono= $_POST['telefono1'];
+        $pesos= $_POST['pesos1'];
+        $bolivares= $_POST['bs1'];
+        $estatus= 'Realizada'
         
         ?>
 
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
+            <form name="formul3" method="POST" action="buscarDatosNr.php">
             
+            <div id="campos" class="">
+                        <label>Dato Clave</label> 
+				    	<input type="text" class="form-control" name="rut" required>
+                    
+            </div>
+            
+            
+				   <div id="campos" class="" >
+    				    <label>Cantidad de Pesos a Enviar</label>
+		    			<input type="text" class="form-control" name="pesos3" value= "<?php echo $pesos; ?>" readonly required>
+	    			</div>
+                    
+                    <div id="campos" class="">
+    				    <label>Cantidad de Bs. a Recibir</label>
+		    			<input type="text" class="form-control" name="bolivares3" value= "<?php echo $bolivares; ?>" readonly>
+	    			</div>
+				   
+            
+            <div id="enviarp" method="post" class="">
+    		    	<button id="botones" class="form-control" >Buscar</button> 
+            </div>
+            
+            </form>
+                        
                 <form name="formul0" method="POST" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
@@ -102,60 +121,89 @@ echo $tasa;
                     </div>
                     <div id="campos" class="">
                         <label>Cliente</label> 
-				    	<input type="text" class="form-control" name="cliente" value= "<?php echo $cliente; ?>" readonly required>
+				    	<input type="text" class="form-control" name="cliente" value= "" required>
                     </div>
                     
                     <div id="campos" class="">
                         <label>RUT, Pasaporte o Cedula</label> 
-				    	<input type="text" class="form-control" name="rut" value= "<?php echo $rut; ?>" readonly required>
+				    	<input type="text" class="form-control" name="rut" value= ""  required>
                     </div>
                         
                         <div id="campos" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
-				    	<input type="text" class="form-control" name="nombre" value= "<?php echo $nombre; ?>" readonly required>
+				    	<input type="text" class="form-control" name="nombre" value= "" required>
                     </div>
-                    <div id="campos" class="">
+                    <div id="Cedula1" class="">
 				        <label>Cedula de Identidad</label>
-			   	       <input id="nacionalidad" name="tipodoc" class="form-control" value= "<?php echo $nacionalidad; ?>" readonly required>
-				            
-          	          <input id="cedula" type="text" class="form-control" name="iddoc" value= "<?php echo $cedula; ?>" readonly required>
-				    </div>
-				    <div id="" class="">
-		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos(this)" required>
-				           <option  value="">Seleccionar</option>
-					       <option  value="Efectivo">Efectivo</option>
-                           <option  value="DepositoRut">Deposito a Cuenta Rut</option>
-                           <option  value="DepositoVista">Deposito a Cuenta Vista</option>
-                           <option  value="DepositoAhorro">Deposito a Cuenta Ahorro</option>
-                        </select>
+			   	       <select id="nacionalidad" name="tipodoc" class="form-control">
+				            <option value=""></option>
+					        <option value="V">V</option>
+                            <option value="E">E</option>            
+                            <option value="J">J</option>
+					    </select>
+          	          <input id="cedula" type="text" class="form-control" name="iddoc" >
 				    </div>
 				    
-                    <div id="BancoBeneficiario" class="">
+                    <div id="Bancob" class="">
 		    		   <label>Banco del Beneficiario</label> 
-                       <input type="text" class="form-control" name="banco" value= "<?php echo $bancodest; ?>" readonly required>
-			        </div>
+                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" >
+				           <option value="">Seleccionar</option>
+				            <option value="Banesco">Banesco</option>
+                            <option value="Banco Mercantil">Banco Mercantil</option>            
+                            <option value="100% BANCO">100% BANCO</option>	
+                            <option value="ABN AMRO BANK">ABN AMRO BANK</option>
+                            <option value="BANCAMIGA BANCO MICROFINANCIERO, C.A.">BANCAMIGA BANCO MICROFINANCIERO, C.A.</option>
+                            <option value="BANCO ACTIVO BANCO COMERCIAL, C.A.">BANCO ACTIVO BANCO COMERCIAL, C.A.</option>
+                            <option value="BANCO AGRICOLA">BANCO AGRICOLA</option>
+                            <option value="BANCO BICENTENARIO">BANCO BICENTENARIO </option>
+                            <option value="BANCO CARONI, c.A. BANCO UNIVERSAL">BANCO CARONI, c.A. BANCO UNIVERSAL</option>
+                            <option value="BANCO CENTRAL DE VENEZUELA">BANCO CENTRAL DE VENEZUELA</option>
+                            <option value="BANCO DE DESARROLLO DEL MICROEMPRESARIO">BANCO DE DESARROLLO DEL MICROEMPRESARIO</option>
+                            <option value="BANCO DE VENEZUELA S.A.I.C.A.">BANCO DE VENEZUELA S.A.I.C.A.</option>
+                            <option value="BANCO DEL CARIBE C.A.">BANCO DEL CARIBE C.A.</option>
+                            <option value="BANCO DEL PUEBLO SOBERANO C.A.">BANCO DEL PUEBLO SOBERANO C.A.</option>
+                            <option value="BANCO DEL TESORO">BANCO DEL TESORO </option>
+                            <option value="BANCO ESPIRITO SANTO S.A.">BANCO ESPIRITO SANTO S.A.</option>
+                            <option value="BANCO EXTERIOR C.A.">BANCO EXTERIOR C.A.</option>
+                            <option value="BANCO INTERNACIONAL DE DESARROLLO, C.A.">BANCO INTERNACIONAL DE DESARROLLO, C.A.</option>
+                            <option value="BANCO MERCANTIL C.A.">BANCO MERCANTIL C.A.</option>
+                            <option value="BANCO NACIONAL DE CREDITO ">BANCO NACIONAL DE CREDITO </option>
+                            <option value="BANCO OCCINDENTAL DE DESCUENTO ">BANCO OCCINDENTAL DE DESCUENTO </option>
+                            <option value="BANCO PLAZA">BANCO PLAZA</option>
+                            <option value="BANCO PROVINCIAL BBVA">BANCO PROVINCIAL BBVA</option>
+                            <option value="BANCO VENEZOLANO DE CREDITO S.A.">BANCO VENEZOLANO DE CREDITO S.A.</option>
+                            <option value="BANCRECER S.A. BANCO DE DESARROLLO">BANCRECER S.A. BANCO DE DESARROLLO</option>
+                            <option value="BANESCO">BANESCO</option>
+                            <option value="BANFANB">BANFANB</option>
+                            <option value="BANGENTE">BANGENTE </option>
+                            <option value="BANPLUS BANCO COMERCIAL C.A.">BANPLUS BANCO COMERCIAL C.A.</option>
+                            <option value="CITIBANK">CITIBANK</option>
+                            <option value="DELSUR BANCO UNIVERSAL">DELSUR BANCO UNIVERSAL</option> 
+                            <option value="FONDOCOMUN">FONDOCOMUN</option>
+                            <option value="INSTITUO MUNICIPAL DE CREDITO POPULAR">INSTITUO MUNICIPAL DE CREDITO POPULAR</option>
+                            <option value="MIBANCO BANCO DE DESARROLLO, C.A.">MIBANCO BANCO DE DESARROLLO, C.A.</option>
+                            <option value="SOFITASA">SOFITASA</option>
+					    </select>
+				    </div>
                     <div id="CuentaBeneficiario" class="">
 				        <label>Numero de Cuenta Bancaria</label>
-				    	<input type="text" class="form-control" name="cuenta" value= "<?php echo $numcuenta; ?>" readonly required>
+				    	<input type="text" class="form-control" name="cuenta" value= "" required>
 				    </div>
 				   
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" required>
+		    			<input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" readonly required>
 	    			</div>
-                    <div id="campos" class="" >
+                    
+                    <div id="campos" class="">
     				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="text" class="form-control" name="bolivares2" readonly>
+		    	    		<input type="text" class="form-control" name="bolivares2" value= "<?php echo $bolivares; ?>" readonly>
 	    			</div>
 				   
 				    
 				    <div id="campos" class="">
 				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" required>
-				            <option value="Inmediata">Inmediata</option>
-					        <option value="Pendiente">Pendiente</option>
-					    </select>
+			    	        <input type="text" class="form-control" name="bolivares2" value= "Pendiente" readonly>
           	        </div>
 				    
 				    <div id="bancosOrg" class="">
@@ -187,11 +235,11 @@ echo $tasa;
                    
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
-    					<input type="Email" class="form-control" value= "<?php echo $email; ?>" name="email" readonly>
+    					<input type="Email" class="form-control" value= "" >
     				</div>
                     <div id="campos" class="">
 				        <label>Teléfono de Quien Envía</label>
-    					<input type="text" class="form-control" value= "<?php echo $telefono; ?>" name="telefono" readonly >
+    					<input type="text" class="form-control" value= "" name="telefono" >
     				</div>
     				
                     <div id="enviarp" method="post" >

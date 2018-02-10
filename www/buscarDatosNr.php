@@ -87,6 +87,8 @@ return false;
 			<th>Cedula</th>
 			<th>Banco destino</th>
 			<th>Num. Cuenta</th>
+			<th>Pesos</th>
+			<th>Bs</th>
 			<th>Email</th>
 			<th>Telefono</th>
 			
@@ -99,6 +101,8 @@ return false;
             $current_date = date("Y-m-d H:i:s");
             
             $rut= $_POST['rut'];
+            $pesos=$_POST['pesos3'];
+            $bolivares=$_POST['bolivares3'];
             
             $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM Oficina WHERE rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
             
@@ -108,7 +112,7 @@ return false;
             
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="enviardatos.php">
+                <form name="formul2" method="POST" action="enviarnoreport1.php">
                 
         	    <tr>
         	        <td>        
@@ -148,12 +152,22 @@ return false;
     				        <input type="text" class="form-control" name="numdest1" value="<?php echo $row['Numero_cuenta'] ?>"  readonly required>
 	    			    </div>
 	    			</td>
-	    			<td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="email1" value="<?php echo $pesos=$row['Email'] ?>"  readonly required>
+	    			
+                    <td>        
+                        <div id="campos" class="" >
+    				        <input type="text" class="form-control" name="pesos4" value= "<?php echo $pesos ?>" readonly required>
+	    		        </div>
+	    		    </td>
+                    <td><div id="campos" class="" >
+    				        <input type="text" class="form-control" name="bolivares4" value="<?php echo $bolivares ?>"  readonly required>
 	    			    </div>
 	    			</td>
 	    			<td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="telefono1" value="<?php echo $pesos=$row['Telefono'] ?>"  readonly required>
+    				        <input type="text" class="form-control" name="email1" value="<?php echo $row['Email'] ?>"  readonly required>
+	    			    </div>
+	    			</td>
+	    			<td><div id="campos" class="" >
+    				        <input type="text" class="form-control" name="telefono1" value="<?php echo $row['Telefono'] ?>"  readonly required>
 	    			    </div>
 	    			</td>
             

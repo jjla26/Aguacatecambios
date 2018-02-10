@@ -39,7 +39,7 @@ return false;
 		<link rel="stylesheet" href="css/bootstrap.css">
 		
 		<link rel="stylesheet" href="css/fontello.css">
-		<link rel="stylesheet" href="css/enviardatos.css">
+		<link rel="stylesheet" href="css/enviarnoreport1.css">
 	    
 	    <script src="js/mostrarsolicitud.js"></script>
 		<script src="js/mostrar.js"></script>
@@ -79,6 +79,8 @@ return false;
         $numcuenta= $_POST['numdest1'];
         $email= $_POST['email1'];
         $telefono= $_POST['telefono1'];
+        $pesos=$_POST['pesos4'];
+        $bolivares= $_POST['bolivares4'];
         
         ?>
 
@@ -120,16 +122,6 @@ echo $tasa;
 				            
           	          <input id="cedula" type="text" class="form-control" name="iddoc" value= "<?php echo $cedula; ?>" readonly required>
 				    </div>
-				    <div id="" class="">
-		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos(this)" required>
-				           <option  value="">Seleccionar</option>
-					       <option  value="Efectivo">Efectivo</option>
-                           <option  value="DepositoRut">Deposito a Cuenta Rut</option>
-                           <option  value="DepositoVista">Deposito a Cuenta Vista</option>
-                           <option  value="DepositoAhorro">Deposito a Cuenta Ahorro</option>
-                        </select>
-				    </div>
 				    
                     <div id="BancoBeneficiario" class="">
 		    		   <label>Banco del Beneficiario</label> 
@@ -152,13 +144,13 @@ echo $tasa;
 				    
 				    <div id="campos" class="">
 				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos4(this)" required>
-				           <option value="Pendiente">Pendiente</option>
-					       <option value="Inmediata">Inmediata</option>
-					    </select>
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos5(this)" required>
+				            <option value="Pendiente">Pendiente</option>
+				            <option value="Inmediata">Inmediata</option>
+					   </select>
           	        </div>
 				    
-				    <div id="bancosOrg1" class="">
+				    <div id="bancosOrg2" class="">
 		    		   <label>Transferimos desde banco</label> 
                        <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" >
 				           <option  value="">Seleccionar</option>
@@ -167,7 +159,7 @@ echo $tasa;
                         </select>
 				    </div>
 				    
-				    <div id="cuentasOrg1" class="">
+				    <div id="cuentasOrg2" class="">
 		    		   <label>Cuenta de</label> 
                        <select id="cuentasOrigen" name="cuentaOrigen" class="form-control">
 				            <option value="">Seleccionar</option>

@@ -34,7 +34,7 @@ return false;
 		
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-		
+		<meta http-equiv=”refresh” content=”10″ />
 		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 		<link rel="stylesheet" href="css/bootstrap.css">
 		
@@ -366,13 +366,13 @@ echo $disp_mercantil_juridica;
 
         
         
-        <div id="form" class=" col-xs-4 col-xs-offset-1">
+        <div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
             <form name="formul3" method="POST" action="buscarDatos.php">
             
             <div id="campos" class="">
-                        <label>RUT, Pasaporte o Cedula</label> 
+                        <label>Dato Clave</label> 
 				    	<input type="text" class="form-control" name="rut" required>
                     
             </div>
@@ -382,6 +382,7 @@ echo $disp_mercantil_juridica;
             </div>
             
             </form>
+            
             
                 <form name="formul0" method="POST" action="guardarDatosOfic.php">
                 
@@ -399,21 +400,31 @@ echo $tasa;
 ?>" readonly>
                     </div>
                     <div id="campos" class="">
+				        <label>Transferencia</label>
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)">
+				            <option value="Pendiente">Pendiente</option>
+				            <option value="Inmediata">Inmediata</option>
+				            <option value="NR">No Reportado</option>
+					   </select>
+          	        </div>
+                    
+                    <div id="cliente1" class="">
                         <label>Cliente</label> 
-				    	<input type="text" class="form-control" name="cliente" 
-				    	>
+				    	<input type="text" class="form-control" name="cliente" >
                     </div>
                     
-                    <div id="campos" class="">
+                    <div id="rut1" class="">
                         <label>RUT, Pasaporte o Cedula</label> 
 				    	<input type="text" class="form-control" name="rut" >
                     </div>
+                    
+				    
                         
-                        <div id="campos" class="">
+                    <div id="Nombre1" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
 				    	<input type="text" class="form-control" name="nombre" >
                     </div>
-                    <div id="campos" class="">
+                    <div id="Cedula1" class="">
 				        <label>Cedula de Identidad</label>
 			   	       <select id="nacionalidad" name="tipodoc" class="form-control">
 				            <option value=""></option>
@@ -434,7 +445,7 @@ echo $tasa;
                         </select>
 				    </div>
 				    
-                    <div id="BancoBeneficiario" class="">
+                    <div id="Bancob" class="">
 		    		   <label>Banco del Beneficiario</label> 
                        <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" >
 				           <option value="">Seleccionar</option>
@@ -475,7 +486,7 @@ echo $tasa;
                             <option value="SOFITASA">SOFITASA</option>
 					    </select>
 				    </div>
-                    <div id="CuentaBeneficiario" class="">
+                    <div id="Cuenta1" class="">
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta">
 				    </div>
@@ -484,19 +495,13 @@ echo $tasa;
     				    <label>Cantidad de Pesos a Enviar</label>
 		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" >
 	    			</div>
+                    
                     <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
 		    			<input type="text" class="form-control" name="bolivares2" readonly>
 	    			</div>
 				   
 				    
-				    <div id="campos" class="">
-				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)">
-				            <option value="Pendiente">Pendiente</option>
-				            <option value="Inmediata">Inmediata</option>
-					   </select>
-          	        </div>
 				    
 				    <div id="bancosOrg" class="">
 		    		   <label>Transferimos desde banco</label> 
@@ -675,7 +680,7 @@ echo $tasa;
 		
 		
 		
-        <div id="" class=" col-xs-12">
+        <div id="form2" class=" col-xs-12">
         
             <h1>No reportados</h1>
 
@@ -696,7 +701,7 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'Pendiente'";
+            $insertar= "SELECT ID, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'NR'";
             
             include 'conexion.php';
             
@@ -711,18 +716,18 @@ echo $tasa;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul3" method="POST" action="guardarDatosOfic2.php">
+            <form name="formul3" method="POST" action="enviarnoreport.php">
                 
-        	<tr>
+            <tr>
         	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
 	    	</div></td>
             
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="pesos" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
+    				    <input type="text" class="form-control" name="pesos1" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
 	    			</div></td>
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="bs" value= "<?php
+    				    <input type="text" class="form-control" name="bs1" value= "<?php
     		$bs=$row['Cantidad_bs'];
     				    if($pesos==$bs){
     				        include 'conexion.php';

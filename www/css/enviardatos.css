@@ -1,0 +1,153 @@
+body{
+    background: -webkit-linear-gradient(left, rgba(176,187,63,1) 0%, rgba(176,187,63,0.97) 17%, rgba(210,255,82,0.86) 95%, rgba(210,255,82,0.85) 100%);
+    font-family: 'Quicksand', sans-serif;    
+  
+    
+}
+
+#logo{
+    max-width: 300px;
+    min-width: 250px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    
+}
+
+#form{
+    
+    background-color:white;
+    border-radius: 0px;
+    text-align: left;
+    padding: 20px 25px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.6);
+    margin-bottom: 100px;
+    
+}
+
+#form2{
+    
+    background-color:white;
+    border-radius: 0px;
+    text-align: left;
+    padding: 20px 25px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.6);
+    margin-bottom: 100px;
+
+}
+
+h1{
+    font-size: 1.5em;
+    font-weight: bold;
+    
+}
+
+h2{
+    font-size: 1em;
+    font-weight: bold;
+    color:gray;
+
+}
+
+
+.form-control{
+    border-radius: 0px;
+}
+
+#botones{
+    background-color: #b0bb3f;
+    border-radius: 0px;
+    width: em;
+    height: 2em;
+    margin-top: 1em;
+    margin-left: 0em;
+    color: white;
+    font-weight: 500;
+}
+
+footer{
+    background-color: #000;
+    margin-top:46px;
+    padding: 10px;
+    border: 0px;
+    color:dimgray;
+}
+
+h3{
+    font-size: 1em;
+    font-weight: bold;
+    padding: 15px;
+    margin:0px 0px 0px 70px;
+}
+
+a:link { 
+    text-decoration: none 
+}
+
+a:visited {
+    color: blue; font-size: 8pt; font-family: arial; text-decoration: none 
+}
+
+h4{
+    font-size: 1em;
+    font-weight: bold;
+    padding: 15px;
+    margin:0px 0px 0px 0px;
+    color: white;
+    text-align: left;
+    padding: 5px;
+    
+}
+
+#nacionalidad{
+    width: 15%;
+    position:absolute;    
+    
+}
+
+#cedula{
+    width: 80%;
+    margin-left: 20%;
+    
+}
+
+h5{
+    font-size: 2.5em;
+    color:white;
+    padding: 0px;
+    margin: 0px;
+    
+}
+
+#bandera{
+    max-width: 40px;    
+    
+}
+
+#div7, #div0, #div5, #div10{
+	display: block;
+}
+
+#div4, #div3, #div6, #div1, #div2{
+    
+    display:none;
+    padding: 0px;
+}
+
+#request{
+    display:none;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+#bancosOrg1, #cuentasOrg1, #b1, #b2 , #b3, #b4, #b5, #b6, #b7{
+
+    display: none;
+
+    
+}
