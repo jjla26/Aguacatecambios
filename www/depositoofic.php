@@ -538,6 +538,12 @@ echo $tasa;
 				        <label>Teléfono de Quien Envía</label>
     					<input type="text" class="form-control" name="telefono">
     				</div>
+    				 
+    				 <div id="campos" class="">
+				        <label>Numero de comprobante</label>
+    					<input type="text" name="attachment"class="form-control" name="telefono">
+    				</div>
+    				
     				<div id="campos" class="">
 				        <label>Añadir Boleta</label>
     					<input type="file" name="boleta" class="form-control" name="telefono">

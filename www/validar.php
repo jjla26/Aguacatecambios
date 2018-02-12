@@ -19,6 +19,7 @@ if(isset($_POST['submit'])){
        if($row = mysqli_fetch_array($result)){
             if($row["pw"]== $contrasena){
                 session_start();
+          
                 $ahora = date("Y-n-j H:i:s");
                 $_SESSION['user']= $usuario;
                 $_SESSION['ultimoAcceso']= $ahora;

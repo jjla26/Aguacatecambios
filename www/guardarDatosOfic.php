@@ -21,7 +21,10 @@ $pesos = $_POST['pesos2'];
 $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
-$boleta = $_POST['boleta'];
+$comprobante = $_POST['comprobante'];
+$file_name=$_FILES['attachment']['name'];
+$temp_name=$_FILES['attachment']['tmp_name'];
+$file_type=$FILES['attachment']['type'];
 
 include 'tasa.php';
 include 'conexion.php';
@@ -594,6 +597,14 @@ mysqli_close($conexion);
 }
 
 if($estatus=='Inmediata'){
+
+
+$base=basename($file_name);
+$extension=substr($base, strlen($base)-4, strlen($base));
+$allowed_extensions = array (".pdf", ".jpeg");
+$file= $temp_name;
+$content= chunk_split(base64_encode(file_get_contents($file)));
+$uid=md5(uniqid(time()));
     
 
 if($banco !== $bancoOrigen ){
@@ -896,13 +907,44 @@ $insertar3 = "UPDATE saldos SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_r
 $resultado3 = mysqli_query($conexion, $insertar3);
 
 
-$asunto= "Boleta Electronica";
-$mensaje= "Hola, Gracias por preferirnos! Su transferencia fue realizada exitosamente bajo el número de comprobante $Comprobante. Adjunta se encuentra tu boleta electrónica"; 
 
+$asunto= "Transferencia Realizada";
+
+$mensaje= "Hola, Estimado $cliente\n
+
+
+Sirva el presente para comunicarle que su transferencia fue realizada bajo el numero de comprobante Banesco <strong>$comprobante</strong>.\n
+
+Se adjunta tambien su boleta electrónica
+
+NOTA: No responder este mensaje automatico. Gracias";
+    
+
+//para el envío en formato HTML;
+//$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+//$header .= "MIME-Version: 1.0\r\n";
+//dirección del remitente 
+$header .= "From: Aguacatecambios <codigo@aguacatecambios.com>\r\n"; 
+
+//dirección de respuesta, si queremos que sea distinta que la del remitente 
+$header .= "Reply-To: aguacatecambios@gmail.com\r\n"; 
+
+$header .= "Content-Type: multipart/mixed; boundary=\"".$uid."\"\r\n\r\n";
+
+// message & attachment
+$header = "--".$uid."\r\n";
+$header .= "Content-type:text/plain; charset=iso-8859-1\r\n";
+$header .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+$header .= $message."\r\n\r\n";
+$header .= "--".$uid."\r\n";
+$header .= "Content-Type: application/octet-stream; name=\"".$filename."\"\r\n";
+$header .= "Content-Transfer-Encoding: base64\r\n";
+$header .= "Content-Disposition: attachment; filename=\"".$filename."\"\r\n\r\n";
+$header .= $content."\r\n\r\n";
+$header .= "--".$uid."--";
 			  
-mail($email,$asunto,$mensaje);
+mail($email, utf8_decode($asunto), utf8_decode($mensaje), $header);
 header("location: depositoofic.php");
-
 
 
 if (!$resultado || !$resultado1 || !$resultado3)
