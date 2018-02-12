@@ -384,7 +384,7 @@ echo $disp_mercantil_juridica;
             </form>
             
             
-                <form name="formul0" method="POST" action="guardarDatosOfic.php">
+                <form name="formul0" method="POST" enctype="multipart/form-data" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
@@ -538,6 +538,10 @@ echo $tasa;
 				        <label>Teléfono de Quien Envía</label>
     					<input type="text" class="form-control" name="telefono">
     				</div>
+    				<div id="campos" class="">
+				        <label>Añadir Boleta</label>
+    					<input type="file" name="boleta" class="form-control" name="telefono">
+    				</div>
     				
                     <div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
@@ -588,7 +592,6 @@ echo $tasa;
             $tasa1 = mysqli_query($conexion,$tasa1);
             $tasa1 = mysqli_fetch_array($tasa1);
             $tasa1 = $tasa1['Tasa'];
-            
             $result = mysqli_query($conexion,$insertar);
 
 
@@ -701,7 +704,7 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'NR'";
+            $insertar= "SELECT ID, Forma_pago, Cantidad_pesos, Cantidad_bs, estatus FROM Oficina WHERE estatus = 'NR'";
             
             include 'conexion.php';
             
@@ -719,9 +722,16 @@ echo $tasa;
             <form name="formul3" method="POST" action="enviarnoreport.php">
                 
             <tr>
+
+
         	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
 	    	</div></td>
+        	<td><div id="campos" name="id" >
+    				    <input type="text" class="form-control" name="formaPago" value= "<?php echo $row['Forma_pago']; ?>" readonly>
+	    	</div></td>
+
+
             
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="pesos1" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>

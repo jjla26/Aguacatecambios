@@ -8,7 +8,7 @@ $current_date = date("Y-m-d H:i:s");
 $usuario= $_SESSION['user'];
 $cliente = $_POST['cliente'];
 $rut = $_POST['rut'];
-$transferencia = $_['Transferencia'];
+$estatus = $_POST['transf'];
 $nombre = $_POST['nombre'];
 $tipodoc = $_POST['tipodoc']; 
 $iddoc = $_POST['iddoc'];
@@ -21,7 +21,7 @@ $pesos = $_POST['pesos2'];
 $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
-$estatus = $_POST['transf'];
+$boleta = $_POST['boleta'];
 
 include 'tasa.php';
 include 'conexion.php';
@@ -319,21 +319,7 @@ mysqli_close($conexion);
 if($estatus == "Pendiente"){
 
 
-if($banco !== $bancoOrigen ){
-    if($bolivares >= 10000000){
-    $comision= 1659.0+27.0;
-    $bolivaresCom = $bolivares+$comision; 
-    
-        
-    }else{
-    $comision=  27.0;
-    $bolivaresCom = $bolivares+$comision; 
-    
-        
-    }
-    }else{
-        $bolivaresCom = $bolivares;
-}
+$bolivaresCom = $bolivares;
 
 
 $insertar1 = "INSERT INTO saldos( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
@@ -584,18 +570,11 @@ $disponible_banesco_juridica = mysqli_fetch_array($disponible_banesco_juridica);
 $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridica'];
 } 
     
-
-
-
-
 $ID=$ID+1;
 
 $insertar3 = "UPDATE saldos SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha='$current_date' WHERE ID= '$ID'";
 
 $resultado3 = mysqli_query($conexion, $insertar3);
-
-
-
 
 if (!$resultado || !$resultado1 || !$resultado3)
     
@@ -916,6 +895,13 @@ $insertar3 = "UPDATE saldos SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_r
 
 $resultado3 = mysqli_query($conexion, $insertar3);
 
+
+$asunto= "Boleta Electronica";
+$mensaje= "Hola, Gracias por preferirnos! Su transferencia fue realizada exitosamente bajo el número de comprobante $Comprobante. Adjunta se encuentra tu boleta electrónica"; 
+
+			  
+mail($email,$asunto,$mensaje);
+header("location: depositoofic.php");
 
 
 

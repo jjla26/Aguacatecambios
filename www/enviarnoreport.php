@@ -70,12 +70,16 @@ return false;
         </div>
         
         <?php
+        
+        $ids=$_POST['ids'];
+        $formaPago=$_POST['formaPago'];
         $pesos= $_POST['pesos1'];
         $bolivares= $_POST['bs1'];
-        $estatus= 'Realizada'
+        $estatus= 'Pendiente';
+        
         
         ?>
-
+        
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             <form name="formul3" method="POST" action="buscarDatosNr.php">
@@ -86,6 +90,14 @@ return false;
                     
             </div>
             
+            <div id="campos" class="">
+                        <label>Transaccion</label> 
+				    	<input type="text" class="form-control" name="ids" value= "<?php echo $ids; ?>" readonly required>
+                    </div>
+                    				    <div>
+				    <label>Forma de pago</label> 
+                       <input type='text' class="form-control" name="formaPago" value="<?php echo $formaPago; ?>" readonly required>
+				    </div>            
             
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
@@ -104,7 +116,7 @@ return false;
             
             </form>
                         
-                <form name="formul0" method="POST" action="guardarDatosOfic.php">
+                <form name="formul0" method="POST" action="guardarDatosOfic2.php">
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
@@ -129,7 +141,17 @@ echo $tasa;
 				    	<input type="text" class="form-control" name="rut" value= ""  required>
                     </div>
                         
-                        <div id="campos" class="">
+                    <div id="campos" class="">
+                        <label>Transaccion</label> 
+				    	<input type="text" class="form-control" name="ids" value= "<?php echo $ids; ?>" readonly required>
+                    </div>
+                    
+				    <div id="campos" class="">
+				        <label>Transferencia</label>
+			    	        <input type="text" class="form-control" name="transf" value= "<?php echo $estatus; ?>" readonly>
+          	        </div>
+                    
+                    <div id="campos" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
 				    	<input type="text" class="form-control" name="nombre" value= "" required>
                     </div>
@@ -143,6 +165,11 @@ echo $tasa;
 					    </select>
           	          <input id="cedula" type="text" class="form-control" name="iddoc" >
 				    </div>
+				    <div>
+				    <label>Forma de pago</label> 
+                       <input type='text' class="form-control" name="formaPago" value="<?php echo $formaPago; ?>" readonly required>
+				    </div>
+				    
 				    
                     <div id="Bancob" class="">
 		    		   <label>Banco del Beneficiario</label> 
@@ -200,12 +227,6 @@ echo $tasa;
 		    	    		<input type="text" class="form-control" name="bolivares2" value= "<?php echo $bolivares; ?>" readonly>
 	    			</div>
 				   
-				    
-				    <div id="campos" class="">
-				        <label>Transferencia</label>
-			    	        <input type="text" class="form-control" name="bolivares2" value= "Pendiente" readonly>
-          	        </div>
-				    
 				    <div id="bancosOrg" class="">
 		    		   <label>Transferimos desde banco</label> 
                        <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" >
