@@ -541,12 +541,12 @@ echo $tasa;
     				 
     				 <div id="campos" class="">
 				        <label>Numero de comprobante</label>
-    					<input type="text" name="attachment"class="form-control" name="telefono">
+    					<input type="text" name="comprobante"class="form-control" name="telefono">
     				</div>
     				
     				<div id="campos" class="">
 				        <label>Añadir Boleta</label>
-    					<input type="file" name="boleta" class="form-control" name="telefono">
+    					<input type="file" name="attachment" class="form-control" name="telefono">
     				</div>
     				
                     <div id="enviarp" method="post" >

@@ -22,9 +22,10 @@ $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 $comprobante = $_POST['comprobante'];
-$file_name=$_FILES['attachment']['name'];
-$temp_name=$_FILES['attachment']['tmp_name'];
-$file_type=$FILES['attachment']['type'];
+$upload_name=$_FILES["attachment"]["name"];
+$upload_type=$_FILES["attachment"]["type"];
+$upload_size=$_FILES["attachment"]["size"];
+$upload_temp=$_FILES["attachment"]["tmp_name"];
 
 include 'tasa.php';
 include 'conexion.php';
@@ -908,42 +909,55 @@ $resultado3 = mysqli_query($conexion, $insertar3);
 
 
 
-$asunto= "Transferencia Realizada";
+$subject = "Your Subject";
 
-$mensaje= "Hola, Estimado $cliente\n
+$message="Hola,Estimado $nombre \n
+
+Te informamos que tu transferencia fue realizada bajo el numero de comprobante banesco $comprobante\n
+
+Adjunta se encuentra tu boleta de servicio\n
+
+Gracias por preferirnos!\n
+
+Aguacatecambios";
+
+$fp = fopen($upload_temp, "rb");
+$file = fread($fp, $upload_size);
+
+$file = chunk_split(base64_encode($file));
+$num = md5(time());
+
+//Normal headers
+
+$headers  = "From: Aguacatecambios <aguacatecambios@gmail.com>\r\n";
+$headers  .= "MIME-Version: 1.0\r\n";
+$headers  .= "Content-Type: multipart/mixed; ";
+$headers  .= "boundary=".$num."\r\n";
+$headers  .= "--$num\r\n";
 
 
-Sirva el presente para comunicarle que su transferencia fue realizada bajo el numero de comprobante Banesco <strong>$comprobante</strong>.\n
+// With message
 
-Se adjunta tambien su boleta electrónica
+$headers .= "Content-Type: text/html; charset=iso-8859-1\r\n";
+$headers .= "Content-Transfer-Encoding: 8bit\r\n";
+$headers .= "".$message."\n";
+$headers .= "--".$num."\n";
 
-NOTA: No responder este mensaje automatico. Gracias";
-    
+// Attachment headers
 
-//para el envío en formato HTML;
-//$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
-//$header .= "MIME-Version: 1.0\r\n";
-//dirección del remitente 
-$header .= "From: Aguacatecambios <codigo@aguacatecambios.com>\r\n"; 
+$headers  .= "Content-Type: application/".$upload_type." ";
+$headers  .= "name=\"".$upload_name."\"r\n";
+$headers  .= "Content-Transfer-Encoding: base64\r\n";
+$headers  .= "Content-Disposition: attachment; ";
+$headers  .= "filename=\"".$upload_name."\"\r\n\n";
+$headers  .= "".$file."\r\n";
+$headers  .= "--".$num."--";
 
-//dirección de respuesta, si queremos que sea distinta que la del remitente 
-$header .= "Reply-To: aguacatecambios@gmail.com\r\n"; 
+// SEND MAIL
+mail($email, $subject, $message, $headers);
+fclose($fp);
 
-$header .= "Content-Type: multipart/mixed; boundary=\"".$uid."\"\r\n\r\n";
 
-// message & attachment
-$header = "--".$uid."\r\n";
-$header .= "Content-type:text/plain; charset=iso-8859-1\r\n";
-$header .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
-$header .= $message."\r\n\r\n";
-$header .= "--".$uid."\r\n";
-$header .= "Content-Type: application/octet-stream; name=\"".$filename."\"\r\n";
-$header .= "Content-Transfer-Encoding: base64\r\n";
-$header .= "Content-Disposition: attachment; filename=\"".$filename."\"\r\n\r\n";
-$header .= $content."\r\n\r\n";
-$header .= "--".$uid."--";
-			  
-mail($email, utf8_decode($asunto), utf8_decode($mensaje), $header);
 header("location: depositoofic.php");
 
 
