@@ -6,7 +6,7 @@ if (isset($_SESSION['user'])){
 
     $ahora = date("Y-n-j H:i:s");
     if($_SESSION['user']!=true){
-        echo '<script>window.location="empresas"</script>';
+        echo '<script>window.location="transaccionesofic.php"</script>';
         return false;
         
     }else{
@@ -14,7 +14,7 @@ $tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
 if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
 session_destroy();
 
-echo '<script>alert("Su sesion ha caducado");window.location="empresas"</script>'; // 
+echo '<script>alert("Su sesion ha caducado");window.location="transaccionesofic.php"</script>'; // 
 
 return false;
 
@@ -39,7 +39,7 @@ return false;
 		<link rel="stylesheet" href="css/bootstrap.css">
 		
 		<link rel="stylesheet" href="css/fontello.css">
-		<link rel="stylesheet" href="css/depositoofic.css">
+		<link rel="stylesheet" href="css/transaccionesofic.css">
 	    
 	    <script src="js/mostrarsolicitud.js"></script>
 		<script src="js/mostrar.js"></script>
@@ -111,7 +111,7 @@ return false;
             $estatus='Pendiente';
             
             
-            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM Oficina WHERE rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
+            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones WHERE rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
             
             include 'conexion.php';
             

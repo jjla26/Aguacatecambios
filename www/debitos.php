@@ -392,7 +392,7 @@ echo 'error';
 
 else{
 
-echo '<script>window.location="depositoofic.php"</script>';
+echo '<script>window.location="transaccionesofic.php"</script>';
 
  
 }

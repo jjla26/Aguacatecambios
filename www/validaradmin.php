@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
                 $ahora = date("Y-n-j H:i:s");
                 $_SESSION['user']= $usuario;
                 $_SESSION['ultimoAcceso']= $ahora;
-                header("Location: depositoofic.php");
+                header("Location: transaccionesofic.php");
             }else{
                 echo '<script>alert("Contrasena Incorrecta");window.location="admin"</script>';
                 

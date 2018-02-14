@@ -23,7 +23,7 @@ $estatus = $_POST['trans'];
 include 'tasa.php';
 include 'conexion.php';
 
-$insertar = "UPDATE Oficina SET cliente='$cliente', rut='$rut', Nombre_apellido='$nombre',Tipo_doc='$tipodoc',Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta',Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
+$insertar = "UPDATE transacciones SET cliente='$cliente', rut='$rut', Nombre_apellido='$nombre',Tipo_doc='$tipodoc',Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta',Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -35,7 +35,7 @@ echo 'error';
 else{
 
 
-echo '<script>window.location="depositoofic.php"</script>';
+echo '<script>window.location="transaccionesofic.php"</script>';
 
     
 }

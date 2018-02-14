@@ -46,3 +46,10 @@ function cambiarcampos10(){
     
         document.getElementById("b7").style.display='block';
 }
+
+function cambiarcampos11(obj){
+        if(obj.value == "Efectivo"){
+                document.getElementById("comprobante1").remove();
+        }else{
+                document.getElementById("comprobante1").style.display='block';
+}}

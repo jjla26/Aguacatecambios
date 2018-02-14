@@ -9,6 +9,7 @@ $usuario= $_SESSION['user'];
 $cliente = $_POST['cliente'];
 $rut = $_POST['rut'];
 $estatus = $_POST['transf'];
+$comprobante = $_POST['comprobante'];
 $nombre = $_POST['nombre'];
 $tipodoc = $_POST['tipodoc']; 
 $iddoc = $_POST['iddoc'];
@@ -21,35 +22,44 @@ $pesos = $_POST['pesos2'];
 $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
-$comprobante = $_POST['comprobante'];
-$upload_name=$_FILES["attachment"]["name"];
-$upload_type=$_FILES["attachment"]["type"];
-$upload_size=$_FILES["attachment"]["size"];
-$upload_temp=$_FILES["attachment"]["tmp_name"];
+
+//$upload_name=$_FILES["attachment"]["name"];
+//$upload_type=$_FILES["attachment"]["type"];
+//$upload_size=$_FILES["attachment"]["size"];
+//$upload_temp=$_FILES["attachment"]["tmp_name"];
 
 include 'tasa.php';
 include 'conexion.php';
 
+$comprobante_exist = "SELECT comprobante FROM transacciones WHERE comprobante= '$comprobante' AND comprobante != '' ";
+$comprobante_exist = mysqli_query($conexion,$comprobante_exist);
+$comprobante_exist = mysqli_fetch_array($comprobante_exist);
+
+if (!$comprobante_exist){
+
+
 if ($estatus == 'NR'){
 
-if($banco !== $bancoOrigen ){
-    if($bolivares >= 10000000){
-    $comision= 1659.0+27.0;
-    $bolivaresCom = $bolivares+$comision; 
-        
-    }else{
-    $comision=  27.0;
-    $bolivaresCom = $bolivares+$comision; 
+$bolivaresCom = $bolivares;
 
-    }
-    }else{
-        $bolivaresCom = $bolivares;
-}
+//if($banco !== $bancoOrigen ){
+//    if($bolivares >= 10000000){
+//    $comision= 1659.0+27.0;
+//    $bolivaresCom = $bolivares+$comision; 
+//        
+//    }else{
+//    $comision=  27.0;
+//    $bolivaresCom = $bolivares+$comision; 
+//
+//    }
+//    }else{
+//        $bolivaresCom = $bolivares;
+//}
 
 
 $insertar1 = "INSERT INTO saldos( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO Oficina(tasa, Forma_pago, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$formaPago','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones(tasa, comprobante, Forma_pago, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$comprobante','$formaPago','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -311,7 +321,7 @@ echo 'error';
 
 }else{
 
-echo '<script>window.location="depositoofic.php"</script>';
+echo '<script>window.location="transaccionesofic.php"</script>';
 
 }
 
@@ -328,7 +338,7 @@ $bolivaresCom = $bolivares;
 
 $insertar1 = "INSERT INTO saldos( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO Oficina(tasa,cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -588,12 +598,19 @@ echo 'error';
 else{
 
 
-echo '<script>window.location="depositoofic.php"</script>';
+echo '<script>window.location="transaccionesofic.php"</script>';
 
     
 }
 
 mysqli_close($conexion);
+    
+}}
+else{
+    
+    
+echo '<script>alert("COMPROBANTE DUPLICADO");window.location="transaccionesofic.php"</script>';
+
     
 }
 
@@ -648,7 +665,7 @@ mysqli_close($conexion);
 //$insertar1 = "INSERT INTO saldos( disp_banesco_juridica)VALUES(($bolivaresCom*-1))";
 //}
 //
-//$insertar = "INSERT INTO Oficina(tasa,cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
+//$insertar = "INSERT INTO transacciones(tasa,cliente, rut,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
 //
 //include 'conexion.php';
 //
@@ -957,7 +974,7 @@ mysqli_close($conexion);
 //fclose($fp);
 //
 //
-//header("location: depositoofic.php");
+//header("location: transaccionesofic.php");
 //
 //
 //if (!$resultado || !$resultado1 || !$resultado3)
@@ -968,7 +985,7 @@ mysqli_close($conexion);
 //else{
 //
 //
-//echo '<script>window.location="depositoofic.php"</script>';
+//echo '<script>window.location="transaccionesofic.php"</script>';
 //
 //    
 //}

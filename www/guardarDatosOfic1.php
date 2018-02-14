@@ -12,11 +12,11 @@ $estatus = $_POST['transf'];
 
 include 'conexion.php';
 
-$actualizar = "UPDATE Oficina SET Banco_origen='$bancoOrigen',Transferimos_desde ='$cuentaOrigen', Fecha='$current_date', estatus='Realizada'  WHERE ID= '$ids' " ;
+$actualizar = "UPDATE transacciones SET Banco_origen='$bancoOrigen',Transferimos_desde ='$cuentaOrigen', Fecha='$current_date', estatus='Realizada'  WHERE ID= '$ids' " ;
 
 $actualizar=mysqli_query($conexion,$actualizar);
 
-$datos = "SELECT Forma_pago, Cuenta_destino, Banco_origen, Transferimos_desde, Cantidad_pesos, Cantidad_bs FROM Oficina WHERE ID='$ids'";
+$datos = "SELECT Forma_pago, Cuenta_destino, Banco_origen, Transferimos_desde, Cantidad_pesos, Cantidad_bs FROM transacciones WHERE ID='$ids'";
 
 $resultado = mysqli_query($conexion,$datos);
     while ($row = mysqli_fetch_array($resultado)){
@@ -33,20 +33,20 @@ if($banco !== $bancoOrigen ){
     if($bolivares >= 10000000){
     $comision= 1659.0+27.0;
     $bolivaresCom = $bolivares+$comision; 
-    $actualizar = "UPDATE Oficina SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
+    $actualizar = "UPDATE transacciones SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
     $actualizar=mysqli_query($conexion,$actualizar);
     
     }else{
     $comision=  27.0;
     $bolivaresCom = $bolivares+$comision; 
-    $actualizar = "UPDATE Oficina SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
+    $actualizar = "UPDATE transacciones SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
     $actualizar=mysqli_query($conexion,$actualizar);    
     
         
     }
     }else{
         $bolivaresCom = $bolivares;
-        $actualizar = "UPDATE Oficina SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
+        $actualizar = "UPDATE transacciones SET Bolivares_com='$bolivaresCom' WHERE ID= '$ids' " ;
         $actualizar=mysqli_query($conexion,$actualizar);
 }
 
@@ -332,7 +332,7 @@ echo 'error';
 else{
 
 
-echo '<script>window.location="depositoofic.php"</script>';
+echo '<script>window.location="transaccionesofic.php"</script>';
 
     
 }
