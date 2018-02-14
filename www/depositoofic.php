@@ -403,7 +403,7 @@ echo $tasa;
 				        <label>Transferencia</label>
 			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)">
 				            <option value="Pendiente">Pendiente</option>
-				            <option value="Inmediata">Inmediata</option>
+				            <!-- <option value="Inmediata">Inmediata</option>-->
 				            <option value="NR">No Reportado</option>
 					   </select>
           	        </div>
@@ -501,8 +501,7 @@ echo $tasa;
 		    			<input type="text" class="form-control" name="bolivares2" readonly>
 	    			</div>
 				   
-				    
-				    
+				    <!--
 				    <div id="bancosOrg" class="">
 		    		   <label>Transferimos desde banco</label> 
                        <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" >
@@ -528,7 +527,7 @@ echo $tasa;
                                 <option value="Mercantil Juridica">Mercantil Juridica</option>
                               </optgroup>
                         </select>
-				    </div>
+				    </div>-->
                    
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
