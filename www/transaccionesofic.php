@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])){
 
     $ahora = date("Y-n-j H:i:s");
     if($_SESSION['user']!=true){
-        echo '<script>window.location="transaccionesofic.php"</script>';
+        echo '<script>window.location="admin"</script>';
         return false;
         
     }else{
@@ -17,7 +17,7 @@ $tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
 if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
 session_destroy();
 
-echo '<script>alert("Su sesion ha caducado");window.location="transaccionesofic.php"</script>'; // 
+echo '<script>alert("Su sesion ha caducado");window.location="admin"</script>'; // 
 
 return false;
 
@@ -175,7 +175,7 @@ echo $saldo_ahorro;
 				        <label>Saldo Necesario</label>
     					<input type="text" class="form-control" name="Saldo Necesario" value= "<?php 
 include 'conexion.php';
-$saldo_necesario = "SELECT SUM(Cantidad_bs) FROM transacciones WHERE estatus='Pendiente'";
+$saldo_necesario = "SELECT SUM(Cantidad_bs) FROM transacciones WHERE estatus = 'Pendiente' OR estatus='NR'";
 $saldo_necesario = mysqli_query($conexion,$saldo_necesario);
 $saldo_necesario = mysqli_fetch_array($saldo_necesario);
 $saldo_necesario = $saldo_necesario['SUM(Cantidad_bs)'];
@@ -621,7 +621,7 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones WHERE estatus = 'Pendiente'";
+            $insertar= "SELECT ID, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones WHERE estatus = 'Pendiente' ORDER BY ID";
             
             include 'conexion.php';
             
@@ -639,7 +639,7 @@ echo $tasa;
                 
         	<tr>
         	<td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
+    				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
 	    	</div></td>
             </td>   
         	<td><?php echo $row['Nombre_apellido'] ?></td>
@@ -661,12 +661,14 @@ echo $tasa;
             $tasa2 = mysqli_query($conexion,$tasa2);
             $tasa2 = mysqli_fetch_array($tasa2);
             $tasa2 = $tasa2['Tasa'];
-    		echo $bs*$tasa2;		    
-    				        
+            
+    		echo $bs=$bs*$tasa2;		    
+    		$actualizar= "UPDATE transacciones SET tasa='$tasa2',Cantidad_bs = '$bs' WHERE ID = '$ids'";
+    		$tasa2 = mysqli_query($conexion,$actualizar);		        
     				    }else{
     		echo $bs;
     				    };
-    				    ?>" readonly required>
+    		?>" readonly required>
 	    	</div></td>
             
             <td><div id="" class="">
@@ -729,6 +731,7 @@ echo $tasa;
 		<thead>
 		<tr>
 		    <th>ID</th>
+			<th>Tipo de Transferencia</th>
 			<th>Pesos</th>
 			<th>Bolivares</th>
 			<th>Estatus</th>
@@ -762,7 +765,7 @@ echo $tasa;
 
 
         	<td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="ids" value= "<?php echo $row['ID']; ?>" readonly>
+    				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
 	    	</div></td>
         	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="formaPago" value= "<?php echo $row['Forma_pago']; ?>" readonly>
@@ -777,14 +780,15 @@ echo $tasa;
     				    <input type="text" class="form-control" name="bs1" value= "<?php
     		$bs=$row['Cantidad_bs'];
     				    if($pesos==$bs){
-    				        include 'conexion.php';
+	        include 'conexion.php';
             
             $tasa2 = "SELECT Tasa FROM Tasa";
             $tasa2 = mysqli_query($conexion,$tasa2);
             $tasa2 = mysqli_fetch_array($tasa2);
             $tasa2 = $tasa2['Tasa'];
-    		echo $bs*$tasa2;		    
-    				        
+    		echo $bs=$bs*$tasa2;		    
+    		$actualizar= "UPDATE transacciones SET tasa='$tasa2', Cantidad_bs = '$bs' WHERE ID = '$ids'";
+    		$tasa2 = mysqli_query($conexion,$actualizar);		        
     				    }else{
     		echo $bs;
     				    };

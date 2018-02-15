@@ -2,29 +2,29 @@
 session_start();
 
 if (isset($_SESSION['user'])){
-    $fechaGuardada = $_SESSION['ultimoAcceso'];
-
-    $ahora = date("Y-n-j H:i:s");
-    if($_SESSION['user']!=true){
-        echo '<script>window.location="transaccionesofic.php"</script>';
-        return false;
-        
-    }else{
-$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
-if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
-session_destroy();
-
-echo '<script>alert("Su sesion ha caducado");window.location="transaccionesofic.php"</script>'; // 
-
-return false;
-
-    
-}else{$_SESSION["ultimoAcceso"] = $ahora;}
-}
+//    $fechaGuardada = $_SESSION['ultimoAcceso'];
+//
+//    $ahora = date("Y-n-j H:i:s");
+//    if($_SESSION['user']!=true){
+//        echo '<script>window.location="admin"</script>';
+//        return false;
+//        
+//    }else{
+//$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
+//if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
+//session_destroy();
+//
+//echo '<script>alert("Su sesion ha caducado");window.location="admin"</script>'; // 
+//
+//return false;
+//
+//    
+//}else{$_SESSION["ultimoAcceso"] = $ahora;}
+//}
 }else{
 return false;
 }
-
+//
 ?>
 
 <!doctype html>

@@ -8,9 +8,10 @@ $usuario= $_SESSION['user'];
 $ids=$_POST['ids'];
 $cliente = $_POST['cliente'];
 $rut = $_POST['rut'];
+$estatus = $_POST['transf'];
 $nombre = $_POST['nombre'];
 $tipodoc = $_POST['tipodoc']; 
-$iddoc = $_POST['iddoc'];
+$iddoc = $_POST['cedula'];
 $formaPago = $_POST['formaPago'];
 $banco = $_POST['banco'];
 $cuenta =$_POST['cuenta'];
@@ -18,12 +19,11 @@ $pesos = $_POST['pesos2'];
 $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
-$estatus = $_POST['trans'];
 
 include 'tasa.php';
 include 'conexion.php';
 
-$insertar = "UPDATE transacciones SET cliente='$cliente', rut='$rut', Nombre_apellido='$nombre',Tipo_doc='$tipodoc',Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta',Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
+$insertar = "UPDATE transacciones SET cliente='$cliente', rut='$rut', Nombre_apellido='$nombre',Tipo_doc='$tipodoc', Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta',Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
 
 $resultado = mysqli_query($conexion, $insertar);
 

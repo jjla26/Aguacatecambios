@@ -2,30 +2,31 @@
 session_start();
 
 if (isset($_SESSION['user'])){
-    $fechaGuardada = $_SESSION['ultimoAcceso'];
-
-    $ahora = date("Y-n-j H:i:s");
-    if($_SESSION['user']!=true){
-        echo '<script>window.location="empresas"</script>';
-        return false;
-        
-    }else{
-$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
-if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
-session_destroy();
-
-echo '<script>alert("Su sesion ha caducado");window.location="empresas"</script>'; // 
-
-return false;
-
-    
-}else{$_SESSION["ultimoAcceso"] = $ahora;}
-}
+//    $fechaGuardada = $_SESSION['ultimoAcceso'];
+//
+//    $ahora = date("Y-n-j H:i:s");
+//    if($_SESSION['user']!=true){
+//        echo '<script>window.location="admin"</script>';
+//        return false;
+//        
+//    }else{
+//$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
+//if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
+//session_destroy();
+//
+//echo '<script>alert("Su sesion ha caducado");window.location="admin"</script>'; // 
+//
+//return false;
+//
+//    
+//}else{$_SESSION["ultimoAcceso"] = $ahora;}
+//}
 }else{
 return false;
 }
-
+//
 ?>
+
 
 <!doctype html>
 <html lang="es">
@@ -70,6 +71,7 @@ return false;
         </div>
         
         <?php
+        $ids = $_POST['ids'];
         $cliente = $_POST['cliente1'];
         $rut= $_POST['rut1'];
         $nombre= $_POST['nombre1'];
@@ -79,6 +81,10 @@ return false;
         $numcuenta= $_POST['numdest1'];
         $email= $_POST['email1'];
         $telefono= $_POST['telefono1'];
+        
+        include 'conexion.php';
+        $actualizar = "UPDATE transacciones SET rut='$rut', email='$email', telefono='$telefono' WHERE ID='$ids'";
+        mysqli_query($conexion, $actualizar)
         
         ?>
 
@@ -100,6 +106,25 @@ echo $tasa;
 
 ?>" readonly>
                     </div>
+                    
+                    <div id="campos" class="">
+	     		        <label>Transferencia</label>
+			   	       <input id="Transferencia" name="transf" value= 'Pendiente'  class="form-control"  readonly required>
+				    </div>
+                    
+                    <div id="" class="">
+		    		   <label>Forma de pago</label> 
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)" required>
+				           <option  value="">Seleccionar</option>
+					       <option  value="Efectivo">Efectivo</option>
+                           <option  value="DepositoRut">Deposito a Cuenta Rut</option>
+                           <option  value="DepositoVista">Deposito a Cuenta Vista</option>
+                           <option  value="DepositoAhorro">Deposito a Cuenta Ahorro</option>
+                        </select>
+				    </div>
+                    
+                    
+                    
                     <div id="campos" class="">
                         <label>Cliente</label> 
 				    	<input type="text" class="form-control" name="cliente" value= "<?php echo $cliente; ?>" readonly required>
@@ -109,8 +134,13 @@ echo $tasa;
                         <label>RUT, Pasaporte o Cedula</label> 
 				    	<input type="text" class="form-control" name="rut" value= "<?php echo $rut; ?>" readonly required>
                     </div>
+                    
+                    <div id="comprobante1" class="">
+                        <label>Numero de Comprobante</label> 
+				    	<input type="text" class="form-control" name="comprobante" required >
+                    </div>
                         
-                        <div id="campos" class="">
+                    <div id="campos" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
 				    	<input type="text" class="form-control" name="nombre" value= "<?php echo $nombre; ?>" readonly required>
                     </div>
@@ -120,16 +150,7 @@ echo $tasa;
 				            
           	          <input id="cedula" type="text" class="form-control" name="iddoc" value= "<?php echo $cedula; ?>" readonly required>
 				    </div>
-				    <div id="" class="">
-		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos(this)" required>
-				           <option  value="">Seleccionar</option>
-					       <option  value="Efectivo">Efectivo</option>
-                           <option  value="DepositoRut">Deposito a Cuenta Rut</option>
-                           <option  value="DepositoVista">Deposito a Cuenta Vista</option>
-                           <option  value="DepositoAhorro">Deposito a Cuenta Ahorro</option>
-                        </select>
-				    </div>
+				    
 				    
                     <div id="BancoBeneficiario" class="">
 		    		   <label>Banco del Beneficiario</label> 
@@ -149,14 +170,6 @@ echo $tasa;
 		    			<input type="text" class="form-control" name="bolivares2" readonly>
 	    			</div>
 				   
-				    
-				    <div id="campos" class="">
-				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos4(this)" required>
-				           <option value="Pendiente">Pendiente</option>
-					       <option value="Inmediata">Inmediata</option>
-					    </select>
-          	        </div>
 				    
 				    <div id="bancosOrg1" class="">
 		    		   <label>Transferimos desde banco</label> 
