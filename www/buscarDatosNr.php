@@ -90,6 +90,7 @@ return false;
 			<th>Pago</th>
 			<th>Banco destino</th>
 			<th>Num. Cuenta</th>
+			<th>Total Deposito</th>
 			<th>Pesos</th>
 			<th>Bs</th>
 			<th>Email</th>
@@ -106,12 +107,13 @@ return false;
             $ids = $_POST['ids'];
             $rut= $_POST['rut'];
             $formaPago=$_POST['formaPago'];
+            $totalPesos=$_POST['totalpesos'];
             $pesos=$_POST['pesos3'];
             $bolivares=$_POST['bolivares3'];
             $estatus='Pendiente';
             
             
-            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones WHERE rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
+            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
             
             include 'conexion.php';
             
@@ -179,10 +181,14 @@ return false;
     				        <input type="text" class="form-control" name="cuenta" value="<?php echo $row['Numero_cuenta'] ?>"  readonly required>
 	    			    </div>
 	    			</td>
-	    			
+	    			<td>        
+                        <div id="campos" class="" >
+    				        <input type="text" class="form-control" name="totalpesos" value= "<?php echo $totalPesos ?>" readonly required>
+	    		        </div>
+	    		    </td>
                     <td>        
                         <div id="campos" class="" >
-    				        <input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos ?>" readonly required>
+    				        <input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos ?>" required>
 	    		        </div>
 	    		    </td>
                     <td><div id="campos" class="" >

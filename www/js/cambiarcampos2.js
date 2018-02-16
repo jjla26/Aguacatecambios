@@ -3,6 +3,7 @@ function cambiarcampos2(obj){
     if (obj.value == "Pendiente"){
         document.getElementById("cliente1").style.display='block';
         document.getElementById("rut1").style.display='block';
+        document.getElementById("comprobante1").style.display='block';
         document.getElementById("Nombre1").style.display='block';
         document.getElementById("Cedula1").style.display='block';
         document.getElementById("Bancob").style.display='block';
@@ -28,12 +29,15 @@ function cambiarcampos2(obj){
 
         document.getElementById("cliente1").style.display='none';
         document.getElementById("rut1").style.display='none';
+        document.getElementById("comprobante1").remove();
         document.getElementById("Nombre1").style.display='none';
         document.getElementById("Cedula1").style.display='none';
         document.getElementById("Bancob").style.display='none';
         document.getElementById("Cuenta1").style.display='none';
         document.getElementById("bancosOrg").style.display='none';
         document.getElementById("cuentasOrg").style.display='none';
+        document.getElementById("cuentasOrg").style.display='none';
+        
         
         
     

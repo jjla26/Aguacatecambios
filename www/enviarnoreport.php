@@ -73,6 +73,7 @@ return false;
         
         $ids=$_POST['ids'];
         $formaPago=$_POST['formaPago'];
+        $comprobante= $_POST['comprobante'];
         $pesos= $_POST['pesos1'];
         $bolivares= $_POST['bs1'];
         $estatus= 'Pendiente';
@@ -98,10 +99,15 @@ return false;
 				    <label>Forma de pago</label> 
                        <input type='text' class="form-control" name="formaPago" value="<?php echo $formaPago; ?>" readonly required>
 				    </div>            
-            
+                    
+                   <div id="campos" class="" >
+    				    <label>Total Pesos Depositados</label>
+		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $pesos; ?>" readonly required>
+	    			</div> 
+                    
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos3" value= "<?php echo $pesos; ?>" readonly required>
+		    			<input type="text" class="form-control" name="pesos3" value= "<?php echo $pesos; ?>" required>
 	    			</div>
                     
                     <div id="campos" class="">
@@ -122,7 +128,7 @@ return false;
                         <label>TASA</label> 
 				    	<input type="text" class="form-control" name="tasa" value="<?php
 include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
+$tasa = "SELECT Tasa FROM Tasa1";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
 $tasa= $tasa['Tasa'];
@@ -139,6 +145,10 @@ echo $tasa;
                     <div id="campos" class="">
                         <label>RUT, Pasaporte o Cedula</label> 
 				    	<input type="text" class="form-control" name="rut" value= ""  required>
+                    </div>
+                    <div id="comprobante1" class="">
+                        <label>Numero de Comprobante</label> 
+				    	<input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante; ?>"  required >
                     </div>
                         
                     <div id="campos" class="">
@@ -216,10 +226,15 @@ echo $tasa;
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta" value= "" required>
 				    </div>
-				   
+				    
+				     <div id="campos" class="" >
+    				    <label>Total Pesos Depositados</label>
+		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $pesos; ?>" readonly required>
+	    			</div> 
+                  
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" readonly required>
+		    			<input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()" required>
 	    			</div>
                     
                     <div id="campos" class="">

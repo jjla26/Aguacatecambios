@@ -83,7 +83,7 @@ return false;
         $telefono= $_POST['telefono1'];
         
         include 'conexion.php';
-        $actualizar = "UPDATE transacciones SET rut='$rut', email='$email', telefono='$telefono' WHERE ID='$ids'";
+        $actualizar = "UPDATE transacciones1 SET rut='$rut', email='$email', telefono='$telefono' WHERE ID='$ids'";
         mysqli_query($conexion, $actualizar)
         
         ?>
@@ -97,7 +97,7 @@ return false;
                         <label>TASA</label> 
 				    	<input type="text" class="form-control" name="tasa" value="<?php
 include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
+$tasa = "SELECT Tasa FROM Tasa1";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
 $tasa= $tasa['Tasa'];
@@ -160,6 +160,12 @@ echo $tasa;
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta" value= "<?php echo $numcuenta; ?>" readonly required>
 				    </div>
+				   
+				   
+				    <div id="campos" class="" >
+    				    <label>Total de pesos depositados</label>
+		    			<input type="number" class="form-control" name="totalpesos" value= "">
+	    			</div>
 				   
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
