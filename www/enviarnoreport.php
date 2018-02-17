@@ -72,8 +72,10 @@ return false;
         <?php
         
         $ids=$_POST['ids'];
+        $tasa=$_POST['tasa'];
         $formaPago=$_POST['formaPago'];
         $comprobante= $_POST['comprobante'];
+        $totalpesos=$_POST['totalpesos'];
         $pesos= $_POST['pesos1'];
         $bolivares= $_POST['bs1'];
         $estatus= 'Pendiente';
@@ -102,7 +104,7 @@ return false;
                     
                    <div id="campos" class="" >
     				    <label>Total Pesos Depositados</label>
-		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $pesos; ?>" readonly required>
+		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $totalpesos; ?>" readonly required>
 	    			</div> 
                     
 				   <div id="campos" class="" >
@@ -126,16 +128,7 @@ return false;
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
-				    	<input type="text" class="form-control" name="tasa" value="<?php
-include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa1";
-$tasa = mysqli_query($conexion,$tasa);
-$tasa = mysqli_fetch_array($tasa);
-$tasa= $tasa['Tasa'];
-
-echo $tasa;
-
-?>" readonly>
+				    	<input type="text" class="form-control" name="tasa" value="<?php echo $tasa?>" readonly>
                     </div>
                     <div id="campos" class="">
                         <label>Cliente</label> 
@@ -148,7 +141,7 @@ echo $tasa;
                     </div>
                     <div id="comprobante1" class="">
                         <label>Numero de Comprobante</label> 
-				    	<input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante; ?>"  required >
+				    	<input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante; ?>"  readonly required >
                     </div>
                         
                     <div id="campos" class="">
@@ -229,7 +222,7 @@ echo $tasa;
 				    
 				     <div id="campos" class="" >
     				    <label>Total Pesos Depositados</label>
-		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $pesos; ?>" readonly required>
+		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $totalpesos; ?>" readonly required>
 	    			</div> 
                   
 				   <div id="campos" class="" >
@@ -242,35 +235,7 @@ echo $tasa;
 		    	    		<input type="text" class="form-control" name="bolivares2" value= "<?php echo $bolivares; ?>" readonly>
 	    			</div>
 				   
-				    <div id="bancosOrg" class="">
-		    		   <label>Transferimos desde banco</label> 
-                       <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" >
-				           <option  value="">Seleccionar</option>
-					       <option  value="Banesco">Banesco</option>
-                           <option  value="Banco Mercantil">Mercantil</option>            
-                        </select>
-				    </div>
-				    
-				    <div id="cuentasOrg" class="">
-		    	
-		    	
-		    	   <label>Cuenta de</label> 
-                       <select id="cuentasOrigen" name="cuentaOrigen" class="form-control">
-				            <option value="">Seleccionar</option>
-					        <optgroup id="banescoCuentas" label="Cuentas Banesco">
-                                <option value="Banesco Carlos">Banesco Carlos</option>
-                                <option value="Banesco Marola">Banesco Marola</option>
-                                <option value="Banesco Sonalys">Banesco Sonalys</option>
-                                <option value="Banesco Juridica">Banesco Juridica</option>
-                              </optgroup>
-                              <optgroup id="mercantilCuentas" label="Cuentas Mercantil">
-                                <option value="Mercantil Mariana">Mercantil Mariana</option>
-                                <option value="Mercantil Carlos">Mercantil Carlos</option>
-                                <option value="Mercantil Juridica">Mercantil Juridica</option>
-                              </optgroup>
-                        </select>
-				    </div>
-                   
+				   
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
     					<input type="Email" class="form-control" value= "" >

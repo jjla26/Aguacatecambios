@@ -18,7 +18,7 @@ $banco = $_POST['banco'];
 $cuenta =$_POST['cuenta'];
 $bancoOrigen = $_POST['bancoOrigen'];
 $cuentaOrigen = $_POST['cuentaOrigen'];
-$totalPesos = $_POST['Total_pesos'];
+$totalPesos = $_POST['totalpesos'];
 $pesos = $_POST['pesos2'];
 $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
@@ -32,13 +32,37 @@ $telefono = $_POST['telefono'];
 include 'tasa.php';
 include 'conexion.php';
 
-$comprobante_exist = "SELECT comprobante FROM transacciones1 WHERE comprobante= '$comprobante' AND comprobante != '' ";
+$comprobante_exist = "SELECT comprobante FROM transacciones1 WHERE comprobante= '$comprobante' AND comprobante != ''";
 $comprobante_exist = mysqli_query($conexion,$comprobante_exist);
 $comprobante_exist = mysqli_fetch_array($comprobante_exist);
 
 if (!$comprobante_exist){
 
+goto a;
 
+}else {
+
+$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ";
+$seleccionar = mysqli_query($conexion,$seleccionar);
+$seleccionar = mysqli_fetch_array($seleccionar);
+$seleccionar = $seleccionar['Total_pesos'];
+$suma = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE comprobante= '$comprobante'";
+$suma = mysqli_query($conexion, $suma);
+$suma = mysqli_fetch_array($suma);
+$suma = $suma['SUM(Cantidad_pesos)']+$pesos;
+
+if($suma <= $seleccionar){
+
+goto a;    
+    
+}else{
+    
+echo '<script>alert("COMPROBANTE DUPLICADO");window.location="transaccionesofic.php"</script>';
+mysqli_close($conexion);
+}}    
+
+a:
+    
 if ($estatus == 'NR'){
 
 $bolivaresCom = $bolivares;
@@ -318,18 +342,19 @@ $resultado3 = mysqli_query($conexion, $insertar3);
 
 if (!$resultado || !$resultado1 || !$resultado3){
     
+    
 echo 'error';
+mysqli_close($conexion);
 
 }else{
 
+
 echo '<script>window.location="transaccionesofic.php"</script>';
 
-}
-
 mysqli_close($conexion);
-    
-}
 
+    
+}};
 
 if($estatus == "Pendiente"){
 
@@ -591,29 +616,22 @@ $insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_
 
 $resultado3 = mysqli_query($conexion, $insertar3);
 
-if (!$resultado || !$resultado1 || !$resultado3)
+if (!$resultado || !$resultado1 || !$resultado3){
     
     
 echo 'error';
+mysqli_close($conexion);
 
-else{
+}else{
 
 
 echo '<script>window.location="transaccionesofic.php"</script>';
 
-    
-}
-
 mysqli_close($conexion);
-    
-}}
-else{
-    
-    
-echo '<script>alert("COMPROBANTE DUPLICADO");window.location="transaccionesofic.php"</script>';
 
     
-}
+}};
+
 
 //if($estatus=='Inmediata'){
 //

@@ -177,33 +177,6 @@ echo $tasa;
 	    			</div>
 				   
 				    
-				    <div id="bancosOrg1" class="">
-		    		   <label>Transferimos desde banco</label> 
-                       <select id="bancosOrigen" name="bancoOrigen" class="form-control" onchange="cambiarcampos(this)" >
-				           <option  value="">Seleccionar</option>
-					       <option  value="Banesco">Banesco</option>
-                           <option  value="Banco Mercantil">Mercantil</option>            
-                        </select>
-				    </div>
-				    
-				    <div id="cuentasOrg1" class="">
-		    		   <label>Cuenta de</label> 
-                       <select id="cuentasOrigen" name="cuentaOrigen" class="form-control">
-				            <option value="">Seleccionar</option>
-					        <optgroup id="banescoCuentas" label="Cuentas Banesco">
-                                <option value="Banesco Carlos">Banesco Carlos</option>
-                                <option value="Banesco Marola">Banesco Marola</option>
-                                <option value="Banesco Sonalys">Banesco Sonalys</option>
-                                <option value="Banesco Juridica">Banesco Juridica</option>
-                              </optgroup>
-                              <optgroup id="mercantilCuentas" label="Cuentas Mercantil">
-                                <option value="Mercantil Mariana">Mercantil Mariana</option>
-                                <option value="Mercantil Carlos">Mercantil Carlos</option>
-                                <option value="Mercantil Juridica">Mercantil Juridica</option>
-                              </optgroup>
-                        </select>
-				    </div>
-                   
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
     					<input type="Email" class="form-control" value= "<?php echo $email; ?>" name="email" readonly>

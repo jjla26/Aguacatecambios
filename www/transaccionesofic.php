@@ -186,7 +186,7 @@ echo $saldo_necesario;
     				
 <div id="campos" class="col-xs-6">
 				        <label>Total Pesos del día</label>
-    					<input type="Email" class="form-control" name="PesosDia" value= "<?php 
+    					<input type="text" class="form-control" name="PesosDia" value= "<?php 
 include 'conexion.php';
 $saldo = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
 $saldo = mysqli_query($conexion,$saldo);
@@ -250,7 +250,7 @@ echo $disp_banesco_carlos;
 	    			
                     <div id="campos" class="col-xs-6">
 				        <label>Banesco Marola</label>
-    					<input type="Email" class="form-control" name="BanescoMarola" value="<?php 
+    					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $saldo_banesco_marola = "SELECT saldo_banesco_marola FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_marola = mysqli_query($conexion,$saldo_banesco_marola);
@@ -264,7 +264,7 @@ echo $saldo_banesco_marola;
     
                     <div id="campos" class="col-xs-6">
 				        <label>Disp Banesco Marola</label>
-    					<input type="Email" class="form-control" name="BanescoMarola" value="<?php 
+    					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $disp_banesco_marola = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Marola' AND DATE(Fecha) like '%$current_date%'";
 $disp_banesco_marola = mysqli_query($conexion,$disp_banesco_marola);
@@ -326,7 +326,7 @@ echo $disp_mercantil_carlos;
 	    			
                     <div id="campos" class="col-xs-6">
 				        <label>Mercantil Mariana</label>
-    					<input type="Email" class="form-control" name="MercantilMariana" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_mariana = "SELECT saldo_mercantil_mariana FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_mariana = mysqli_query($conexion,$saldo_mercantil_mariana);
@@ -338,7 +338,7 @@ echo $saldo_mercantil_mariana;
     				</div>
     				<div id="campos" class="col-xs-6">
 				        <label> Disp Mercantil Mariana</label>
-    					<input type="Email" class="form-control" name="MercantilMariana" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_mariana = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Mariana' AND DATE(Fecha) like '%$current_date%'";
 $disp_mercantil_mariana = mysqli_query($conexion,$disp_mercantil_mariana);
@@ -351,7 +351,7 @@ echo $disp_mercantil_mariana;
 
     				<div id="campos" class="col-xs-6">
 				        <label>Mercantil Juridica</label>
-    					<input type="Email" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_juridica = "SELECT saldo_mercantil_juridica FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_juridica = mysqli_query($conexion,$saldo_mercantil_juridica);
@@ -369,7 +369,7 @@ echo $saldo_mercantil_juridica;
                         
                         				<div id="campos" class="col-xs-6">
 				        <label> Disp Mercantil Juridica</label>
-    					<input type="Email" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Juridica' AND DATE(Fecha) like '%$current_date%'";
 $disp_mercantil_juridica = mysqli_query($conexion,$disp_mercantil_juridica);
@@ -566,11 +566,11 @@ echo $tasa;
                         </select>
 				    </div>-->
                    
-                    <div id="campos" class="">
+                    <div id="email1" class="">
 				        <label>Email de Quien Envía</label>
     					<input type="Email" class="form-control" name="email">
     				</div>
-                    <div id="campos" class="">
+                    <div id="telefono1" class="">
 				        <label>Teléfono de Quien Envía</label>
     					<input type="text" class="form-control" name="telefono">
     				</div>
@@ -580,10 +580,10 @@ echo $tasa;
     					<input type="text" name="comprobante"class="form-control" name="telefono">
     				</div>-->
     				
-    				<div id="campos" class="">
+    			<!--	<div id="campos" class="">
 				        <label>Añadir Boleta</label>
     					<input type="file" name="attachment" class="form-control" name="telefono">
-    				</div>
+    				</div>-->
     				
                     <div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
@@ -605,7 +605,7 @@ echo $tasa;
   	
 		<thead>
 		<tr>
-		    
+		    <th>ID</th>
 		    <th>Cliente</th>
 			<th>Nombre</th>
 			<th>Cedula</th>
@@ -645,10 +645,10 @@ echo $tasa;
                 <form name="formul2" method="POST" action="guardarDatosOfic1.php">
                 
         	<tr>
-        	<td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
-	    	</div></td>
-            </td>
+        	
+        	<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="ids" value="<?php echo $ids=$row['ID']; ?>"  readonly required>
+				</div></td>
             <td><?php echo $row['cliente'] ?></td>
         	<td><?php echo $row['Nombre_apellido'] ?></td>
             <td><?php echo $row['Cedula'] ?></td>
@@ -743,8 +743,12 @@ echo $tasa;
 		<thead>
 		<tr>
 		    <th>ID</th>
-			<th>Tipo de Transferencia</th>
+		    <th>Tasa</th>
+		    <th>Cliente</th>
+		    <th>Rut</th>
 			<th>Numero de comprobante</th>
+			<th>Tipo de Transferencia</th>
+			<th>Total Pesos</th>
 			<th>Pesos</th>
 			<th>Bolivares</th>
 			<th>Estatus</th>
@@ -757,19 +761,12 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, Forma_pago, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR'";
+            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR'";
             
             include 'conexion.php';
             
-            $tasa1 = "SELECT Tasa FROM Tasa1";
-            $tasa1 = mysqli_query($conexion,$tasa1);
-            $tasa1 = mysqli_fetch_array($tasa1);
-            $tasa1 = $tasa1['Tasa'];
-            
             $result = mysqli_query($conexion,$insertar);
 
-
-        		
 		while ($row = mysqli_fetch_array($result)){?>
         	
             <form name="formul3" method="POST" action="enviarnoreport.php">
@@ -780,18 +777,30 @@ echo $tasa;
         	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
 	    	</div></td>
-        	<td><div id="campos" name="id" >
+            <td><div id="campos" name="id" >
+    				    <input type="text" class="form-control" name="tasa" value= "<?php echo $row['tasa']; ?>" required>
+	    	</div></td>
+	    	<td><div id="campos" name="id" >
+    				    <input type="text" class="form-control" name="cliente" value= "<?php echo $row['cliente']; ?>" readonly>
+	    	</div></td>
+	    	<td><div id="campos" name="id" >
+    				    <input type="text" class="form-control" name="rut" value= "<?php echo $row['rut']; ?>" readonly>
+	    	</div></td>
+            <td><div id="campos" name="id" >
+    				    <input type="text" class="form-control" name="comprobante" value= "<?php echo $row['comprobante']; ?>" required>
+	    	</div></td>        
+
+            <td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="formaPago" value= "<?php echo $row['Forma_pago']; ?>" readonly>
 	    	</div></td>
-        	<td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="comprobante" value= "" required>
+            
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $row['Total_pesos'] ?>"  readonly required>
 	    	</div></td>
-
-
             
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="pesos1" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
-	    			</div></td>
+	    	</div></td>
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="bs1" value= "<?php
     		$bs=$row['Cantidad_bs'];
