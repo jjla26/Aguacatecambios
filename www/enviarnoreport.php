@@ -65,7 +65,7 @@ return false;
 
         <div id="login" >
             <div id="logo">
-            <a href="#"><img src="img/logo.png"></a>
+            <a href="transaccionesofic.php"><img src="img/logo.png"></a>
             </div>
         </div>
         
@@ -92,10 +92,18 @@ return false;
 				    	<input type="text" class="form-control" name="rut" required>
                     
             </div>
-            
+            <div id="campos" class="">
+                        <label>TASA</label> 
+				    	<input type="text" class="form-control" name="tasa" value="<?php echo $tasa?>" readonly>
+                    </div>
+                    
             <div id="campos" class="">
                         <label>Transaccion</label> 
 				    	<input type="text" class="form-control" name="ids" value= "<?php echo $ids; ?>" readonly required>
+                    </div>
+                    <div id="comprobante2" class="">
+                        <label>Comprobante</label> 
+				    	<input type="text" class="form-control" name="comprobante1" value= "<?php echo $comprobante; ?>" readonly required>
                     </div>
                     				    <div>
 				    <label>Forma de pago</label> 
@@ -109,7 +117,7 @@ return false;
                     
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos3" value= "<?php echo $pesos; ?>" required>
+		    			<input type="text" class="form-control" name="pesos3" value= "" onchange="calcularofic1()" required>
 	    			</div>
                     
                     <div id="campos" class="">
@@ -141,7 +149,7 @@ return false;
                     </div>
                     <div id="comprobante1" class="">
                         <label>Numero de Comprobante</label> 
-				    	<input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante; ?>"  readonly required >
+				    	<input type="text" class="form-control" name="comprobante1" value= "<?php echo $comprobante; ?>"  readonly required >
                     </div>
                         
                     <div id="campos" class="">

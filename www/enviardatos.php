@@ -66,7 +66,7 @@ return false;
 
         <div id="login" >
             <div id="logo">
-            <a href="#"><img src="img/logo.png"></a>
+            <a href="transaccionesofic.php"><img src="img/logo.png"></a>
             </div>
         </div>
         

@@ -68,7 +68,7 @@ return false;
 
         <div id="login" >
             <div id="logo">
-            <a href="#"><img src="img/logo.png"></a>
+            <a href="transaccionesofic.php"><img src="img/logo.png"></a>
             </div>
         </div>
         
@@ -761,7 +761,7 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR'";
+            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID desc";
             
             include 'conexion.php';
             
@@ -778,7 +778,7 @@ echo $tasa;
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
 	    	</div></td>
             <td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="tasa" value= "<?php echo $row['tasa']; ?>" required>
+    				    <input type="text" class="form-control" name="tasa" value= "<?php echo $row['tasa']; ?>"   required>
 	    	</div></td>
 	    	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="cliente" value= "<?php echo $row['cliente']; ?>" readonly>

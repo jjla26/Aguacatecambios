@@ -65,7 +65,7 @@ return false;
 
         <div id="login" >
             <div id="logo">
-            <a href="#"><img src="img/logo.png"></a>
+            <a href="transaccionesofic.php"><img src="img/logo.png"></a>
             </div>
         </div>
 
@@ -81,6 +81,8 @@ return false;
 		<thead>
 		<tr>
 			<th>ID</th>
+			<th>Tasa</th>
+			<th>Comprobante</th>
 		    <th>Cliente</th>
 			<th>RUT</th>
 			<th>Estatus</th>
@@ -95,6 +97,7 @@ return false;
 			<th>Bs</th>
 			<th>Email</th>
 			<th>Telefono</th>
+			<th>Enviar</th>
 			
 		</tr>
 		</thead>
@@ -104,7 +107,9 @@ return false;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
+            $tasa= $_POST['tasa'];
             $ids = $_POST['ids'];
+            $comprobante=$_POST['comprobante1'];
             $rut= $_POST['rut'];
             $formaPago=$_POST['formaPago'];
             $totalPesos=$_POST['totalpesos'];
@@ -113,7 +118,7 @@ return false;
             $estatus='Pendiente';
             
             
-            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
+            $insertar= "SELECT ID, tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
             
             include 'conexion.php';
             
@@ -130,7 +135,19 @@ return false;
     				        <input type="text" class="form-control" name="ids" value= "<?php echo $ids; ?>" readonly required>
 	    	            </div>
 	    	        
-                    </td>   
+                    </td>
+                    <td>        
+        	            <div id="campos" name="id" >
+    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $row['tasa']; ?>" readonly required>
+	    	            </div>
+	    	        
+                    </td>
+                                        <td>        
+        	            <div id="campos" name="id" >
+    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $comprobante; ?>" readonly required>
+	    	            </div>
+	    	        
+                    </td>
         	        <td>        
         	            <div id="campos" name="id" >
     				        <input type="text" class="form-control" name="cliente" value= "<?php echo $row['cliente']; ?>" readonly required>
