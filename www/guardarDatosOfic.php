@@ -24,6 +24,9 @@ $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 
+
+if($pesos <= $totalPesos){
+
 //$upload_name=$_FILES["attachment"]["name"];
 //$upload_type=$_FILES["attachment"]["type"];
 //$upload_size=$_FILES["attachment"]["size"];
@@ -84,7 +87,7 @@ $bolivaresCom = $bolivares;
 
 $insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$comprobante','$formaPago','$pesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -97,7 +100,7 @@ if($formaPago == "Efectivo"){
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
-$abono_efec1= $abono_efec1['saldo_efec']+$pesos;
+$abono_efec1= $abono_efec1['saldo_efec']+$totalPesos;
 
 }else{
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
@@ -112,7 +115,7 @@ if($formaPago == "DepositoRut"){
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
-$abono_rut1= $abono_rut1['saldo_rut']+$pesos;    
+$abono_rut1= $abono_rut1['saldo_rut']+$totalPesos;    
     
 }else{
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
@@ -125,7 +128,7 @@ if($formaPago == "DepositoVista"){
 $abono_vista1 = "SELECT saldo_vista FROM saldos1 WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);
 $abono_vista1 = mysqli_fetch_array($abono_vista1);
-$abono_vista1= $abono_vista1['saldo_vista']+$pesos;
+$abono_vista1= $abono_vista1['saldo_vista']+$totalPesos;
 
 }else{
     
@@ -139,7 +142,7 @@ if($formaPago == "DepositoAhorro"){
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
 $abono_ahorro1 = mysqli_query($conexion,$abono_ahorro1);
 $abono_ahorro1 = mysqli_fetch_array($abono_ahorro1);
-$abono_ahorro1= $abono_ahorro1['saldo_ahorro']+$pesos;
+$abono_ahorro1= $abono_ahorro1['saldo_ahorro']+$totalPesos;
 
 }else{
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
@@ -362,22 +365,35 @@ if($estatus == "Pendiente"){
 $bolivaresCom = $bolivares;
 
 
-$insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
+$insertar2 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
 $insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
 
+if ($totalPesos != $pesos){
+    
+    $dif = $totalPesos-$pesos;
+    $bolivares = ($totalPesos-$pesos)*$tasa;    
+    
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','NR','$current_date','$usuario')";
+    $resultado1 = mysqli_query($conexion, $insertar1);
+
+}
+
 $resultado = mysqli_query($conexion, $insertar);
 
-$resultado1 = mysqli_query($conexion, $insertar1);
+$resultado2 = mysqli_query($conexion, $insertar2);
 
 $ID=mysqli_insert_id($conexion)-1;
+
+
+
 
 
 if($formaPago == "Efectivo"){
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
-$abono_efec1= $abono_efec1['saldo_efec']+$pesos;
+$abono_efec1= $abono_efec1['saldo_efec']+$totalPesos;
 
 }else{
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
@@ -392,7 +408,7 @@ if($formaPago == "DepositoRut"){
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
-$abono_rut1= $abono_rut1['saldo_rut']+$pesos;    
+$abono_rut1= $abono_rut1['saldo_rut']+$totalPesos;    
     
 }else{
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
@@ -405,7 +421,7 @@ if($formaPago == "DepositoVista"){
 $abono_vista1 = "SELECT saldo_vista FROM saldos1 WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);
 $abono_vista1 = mysqli_fetch_array($abono_vista1);
-$abono_vista1= $abono_vista1['saldo_vista']+$pesos;
+$abono_vista1= $abono_vista1['saldo_vista']+$totalPesos;
 
 }else{
     
@@ -419,7 +435,7 @@ if($formaPago == "DepositoAhorro"){
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
 $abono_ahorro1 = mysqli_query($conexion,$abono_ahorro1);
 $abono_ahorro1 = mysqli_fetch_array($abono_ahorro1);
-$abono_ahorro1= $abono_ahorro1['saldo_ahorro']+$pesos;
+$abono_ahorro1= $abono_ahorro1['saldo_ahorro']+$totalPesos;
 
 }else{
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
@@ -616,7 +632,7 @@ $insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_
 
 $resultado3 = mysqli_query($conexion, $insertar3);
 
-if (!$resultado || !$resultado1 || !$resultado3){
+if (!$resultado && !$resultado1 && !$resultado2 && !$resultado3){
     
     
 echo 'error';
@@ -1013,3 +1029,6 @@ mysqli_close($conexion);
 //    
 //}
 //
+}else{
+    echo '<script>alert("No puedes solicitar mas pesos que lo disponible");window.location="transaccionesofic.php"</script>';
+};

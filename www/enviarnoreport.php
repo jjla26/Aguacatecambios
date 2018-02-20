@@ -73,6 +73,8 @@ return false;
         
         $ids=$_POST['ids'];
         $tasa=$_POST['tasa'];
+        $cliente= $_POST['cliente'];
+        $rut=$_POST['rut'];
         $formaPago=$_POST['formaPago'];
         $comprobante= $_POST['comprobante'];
         $totalpesos=$_POST['totalpesos'];
@@ -140,16 +142,16 @@ return false;
                     </div>
                     <div id="campos" class="">
                         <label>Cliente</label> 
-				    	<input type="text" class="form-control" name="cliente" value= "" required>
+				    	<input type="text" class="form-control" name="cliente" value= "<?php echo $cliente?>" required autofocus>
                     </div>
                     
                     <div id="campos" class="">
                         <label>RUT, Pasaporte o Cedula</label> 
-				    	<input type="text" class="form-control" name="rut" value= ""  required>
+				    	<input type="text" class="form-control" name="rut" value= "<?php echo $rut?>"  required>
                     </div>
-                    <div id="comprobante1" class="">
+                    <div id="comprobante" class="">
                         <label>Numero de Comprobante</label> 
-				    	<input type="text" class="form-control" name="comprobante1" value= "<?php echo $comprobante; ?>"  readonly required >
+				    	<input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante; ?>"  readonly required >
                     </div>
                         
                     <div id="campos" class="">

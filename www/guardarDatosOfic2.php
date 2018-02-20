@@ -24,6 +24,8 @@ $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 
+if($pesos<=$totalPesos){
+
 include 'conexion.php';
 
 $comprobante_exist = "SELECT comprobante FROM transacciones1 WHERE comprobante= '$comprobante' AND comprobante != ''";
@@ -32,16 +34,17 @@ $comprobante_exist = mysqli_fetch_array($comprobante_exist);
 
 if (!$comprobante_exist){
 
-$insertar = "UPDATE transacciones1 SET cliente='$cliente', rut='$rut', comprobante='$comprobante', Nombre_apellido='$nombre',Tipo_doc='$tipodoc', Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta', Cantidad_pesos='$pesos', Cantidad_bs='$bolivares' ,Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
+
+$insertar = "UPDATE transacciones1 SET cliente='$cliente', rut='$rut', comprobante='$comprobante', Nombre_apellido='$nombre',Tipo_doc='$tipodoc', Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta', Total_pesos='$totalPesos', Cantidad_pesos='$pesos', Diferencia='0', Cantidad_bs='$bolivares' ,Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
 
 $resultado = mysqli_query($conexion, $insertar);
 
 if ($totalPesos != $pesos){
     
-    $pesos = $totalPesos-$pesos;
-    $bolivares = $pesos*$tasa;    
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$bolivares','NR','$usuario')";
+    $dif = $totalPesos-$pesos;
+    $bolivares = ($totalPesos-$pesos)*$tasa;    
     
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','NR','$current_date','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
@@ -76,17 +79,16 @@ $suma = mysqli_fetch_array($suma);
 $suma = $suma['SUM(Cantidad_pesos)']+$pesos;
 
 if($suma <= $seleccionar){
-echo $suma;
-echo $seleccionar;
-$insertar = "UPDATE transacciones1 SET cliente='$cliente', rut='$rut', comprobante='$comprobante', Nombre_apellido='$nombre',Tipo_doc='$tipodoc', Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta', Cantidad_pesos='$pesos', Cantidad_bs='$bolivares' ,Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
+
+$insertar = "UPDATE transacciones1 SET cliente='$cliente', rut='$rut', comprobante='$comprobante', Nombre_apellido='$nombre',Tipo_doc='$tipodoc', Cedula='$iddoc',Cuenta_destino='$banco',Numero_cuenta='$cuenta', Total_pesos='$totalPesos', Cantidad_pesos='$pesos', Diferencia='0', Cantidad_bs='$bolivares' ,Bolivares_com='$bolivaresCom', estatus='$estatus', Email='$email', Telefono='$telefono' WHERE ID= '$ids'";
 
 $resultado = mysqli_query($conexion, $insertar);
 
 if ($totalPesos != $suma ){
 
-    $pesos = $totalPesos-$pesos;
-    $bolivares = $pesos*$tasa;
-    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$bolivares','NR','$usuario')";
+    $dif = $totalPesos-$pesos;
+    $bolivares = $dif*$tasa;
+    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','NR','$current_date','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
     
 }
@@ -113,6 +115,9 @@ echo '<script>alert("COMPROBANTE DUPLICADO");window.location="transaccionesofic.
 mysqli_close($conexion);
 
     
-}};    
+}}}else{
+    
+echo '<script>alert("No puedes solicitar mas pesos que lo disponible");window.location="transaccionesofic.php"</script>';    
+}    
 
 ?>

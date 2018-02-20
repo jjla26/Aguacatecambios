@@ -119,10 +119,10 @@ return false;
     				    <label>Efectivo</label>
 		    			<input type="text" class="form-control" name="Efec" value="<?php 
 include 'conexion.php';
-$saldo_efec = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE Forma_pago= 'Efectivo' AND DATE(Fecha) like '%$current_date%'";
+$saldo_efec = "SELECT saldo_efec FROM saldos1 order by ID desc Limit 1";
 $saldo_efec = mysqli_query($conexion,$saldo_efec);
 $saldo_efec = mysqli_fetch_array($saldo_efec);
-$saldo_efec = $saldo_efec['SUM(Cantidad_pesos)'];
+$saldo_efec = $saldo_efec['saldo_efec'];
 echo $saldo_efec;
 
 ?>" readonly>
@@ -189,10 +189,14 @@ echo $saldo_necesario;
     					<input type="text" class="form-control" name="PesosDia" value= "<?php 
 include 'conexion.php';
 $saldo = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
+$saldo1 = "SELECT SUM(Diferencia) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
 $saldo = mysqli_query($conexion,$saldo);
+$saldo1 = mysqli_query($conexion,$saldo1);
 $saldo = mysqli_fetch_array($saldo);
+$saldo1 = mysqli_fetch_array($saldo1);
 $saldo = $saldo['SUM(Cantidad_pesos)'];
-echo $saldo;
+$saldo1 = $saldo1['SUM(Diferencia)'];
+echo $saldo+$saldo1;
 
 ?>" readonly>
     				</div>
@@ -429,7 +433,7 @@ echo $tasa;
                     </div>
                     <div id="campos" class="">
 				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)">
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" >
 				            <option value="Pendiente">Pendiente</option>
 				            <!-- <option value="Inmediata">Inmediata</option>-->
 				            <option value="NR">No Reportado</option>
@@ -437,7 +441,7 @@ echo $tasa;
           	        </div>
                     <div id="" class="">
 		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)" >
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
 				           <option  value="">Seleccionar</option>
 					       <option  value="Efectivo">Efectivo</option>
                            <option  value="DepositoRut">Deposito a Cuenta Rut</option>
@@ -448,7 +452,7 @@ echo $tasa;
                     
                     <div id="cliente1" class="">
                         <label>Cliente</label> 
-				    	<input type="text" class="form-control" name="cliente" >
+				    	<input type="text" class="form-control" name="cliente"  autofocus>
                     </div>
                     
                     <div id="rut1" class="">
@@ -761,7 +765,7 @@ echo $tasa;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID desc";
+            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
             
             include 'conexion.php';
             
@@ -795,12 +799,18 @@ echo $tasa;
 	    	</div></td>
             
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $row['Total_pesos'] ?>"  readonly required>
+    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $totalp=$row['Total_pesos'] ?>"  readonly required>
 	    	</div></td>
             
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="pesos1" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
+    				    <input type="text" class="form-control" name="pesos1" value="<?php 
+                        $pesos= $row['Cantidad_pesos'];
+                        if($pesos == 0 )
+    				    echo $totalp;
+    				    else
+    				    echo $pesos ?>"  readonly required>
 	    	</div></td>
+	    	
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="bs1" value= "<?php
     		$bs=$row['Cantidad_bs'];
