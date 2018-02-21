@@ -87,7 +87,7 @@ $bolivaresCom = $bolivares;
 
 $insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 

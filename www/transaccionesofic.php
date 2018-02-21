@@ -420,14 +420,30 @@ echo $disp_mercantil_juridica;
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
+				    	
 				    	<input type="text" class="form-control" name="tasa" value="<?php
 include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa1";
+$tasa = "SELECT Tasa FROM Tasa";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
 $tasa= $tasa['Tasa'];
 
 echo $tasa;
+
+?>" readonly>
+                    </div>
+                    
+                      <div id="campos" class="">
+                        <label>TASA ESPECIAL</label> 
+				    	
+				    	<input type="text" class="form-control" name="tasaesp" value="<?php
+include 'conexion.php';
+$tasa1 = "SELECT Tasa FROM Tasa1";
+$tasa1 = mysqli_query($conexion,$tasa1);
+$tasa1 = mysqli_fetch_array($tasa1);
+$tasa1 = $tasa1['Tasa'];
+
+echo $tasa1;
 
 ?>" readonly>
                     </div>
@@ -1106,6 +1122,64 @@ echo $tasa;
 
            
         </div>
+        
+        <div id="form2" class=" col-xs-12">
+        
+            <h1>Transferencias Realizadas</h1>
+
+        <table class="table table-striped">
+  	
+		<thead>
+		<tr>
+		    <th>ID</th>
+		    <th>Cliente</th>
+			<th>Forma de Pago</th>
+			<th>Cuenta destino</th>
+			<th>Cuenta Origen</th>
+			<th>Cantidad de Pesos</th>
+			<th>Cantidad Bolivares</th>
+			<th>Estatus</th>
+
+		</tr>
+		</thead>
+		
+		<?php
+            date_default_timezone_set('America/Santiago');
+            $current_date = date("Y-m-d H:i:s");
+            
+            $insertar= "SELECT ID, cliente, Forma_pago, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%' AND estatus = 'Realizada' ORDER BY ID";
+            
+            include 'conexion.php';
+            
+            $result = mysqli_query($conexion,$insertar);
+            
+		while ($row = mysqli_fetch_array($result)){?>
+        	
+            
+        	<tr>
+        	
+        	<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="ids" value="<?php echo $ids=$row['ID']; ?>"  readonly required>
+				</div></td>
+			<td><?php echo $row['ID'] ?></td>
+            <td><?php echo $row['cliente'] ?></td>
+        	<td><?php echo $row['Forma_pago'] ?></td>
+        	<td><?php echo $row['Cuenta_destino'] ?></td>
+        	<td><?php echo $row['Transferimos_desde'] ?></td>
+            <td><?php echo $row['Cantidad_pesos'] ?></td>
+            <td><?php echo $row['Cantidad_bs'] ?></td>
+            <td><?php echo $row['estatus'] ?></td>
+            
+            </tr>
+ <?php } ?>
+
+
+</table>
+
+		
+		
+		
+		</div>
    
 
 

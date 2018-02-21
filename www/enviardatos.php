@@ -93,17 +93,49 @@ return false;
             
                 <form name="formul0" method="POST" action="guardarDatosOfic.php">
                 
-                    <div id="campos" class="">
+                                <div id="campos" class="">
                         <label>TASA</label> 
-				    	<input type="text" class="form-control" name="tasa" value="<?php
+				    	<select id="tipodetasa" name="tipodetasa" class="form-control">
+				    	     <option value="<?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?>"><?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?></option>    
+<option value="<?php
 include 'conexion.php';
 $tasa = "SELECT Tasa FROM Tasa1";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
-$tasa = $tasa['Tasa'];
+$tasa= $tasa['Tasa'];
+
 echo $tasa;
 
-?>" readonly>
+?>"><?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa1";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?></option></select>
+
+				    	
                     </div>
                     
                     <div id="campos" class="">

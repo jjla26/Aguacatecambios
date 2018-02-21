@@ -26,7 +26,7 @@ function cambiarcampos2(obj){
     
 }   if (obj.value == "NR"){ 
 
-        document.getElementById("cliente1").style.display='none';
+        
         document.getElementById("rut1").style.display='none';
         document.getElementById("comprobante1").remove();
         document.getElementById("Nombre1").style.display='none';
