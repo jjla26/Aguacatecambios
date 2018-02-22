@@ -27,14 +27,14 @@ function cambiarcampos2(obj){
 }   if (obj.value == "NR"){ 
 
         
-        document.getElementById("rut1").style.display='none';
+        document.getElementById("rut1").remove();
         document.getElementById("comprobante1").remove();
-        document.getElementById("Nombre1").style.display='none';
-        document.getElementById("Cedula1").style.display='none';
-        document.getElementById("Bancob").style.display='none';
-        document.getElementById("Cuenta1").style.display='none';
-        document.getElementById("email1").style.display='none';
-        document.getElementById("telefono1").style.display='none';
+        document.getElementById("Nombre1").remove();
+        document.getElementById("Cedula1").remove();
+        document.getElementById("Bancob").remove();
+        document.getElementById("Cuenta1").remove();
+        document.getElementById("email1").remove();
+        document.getElementById("telefono1").remove();
         
         
     

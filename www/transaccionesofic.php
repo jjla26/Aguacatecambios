@@ -215,7 +215,7 @@ $saldo = $saldo['SUM(Cantidad_pesos)'];
 $saldo1 = $saldo1['SUM(Diferencia)'];
 echo $saldo+$saldo1;
 
-?>" readonly>
+?>" readonly >
     				</div>
     				
      				<div id="campos" class="col-xs-6" >
@@ -521,23 +521,23 @@ echo $tasa1;
                         
                     <div id="Nombre1" class="">
                         <label>Nombre y Apellido o Razón Social</label> 
-				    	<input type="text" class="form-control" name="nombre" >
+				    	<input type="text" class="form-control" name="nombre" required >
                     </div>
                     <div id="Cedula1" class="">
 				        <label>Cedula de Identidad</label>
-			   	       <select id="nacionalidad" name="tipodoc" class="form-control">
+			   	       <select id="nacionalidad" name="tipodoc" class="form-control"required>
 				            <option value=""></option>
 					        <option value="V">V</option>
                             <option value="E">E</option>            
                             <option value="J">J</option>
 					    </select>
-          	          <input id="cedula" type="text" class="form-control" name="iddoc" >
+          	          <input id="cedula" type="text" class="form-control" name="iddoc"  required>
 				    </div>
 				    
 				    
                     <div id="Bancob" class="">
 		    		   <label>Banco del Beneficiario</label> 
-                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" >
+                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
 				           <option value="">Seleccionar</option>
 				            <option value="Banesco">Banesco</option>
                             <option value="Banco Mercantil">Banco Mercantil</option>            
@@ -578,23 +578,23 @@ echo $tasa1;
 				    </div>
                     <div id="Cuenta1" class="">
 				        <label>Numero de Cuenta Bancaria</label>
-				    	<input type="text" class="form-control" name="cuenta" minlength=20 maxlength=20>
+				    	<input type="text" class="form-control" name="cuenta" minlength=20 maxlength=20 required>
 				    </div>
 				   
-				    <div id="campos" class="" >
-    				    <label>Total de pesos depositados</label>
-		    			<input type="number" class="form-control" name="totalpesos" onchange="calcularofic()" >
-	    			</div>
-				   
-				    <div id="campos" class="" >
-    				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="number" class="form-control" name="pesos2" onchange="calcularofic()" >
-	    			</div>
-                    
-                    <div id="campos" class="" >
-    				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="number"  class="form-control" name="bolivares2" readonly>
-	    			</div>
+    				    <div id="campos" class="" >
+        				    <label>Total de pesos depositados</label>
+    		    			<input type="number" class="form-control" name="totalpesos" onchange="calcularofic()" required>
+    	    			</div>
+    				   
+    				    <div id="campos" class="" >
+        				    <label>Cantidad de Pesos a Enviar</label>
+    		    			<input type="number" class="form-control" name="pesos2" onchange="calcularofic()" required>
+    	    			</div>
+                        
+                        <div id="campos" class="" >
+        				    <label>Cantidad de Bs. a Recibir</label>
+    		    			<input type="number"  class="form-control" name="bolivares2" readonly required>
+    	    			</div>
 				   
 				    <!--
 				    <div id="bancosOrg" class="">
@@ -687,13 +687,8 @@ echo $tasa1;
             $current_date = date("Y-m-d H:i:s");
             
             $insertar= "SELECT ID, cliente, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'Pendiente' ORDER BY ID";
-            
-            include 'conexion.php';
-            
-            $tasa1 = "SELECT Tasa FROM Tasa1";
-            $tasa1 = mysqli_query($conexion,$tasa1);
-            $tasa1 = mysqli_fetch_array($tasa1);
-            $tasa1 = $tasa1['Tasa'];
+      
+      
             $result = mysqli_query($conexion,$insertar);
 
 
