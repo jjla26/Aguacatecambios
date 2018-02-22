@@ -1,11 +1,10 @@
-function calcularofic(obj){
+function calcularofic(){
 	
+	var totalpesos = (document.formul0.totalpesos.value)*1;
+	var limite = 90000;
 	var pesos2 = (document.formul0.pesos2.value)*1;
+	if(totalpesos >= limite){
 	
-	if(pesos2 > 90000){
-	
-	var pesos2 = (document.formul0.pesos2.value)*1;
-
 	var total = pesos2*(document.formul0.tasaesp.value);
 	
 
@@ -19,7 +18,7 @@ function calcularofic(obj){
 
 	document.formul0.bolivares2.value= total;
 	
-}
+}}
 
 function calcularofic1(){
 

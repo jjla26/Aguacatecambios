@@ -68,15 +68,15 @@ mysqli_close($conexion);
 
 }else {
 
-$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ";
+$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
 $seleccionar = mysqli_query($conexion,$seleccionar);
 $seleccionar = mysqli_fetch_array($seleccionar);
-$seleccionar = $seleccionar['Total_pesos'];
+echo $seleccionar = $seleccionar['Total_pesos'];
 
 $suma = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE comprobante= '$comprobante'";
 $suma = mysqli_query($conexion, $suma);
 $suma = mysqli_fetch_array($suma);
-$suma = $suma['SUM(Cantidad_pesos)']+$pesos;
+echo $suma = $suma['SUM(Cantidad_pesos)']+$pesos;
 
 if($suma <= $seleccionar){
 
@@ -84,7 +84,7 @@ $insertar = "UPDATE transacciones1 SET cliente='$cliente', rut='$rut', comproban
 
 $resultado = mysqli_query($conexion, $insertar);
 
-if ($totalPesos != $suma ){
+if ($seleccionar != $suma ){
 
     $dif = $totalPesos-$pesos;
     $bolivares = $dif*$tasa;

@@ -32,7 +32,7 @@ if($pesos <= $totalPesos){
 //$upload_size=$_FILES["attachment"]["size"];
 //$upload_temp=$_FILES["attachment"]["tmp_name"];
 
-include 'tasa.php';
+
 include 'conexion.php';
 
 $comprobante_exist = "SELECT comprobante FROM transacciones1 WHERE comprobante= '$comprobante' AND comprobante != ''";

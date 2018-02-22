@@ -219,9 +219,12 @@ echo $saldo_banesco_juridica;
 		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
 include 'conexion.php';
 $disp_banesco_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Juridica' AND DATE(Fecha) like '%$current_date%'";
+$debito_juridica_otro = "SELECT SUM(abono_banesco_juridica) FROM saldos1 WHERE b7='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_juridica_otro = mysqli_query($conexion,$debito_juridica_otro);
+$debito_juridica_otro = mysqli_fetch_array($debito_juridica_otro);
 $disp_banesco_juridica = mysqli_query($conexion,$disp_banesco_juridica);
 $disp_banesco_juridica = mysqli_fetch_array($disp_banesco_juridica);
-$disp_banesco_juridica = $saldo_banesco_juridica + $disp_banesco_juridica['SUM(Bolivares_com)'];
+$disp_banesco_juridica = $saldo_banesco_juridica + $disp_banesco_juridica['SUM(Bolivares_com)']-$debito_juridica_otro['SUM(abono_banesco_juridica)'];
 echo $disp_banesco_juridica;
 
 ?>" readonly>
@@ -244,9 +247,12 @@ echo $saldo_banesco_carlos;
 		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $disp_banesco_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos' AND DATE(Fecha) like '%$current_date%'";
+$debito_carlos_otro = "SELECT SUM(abono_banesco_carlos) FROM saldos1 WHERE b4='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_carlos_otro = mysqli_query($conexion,$debito_carlos_otro);
+$debito_carlos_otro = mysqli_fetch_array($debito_carlos_otro);
 $disp_banesco_carlos = mysqli_query($conexion,$disp_banesco_carlos);
 $disp_banesco_carlos = mysqli_fetch_array($disp_banesco_carlos);
-$disp_banesco_carlos = $saldo_banesco_carlos + $disp_banesco_carlos['SUM(Bolivares_com)'];
+$disp_banesco_carlos = $saldo_banesco_carlos + $disp_banesco_carlos['SUM(Bolivares_com)']-$debito_carlos_otro['SUM(abono_banesco_carlos)'];
 echo $disp_banesco_carlos;
 
 ?>" readonly>
@@ -271,9 +277,12 @@ echo $saldo_banesco_marola;
     					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $disp_banesco_marola = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Marola' AND DATE(Fecha) like '%$current_date%'";
+$debito_marola_otro = "SELECT SUM(abono_banesco_marola) FROM saldos1 WHERE b5='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_marola_otro = mysqli_query($conexion,$debito_marola_otro);
+$debito_marola_otro = mysqli_fetch_array($debito_marola_otro);
 $disp_banesco_marola = mysqli_query($conexion,$disp_banesco_marola);
 $disp_banesco_marola = mysqli_fetch_array($disp_banesco_marola);
-$disp_banesco_marola = $saldo_banesco_marola + $disp_banesco_marola['SUM(Bolivares_com)'];
+$disp_banesco_marola = $saldo_banesco_marola + $disp_banesco_marola['SUM(Bolivares_com)']-$debito_marola_otro['SUM(abono_banesco_marola)'];
 echo $disp_banesco_marola;
 
 ?>" readonly>
@@ -295,9 +304,12 @@ echo $saldo_banesco_sonalys;
 		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $disp_banesco_sonalys = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Sonalys' AND DATE(Fecha) like '%$current_date%'";
+$debito_sonalys_otro = "SELECT SUM(abono_banesco_sonalys) FROM saldos1 WHERE b6='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_sonalys_otro = mysqli_query($conexion,$debito_sonalys_otro);
+$debito_sonalys_otro = mysqli_fetch_array($debito_sonalys_otro);
 $disp_banesco_sonalys = mysqli_query($conexion,$disp_banesco_sonalys);
 $disp_banesco_sonalys = mysqli_fetch_array($disp_banesco_sonalys);
-$disp_banesco_sonalys = $saldo_banesco_sonalys + $disp_banesco_sonalys['SUM(Bolivares_com)'];
+$disp_banesco_sonalys = $saldo_banesco_sonalys + $disp_banesco_sonalys['SUM(Bolivares_com)']-$debito_sonalys_otro['SUM(abono_banesco_sonalys)'];
 echo $disp_banesco_sonalys;
 
 ?>" readonly>
@@ -320,9 +332,12 @@ echo $saldo_mercantil_carlos;
 		    			<input type="text" class="form-control" name="MercantilCarlos" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Carlos' AND DATE(Fecha) like '%$current_date%'";
+$debito_mcarlos_otro = "SELECT SUM(abono_mercantil_carlos) FROM saldos1 WHERE b2='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_mcarlos_otro = mysqli_query($conexion,$debito_mcarlos_otro);
+$debito_mcarlos_otro = mysqli_fetch_array($debito_mcarlos_otro);
 $disp_mercantil_carlos = mysqli_query($conexion,$disp_mercantil_carlos);
 $disp_mercantil_carlos = mysqli_fetch_array($disp_mercantil_carlos);
-$disp_mercantil_carlos = $saldo_mercantil_carlos + $disp_mercantil_carlos['SUM(Bolivares_com)'];
+$disp_mercantil_carlos = $saldo_mercantil_carlos + $disp_mercantil_carlos['SUM(Bolivares_com)']-$debito_mcarlos_otro['SUM(abono_mercantil_carlos)'];
 echo $disp_mercantil_carlos;
 
 ?>" readonly>
@@ -345,9 +360,12 @@ echo $saldo_mercantil_mariana;
     					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_mariana = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Mariana' AND DATE(Fecha) like '%$current_date%'";
+$debito_mariana_otro = "SELECT SUM(abono_mercantil_mariana) FROM saldos1 WHERE b1='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_mariana_otro = mysqli_query($conexion,$debito_mariana_otro);
+$debito_mariana_otro = mysqli_fetch_array($debito_mariana_otro);
 $disp_mercantil_mariana = mysqli_query($conexion,$disp_mercantil_mariana);
 $disp_mercantil_mariana = mysqli_fetch_array($disp_mercantil_mariana);
-$disp_mercantil_mariana = $saldo_mercantil_mariana + $disp_mercantil_mariana['SUM(Bolivares_com)'];
+$disp_mercantil_mariana = $saldo_mercantil_mariana + $disp_mercantil_mariana['SUM(Bolivares_com)']-$debito_mariana_otro['SUM(abono_mercantil_mariana)'];
 echo $disp_mercantil_mariana;
 
 ?>" readonly>
@@ -376,9 +394,12 @@ echo $saldo_mercantil_juridica;
     					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Juridica' AND DATE(Fecha) like '%$current_date%'";
+$debito_mjuridica_otro = "SELECT SUM(abono_mercantil_juridica) FROM saldos1 WHERE b3='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_mjuridica_otro = mysqli_query($conexion,$debito_mjuridica_otro);
+$debito_mjuridica_otro = mysqli_fetch_array($debito_mjuridica_otro);
 $disp_mercantil_juridica = mysqli_query($conexion,$disp_mercantil_juridica);
 $disp_mercantil_juridica = mysqli_fetch_array($disp_mercantil_juridica);
-$disp_mercantil_juridica = $saldo_mercantil_juridica + $disp_mercantil_juridica['SUM(Bolivares_com)'];
+$disp_mercantil_juridica = $saldo_mercantil_juridica + $disp_mercantil_juridica['SUM(Bolivares_com)']-$debito_mjuridica_otro['SUM(abono_mercantil_juridica)'];
 echo $disp_mercantil_juridica;
 
 ?>" readonly>
@@ -1030,7 +1051,7 @@ echo $tasa1;
             
                     <div id="campos" class="">
                         <label>Mercantil Mariana</label> 
-				    	<input type="text" class="form-control" name="debito_mercantil_mariana" onChange="cambiarcampos4(this)">
+				    	<input type="text" class="form-control" name="debito_mercantil_mariana" onChange="cambiarcampos12(this)">
                     </div>
                     <div id="b1" class="">
                         <label>Banco destino</label>
@@ -1041,7 +1062,7 @@ echo $tasa1;
                     </div>
                     <div id="campos" class="">
                         <label>Mercantil Carlos</label> 
-				    	<input type="text" class="form-control" name="debito_mercantil_carlos" onChange="cambiarcampos5(this)">
+				    	<input type="text" class="form-control" name="debito_mercantil_carlos" onChange="cambiarcampos13(this)">
                     </div>
                     <div id="b2" class="">
                         <label>Banco destino</label>
@@ -1147,7 +1168,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, cliente, Forma_pago, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%' AND estatus = 'Realizada' ORDER BY ID";
+            $insertar= "SELECT ID, cliente, Forma_pago, Cuenta_destino, Transferimos_desde, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%' AND estatus = 'Realizada' ORDER BY ID";
             
             include 'conexion.php';
             

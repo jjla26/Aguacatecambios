@@ -12,12 +12,12 @@ function cambiarcampos(obj){
     }
 }
 
-function cambiarcampos4(){
+function cambiarcampos12(){
     
         document.getElementById("b1").style.display='block';
 }
 
-function cambiarcampos5(){
+function cambiarcampos13(){
     
         document.getElementById("b2").style.display='block';
 }
