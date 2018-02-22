@@ -98,35 +98,33 @@ echo '<script>window.location="admin"</script>';
             
                 <form name="formul0" method="POST" action="guardarDatosOfic.php">
                 
-                
-                    <div id="campos" class="">
-                        <label>TASA</label> 
-				    	
-				    	<input type="text" class="form-control" name="tasa" value="<?php
-include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
-$tasa = mysqli_query($conexion,$tasa);
-$tasa = mysqli_fetch_array($tasa);
-$tasa= $tasa['Tasa'];
-
-echo $tasa;
-
-?>" readonly>
-                    </div>
+                     <div id="campos" class="">
+                            <label>TASA</label> 
+				    	    <input type="text" class="form-control" name="tasa" value="<?php
+                                include 'conexion.php';
+                                $tasa = "SELECT Tasa FROM Tasa2";
+                                $tasa = mysqli_query($conexion,$tasa);
+                                $tasa = mysqli_fetch_array($tasa);
+                                $tasa= $tasa['Tasa'];
+                                
+                                echo $tasa;
+                                
+                                ?>" readonly>
+                     </div>
                     
-                      <div id="campos" class="">
+                     <div id="campos" class="">
                         <label>TASA ESPECIAL</label> 
 				    	
 				    	<input type="text" class="form-control" name="tasaesp" value="<?php
-include 'conexion.php';
-$tasa1 = "SELECT Tasa FROM Tasa1";
-$tasa1 = mysqli_query($conexion,$tasa1);
-$tasa1 = mysqli_fetch_array($tasa1);
-$tasa1 = $tasa1['Tasa'];
-
-echo $tasa1;
-
-?>" readonly>
+                                include 'conexion.php';
+                                $tasa1 = "SELECT Tasa FROM Tasa3";
+                                $tasa1 = mysqli_query($conexion,$tasa1);
+                                $tasa1 = mysqli_fetch_array($tasa1);
+                                $tasa1 = $tasa1['Tasa'];
+                                
+                                echo $tasa1;
+                                
+                                ?>" readonly>
                     </div>    
                     <div id="campos" class="">
 	     		        <label>Transferencia</label>
@@ -183,18 +181,20 @@ echo $tasa1;
 				    </div>
 				   
 				   
+				    
 				    <div id="campos" class="" >
     				    <label>Total de pesos depositados</label>
-		    			<input type="number" class="form-control" name="totalpesos" value= "">
+		    			<input type="number" class="form-control" name="totalpesos" onchange="calcularofic()" >
 	    			</div>
 				   
-				   <div id="campos" class="" >
+				    <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos2" onchange="calcularofic()" required>
+		    			<input type="number" class="form-control" name="pesos2" onchange="calcularofic()" >
 	    			</div>
+                    
                     <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="text" class="form-control" name="bolivares2" readonly>
+		    			<input type="number"  class="form-control" name="bolivares2" readonly>
 	    			</div>
 				   
 				    

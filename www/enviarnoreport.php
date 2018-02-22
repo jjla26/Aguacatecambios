@@ -89,7 +89,7 @@ echo '<script>window.location="admin"</script>';
         $tasa = "SELECT tasa FROM transacciones1 WHERE ID = '$ids' ";
         $tasa = mysqli_query($conexion, $tasa);
         $tasa = mysqli_fetch_array($tasa);
-        echo $tasa = $tasa['Tasa'];
+        echo $tasa = $tasa['tasa'];
         
         
         ?>

@@ -118,7 +118,7 @@ echo '<script>window.location="admin"</script>';
             $estatus='Pendiente';
             
             
-            $insertar= "SELECT ID, tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
+            $insertar= "SELECT cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
             
             include 'conexion.php';
             
@@ -138,7 +138,7 @@ echo '<script>window.location="admin"</script>';
                     </td>
                     <td>        
         	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $row['tasa']; ?>" readonly required>
+    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $tasa; ?>" readonly required>
 	    	            </div>
 	    	        
                     </td>
