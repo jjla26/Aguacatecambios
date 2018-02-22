@@ -22,7 +22,7 @@ if (isset($_SESSION['user'])){
 //}else{$_SESSION["ultimoAcceso"] = $ahora;}
 //}
 }else{
-return false;
+echo '<script>window.location="admin"</script>';
 }
 //
 ?>

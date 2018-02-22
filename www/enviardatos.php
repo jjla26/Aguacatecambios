@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+date_default_timezone_set('America/Santiago');
+$current_date = date("Y-m-d");
+
+
+
 if (isset($_SESSION['user'])){
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
 //
@@ -22,7 +27,7 @@ if (isset($_SESSION['user'])){
 //}else{$_SESSION["ultimoAcceso"] = $ahora;}
 //}
 }else{
-return false;
+echo '<script>window.location="admin"</script>';
 }
 //
 ?>

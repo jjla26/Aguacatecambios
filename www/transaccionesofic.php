@@ -4,30 +4,31 @@ date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d");
 
 
+
 if (isset($_SESSION['user'])){
-    $fechaGuardada = $_SESSION['ultimoAcceso'];
-
-    $ahora = date("Y-n-j H:i:s");
-    if($_SESSION['user']!=true){
-        echo '<script>window.location="admin"</script>';
-        return false;
-        
-    }else{
-$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
-if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
-session_destroy();
-
-echo '<script>alert("Su sesion ha caducado");window.location="admin"</script>'; // 
-
-return false;
-
-    
-}else{$_SESSION["ultimoAcceso"] = $ahora;}
-}
+//    $fechaGuardada = $_SESSION['ultimoAcceso'];
+//
+//    $ahora = date("Y-n-j H:i:s");
+//    if($_SESSION['user']!=true){
+//        echo '<script>window.location="admin"</script>';
+//        return false;
+//        
+//    }else{
+//$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
+//if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
+//session_destroy();
+//
+//echo '<script>alert("Su sesion ha caducado");window.location="admin"</script>'; // 
+//
+//return false;
+//
+//    
+//}else{$_SESSION["ultimoAcceso"] = $ahora;}
+//}
 }else{
-return false;
+echo '<script>window.location="admin"</script>';
 }
-
+//
 ?>
 
 <!doctype html>
@@ -76,6 +77,22 @@ return false;
             <h1>Calculadora de cambios</h1>
             
                 <form name="formul">
+			 
+                    <div id="campos" class="">
+                        <label>TASA</label> 
+				    	
+				    	<input type="text" class="form-control" name="tasacalc" value="<?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa2";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?>">
+                    </div>
+			
 								
 								<div id="div10" >
 									<select id="cambiar" name="cambiar" class="form-control" onChange="pagoOnChange(this)" required>
@@ -708,18 +725,25 @@ echo $tasa1;
     				    <input type="text" class="form-control" name="bs" value= "<?php
     		$bs=$row['Cantidad_bs'];
     				    if($pesos==$bs){
-    				        include 'conexion.php';
-            
-            $tasa2 = "SELECT Tasa FROM Tasa1";
-            $tasa2 = mysqli_query($conexion,$tasa2);
-            $tasa2 = mysqli_fetch_array($tasa2);
-            $tasa2 = $tasa2['Tasa'];
-            
-    		echo $bs=$bs*$tasa2;		    
-    		$actualizar= "UPDATE transacciones1 SET tasa='$tasa2',Cantidad_bs = '$bs' WHERE ID = '$ids'";
-    		$tasa2 = mysqli_query($conexion,$actualizar);		        
+    				        if($pesos>=90000){
+	                            include 'conexion.php';
+                                $tasa2 = "SELECT Tasa FROM Tasa2";
+                                $tasa2 = mysqli_query($conexion,$tasa2);
+                                $tasa2 = mysqli_fetch_array($tasa2);
+                                $tasa2 = $tasa2['Tasa'];
+    		                    echo $bs=$bs*$tasa2;
+    		                }else{
+    		                    include 'conexion.php';
+                                $tasa2 = "SELECT Tasa FROM Tasa3";
+                                $tasa2 = mysqli_query($conexion,$tasa2);
+                                $tasa2 = mysqli_fetch_array($tasa2);
+                                $tasa2 = $tasa2['Tasa'];
+    		                    echo $bs=$bs*$tasa2;
+    		                }
+    		                $actualizar= "UPDATE transacciones1 SET tasa='$tasa2', Cantidad_bs = '$bs' WHERE ID = '$ids'";
+    		                $tasa2 = mysqli_query($conexion,$actualizar);		        
     				    }else{
-    		echo $bs;
+    		                echo $bs;
     				    };
     		?>" readonly required>
 	    	</div></td>
@@ -852,17 +876,25 @@ echo $tasa1;
     				    <input type="text" class="form-control" name="bs1" value= "<?php
     		$bs=$row['Cantidad_bs'];
     				    if($pesos==$bs){
-	        include 'conexion.php';
-            
-            $tasa2 = "SELECT Tasa FROM Tasa1";
-            $tasa2 = mysqli_query($conexion,$tasa2);
-            $tasa2 = mysqli_fetch_array($tasa2);
-            $tasa2 = $tasa2['Tasa'];
-    		echo $bs=$bs*$tasa2;		    
-    		$actualizar= "UPDATE transacciones1 SET tasa='$tasa2', Cantidad_bs = '$bs' WHERE ID = '$ids'";
-    		$tasa2 = mysqli_query($conexion,$actualizar);		        
+    				        if($pesos>=90000){
+	                            include 'conexion.php';
+                                $tasa2 = "SELECT Tasa FROM Tasa3";
+                                $tasa2 = mysqli_query($conexion,$tasa2);
+                                $tasa2 = mysqli_fetch_array($tasa2);
+                                $tasa2 = $tasa2['Tasa'];
+    		                    echo $bs=$bs*$tasa2;
+    		                }else{
+    		                    include 'conexion.php';
+                                $tasa2 = "SELECT Tasa FROM Tasa2";
+                                $tasa2 = mysqli_query($conexion,$tasa2);
+                                $tasa2 = mysqli_fetch_array($tasa2);
+                                $tasa2 = $tasa2['Tasa'];
+    		                    echo $bs=$bs*$tasa2;
+    		                }
+    		                $actualizar= "UPDATE transacciones1 SET tasa='$tasa2', Cantidad_bs = '$bs' WHERE ID = '$ids'";
+    		                $tasa2 = mysqli_query($conexion,$actualizar);		        
     				    }else{
-    		echo $bs;
+    		                echo $bs;
     				    };
     				    ?>" readonly required>
 	    	</div></td>

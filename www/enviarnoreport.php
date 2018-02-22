@@ -1,5 +1,7 @@
 <?php
 session_start();
+date_default_timezone_set('America/Santiago');
+$current_date = date("Y-m-d");
 
 if (isset($_SESSION['user'])){
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
@@ -22,7 +24,7 @@ if (isset($_SESSION['user'])){
 //}else{$_SESSION["ultimoAcceso"] = $ahora;}
 //}
 }else{
-return false;
+echo '<script>window.location="admin"</script>';
 }
 //
 ?>
@@ -82,6 +84,13 @@ return false;
         $bolivares= $_POST['bs1'];
         $estatus= 'Pendiente';
         
+        include 'conexion.php';
+        
+        $tasa = "SELECT tasa FROM transacciones1 WHERE ID = '$ids' ";
+        $tasa = mysqli_query($conexion, $tasa);
+        $tasa = mysqli_fetch_array($tasa);
+        echo $tasa = $tasa['Tasa'];
+        
         
         ?>
         
@@ -98,31 +107,12 @@ return false;
                     <div id="campos" class="">
                         <label>TASA</label> 
 				    	
-				    	<input type="text" class="form-control" name="tasa" value="<?php
-include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
-$tasa = mysqli_query($conexion,$tasa);
-$tasa = mysqli_fetch_array($tasa);
-$tasa= $tasa['Tasa'];
-
-echo $tasa;
-
-?>" readonly>
+				    	<input type="text" class="form-control" name="tasa" value="<?php echo $tasa; ?>" readonly>
                     </div>
-                    
-                      <div id="campos" class="">
-                        <label>TASA ESPECIAL</label> 
+                    <div id="campos" class="">
+                        <label>TASA</label> 
 				    	
-				    	<input type="text" class="form-control" name="tasaesp" value="<?php
-include 'conexion.php';
-$tasa1 = "SELECT Tasa FROM Tasa1";
-$tasa1 = mysqli_query($conexion,$tasa1);
-$tasa1 = mysqli_fetch_array($tasa1);
-$tasa1 = $tasa1['Tasa'];
-
-echo $tasa1;
-
-?>" readonly>
+				    	<input type="text" class="form-control" name="tasaesp" value="<?php echo $tasa; ?>" readonly>
                     </div>
                     
             <div id="campos" class="">
@@ -145,7 +135,7 @@ echo $tasa1;
                     
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos3" value= "" onchange="calcularofic1()" required>
+		    			<input type="text" class="form-control" name="pesos3" value= "<?php echo $pesos; ?>" onchange="calcularofic1()" required>
 	    			</div>
                     
                     <div id="campos" class="">
@@ -165,32 +155,15 @@ echo $tasa1;
                     <div id="campos" class="">
                         <label>TASA</label> 
 				    	
-				    	<input type="text" class="form-control" name="tasa" value="<?php
-include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
-$tasa = mysqli_query($conexion,$tasa);
-$tasa = mysqli_fetch_array($tasa);
-$tasa= $tasa['Tasa'];
-
-echo $tasa;
-
-?>" readonly>
+				    	<input type="text" class="form-control" name="tasa" value="<?php echo $tasa; ?>" readonly>
+                    </div>
+                    <div id="campos" class="">
+                        <label>TASA</label> 
+				    	
+				    	<input type="text" class="form-control" name="tasaesp" value="<?php echo $tasa; ?>" readonly>
                     </div>
                     
-                      <div id="campos" class="">
-                        <label>TASA ESPECIAL</label> 
-				    	
-				    	<input type="text" class="form-control" name="tasaesp" value="<?php
-include 'conexion.php';
-$tasa1 = "SELECT Tasa FROM Tasa1";
-$tasa1 = mysqli_query($conexion,$tasa1);
-$tasa1 = mysqli_fetch_array($tasa1);
-$tasa1 = $tasa1['Tasa'];
-
-echo $tasa1;
-
-?>" readonly>
-                    </div>
+                
                     <div id="campos" class="">
                         <label>Cliente</label> 
 				    	<input type="text" class="form-control" name="cliente" value= "<?php echo $cliente?>" required autofocus>
