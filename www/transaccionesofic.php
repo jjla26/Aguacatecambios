@@ -444,7 +444,7 @@ echo $disp_mercantil_juridica;
 				    	
 				    	<input type="text" class="form-control" name="tasa" value="<?php
 include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
+$tasa = "SELECT Tasa FROM Tasa2";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
 $tasa= $tasa['Tasa'];
@@ -459,7 +459,7 @@ echo $tasa;
 				    	
 				    	<input type="text" class="form-control" name="tasaesp" value="<?php
 include 'conexion.php';
-$tasa1 = "SELECT Tasa FROM Tasa1";
+$tasa1 = "SELECT Tasa FROM Tasa3";
 $tasa1 = mysqli_query($conexion,$tasa1);
 $tasa1 = mysqli_fetch_array($tasa1);
 $tasa1 = $tasa1['Tasa'];
@@ -566,7 +566,7 @@ echo $tasa1;
 				   
 				    <div id="campos" class="" >
     				    <label>Total de pesos depositados</label>
-		    			<input type="number" class="form-control" name="totalpesos" >
+		    			<input type="number" class="form-control" name="totalpesos" onchange="calcularofic()" >
 	    			</div>
 				   
 				    <div id="campos" class="" >
