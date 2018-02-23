@@ -273,6 +273,36 @@ $disp_banesco_carlos = $saldo_banesco_carlos + $disp_banesco_carlos['SUM(Bolivar
 echo $disp_banesco_carlos;
 
 ?>" readonly>
+</div>
+
+
+    				<div id="campos" class="col-xs-6">
+				        <label>Banesco Carlos Papa</label>
+    					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
+include 'conexion.php';
+$saldo_banesco_carlos_papa = "SELECT saldo_banesco_carlos_papa FROM saldos1 order by ID desc Limit 1";
+$saldo_banesco_carlos_papa = mysqli_query($conexion,$saldo_banesco_carlos_papa);
+$saldo_banesco_carlos_papa = mysqli_fetch_array($saldo_banesco_carlos_papa);
+$saldo_banesco_carlos_papa = $saldo_banesco_carlos_papa['saldo_banesco_carlos_papa'];
+echo $saldo_banesco_carlos_papa;
+
+?>" readonly>
+    				</div>
+ 			
+            	<div id="campos" class="col-xs-6">
+				        <label> Disp Banesco Carlos Papa</label>
+    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
+include 'conexion.php';
+$disp_banesco_carlos_papa = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos Papa' AND DATE(Fecha) like '%$current_date%'";
+$debito_carlosp_otro = "SELECT SUM(abono_banesco_carlos_papa) FROM saldos1 WHERE b8='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_carlosp_otro = mysqli_query($conexion,$debito_carlosp_otro);
+$debito_carlosp_otro = mysqli_fetch_array($debito_carlosp_otro);
+$disp_banesco_carlos_papa = mysqli_query($conexion,$disp_banesco_carlos_papa);
+$disp_banesco_carlos_papa = mysqli_fetch_array($disp_mercantil_juridica);
+$disp_banesco_carlos_papa = $saldo_baneso_carlos_papa + $disp_banesco_carlos_papa['SUM(Bolivares_com)']-$debito_carlosp_otro['SUM(abono_banesco_carlos_papa)'];
+echo $disp_banesco_carlos_papa;
+
+?>" readonly>
 	    			</div>
 	    			
                     <div id="campos" class="col-xs-6">
@@ -760,6 +790,7 @@ echo $tasa1;
 				            <option value="">Seleccionar</option>
 					        <optgroup id="banescoCuentas1" label="Cuentas Banesco">
                                 <option value="Banesco Carlos">Banesco Carlos</option>
+                                <option value="Banesco Carlos">Banesco Carlos Papa</option>
                                 <option value="Banesco Marola">Banesco Marola</option>
                                 <option value="Banesco Sonalys">Banesco Sonalys</option>
                                 <option value="Banesco Juridica">Banesco Juridica</option>
@@ -962,6 +993,10 @@ echo $tasa1;
 				    	<input type="text" class="form-control" name="inicial_banesco_carlos">
                     </div>
                     <div id="campos" class="">
+                        <label>Banesco Carlos Papa</label> 
+				    	<input type="text" class="form-control" name="inicial_banesco_carlos_papa">
+                    </div>
+                    <div id="campos" class="">
                         <label>Banesco Marola</label> 
 				    	<input type="text" class="form-control" name="inicial_banesco_marola">
                     </div>
@@ -1022,6 +1057,10 @@ echo $tasa1;
                     <div id="campos" class="">
                         <label>Banesco Carlos</label> 
 				    	<input type="text" class="form-control" name="abono_banesco_carlos">
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Carlos Papa</label> 
+				    	<input type="text" class="form-control" name="abono_banesco_carlos_papa">
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Marola</label> 
@@ -1116,6 +1155,17 @@ echo $tasa1;
                     <div id="b4" class="">
                         <label>Banco destino</label>
                         <select id="cambiar" name="b4" class="form-control">
+										<option value="0">Banesco</option>
+										<option value="1">Otro Banco</option>
+					    </select>
+                    </div>
+                    <div id="campos" class="">
+                        <label>Banesco Carlos Papa</label> 
+				    	<input type="text" class="form-control" name="debito_banesco_carlos_papa" onChange="cambiarcampos7(this)">
+                    </div>
+                    <div id="b4" class="">
+                        <label>Banco destino</label>
+                        <select id="cambiar" name="b8" class="form-control">
 										<option value="0">Banesco</option>
 										<option value="1">Otro Banco</option>
 					    </select>
