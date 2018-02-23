@@ -298,7 +298,7 @@ $debito_carlosp_otro = "SELECT SUM(abono_banesco_carlos_papa) FROM saldos1 WHERE
 $debito_carlosp_otro = mysqli_query($conexion,$debito_carlosp_otro);
 $debito_carlosp_otro = mysqli_fetch_array($debito_carlosp_otro);
 $disp_banesco_carlos_papa = mysqli_query($conexion,$disp_banesco_carlos_papa);
-$disp_banesco_carlos_papa = mysqli_fetch_array($disp_mercantil_juridica);
+$disp_banesco_carlos_papa = mysqli_fetch_array($disp_banesco_carlos_papa);
 $disp_banesco_carlos_papa = $saldo_baneso_carlos_papa + $disp_banesco_carlos_papa['SUM(Bolivares_com)']-$debito_carlosp_otro['SUM(abono_banesco_carlos_papa)'];
 echo $disp_banesco_carlos_papa;
 
@@ -1161,9 +1161,9 @@ echo $tasa1;
                     </div>
                     <div id="campos" class="">
                         <label>Banesco Carlos Papa</label> 
-				    	<input type="text" class="form-control" name="debito_banesco_carlos_papa" onChange="cambiarcampos7(this)">
+				    	<input type="text" class="form-control" name="debito_banesco_carlos_papa" onChange="cambiarcampos14(this)">
                     </div>
-                    <div id="b4" class="">
+                    <div id="b8" class="">
                         <label>Banco destino</label>
                         <select id="cambiar" name="b8" class="form-control">
 										<option value="0">Banesco</option>

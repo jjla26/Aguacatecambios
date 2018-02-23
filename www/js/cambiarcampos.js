@@ -47,6 +47,11 @@ function cambiarcampos10(){
         document.getElementById("b7").style.display='block';
 }
 
+function cambiarcampos14(){
+    
+        document.getElementById("b8").style.display='block';
+}
+
 function cambiarcampos11(obj){
         if(obj.value == "Efectivo"){
                 document.getElementById("comprobante1").remove();
