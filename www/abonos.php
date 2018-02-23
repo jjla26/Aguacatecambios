@@ -8,12 +8,13 @@ $abono_mercantil_mariana = $_POST['abono_mercantil_mariana'];
 $abono_mercantil_carlos = $_POST['abono_mercantil_carlos'];
 $abono_mercantil_juridica = $_POST['abono_mercantil_juridica'];
 $abono_banesco_carlos = $_POST['abono_banesco_carlos'];
+$abono_banesco_carlos_papa = $_POST['abono_banesco_carlos_papa'];
 $abono_banesco_marola = $_POST['abono_banesco_marola'];
 $abono_banesco_sonalys = $_POST['abono_banesco_sonalys'];
 $abono_banesco_juridica = $_POST['abono_banesco_juridica'];
 $comentario= $_POST['comentario'];
 
-$insertar = "INSERT INTO saldos1 (abono_efec,abono_rut, abono_vista, abono_ahorro, abono_mercantil_mariana, abono_mercantil_carlos, abono_mercantil_juridica, abono_banesco_carlos, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, comentarios) VALUES ('$abono_efec','$abono_rut','$abono_vista','$abono_ahorro','$abono_mercantil_mariana','$abono_mercantil_carlos','$abono_mercantil_juridica','$abono_banesco_carlos','$abono_banesco_marola','$abono_banesco_sonalys','$abono_banesco_juridica','$comentario')";
+$insertar = "INSERT INTO saldos1 (abono_efec,abono_rut, abono_vista, abono_ahorro, abono_mercantil_mariana, abono_mercantil_carlos, abono_mercantil_juridica, abono_banesco_carlos, abono_banesco_carlos_papa, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, comentarios) VALUES ('$abono_efec','$abono_rut','$abono_vista','$abono_ahorro','$abono_mercantil_mariana','$abono_mercantil_carlos','$abono_mercantil_juridica','$abono_banesco_carlos','$abono_banesco_carlos_papa','$abono_banesco_marola','$abono_banesco_sonalys','$abono_banesco_juridica','$comentario')";
 
 include 'conexion.php';
 
@@ -62,6 +63,11 @@ $abono_banesco_carlos1 = mysqli_query($conexion,$abono_banesco_carlos1);
 $abono_banesco_carlos1 = mysqli_fetch_array($abono_banesco_carlos1);
 $abono_banesco_carlos1= $abono_banesco_carlos1['saldo_banesco_carlos']+$abono_banesco_carlos;
 
+$abono_banesco_carlos_papa1 = "SELECT saldo_banesco_carlos_papa FROM saldos1 WHERE ID = '$ID'";
+$abono_banesco_carlos_papa1 = mysqli_query($conexion,$abono_banesco_carlos_papa1);
+$abono_banesco_carlos_papa1 = mysqli_fetch_array($abono_banesco_carlos_papa1);
+$abono_banesco_carlos_papa1 = $abono_banesco_carlos_papa1['saldo_banesco_carlos_papa']+$abono_banesco_carlos_papa;
+
 $abono_banesco_marola1 = "SELECT saldo_banesco_marola FROM saldos1 WHERE ID = '$ID'";
 $abono_banesco_marola1 = mysqli_query($conexion,$abono_banesco_marola1);
 $abono_banesco_marola1 = mysqli_fetch_array($abono_banesco_marola1);
@@ -79,7 +85,7 @@ $abono_banesco_juridica1= $abono_banesco_juridica1['saldo_banesco_juridica']+$ab
 
 $ID=$ID+1;
 
-$insertar1 = "UPDATE saldos1 SET saldo_efec='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1' WHERE ID= '$ID'";
+$insertar1 = "UPDATE saldos1 SET saldo_efec='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_carlos_papa='$abono_banesco_carlos_papa1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1' WHERE ID= '$ID'";
 
 $resultado1 = mysqli_query($conexion, $insertar1);
 
