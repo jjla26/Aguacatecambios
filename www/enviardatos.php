@@ -78,6 +78,7 @@ echo '<script>window.location="admin"</script>';
         <?php
         $ids = $_POST['ids'];
         $cliente = $_POST['cliente1'];
+        $comprobante = $_POST['comprobante'];
         $rut= $_POST['rut1'];
         $nombre= $_POST['nombre1'];
         $nacionalidad= $_POST['nacionalidad1'];
@@ -159,7 +160,7 @@ echo '<script>window.location="admin"</script>';
                     
                     <div id="comprobante1" class="">
                         <label>Numero de Comprobante</label> 
-				    	<input type="text" class="form-control" name="comprobante" required >
+				    	<input type="text" class="form-control" name="comprobante" value= "<?php  echo $comprobante ?>"required >
                     </div>
                         
                     <div id="campos" class="">

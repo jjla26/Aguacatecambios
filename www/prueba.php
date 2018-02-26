@@ -1,94 +1,118 @@
-	
 <?php
-	
- 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+ini_set('display_errors',1);
+require("PHPMailer/class.phpmailer.php");
+require("PHPMailer/class.smtp.php");
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
-    	
- 
-	
-// Crear una nueva  instancia de PHPMailer habilitando el tratamiento de excepciones
-	
-$mail = new PHPMailer(true); 
-	
- 
-	
-// Configuramos el protocolo SMTP con autenticación
-	
-$mail->IsSMTP();
-	
-$mail->SMTPAuth = true;
-	
- 
-	
-// Configuración del servidor SMTP
-	
-$mail->Port = 587;
-	
-$mail->Host = 'smtp.gmail.com';
-	
-$mail->Username   = "aguacatecambios@gmail.com";
+//https://www.google.com/settings/security/lesssecureapps
+//http://phpmailer.worxware.com/
+$correo= $_POST['correo'];
+$nombre=$_POST['nombre'];
 
-$mail->Password = "edu19471962";
-	
- 
+//function send($correo,$nombre,$descripcion)
+//{
+//	$mail = new PHPMailer() ;
+//
+//	$body = '<table width="537" height="662" border="1">
+//  <tbody>
+//    <tr>
+//      <td width="253" height="94">Buenas tardes señor '.$nombre.'</td>
+//      <td width="557">'.$descripcion.'</td>
+//    </tr>
+//    <tr>
+//      <td colspan="2"><img src="http://www.comolohicieron.com.mx/wp-content/uploads/2015/03/Screen-Shot-2015-03-29-at-3.36.49-PM-816x497.png"></td>
+//    </tr>
+//  </tbody>
+//</table>';
+//				 				 
+//		$body .= "";
+//
+//		$mail->IsSMTP(); 
+//
+//		//Sustituye (ServidorDeCorreoSMTP)  por el host de tu servidor de correo SMTP
+//		$mail->Host = "mail.comolohicieron.com.mx";
+//		$mail->Port       = 587;  
+//		$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+//		
+//		//Sustituye  ( CuentaDeEnvio )  por la cuenta desde la que deseas enviar por ejem. prueba@domitienda.com  
+//		$mail->From     = "martin@comolohicieron.com.mx";
+//		$mail->FromName = "Martin Flores";
+//		$mail->Subject  = "Hola este es una prueba de mail";
+//		$mail->AltBody  = "Leer"; 
+//		$mail->MsgHTML($body);
+//
+//		// Sustituye  (CuentaDestino )  por la cuenta a la que deseas enviar por ejem. usuario@destino.com  
+//		$mail->AddAddress($correo,'');
+//		$mail->SMTPAuth = true;
+//
+//		// Sustituye (CuentaDeEnvio )  por la misma cuenta que usaste en la parte superior en este caso  prueba@midominio.com  y sustituye (ContraseñaDeEnvio)  por la contraseña que tenga dicha cuenta 
+//
+//		$mail->Username = "sucuenta@comolohicieron.com.mx";
+//		$mail->Password = "********"; 
+//
+//		if($mail->Send())
+//		{
+//			//return true;
+//			
+//			return $body; 
+//		}else
+//		{
+//			return false;
+//			die();
+//		}
+//	}
 
-// Configuración cabeceras del mensaje
-	
-$mail->From = "support@aguacatecambios.com";
-	
-$mail->FromName = "Aguacatecambios";
-	
- 
-	
-$mail->AddAddress("julioj.lopeza@gmail.com","Julio");
-	
-//$mail->AddAddress("destino2@correo.com","Nombre 2");
-	
- 
-	
-//$mail->AddCC("copia1@correo.com","Nombre copia 1");
-	
- 
-	
-//$mail->AddBCC(“copia1@correo.com”,”Nombre copia 1″);
-	
- 
-	
-$mail->Subject = "Asunto del correo";
-	
- 
-	
-// Creamos en una variable el cuerpo, contenido HMTL, del correo
-	
-$body  = "Proebando los correos con un tutorial<br>";
-	
-$body .= "hecho por <strong>Developando</strong>.<br>";
-	
-$body .= "<font color='red'>Visitanos pronto</font>";
-	
- 
-	
-$mail->Body = $body;
-	
- 
-	
-// Ficheros adjuntos
-	
-//$mail->AddAttachment("misImagenes/foto1.jpg", "developandoFoto.jpg");
-	
-//$mail->AddAttachment("files/proyecto.zip", "demo-proyecto.zip");
-	
- 
-	
-// Enviar el correo
+function sendgmail($correo,$nombre)
+{
+	$mail = new PHPMailer() ;
 
-$mail->Send(); 
+	$body = " Hola, Estimado $nombre\n\r 
 	
+	Le informamos que su transferencia al banco $banco numero de cuenta $cuenta fue procesada bajo el número $comprobante de Banesco\n\r
+	
+	Adjunta se encuentra su boleta por el servicio prestado
+	
+	Gracias por la confianza
+	
+	Equipo Aguacatecambios
+	
+	";
+	
+				 				 
+		$body .= "";
 
-	
-?>
+		$mail->IsSMTP(); 
+
+		//Sustituye (ServidorDeCorreoSMTP)  por el host de tu servidor de correo SMTP
+ 		$mail->Host = "smtp.gmail.com";		
+		$mail->Port       = 465;  
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = "ssl"; 
+		$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+		
+		//Sustituye  ( CuentaDeEnvio )  por la cuenta desde la que deseas enviar por ejem. prueba@domitienda.com  
+		$mail->From     = "aguacatecambios@gmail.com";
+		$mail->FromName = "Aguacatecambios";
+		$mail->Subject  = "Hola este es una prueba de mail";
+		$mail->AltBody  = "Leer"; 
+		$mail->MsgHTML($body);
+
+		// Sustituye  (CuentaDestino )  por la cuenta a la que deseas enviar por ejem. usuario@destino.com  
+		$mail->AddAddress('julioj.lopeza@gmail.com','Julio');
+		$mail->SMTPAuth = true;
+
+		// Sustituye (CuentaDeEnvio )  por la misma cuenta que usaste en la parte superior en este caso  prueba@midominio.com  y sustituye (ContraseñaDeEnvio)  por la contraseña que tenga dicha cuenta 
+		$mail->Username = "aguacatecambios@gmail.com";
+		$mail->Password = "edu19471962"; 
+		if($mail->Send())
+		{			
+			return $body; 
+		}else
+		{
+			return false;
+			die();
+		}
+	}
+
+
+
+$html = sendgmail($correo,$nombre,$descripcion);

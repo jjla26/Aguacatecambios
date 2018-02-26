@@ -250,6 +250,7 @@ echo '<script>window.location="admin"</script>';
 			<th>ID</th>
 		    <th>Cliente</th>
 			<th>RUT</th>
+			<th>Comprobante</th>
 			<th>Nombre</th>
 			<th>Naciona.</th>
 			<th>Cedula</th>
@@ -269,7 +270,7 @@ echo '<script>window.location="admin"</script>';
             
             $rut= $_POST['rut'];
             
-            $insertar= "SELECT ID, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta LIMIT 1";
+            $insertar= "SELECT ID, cliente, comprobante, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta LIMIT 1";
             
             include 'conexion.php';
             
@@ -290,9 +291,16 @@ echo '<script>window.location="admin"</script>';
 	    	            </div>
 	    	        
                     </td>   
+                    
+                    
         	        <td>
         	            <div id="campos" name="id" >
     				        <input type="text" class="form-control" name="rut1" value= "<?php echo $row['rut'] ?>" required>
+	    	            </div>
+	    	        </td>
+	    	        <td>
+        	            <div id="campos" name="id" >
+    				        <input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante ?>" required>
 	    	            </div>
 	    	        </td>
                     <td>        
