@@ -291,7 +291,7 @@ echo $saldo_banesco_carlos_papa;
  			
             	<div id="campos" class="col-xs-6">
 				        <label> Disp Banesco Carlos Papa</label>
-    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $disp_banesco_carlos_papa = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos Papa' AND DATE(Fecha) like '%$current_date%'";
 $debito_carlosp_otro = "SELECT SUM(abono_banesco_carlos_papa) FROM saldos1 WHERE b8='1' AND DATE(Fecha) like '%$current_date%'";
@@ -299,7 +299,7 @@ $debito_carlosp_otro = mysqli_query($conexion,$debito_carlosp_otro);
 $debito_carlosp_otro = mysqli_fetch_array($debito_carlosp_otro);
 $disp_banesco_carlos_papa = mysqli_query($conexion,$disp_banesco_carlos_papa);
 $disp_banesco_carlos_papa = mysqli_fetch_array($disp_banesco_carlos_papa);
-$disp_banesco_carlos_papa = $saldo_baneso_carlos_papa + $disp_banesco_carlos_papa['SUM(Bolivares_com)']-$debito_carlosp_otro['SUM(abono_banesco_carlos_papa)'];
+$disp_banesco_carlos_papa = $saldo_banesco_carlos_papa + $disp_banesco_carlos_papa['SUM(Bolivares_com)']-$debito_carlosp_otro['SUM(abono_banesco_carlos_papa)'];
 echo $disp_banesco_carlos_papa;
 
 ?>" readonly>
@@ -519,7 +519,7 @@ echo $tasa1;
 				        <label>Transferencia</label>
 			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" >
 				            <option value="Pendiente">Pendiente</option>
-				            <!-- <option value="Inmediata">Inmediata</option>-->
+				            <option value="No Verificado">Inmediata</option>
 				            <option value="NR">No Reportado</option>
 					   </select>
           	        </div>
@@ -790,7 +790,7 @@ echo $tasa1;
 				            <option value="">Seleccionar</option>
 					        <optgroup id="banescoCuentas1" label="Cuentas Banesco">
                                 <option value="Banesco Carlos">Banesco Carlos</option>
-                                <option value="Banesco Carlos">Banesco Carlos Papa</option>
+                                <option value="Banesco Carlos Papa">Banesco Carlos Papa</option>
                                 <option value="Banesco Marola">Banesco Marola</option>
                                 <option value="Banesco Sonalys">Banesco Sonalys</option>
                                 <option value="Banesco Juridica">Banesco Juridica</option>
@@ -824,6 +824,148 @@ echo $tasa1;
 		</div>
 		
 		
+	   <div id="form2" class=" col-xs-12">
+        
+            <h1>No verificados</h1>
+
+        <table class="table table-striped">
+  	
+		<thead>
+		<tr>
+		    <th>ID</th>
+		    <th>Cliente</th>
+			<th>Nombre</th>
+			<th>Cedula</th>
+			<th>Banco</th>
+			<th>Numero de Cuenta</th>
+			<th>Total Pesos</th>
+			<th>Pesos</th>
+			<th>Bolivares</th>
+			<th>Transferimos desde</th>
+			<th>Cuenta de</th>
+			<th>Estatus</th>
+			<th>Enviar</th>
+			
+
+			
+		</tr>
+		</thead>
+		
+		<?php
+            date_default_timezone_set('America/Santiago');
+            $current_date = date("Y-m-d H:i:s");
+            
+            $insertar= "SELECT ID, cliente, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'No Verificado' ORDER BY ID";
+      
+      
+            $result = mysqli_query($conexion,$insertar);
+
+
+        		
+		while ($row = mysqli_fetch_array($result)){?>
+        	
+                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
+                
+        	<tr>
+        	
+        	<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="ids" value="<?php echo $ids=$row['ID']; ?>"  readonly required>
+				</div></td>
+            <td><?php echo $row['cliente'] ?></td>
+        	<td><?php echo $row['Nombre_apellido'] ?></td>
+            <td><?php echo $row['Cedula'] ?></td>
+            <td><?php echo $row['Cuenta_destino'] ?></td>
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly >
+	    		</div></td>
+	    		<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $row['Total_pesos'] ?>"  readonly required>
+	    			</div></td>
+	    		
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="pesos" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
+	    			</div></td>
+            <td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="bs" value= "<?php
+    		$bs=$row['Cantidad_bs'];
+    				    if($pesos==$bs){
+    				        if($pesos>=90000){
+	                            include 'conexion.php';
+                                $tasa2 = "SELECT Tasa FROM Tasa2";
+                                $tasa2 = mysqli_query($conexion,$tasa2);
+                                $tasa2 = mysqli_fetch_array($tasa2);
+                                $tasa2 = $tasa2['Tasa'];
+    		                    echo $bs=$bs*$tasa2;
+    		                }else{
+    		                    include 'conexion.php';
+                                $tasa2 = "SELECT Tasa FROM Tasa3";
+                                $tasa2 = mysqli_query($conexion,$tasa2);
+                                $tasa2 = mysqli_fetch_array($tasa2);
+                                $tasa2 = $tasa2['Tasa'];
+    		                    echo $bs=$bs*$tasa2;
+    		                }
+    		                $actualizar= "UPDATE transacciones1 SET tasa='$tasa2', Cantidad_bs = '$bs' WHERE ID = '$ids'";
+    		                $tasa2 = mysqli_query($conexion,$actualizar);		        
+    				    }else{
+    		                echo $bs;
+    				    };
+    		?>" readonly required>
+	    	</div></td>
+            
+            <td><div id="" class="">
+		    		 
+		    		 <select id="bancosOrigen2" name="bancoOrg" class="form-control" onchange="cambiarcampos3(this)" required>
+				           <option  value="">Seleccionar</option>
+					       <option  value="Banesco">Banesco</option>
+                           <option  value="Banco Mercantil">Mercantil</option>            
+                        </select>
+				    </div>
+				    
+				   
+                   </td>
+                <td> <div id="" class="">
+		    		    
+                       <select id="cuentasOrigen2" name="cuentaOrg" class="form-control" required>
+				            <option value="">Seleccionar</option>
+					        <optgroup id="banescoCuentas1" label="Cuentas Banesco">
+                                <option value="Banesco Carlos">Banesco Carlos</option>
+                                <option value="Banesco Carlos Papa">Banesco Carlos Papa</option>
+                                <option value="Banesco Marola">Banesco Marola</option>
+                                <option value="Banesco Sonalys">Banesco Sonalys</option>
+                                <option value="Banesco Juridica">Banesco Juridica</option>
+                              </optgroup>
+                              <optgroup id="mercantilCuentas1" label="Cuentas Mercantil">
+                                <option value="Mercantil Mariana">Mercantil Mariana</option>
+                                <option value="Mercantil Carlos">Mercantil Carlos</option>
+                                <option value="Mercantil Juridica">Mercantil Juridica</option>
+                              </optgroup>
+                        </select>
+				    </div>
+				</td>
+				<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
+	    			</div></td>
+                <td><div id="enviarp" method="post" >
+    			    	<button id="botones" class="form-control" >Enviar Datos</button> 
+                    </div>
+                </td>
+
+            </form>
+            </tr>
+ <?php } ?>
+
+
+</table>
+
+		
+		
+		
+		</div>
+		
+	
+	
+	
+	
 		
         <div id="form2" class=" col-xs-12">
         

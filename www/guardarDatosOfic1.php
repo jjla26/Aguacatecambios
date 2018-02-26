@@ -88,6 +88,9 @@ $insertar1 = "INSERT INTO saldos1( disp_mercantil_juridica)VALUES(($bolivaresCom
 }elseif($cuentaOrigen == "Banesco Carlos"){
 $insertar1 = "INSERT INTO saldos1( disp_banesco_carlos)VALUES(($bolivaresCom*-1))";
 
+}elseif($cuentaOrigen == "Banesco Carlos Papa"){
+$insertar1 = "INSERT INTO saldos1( disp_banesco_carlos_papa)VALUES(($bolivaresCom*-1))";
+
 }elseif($cuentaOrigen == "Banesco Marola"){
 $insertar1 = "INSERT INTO saldos1( disp_banesco_marola)VALUES(($bolivaresCom*-1))";
 
@@ -260,7 +263,32 @@ $disponible_banesco_carlos = mysqli_query($conexion,$disponible_banesco_carlos);
 $disponible_banesco_carlos = mysqli_fetch_array($disponible_banesco_carlos);
 $disponible_banesco_carlos = $disponible_banesco_carlos['disp_banesco_carlos'];
 
-}  
+}
+
+if($cuentaOrigen =="Banesco Carlos Papa"){
+$abono_banesco_carlos_papa1 = "SELECT saldo_banesco_carlos_papa FROM saldos1 WHERE ID = '$ID'";
+$abono_banesco_carlos_papa1 = mysqli_query($conexion,$abono_banesco_carlos_papa1);
+$abono_banesco_carlos_papa1 = mysqli_fetch_array($abono_banesco_carlos_papa1);
+$abono_banesco_carlos_papa1= $abono_banesco_carlos_papa1['saldo_banesco_carlos_papa']-$bolivaresCom;
+
+}else{
+$abono_banesco_carlos_papa1 = "SELECT saldo_banesco_carlos_papa FROM saldos1 WHERE ID = '$ID'";
+$abono_banesco_carlos_papa1 = mysqli_query($conexion,$abono_banesco_carlos_papa1);
+$abono_banesco_carlos_papa1 = mysqli_fetch_array($abono_banesco_carlos_papa1);
+$abono_banesco_carlos_papa1= $abono_banesco_carlos_papa1['saldo_banesco_carlos_papa'];
+}
+if($bancoOrigen == $banco && $cuentaOrigen =="Banesco Carlos Papa"){
+$disponible_banesco_carlos_papa = "SELECT disp_banesco_carlos_papa FROM saldos1 WHERE ID = '$ID'";
+$disponible_banesco_carlos_papa = mysqli_query($conexion,$disponible_banesco_carlos_papa);
+$disponible_banesco_carlos_papa = mysqli_fetch_array($disponible_banesco_carlos_papa);
+echo $disponible_banesco_carlos_papa = $disponible_banesco_carlos_papa['disp_banesco_carlos_papa']-$bolivaresCom;
+}else{
+$disponible_banesco_carlos_papa = "SELECT disp_banesco_carlos_papa FROM saldos1 WHERE ID = '$ID'";
+$disponible_banesco_carlos_papa = mysqli_query($conexion,$disponible_banesco_carlos_papa);
+$disponible_banesco_carlos_papa = mysqli_fetch_array($disponible_banesco_carlos_papa);
+$disponible_banesco_carlos_papa = $disponible_banesco_carlos_papa['disp_banesco_carlos_papa'];
+
+}
 
 
 if($cuentaOrigen == "Banesco Marola"){
@@ -343,14 +371,14 @@ $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridi
 
 $ID=$ID+1;
 
-$insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha= '$current_date' WHERE ID= '$ID'";
+$insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_carlos_papa='$abono_banesco_carlos_papa1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_carlos_papa='$disponible_banesco_carlos_papa', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha= '$current_date' WHERE ID= '$ID'";
 
 $resultado3 = mysqli_query($conexion, $insertar3);
 
 
 
 
-if (!$resultado || !$resultado1 || !$resultado3 || !$actualizar)
+if (!$resultado && !$resultado1 && !$resultado3 && !$actualizar)
     
     
 echo 'error';
@@ -358,7 +386,7 @@ echo 'error';
 else{
 
 
-echo '<script>window.location="transaccionesofic.php"</script>';
+//echo '<script>window.location="transaccionesofic.php"</script>';
 
     
 }
