@@ -28,7 +28,7 @@ function cambiarcampos2(obj){
 
         
         document.getElementById("rut1").remove();
-        document.getElementById("comprobante1").remove();
+
         document.getElementById("Nombre1").remove();
         document.getElementById("Cedula1").remove();
         document.getElementById("Bancob").remove();

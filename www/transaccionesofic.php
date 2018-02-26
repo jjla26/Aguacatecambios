@@ -518,8 +518,8 @@ echo $tasa1;
                     <div id="campos" class="">
 				        <label>Transferencia</label>
 			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" >
+				           <option value="No Verificado">No verificado</option>
 				            <option value="Pendiente">Pendiente</option>
-				            <option value="No Verificado">Inmediata</option>
 				            <option value="NR">No Reportado</option>
 					   </select>
           	        </div>
@@ -826,7 +826,7 @@ echo $tasa1;
 		
 	   <div id="form2" class=" col-xs-12">
         
-            <h1>No verificados</h1>
+            <h1>Transacciones No Verificadas</h1>
 
         <table class="table table-striped">
   	
@@ -834,6 +834,8 @@ echo $tasa1;
 		<tr>
 		    <th>ID</th>
 		    <th>Cliente</th>
+		    <th>Comprobante</th>
+		    <th>Forma de pago</th>
 			<th>Nombre</th>
 			<th>Cedula</th>
 			<th>Banco</th>
@@ -841,9 +843,6 @@ echo $tasa1;
 			<th>Total Pesos</th>
 			<th>Pesos</th>
 			<th>Bolivares</th>
-			<th>Transferimos desde</th>
-			<th>Cuenta de</th>
-			<th>Estatus</th>
 			<th>Enviar</th>
 			
 
@@ -855,7 +854,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, cliente, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'No Verificado' ORDER BY ID";
+            $insertar= "SELECT ID, cliente, comprobante, Forma_pago, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'No Verificado' ORDER BY ID";
       
       
             $result = mysqli_query($conexion,$insertar);
@@ -864,7 +863,7 @@ echo $tasa1;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
+                <form name="formul2" method="POST" action="guardarDatosOfic3.php">
                 
         	<tr>
         	
@@ -872,6 +871,8 @@ echo $tasa1;
     				    <input type="text" class="form-control" name="ids" value="<?php echo $ids=$row['ID']; ?>"  readonly required>
 				</div></td>
             <td><?php echo $row['cliente'] ?></td>
+        	<td><?php echo $row['comprobante'] ?></td>
+            <td><?php echo $row['Forma_pago'] ?></td>
         	<td><?php echo $row['Nombre_apellido'] ?></td>
             <td><?php echo $row['Cedula'] ?></td>
             <td><?php echo $row['Cuenta_destino'] ?></td>
@@ -912,39 +913,6 @@ echo $tasa1;
     		?>" readonly required>
 	    	</div></td>
             
-            <td><div id="" class="">
-		    		 
-		    		 <select id="bancosOrigen2" name="bancoOrg" class="form-control" onchange="cambiarcampos3(this)" required>
-				           <option  value="">Seleccionar</option>
-					       <option  value="Banesco">Banesco</option>
-                           <option  value="Banco Mercantil">Mercantil</option>            
-                        </select>
-				    </div>
-				    
-				   
-                   </td>
-                <td> <div id="" class="">
-		    		    
-                       <select id="cuentasOrigen2" name="cuentaOrg" class="form-control" required>
-				            <option value="">Seleccionar</option>
-					        <optgroup id="banescoCuentas1" label="Cuentas Banesco">
-                                <option value="Banesco Carlos">Banesco Carlos</option>
-                                <option value="Banesco Carlos Papa">Banesco Carlos Papa</option>
-                                <option value="Banesco Marola">Banesco Marola</option>
-                                <option value="Banesco Sonalys">Banesco Sonalys</option>
-                                <option value="Banesco Juridica">Banesco Juridica</option>
-                              </optgroup>
-                              <optgroup id="mercantilCuentas1" label="Cuentas Mercantil">
-                                <option value="Mercantil Mariana">Mercantil Mariana</option>
-                                <option value="Mercantil Carlos">Mercantil Carlos</option>
-                                <option value="Mercantil Juridica">Mercantil Juridica</option>
-                              </optgroup>
-                        </select>
-				    </div>
-				</td>
-				<td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
-	    			</div></td>
                 <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
@@ -1070,6 +1038,7 @@ echo $tasa1;
             				<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
 	    			</div></td>
+	    			
                 <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>

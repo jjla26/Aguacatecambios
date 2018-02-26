@@ -126,10 +126,13 @@ echo '<script>window.location="admin"</script>';
                                 
                                 ?>" readonly>
                     </div>    
-                    <div id="campos" class="">
-	     		        <label>Transferencia</label>
-			   	       <input id="Transferencia" name="transf" value= 'Pendiente'  class="form-control"  readonly required>
-				    </div>
+                  <div id="campos" class="">
+				        <label>Transferencia</label>
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" >
+				           <option value="No Verificado">No verificado</option>
+				            <option value="Pendiente">Pendiente</option>
+					   </select>
+          	        </div>
                     
                     <div id="" class="">
 		    		   <label>Forma de pago</label> 

@@ -185,7 +185,10 @@ echo '<script>window.location="admin"</script>';
                     
 				    <div id="campos" class="">
 				        <label>Transferencia</label>
-			    	        <input type="text" class="form-control" name="transf" value= "<?php echo $estatus; ?>" readonly>
+			   	       <select id="Transferencia" name="transf"  class="form-control"  >
+				           <option value="No Verificado">No verificado</option>
+				            <option value="Pendiente">Pendiente</option>
+				        </select>
           	        </div>
                     
                     <div id="campos" class="">
