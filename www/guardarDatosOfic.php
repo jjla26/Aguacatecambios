@@ -70,7 +70,7 @@ goto a;
 
 }else {
 
-$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ";
+$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
 $seleccionar = mysqli_query($conexion,$seleccionar);
 $seleccionar = mysqli_fetch_array($seleccionar);
 $seleccionar = $seleccionar['Total_pesos'];
@@ -95,7 +95,7 @@ if ($estatus == 'NR'){
 
 $bolivaresCom = $bolivares;
 
-//if($banco !== $bancoOrigen ){
+/*if($banco !== $bancoOrigen ){
 //    if($bolivares >= 10000000){
 //    $comision= 1659.0+27.0;
 //    $bolivaresCom = $bolivares+$comision; 
@@ -107,7 +107,7 @@ $bolivaresCom = $bolivares;
 //    }
 //    }else{
 //        $bolivaresCom = $bolivares;
-//}
+}*/
 
 
 $insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";

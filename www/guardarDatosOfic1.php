@@ -468,9 +468,9 @@ require("PHPMailer/class.smtp.php");
 
 	$mail = new PHPMailer() ;
 
-	$body = " Hola, Estimado $nombre\n\r 
+	$body = '<html> Hola, Estimado'. $nombre .'
 	
-	Le informamos que su transferencia al banco $cuenta numero de cuenta $ncuenta fue procesada bajo el número $comprobante de Banesco\n\r
+	<h1>Le informamos que su transferencia a'. $cuenta. ' numero de cuenta'. $ncuenta.' fue procesada bajo el número '.$comprobante.' de Banesco\n\r</h1>
 	
 	Adjunta se encuentra su boleta por el servicio prestado
 	
@@ -478,7 +478,7 @@ require("PHPMailer/class.smtp.php");
 	
 	Equipo Aguacatecambios
 	
-	";
+	</html>';
 	
 				 				 
 		$body .= "";
