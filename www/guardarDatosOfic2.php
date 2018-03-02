@@ -70,7 +70,7 @@ if ($totalPesos != $pesos){
     $dif = $totalPesos-$pesos;
     $bolivares = ($totalPesos-$pesos)*$tasa;    
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','NR','$current_date','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
@@ -116,7 +116,7 @@ if ($seleccionar-$suma >= 5 ){
 
     $dif = $totalPesos-$pesos;
     $bolivares = $dif*$tasa;
-    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','NR','$current_date','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0',$dif,'$bolivares','NR','$current_date','restan $dif','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
     
 }
@@ -163,7 +163,7 @@ if ($totalPesos != $pesos){
     $dif = $totalPesos-$pesos;
     $bolivares = ($totalPesos-$pesos)*$tasa;    
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','NR','$current_date','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha,comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
@@ -207,7 +207,7 @@ if ($seleccionar-$suma >= 5 ){
 
     $dif = $totalPesos-$pesos;
     $bolivares = $dif*$tasa;
-    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','NR','$current_date','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0',$dif,'$bolivares','NR','$current_date','restan $dif','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
     
 }

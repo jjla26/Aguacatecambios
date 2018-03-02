@@ -56,24 +56,7 @@ echo '<script>window.location="admin"</script>';
 		
 	</head>
 <body>
-          <div>
-        
-            <h4>Bienvenidos <?php echo $_SESSION['user']; ?></h4>
-            
-          
-         </div>
-   
-        <div id="enviarp">
-            <h4><a href="destroyofic.php">Cerrar Sesion</a></h4> 
-        </div>
-
-        <div id="login" >
-            <div id="logo">
-            <a href="transaccionesofic.php"><img src="img/logo.png"></a>
-            </div>
-        </div>
-        
-<div id="form" class=" col-xs-4 col-xs-offset-1">
+         <div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Calculadora de cambios</h1>
             
                 <form name="formul">
