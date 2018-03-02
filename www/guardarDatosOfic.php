@@ -48,6 +48,7 @@ $pesos = $_POST['pesos2'];
 $bolivares = $_POST['bolivares2'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
+$comentarios = $_POST['comentarios'];
 
 
 if($pesos <= $totalPesos){
@@ -69,7 +70,8 @@ if (!$comprobante_exist){
 goto a;
 
 }else {
-
+    
+    
 $seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
 $seleccionar = mysqli_query($conexion,$seleccionar);
 $seleccionar = mysqli_fetch_array($seleccionar);
@@ -112,7 +114,7 @@ $bolivaresCom = $bolivares;
 
 $insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus,comentarios, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$comentarios','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -417,7 +419,7 @@ $bolivaresCom = $bolivares;
 
 $insertar2 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$usuario')";
 
 if ($totalPesos != $pesos){
     

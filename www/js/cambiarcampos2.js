@@ -10,6 +10,7 @@ function cambiarcampos2(obj){
         document.getElementById("Cuenta1").style.display='block';
         document.getElementById("email1").style.display='block';
         document.getElementById("telefono1").style.display='block';
+        document.getElementById("comentarios1").style.display= 'block';
      
 //}   if(obj.value == "Inmediata"){
 //        
@@ -28,13 +29,14 @@ function cambiarcampos2(obj){
 
         
         document.getElementById("rut1").remove();
-
+        document.getElementById("comprobante1").remove();
         document.getElementById("Nombre1").remove();
         document.getElementById("Cedula1").remove();
         document.getElementById("Bancob").remove();
         document.getElementById("Cuenta1").remove();
         document.getElementById("email1").remove();
         document.getElementById("telefono1").remove();
+        document.getElementById("comentarios1").style.display= 'block';
         
         
     

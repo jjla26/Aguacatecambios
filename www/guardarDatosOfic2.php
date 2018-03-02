@@ -94,18 +94,7 @@ mysqli_close($conexion);
 
 }else {
     
-    if($totalPesos == $pesos){
-    
-$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
-$seleccionar = mysqli_query($conexion,$seleccionar);
-$seleccionar = mysqli_fetch_array($seleccionar);
-echo $seleccionar = $seleccionar['Total_pesos'];
 
-$suma = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE comprobante= '$comprobante'";
-$suma = mysqli_query($conexion, $suma);
-$suma = mysqli_fetch_array($suma);
-echo $suma = $suma['SUM(Cantidad_pesos)'];
-}else{
 $seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
 $seleccionar = mysqli_query($conexion,$seleccionar);
 $seleccionar = mysqli_fetch_array($seleccionar);
@@ -115,7 +104,7 @@ $suma = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE comprobante= '$com
 $suma = mysqli_query($conexion, $suma);
 $suma = mysqli_fetch_array($suma);
 echo $suma = $suma['SUM(Cantidad_pesos)']+$pesos;
-}
+
 
 if($suma <= $seleccionar+1){
 
@@ -198,18 +187,6 @@ mysqli_close($conexion);
 
 }else {
 
-if($totalPesos == $pesos){
-    
-$seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
-$seleccionar = mysqli_query($conexion,$seleccionar);
-$seleccionar = mysqli_fetch_array($seleccionar);
-echo $seleccionar = $seleccionar['Total_pesos'];
-
-$suma = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE comprobante= '$comprobante'";
-$suma = mysqli_query($conexion, $suma);
-$suma = mysqli_fetch_array($suma);
-echo $suma = $suma['SUM(Cantidad_pesos)'];
-}else{
 $seleccionar = "SELECT Total_pesos FROM transacciones1 WHERE comprobante= '$comprobante' ORDER BY Total_pesos desc LIMIT 1 ";
 $seleccionar = mysqli_query($conexion,$seleccionar);
 $seleccionar = mysqli_fetch_array($seleccionar);
@@ -219,7 +196,6 @@ $suma = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE comprobante= '$com
 $suma = mysqli_query($conexion, $suma);
 $suma = mysqli_fetch_array($suma);
 echo $suma = $suma['SUM(Cantidad_pesos)']+$pesos;
-}
 
 if($suma <= $seleccionar+1){
 

@@ -546,7 +546,7 @@ echo $tasa1;
                     
 				    <div id="comprobante1" class="">
                         <label>Numero de Comprobante</label> 
-				    	<input id="comprobante" type="text" class="form-control" name="comprobante">
+				    	<input id="comprobante" type="text" class="form-control" name="comprobante" required>
                     </div>
                         
                     <div id="Nombre1" class="">
@@ -672,6 +672,11 @@ echo $tasa1;
 				        <label>Añadir Boleta</label>
     					<input type="file" name="attachment" class="form-control" name="telefono">
     				</div>-->
+    				
+    				<div id="comentarios1" class="">
+				        <label>Comentarios</label>
+    					<input type="text" class="form-control" name="comentarios">
+    				</div>
     				
                     <div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
@@ -953,6 +958,7 @@ echo $tasa1;
 			<th>Pesos</th>
 			<th>Bolivares</th>
 			<th>Estatus</th>
+			<th>Comentarios</th>
 			<th>Enviar</th>
 			
 		</tr>
@@ -962,7 +968,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
+            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, comentarios FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
             
             include 'conexion.php';
             
@@ -1037,6 +1043,9 @@ echo $tasa1;
             
             				<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
+	    			</div></td>
+	    			<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="transf" value="<?php echo $row['comentarios'] ?>" readonly>
 	    			</div></td>
 	    			
                 <td><div id="enviarp" method="post" >
@@ -1354,7 +1363,7 @@ echo $tasa1;
 		
 		<?php
             date_default_timezone_set('America/Santiago');
-            $current_date = date("Y-m-d H:i:s");
+            $current_date = date("Y-m-d");
             
             $insertar= "SELECT ID, cliente, Forma_pago, Cuenta_destino, Transferimos_desde, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%' AND estatus = 'Realizada' ORDER BY ID";
             
@@ -1368,8 +1377,7 @@ echo $tasa1;
         	<tr>
         	
         	<td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="ids" value="<?php echo $ids=$row['ID']; ?>"  readonly required>
-				</div></td>
+    		 
 			<td><?php echo $row['ID'] ?></td>
             <td><?php echo $row['cliente'] ?></td>
         	<td><?php echo $row['Forma_pago'] ?></td>
