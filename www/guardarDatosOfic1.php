@@ -2,7 +2,7 @@
 session_start();
 
 date_default_timezone_set('America/Santiago');
-$current_date = date("Y-m-d H:i:s");
+echo $current_date = date("Y-m-d H:i:s");
 
 if (isset($_SESSION['user'])){
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
