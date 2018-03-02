@@ -50,6 +50,20 @@ $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 $comentarios = $_POST['comentarios'];
 
+include 'conexion.php';
+
+if($totalPesos>=90000){
+    $tasa= "SELECT Tasa FROM Tasa3";
+    $tasa = mysqli_query($conexion,$tasa);
+    $tasa = mysqli_fetch_array($tasa);
+    $tasa = $tasa['Tasa'];
+}else{
+    $tasa= "SELECT Tasa FROM Tasa2";
+    $tasa = mysqli_query($conexion,$tasa);
+    $tasa = mysqli_fetch_array($tasa);
+    $tasa = $tasa['Tasa'];
+}
+
 
 if($pesos <= $totalPesos){
 

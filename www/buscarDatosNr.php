@@ -248,6 +248,7 @@ echo '<script>window.location="admin"</script>';
 		<thead>
 		<tr>
 			<th>ID</th>
+			<th>Tasa</th>
 		    <th>Cliente</th>
 			<th>RUT</th>
 			<th>Comprobante</th>
@@ -256,6 +257,9 @@ echo '<script>window.location="admin"</script>';
 			<th>Cedula</th>
 			<th>Banco destino</th>
 			<th>Num. Cuenta</th>
+			<th>Total Deposito</th>
+			<th>Pesos</th>
+			<th>Bs</th>
 			<th>Email</th>
 			<th>Telefono</th>
 			<th>Enviar</th>
@@ -284,6 +288,14 @@ echo '<script>window.location="admin"</script>';
         	        <td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
 	    	</div></td>
+        	        
+        	        <td>        
+        	            <div id="campos" name="id" >
+    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $tasa; ?>" readonly required>
+	    	            </div>
+	    	        
+                    </td>
+                    
         	        
         	        <td>        
         	            <div id="campos" name="id" >
@@ -373,12 +385,29 @@ echo '<script>window.location="admin"</script>';
     				        <input type="text" class="form-control" name="numdest1" value=""  required>
 	    			    </div>
 	    			</td>
+	    			
+	    				<td>        
+                        <div id="campos" class="" >
+    				        <input type="text" class="form-control" name="totalpesos" value= "<?php echo $totalPesos ?>" readonly required>
+	    		        </div>
+	    		    </td>
+                    <td>        
+                        <div id="campos" class="" >
+    				        <input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos ?>" required>
+	    		        </div>
+	    		    </td>
+                    <td><div id="campos" class="" >
+    				        <input type="text" class="form-control" name="bolivares2" value="<?php echo $bolivares ?>"  readonly required>
+	    			    </div>
+	    			</td>
+	    			
+	    			
 	    			<td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="email1" value="<?php echo $pesos=$row['Email'] ?>" required>
+    				        <input type="text" class="form-control" name="email1" value="<?php echo $row['Email'] ?>" required>
 	    			    </div>
 	    			</td>
 	    			<td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="telefono1" value="<?php echo $pesos=$row['Telefono'] ?>" required>
+    				        <input type="text" class="form-control" name="telefono1" value="<?php echo $row['Telefono'] ?>" required>
 	    			    </div>
 	    			</td>
             

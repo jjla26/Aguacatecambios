@@ -85,6 +85,9 @@ echo '<script>window.location="admin"</script>';
         $cedula= $_POST['cedula1'];
         $bancodest= $_POST['cuentadest1'];
         $numcuenta= $_POST['numdest1'];
+        $totalPesos= $_POST['totalpesos'];
+        $pesos= $_POST['pesos2'];
+        $bolivares= $_POST['bolivares2'];
         $email= $_POST['email1'];
         $telefono= $_POST['telefono1'];
         
@@ -188,17 +191,17 @@ echo '<script>window.location="admin"</script>';
 				    
 				    <div id="campos" class="" >
     				    <label>Total de pesos depositados</label>
-		    			<input type="number" class="form-control" name="totalpesos" onchange="calcularofic()" >
+		    			<input type="number" class="form-control" name="totalpesos" value= "<?php echo $totalPesos; ?>" onchange="calcularofic()" >
 	    			</div>
 				   
 				    <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="number" class="form-control" name="pesos2" onchange="calcularofic()" >
+		    			<input type="number" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()" >
 	    			</div>
                     
                     <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="number"  class="form-control" name="bolivares2" readonly>
+		    			<input type="number"  class="form-control" value= "<?php echo $bolivares; ?>" name="bolivares2" readonly>
 	    			</div>
 				   
 				    
