@@ -1,22 +1,22 @@
 <?php
 
-$emailem = $_POST["emailem"];
-$documentoem = $_POST["documentoem"];
-$comprobante = $_POST["comprobante"];
-$nombreem = $_POST["nombreem"];
-$nombreben = $_POST["nombreben"];
-$documentoben = $_POST["documentoben"];
-$emailben = $_POST["emailben"];
-$banco = $_POST["banco"];
-$numdecuenta = $_POST["numdecuenta"];
-$codigo = $_POST["codigo"];
+$emailem = $_POST["cantidadpp"];
+$cedulaem = $_POST["nombresolpp"];
+$numcomprobante = $_POST["emailsolpp"];
+$nombreem = $_POST["cedulasolpp"];
+$nombreben = $_POST[""];
+$cedulaben = $_POST[""];
+$emailben = $_POST[""];
+$numcuenta = $_POST[""];
+$codigo =$_POST["codigoverde"];
 
-$actualizar = "UPDATE cambio_divisas SET emailem ='$emailem', cedulaem = '$documentoem', numcomprobante = '$comprobante', nombreyapellidoem = '$nombreem', cedulaben = '$documentoben', nombreyapellidoben = '$nombreben', emailben = '$emailben', bancoben = '$banco', numerodecuenta = '$numdecuenta', codigo = '$codigo' WHERE codigo = '$codigo' ";
+if($key == $codigo ){
+
+$insertar = "REPLACE INTO cambio_divisas(cantidad, nombresol, emailsol, cedulasol, codigo) VALUES ('$cantidad','$nombre','$email','$cedula','$key')";
 
 include 'conexion.php';
 
-$resultado = mysqli_query($conexion, $actualizar);
-
+$resultado = mysqli_query($conexion, $insertar);
 if (!$resultado){
     
 echo 'error';
@@ -25,9 +25,32 @@ echo 'error';
 
 else{
     
-echo 'procede';
+echo 'pro
+cede';
 
 }
 
 mysqli_close($conexion);
-header("location: /index.html");
+$asunto= "Recibimos tus datos";
+$mensaje= " Hola, dejanos informarte que tu solicitud será procesada en un lapso no mayor a 4horas hábiles. Todos los pagos se realizan entre las 10:00hrs y las 20:00hrs.
+
+Gracias por preferirnos
+
+Aguacatecambios
+
+";
+			  
+mail($email,$asunto,$mensaje);
+} 
+
+else{
+    mysqli_close($conexion);
+$asunto= "Recibimos tus datos";
+$mensaje= " El codigo ingresado es erróneo, por favor te invitamos a realizar el proceso nuevamente, verificando bien tus datos. Ten en cuenta que un error en el envío de tus datos puede retrasar considerablemente el proceso. Gracias
+
+Aguacatecambios
+
+";
+			  
+mail($email,$asunto,$mensaje);
+}

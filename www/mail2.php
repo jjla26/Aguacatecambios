@@ -8,15 +8,14 @@ function generarCodigo($longitud) {
      $key .= $pattern{mt_rand(0,$max)};
  return $key;
 }
-
-$deseacambiar = "Bolivares";
-$cantidad = $_POST["cantidadbb"];
-$nombre = $_POST["nombresolbb"];
-$email = $_POST["emailsolbb"];
-$cedula = $_POST["cedulasolbb"];
+ 
+$cantidad = $_POST["cantidadpp"];
+$nombre = $_POST["nombresolpp"];
+$email = $_POST["emailsolpp"];
+$cedula = $_POST["cedulasolpp"];
 $key = generarCodigo(6);
 
-$insertar = "INSERT INTO cambio_divisas(deseacambiar,cantidad, nombresol, emailsol, cedulasol, codigo) VALUES ('$deseacambiar','$cantidad','$nombre','$email','$cedula','$key')";
+$insertar = "INSERT INTO cambio_divisas(cantidad, nombresol, emailsol, cedulasol, codigo) VALUES ('$cantidad','$nombre','$email','$cedula','$key')";
 
 include 'conexion.php';
 
@@ -34,18 +33,16 @@ echo 'procede';
 }
 
 mysqli_close($conexion);
-
-$asunto= "Datos para transferencia en Pesos";
+$asunto= "Datos para transferencia en Bolivares";
 $mensaje= "Hola, Gracias por preferirnos! Esperamos por tu transferencia de fondos para proseguir con el proceso 
 
 Nuestros datos son:
-Banesco Cuenta Corriente 01341009700003002008
+
+Banesco
+Cuenta Corriente 01341009700003002008
 Carlos Aldazoro
 Cedula: 19.196.247
-Email: aguacatecambios@gmail.com
-Tu codigo verde es: $key
 
 ";
 			  
 mail($email,$asunto,$mensaje);
-header("location: /index.html#formulario");

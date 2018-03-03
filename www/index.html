@@ -21,10 +21,10 @@
 <body>
    		<header>
    		   
-				<nav id="barraNav" class="navbar navbar-inverse navbar-static-top col-xs-12" style="margin-bottom:0;">
+				<nav id="barra" class="navbar navbar-inverse navbar-static-top col-xs-12" style="margin-bottom:0;">
 					<div class="container">
 						<div class="navbar-header">
-							<a href="index" class="navbar-left"><img src="img/logo.png"></a>
+							<a href="index.html" class="navbar-left"><img src="img/logo.png"></a>
 							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
@@ -37,10 +37,10 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li class=""><a href="#formulario">Formulario de envio</a></li>
-								<li class=""><a href="preguntasfrecuentes">Preguntas Frecuentes</a></li>
-								<li class=""><a href="testimonios">Testimonios</a></li>
-								<li class=""><a href="contacto">Contacto</a></li>
-								<li class=""><a href="comingsoon">SIGN UP</a></li>
+								<li class=""><a href="preguntasfrecuentes.html">Preguntas Frecuentes</a></li>
+								<li class=""><a href="testimonios.html">Testimonios</a></li>
+								<li class=""><a href="contacto.html">Contacto</a></li>
+								<li class=""><a href="comingsoon.html">SIGN UP</a></li>
 							</ul>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
            	</header>
        <main>
 				<section id="banner" >
-					<div id="asd" class="imagenp" style="background-image: url(img/bg2.png)">
+					<div id="asd" class="imagenp" style="background-image: url(img/bg.png)">
 					
 					<div class="container col-xs-12">
 						<h1>10,00</h1>
@@ -114,24 +114,24 @@
 					<div class="container col-xs-12 text-center" style="background-image: url(img/bg_dolar.png); top:50px; padding:10px; color: white;" >
 										
 						<div class=" col-xs-12">
-							<h1>Calculadora de cambio</h1>
+							<a name="calculadora"><h1>Calculadora de cambio</h1></a>
 						<p>aqui puedes calcular rapidamente la cantidad que necesitas</p>
 							<form name="formul">
 								
-								<div id="div10" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-sm-offset-1">
+								<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-3">
 									<select id="cambiar" name="cambiar" class="form-control" onChange="pagoOnChange(this)" required>
 										<option value="0">Elegir que desea cambiar</option>
 										<option value="1">Pesos Chilenos</option>
 										<option value="2">Bolivares</option>
 										
-                                </select>
+                                    </select>
 									
 								</div>
 								
-								<div id="div0" class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+								<div id="div0" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
 									<input type="text" name="pesos0" class="form-control" placeholder=""  disabled>
 								</div>
-								<div id="div7" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 ">
+								<div id="div7" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<input type="text" name="bolivares0" class="form-control" placeholder="" disabled>
 								</div>
 								
@@ -147,7 +147,7 @@
 								<div id="div3" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<input type="text" name="pesos1" class="form-control" placeholder="Pesos chilenos">
 								</div>
-								<div id="div5" class="col-xs-12 col-sm-2 col-md-2 col-lg-3 col-sm-offset-4">
+								<div id="div5" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-5">
 									<a id="botones" class="btn btn-success col-xs-12 success" onclick="calcular();"> Calcular</a> 
 								</div>
 								<div id="div6" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-5">
@@ -172,7 +172,7 @@
 						<div class="container col-xs-12 text-center">
 							<h2>Datos del Solicitante y Cantidad a Enviar</h2>
 							
-							  <div id="moneda" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-3">
+							  <div id="moneda" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-4">
                                 
 								    <select id="deseacambiar" method="post" name="cambiar" class="form-control" onChange="pagoOnChange1(this)" required>
 										<option value="0">Elegir que desea cambiar</option>
@@ -219,20 +219,20 @@
                            
                             </form>
                             
-				            <form action="mail2.php" method="post">
+				            <form action="mail.php" method="post">
 								
 								<div id="cantidadb" method="post" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
-									<input type="text" class="form-control" name="cantidadbb" placeholder="Cantidad que desea cambiar" required>
+									<input type="text" class="form-control" name="nombre" placeholder="Cantidad que desea cambiar" required>
 								</div>
 							
 								<div id="nombresolb" method="post" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-3">
-									<input type="text" class="form-control" name="nombresolbb" placeholder="Nombre y Apellido" required>
+									<input type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido" required>
 								</div>
 								<div id="emailsolb" method="post" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-									<input type="Email" class="form-control" name="emailsolbb" placeholder="Email" required>
+									<input type="Email" class="form-control" name="email" placeholder="Email" required>
 								</div>
 								<div id="cedulasolb" method="post" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-									<input type="text" class="form-control" name="cedulasolbb" placeholder="Documento de Identificación" required>
+									<input type="text" class="form-control" name="numero" placeholder="Documento de Identificación" required>
 								</div>
 								
 								<div id="enviarb" method="post" class="col-xs-12 col-sm-2 col-sm-offset-5">
@@ -247,22 +247,21 @@
 							
 							<h2>Datos del Emisor, Transferencia o Deposito</h2>
 							
-							<form action="mail3.php" method="post">
-                                
+							<form action="mail2.php" method="post">
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-4">
-									<input type="Email" class="form-control" name="emailem" placeholder="Email" required>
+									<input type="Email" class="form-control" name="email" placeholder="Email" required>
 								</div>
 								<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-									<input type="text" class="form-control" name="documentoem" placeholder="Documento de Identificación" required>
+									<input type="text" class="form-control" name="numero" placeholder="Documento de Identificación" required>
 								</div>							
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-3 ">
-										<input type="text" class="form-control" name="comprobante" placeholder="Comprobante de pago" required>
+										<input type="text" class="form-control" name="nombre" placeholder="Comprobante de pago" required>
 									</div>
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
-										<input type="text" class="form-control" name="nombreem" placeholder="Nombre y Apellido" required>
+										<input type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-										<input type="text" class="form-control" name="codigo" placeholder="Codigo verde" required>
+										<input type="text" class="form-control" name="email" placeholder="Codigo verde" required>
 									</div>
 									
 									<div class="col-xs-12">
@@ -270,26 +269,26 @@
 									</div>							
 									
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-3">
-										<input type="text" class="form-control" name="nombreben" placeholder="Nombre y Apellido" required>
+										<input type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-										<input type="text" class="form-control" name="documentoben" placeholder="Documento de ID" required>
+										<input type="text" class="form-control" name="email" placeholder="Documento de ID" required>
 									</div>
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-											<input type="Email" class="form-control" name="emailben" placeholder="Email" required>
+											<input type="Email" class="form-control" name="email" placeholder="Email" required>
 									</div>
 								     <div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-3">
-								        <select id="cambiar" name="banco" class="form-control" onChange="pagoOnChange(this)" required>
+								        <select id="cambiar" name="cambiar" class="form-control" onChange="pagoOnChange(this)" required>
 										    <option value="3">Banco del Beneficiario</option>
-										    <option value="Banesco">Banesco</option>
-										    <option value="Banco Mercantil">Banco Mercantil</option>
+										    <option value="4">Banesco</option>
+										    <option value="5">Banco Mercantil</option>
 								        </select>
 								    </div>
                                     <div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-										<input type="text" class="form-control" name="numdecuenta" placeholder="Numero de cuenta" required>
+										<input type="text" class="form-control" name="email" placeholder="Numero de cuenta" required>
 									</div>
 									<div id="campos" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-										<input type="text" class="form-control" name="comentario" placeholder="Comentario" required>
+										<input type="text" class="form-control" name="email" placeholder="Comentario" required>
 									</div>
 									<div id="campos" class="col-xs-12 col-sm-3 col-md-3 col-lg-3 col-sm-offset-3">
 										<button id="botones" class="btn btn-success col-xs-12">Enviar</button> 
@@ -311,7 +310,7 @@
                                     
                
                <footer>
-					<div class="container col-xs-12" style="background-color:#000; padding:1px;">
+					<div class="container col-xs-12" style="background-color:#000; top:100px; padding:1px;">
 						<h1> Encuentranos</h1>
 							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.3988309479223!2d-70.65947758515014!3d-33.43891428077734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a580170b31%3A0xe1d822d34baa99ff!2sCompa%C3%B1%C3%ADa+de+Jes%C3%BAs+1429%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses-419!2scl!4v1497468983749" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 					
