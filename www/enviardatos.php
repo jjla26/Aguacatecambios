@@ -163,7 +163,7 @@ echo '<script>window.location="admin"</script>';
                     
                     <div id="comprobante1" class="">
                         <label>Numero de Comprobante</label> 
-				    	<input type="text" class="form-control" name="comprobante" value= "<?php  echo $comprobante ?>"required >
+				    	<input type="text" class="form-control" name="comprobante" value= "<?php  echo $comprobante ?>" required >
                     </div>
                         
                     <div id="campos" class="">
@@ -184,24 +184,33 @@ echo '<script>window.location="admin"</script>';
 			        </div>
                     <div id="CuentaBeneficiario" class="">
 				        <label>Numero de Cuenta Bancaria</label>
-				    	<input type="text" class="form-control" name="cuenta" value= "<?php echo $numcuenta; ?>" readonly required>
+				    	<input type="text" class="form-control" name="cuenta"  minlength=20 maxlength=20 value= "<?php echo $numcuenta; ?>" readonly required>
 				    </div>
 				   
 				   
 				    
 				    <div id="campos" class="" >
     				    <label>Total de pesos depositados</label>
-		    			<input type="number" class="form-control" name="totalpesos" value= "<?php echo $totalPesos; ?>" onchange="calcularofic()" >
+		    			<input type="number" class="form-control" name="totalpesos" value= "<?php echo $totalPesos; ?>" onchange="calcularofic()" required>
 	    			</div>
+	    			
+	    			<div id="PesosBs1" class="">
+				        <label>¿Pesos o Bolivares?</label>
+			   	       		<select id="pesosbs" name="pesosbs" onchange="cambiarcampos16(this)" class="form-control" required>
+				        		<option value="">Seleccionar</option>            
+				        		<option value="Pesos">Pesos</option>            
+                        		<option value="Bolivares">Bolivares</option>
+					    	</select>
+          	        </div>
 				   
 				    <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="number" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()" >
+		    			<input id="pesos2" type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()" readonly required>
 	    			</div>
                     
                     <div id="campos" class="" >
     				    <label>Cantidad de Bs. a Recibir</label>
-		    			<input type="number"  class="form-control" value= "<?php echo $bolivares; ?>" name="bolivares2" readonly>
+		    			<input id="bolivares2" type="text"  class="form-control" value= "<?php echo $bolivares; ?>" name="bolivares2" onchange="calcularofic2()" readonly required>
 	    			</div>
 				   
 				    

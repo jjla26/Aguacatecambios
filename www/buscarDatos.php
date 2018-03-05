@@ -303,7 +303,7 @@ echo '<script>window.location="admin"</script>';
 				    </div>
 	    		    </td>
                     <td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="numdest1" value=""  required>
+    				        <input type="text" class="form-control"  minlength=20 maxlength=20 name="numdest1" value=""  required>
 	    			    </div>
 	    			</td>
 	    			<td><div id="campos" class="" >

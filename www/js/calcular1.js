@@ -5,5 +5,5 @@ function calcular1(){
 	var total1= bolivares1/(document.formul.tasacalc.value);
 	
 	
-	document.formul.pesos1.value= Math.round((total1)*100)/100;
+	document.formul.pesos1.value= total1;
 }

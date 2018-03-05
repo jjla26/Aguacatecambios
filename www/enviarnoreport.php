@@ -254,7 +254,7 @@ echo '<script>window.location="admin"</script>';
 				    </div>
                     <div id="CuentaBeneficiario" class="">
 				        <label>Numero de Cuenta Bancaria</label>
-				    	<input type="text" class="form-control" name="cuenta" value= "" required>
+				    	<input type="text" class="form-control" name="cuenta"  minlength=20 maxlength=20 value= "" required>
 				    </div>
 				    
 				     <div id="campos" class="" >

@@ -403,9 +403,9 @@ else{
     
 }
 
-
-include 'sendmail.php';
-
+//
+//include 'sendmail.php';
+//
 mysqli_close($conexion);
 
 ?>

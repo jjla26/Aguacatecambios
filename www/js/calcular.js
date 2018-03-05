@@ -4,7 +4,7 @@ function calcular(){
 	
 	var total = pesos*(document.formul.tasacalc.value);
 	
-	document.formul.bolivares.value= Math.round((total)*100)/100;
+	document.formul.bolivares.value= total;
 	
 }
 
