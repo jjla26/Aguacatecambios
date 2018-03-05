@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+                        <div id="opciones" class="">
+				        	<label>¿1 o 2?</label>
+			   	       			<select id="opcion1" onchange="cambiar1(this)" class="form-control" required>
+				            		<option value="">Seleccionar</option>            
+				            		<option value="1">1</option>            
+                            		<option value="2">2</option>
+					    		</select>
+          	          	</div>
+				   
+    				   
+    				    <div id="" class="" >
+        				    <label>Campo1</label>
+    		    			<input id="campo1" type="text" readonly required>
+    	    			</div>
+                        
+                        <div id="" class="" >
+        				    <label>Campo2</label>
+    		    			<input id="campo2" type="text" readonly required>
+    	    			</div>
+    
+    <script>
+        function cambiar1(obj){
+        
+        if(obj.value =="1"){
+                    
+                document.getElementById("campo1").readOnly = true;
+                document.getElementById("campo2").readOnly = false;
+                
+
+        }
+        
+        
+        if(obj.value =="2"){
+                
+                document.getElementById("campo1").readOnly = false;
+                document.getElementById("campo2").readOnly = true;
+        }
+        
+}
+    </script>
+    
+</body>
+</html>

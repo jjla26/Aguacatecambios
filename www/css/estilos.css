@@ -4,7 +4,7 @@ body{
 
 p{
     font-size: 1.3em;
-    border-style:  
+   
 }
 
 section{
@@ -147,9 +147,6 @@ section .cambio{
 }
 
 
-.container .img{
-
-}
 
 #div7, #div0, #div5{
 	display: block;	

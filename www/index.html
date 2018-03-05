@@ -37,10 +37,10 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li class=""><a href="#formulario">Formulario de envio</a></li>
-								<li class=""><a href="preguntasfrecuentes.html">Preguntas Frecuentes</a></li>
-								<li class=""><a href="testimonios.html">Testimonios</a></li>
-								<li class=""><a href="contacto.html">Contacto</a></li>
-								<li class=""><a href="comingsoon.html">SIGN UP</a></li>
+								<li class=""><a href="">Preguntas Frecuentes</a></li>
+								<li class=""><a href="">Testimonios</a></li>
+								<li class=""><a href="">Contacto</a></li>
+								<li class=""><a href="">SIGN UP</a></li>
 							</ul>
 						</div>
 					</div>
@@ -52,7 +52,16 @@
 					<div id="asd" class="imagenp" style="background-image: url(img/bg.png)">
 					
 					<div class="container col-xs-12">
-						<h1>10,00</h1>
+						<h1><?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa2";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?></h1>
 						<div id="tasaverde" class="container col-xs-12 col-sm-6 col-md-4 col-lg-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
 						<p> Tasa verde de CLP a Bs</p>
 						</div>
@@ -174,14 +183,13 @@
 							
 							  <div id="moneda" class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-offset-4">
                                 
-								    <select id="deseacambiar" method="post" name="cambiar" class="form-control" onChange="pagoOnChange1(this)" required>
-										<option value="0">Elegir que desea cambiar</option>
+								    <select id="deseacambiar" name="cambiar" class="form-control" onChange="pagoOnChange1(this)" required>
+										<!--<option value="0">Elegir que desea cambiar</option>-->
 										<option value="1">Pesos Chilenos</option>
-										<option value="2">Bolivares</option>
-								    </select>
+									</select>
 								</div>
 							
-							<form action="mail.php" method="post">
+							<form >
                            
                                 <div id="campos1"  class="col-xs-12 col-sm-2 col-md-2 col-lg-2 ">
 									<input type="text" class="form-control" name="nombre" placeholder="Cantidad que desea cambiar" disabled>
@@ -312,8 +320,8 @@
                <footer>
 					<div class="container col-xs-12" style="background-color:#000; top:100px; padding:1px;">
 						<h1> Encuentranos</h1>
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.3988309479223!2d-70.65947758515014!3d-33.43891428077734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c5a580170b31%3A0xe1d822d34baa99ff!2sCompa%C3%B1%C3%ADa+de+Jes%C3%BAs+1429%2C+Santiago%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses-419!2scl!4v1497468983749" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-					
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8748898444314!2d-70.61828268500295!3d-33.42650598078083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf6383ac6e6b%3A0x24d2440872142db9!2sAv.+Providencia+1650%2C+Providencia%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses-419!2scl!4v1520094298458" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+						
 					</div>
 				
 				</footer>

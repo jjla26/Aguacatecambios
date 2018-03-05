@@ -261,15 +261,24 @@ echo '<script>window.location="admin"</script>';
     				    <label>Total Pesos Depositados</label>
 		    			<input type="text" class="form-control" name="totalpesos" value= "<?php echo $totalpesos; ?>" readonly required>
 	    			</div> 
+	    			
+	    			<div id="PesosBs1" class="">
+				        	<label>¿Pesos o Bolivares?</label>
+			   	       			<select id="pesosbs" name="pesosbs" onchange="cambiarcampos16(this)" class="form-control"required>
+				            		<option value="">Seleccionar</option>            
+				            		<option value="Pesos">Pesos</option>            
+                            		<option value="Bolivares">Bolivares</option>
+					    		</select>
+          	          	</div>
                   
 				   <div id="campos" class="" >
     				    <label>Cantidad de Pesos a Enviar</label>
-		    			<input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()" required>
+		    			<input id="pesos2" type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()"  readonly required>
 	    			</div>
                     
                     <div id="campos" class="">
     				    <label>Cantidad de Bs. a Recibir</label>
-		    	    		<input type="text" class="form-control" name="bolivares2" value= "<?php echo $bolivares; ?>" readonly>
+		    	    		<input id= "bolivares2" type="text" class="form-control" name="bolivares2" value= "<?php echo $bolivares; ?>" onchange="calcularofic2()" readonly>
 	    			</div>
 				   
 				   

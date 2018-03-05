@@ -508,7 +508,7 @@ echo $tasa1;
           	        </div>
                     <div id="" class="">
 		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos16(this)">
 				           <option  value="">Seleccionar</option>
 					       <option  value="Efectivo">Efectivo</option>
                            <option  value="DepositoRut">Deposito a Cuenta Rut</option>
@@ -593,20 +593,31 @@ echo $tasa1;
 				        <label>Numero de Cuenta Bancaria</label>
 				    	<input type="text" class="form-control" name="cuenta" minlength=20 maxlength=20 required>
 				    </div>
+				    
 				   
     				    <div id="campos" class="" >
         				    <label>Total de pesos depositados</label>
     		    			<input type="number" class="form-control" name="totalpesos" onchange="calcularofic()" required>
     	    			</div>
+    	    			
+    	    			<div id="PesosBs1" class="">
+				        	<label>¿Pesos o Bolivares?</label>
+			   	       			<select id="pesosbs" name="pesosbs" onchange="cambiarcampos16(this)" class="form-control"required>
+				            		<option value="">Seleccionar</option>            
+				            		<option value="Pesos">Pesos</option>            
+                            		<option value="Bolivares">Bolivares</option>
+					    		</select>
+          	          	</div>
+				   
     				   
     				    <div id="campos" class="" >
         				    <label>Cantidad de Pesos a Enviar</label>
-    		    			<input type="number" class="form-control" name="pesos2" onchange="calcularofic()" required>
+    		    			<input id="pesos2" type="text" class="form-control" name="pesos2" onchange="calcularofic()" readonly required>
     	    			</div>
                         
                         <div id="campos" class="" >
         				    <label>Cantidad de Bs. a Recibir</label>
-    		    			<input type="number"  class="form-control" name="bolivares2" readonly required>
+    		    			<input id="bolivares2" type="text"  class="form-control" name="bolivares2" onchange="calcularofic2()" readonly required>
     	    			</div>
 				   
 				    <!--
@@ -951,7 +962,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, comentarios FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
+            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Diferencia, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, comentarios FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
             
             include 'conexion.php';
             
@@ -985,7 +996,7 @@ echo $tasa1;
 	    	</div></td>
             
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $totalp=$row['Total_pesos'] ?>"  readonly required>
+    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $totalp=$row['Diferencia'] ?>"  readonly required>
 	    	</div></td>
             
             <td><div id="campos" class="" >

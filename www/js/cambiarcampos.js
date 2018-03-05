@@ -58,3 +58,21 @@ function cambiarcampos11(obj){
         }else{
                 document.getElementById("comprobante1").style.display='block';
 }}
+
+function cambiarcampos16(obj){
+        
+        if(obj.value =="Bolivares"){
+                
+                document.getElementById("pesos2").readOnly = true;
+                document.getElementById("bolivares2").readOnly = false;
+        }else if(obj.value =="Pesos"){
+
+                document.getElementById("pesos2").readOnly = false;
+                document.getElementById("bolivares2").readOnly = true;
+        }else{
+                document.getElementById("pesos2").readOnly = true;
+                document.getElementById("bolivares2").readOnly = true;
+
+        }
+
+}
