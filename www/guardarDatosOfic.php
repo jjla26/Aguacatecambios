@@ -128,7 +128,7 @@ $bolivaresCom = $bolivares;
 
 $insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Fecha, estatus,comentarios, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$current_date','$estatus','$comentarios','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, comentarios, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -441,7 +441,7 @@ if ($totalPesos != $pesos){
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;
     echo $dif2 = floor($dif*100)/100;
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif2','$comentarios','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, Email, Telefono, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','$email','$telefono','NR','$current_date','$dif2 restan','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
@@ -749,16 +749,16 @@ $bolivaresCom = $bolivares;
 
 $insertar2 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus,comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$usuario')";
 
 if ($totalPesos != $pesos){
     
     echo $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;   
-     echo $dif2 = floor($dif*100)/100;
+    echo $dif2 = floor($dif*100)/100;
     
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif2','$comentarios,'$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, Email, Telefono, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','$email','$telefono','NR','$current_date','$dif2 restan','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }

@@ -138,7 +138,7 @@ echo '<script>window.location="admin"</script>';
                     </td>
                     <td>        
         	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $tasa; ?>" readonly required>
+    				        <input type="text" class="form-control" name="tasa" value= "<?php echo $tasa; ?>" readonly required>
 	    	            </div>
 	    	        
                     </td>
@@ -156,7 +156,7 @@ echo '<script>window.location="admin"</script>';
 	    	        </td>
 	    	                        <td>        
         	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $comprobante; ?>" readonly required>
+    				        <input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante; ?>" readonly required>
 	    	            </div>
 	    	        
                     </td>
@@ -183,7 +183,7 @@ echo '<script>window.location="admin"</script>';
                     
                     <td>
                         <div id="campos" name="id" >
-                            <input type="text" class="form-control" name="cedula" value= "<?php echo $row['Cedula'] ?>" readonly required>
+                            <input type="text" class="form-control" name="iddoc" value= "<?php echo $row['Cedula'] ?>" readonly required>
 	    	            </div>
 	    	        </td>
                     

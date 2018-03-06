@@ -82,6 +82,8 @@ echo '<script>window.location="admin"</script>';
         $totalpesos=$_POST['totalpesos'];
         $pesos= $_POST['pesos1'];
         $bolivares= $_POST['bs1'];
+        $email = $_POST['email'];
+        $telefono = $_POST['telefono'];
         $estatus= 'Pendiente';
         
         include 'conexion.php';
@@ -284,11 +286,11 @@ echo '<script>window.location="admin"</script>';
 				   
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
-    					<input type="Email" class="form-control" value= "" name ="email">
+    					<input type="Email" class="form-control" value= "<?php echo $email; ?>" name ="email">
     				</div>
                     <div id="campos" class="">
 				        <label>Teléfono de Quien Envía</label>
-    					<input type="text" class="form-control" value= "" name="telefono" >
+    					<input type="text" class="form-control" value= "<?php echo $telefono; ?>" name="telefono" >
     				</div>
     				
                     <div id="enviarp" method="post" >
