@@ -202,7 +202,7 @@ echo $saldo+$saldo1;
     				</div>
     				
      				<div id="campos" class="col-xs-6" >
-    				    <label>Banesco Juridica</label>
+    				    <label>Banesco Juridica 2197</label>
 		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
 include 'conexion.php';
 $saldo_banesco_juridica = "SELECT saldo_banesco_juridica FROM saldos1 order by ID desc Limit 1";
@@ -215,7 +215,7 @@ echo $saldo_banesco_juridica;
 	    			</div>
 	    			
 	    			<div id="campos" class="col-xs-6" >
-    				    <label>Disp Banesco Juridica</label>
+    				    <label>Disp Banesco Juridica 2197</label>
 		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
 include 'conexion.php';
 $disp_banesco_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Juridica' AND DATE(Fecha) like '%$current_date%'";
@@ -230,7 +230,7 @@ echo $disp_banesco_juridica;
 ?>" readonly>
 	    			</div>
 	    			<div id="campos" class="col-xs-6" >
-    				    <label>Banesco Carlos</label>
+    				    <label>Banesco Carlos 2008</label>
 		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $saldo_banesco_carlos = "SELECT saldo_banesco_carlos FROM saldos1 order by ID desc Limit 1";
@@ -243,7 +243,7 @@ echo $saldo_banesco_carlos;
 	    			</div>
 	    			
 <div id="campos" class="col-xs-6" >
-    				    <label>Disp Banesco Carlos</label>
+    				    <label>Disp Banesco Carlos 2008</label>
 		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $disp_banesco_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos' AND DATE(Fecha) like '%$current_date%'";
@@ -260,7 +260,7 @@ echo $disp_banesco_carlos;
 
 
     				<div id="campos" class="col-xs-6">
-				        <label>Banesco Carlos Papa</label>
+				        <label>Banesco Carlos Papa 7088</label>
     					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $saldo_banesco_carlos_papa = "SELECT saldo_banesco_carlos_papa FROM saldos1 order by ID desc Limit 1";
@@ -273,7 +273,7 @@ echo $saldo_banesco_carlos_papa;
     				</div>
  			
             	<div id="campos" class="col-xs-6">
-				        <label> Disp Banesco Carlos Papa</label>
+				        <label> Disp Banesco Carlos Papa 7088</label>
     					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $disp_banesco_carlos_papa = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos Papa' AND DATE(Fecha) like '%$current_date%'";
@@ -289,7 +289,7 @@ echo $disp_banesco_carlos_papa;
 	    			</div>
 	    			
                     <div id="campos" class="col-xs-6">
-				        <label>Banesco Marola</label>
+				        <label>Banesco Marola 2176</label>
     					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $saldo_banesco_marola = "SELECT saldo_banesco_marola FROM saldos1 order by ID desc Limit 1";
@@ -303,7 +303,7 @@ echo $saldo_banesco_marola;
     				
     
                     <div id="campos" class="col-xs-6">
-				        <label>Disp Banesco Marola</label>
+				        <label>Disp Banesco Marola 2176</label>
     					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $disp_banesco_marola = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Marola' AND DATE(Fecha) like '%$current_date%'";
@@ -318,7 +318,7 @@ echo $disp_banesco_marola;
 ?>" readonly>
     				</div>
     				<div id="campos" class="col-xs-6" >
-    				    <label>Banesco Sonalys</label>
+    				    <label>Banesco Sonalys 4568</label>
 		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $saldo_banesco_sonalys = "SELECT saldo_banesco_sonalys FROM saldos1 order by ID desc Limit 1";
@@ -330,7 +330,7 @@ echo $saldo_banesco_sonalys;
 ?>" readonly>
 	    			</div>
     				<div id="campos" class="col-xs-6" >
-    				    <label>Disp Banesco Sonalys</label>
+    				    <label>Disp Banesco Sonalys 4568</label>
 		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $disp_banesco_sonalys = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Sonalys' AND DATE(Fecha) like '%$current_date%'";
@@ -883,7 +883,7 @@ echo $tasa1;
 	    			</div></td>
 	    		
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="pesos" value="<?php echo $pesos=$row['Cantidad_pesos'] ?>"  readonly required>
+    				    <input type="text" class="form-control" name="pesos" value="<?php echo $row['Cantidad_pesos'] ?>"  readonly required>
 	    			</div></td>
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="bs" value= "<?php
@@ -951,6 +951,8 @@ echo $tasa1;
 			<th>Total Pesos</th>
 			<th>Pesos</th>
 			<th>Bolivares</th>
+			<th>Email</th>
+			<th>Telefono</th>
 			<th>Estatus</th>
 			<th>Comentarios</th>
 			<th>Enviar</th>
@@ -962,7 +964,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Diferencia, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, comentarios FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
+            $insertar= "SELECT ID, tasa, cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus, Email, Telefono, comentarios FROM transacciones1 WHERE estatus = 'NR' ORDER BY ID";
             
             include 'conexion.php';
             
@@ -996,7 +998,7 @@ echo $tasa1;
 	    	</div></td>
             
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $totalp=$row['Diferencia'] ?>"  readonly required>
+    				    <input type="text" class="form-control" name="totalpesos" value="<?php echo $totalp=$row['Total_pesos'] ?>"  readonly required>
 	    	</div></td>
             
             <td><div id="campos" class="" >
@@ -1035,12 +1037,23 @@ echo $tasa1;
     				    ?>" readonly required>
 	    	</div></td>
             
-            				<td><div id="campos" class="" >
+            		<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="email" value="<?php echo $row['Email'] ?>"  readonly required>
+	    			</div></td>
+	    			<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="telefono" value="<?php echo $row['Telefono'] ?>"  readonly required>
+	    			</div></td>
+            
+            
+            		<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
 	    			</div></td>
+	    			
+	    			
 	    			<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['comentarios'] ?>" readonly>
 	    			</div></td>
+	    			
 	    			
                 <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
@@ -1392,6 +1405,66 @@ echo $tasa1;
 		
 		</div>
    
+
+<div id="form2" class=" col-xs-12">
+        
+            <h1>Abonos y Debitos</h1>
+
+        <table class="table table-striped">
+  	
+		<thead>
+		<tr>
+			<th>Abonos Efectivo</th>
+			<th>Abonos RUT</th>
+		    <th>Abonos AHORRO</th>
+		    <th>Abonos VISTA</th>
+		    <th>Abonos Carlos</th>
+		    <th>Abonos Carlos Papa</th>
+		    <th>Abonos Marola</th>
+			<th>Abonos Sonalys</th>
+			<th>Abonos Juridica</th>
+			<th>Comentarios</th>
+			
+		</tr>
+		</thead>
+		
+		<?php
+            date_default_timezone_set('America/Santiago');
+            $current_date = date("Y-m-d");
+            
+            $insertar= "SELECT abono_efec, abono_rut, abono_ahorro, abono_vista, abono_banesco_carlos, abono_banesco_carlos_papa, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, comentarios FROM saldos1 WHERE (abono_efec!= '0' OR abono_rut!='0' OR abono_ahorro!='0' OR abono_vista!='0' OR abono_banesco_carlos!='0' OR abono_banesco_marola!='0' OR abono_banesco_sonalys!='0' OR abono_banesco_carlos_papa!='0' OR abono_banesco_juridica!='0') AND DATE(Fecha) like '%$current_date%'";
+            
+            include 'conexion.php';
+            
+            $result = mysqli_query($conexion,$insertar);
+            
+		while ($row = mysqli_fetch_array($result)){?>
+        	
+            
+        	<tr>
+        	<td><?php echo $row['abono_efec'] ?></td>	
+        	<td><?php echo $row['abono_rut'] ?></td>
+            <td><?php echo $row['abono_ahorro'] ?></td>
+            <td><?php echo $row['abono_vista'] ?></td>
+        	<td><?php echo $row['abono_banesco_carlos'] ?></td>
+            <td><?php echo $row['abono_banesco_carlos_papa'] ?></td>
+            <td><?php echo $row['abono_banesco_marola'] ?></td>
+        	<td><?php echo $row['abono_banesco_sonalys'] ?></td>
+        	<td><?php echo $row['abono_banesco_juridica'] ?></td>
+            <td><?php echo $row['comentarios'] ?></td>
+            
+            </tr>
+ <?php } ?>
+
+
+</table>
+
+		
+		
+		
+		</div>
+   
+
 
 
         <script src="js/jquery.js"></script>

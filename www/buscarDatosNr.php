@@ -74,7 +74,7 @@ echo '<script>window.location="admin"</script>';
 
         <div id="form2" class=" col-xs-12">
         
-            <h1>Transferencias pendientes</h1>
+            <h1>Coincidencias</h1>
 
         <table class="table table-striped">
   	
@@ -82,14 +82,13 @@ echo '<script>window.location="admin"</script>';
 		<tr>
 			<th>ID</th>
 			<th>Tasa</th>
-			<th>Comprobante</th>
-		    <th>Cliente</th>
+			<th>Cliente</th>
 			<th>RUT</th>
-			<th>Estatus</th>
+			<th>Comprobante</th>
+			<th>Pago</th>
 			<th>Nombre</th>
 			<th>Naciona.</th>
 			<th>Cedula</th>
-			<th>Pago</th>
 			<th>Banco destino</th>
 			<th>Num. Cuenta</th>
 			<th>Total Deposito</th>
@@ -97,6 +96,7 @@ echo '<script>window.location="admin"</script>';
 			<th>Bs</th>
 			<th>Email</th>
 			<th>Telefono</th>
+			<th>Estatus</th>
 			<th>Enviar</th>
 			
 		</tr>
@@ -142,12 +142,7 @@ echo '<script>window.location="admin"</script>';
 	    	            </div>
 	    	        
                     </td>
-                                        <td>        
-        	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $comprobante; ?>" readonly required>
-	    	            </div>
-	    	        
-                    </td>
+                        
         	        <td>        
         	            <div id="campos" name="id" >
     				        <input type="text" class="form-control" name="cliente" value= "<?php echo $row['cliente']; ?>" readonly required>
@@ -159,11 +154,22 @@ echo '<script>window.location="admin"</script>';
     				        <input type="text" class="form-control" name="rut" value= "<?php echo $row['rut'] ?>" readonly required>
 	    	            </div>
 	    	        </td>
-	    	        <td>
+	    	                        <td>        
         	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="transf" value= "<?php echo $estatus ?>" readonly required>
+    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $comprobante; ?>" readonly required>
 	    	            </div>
-	    	        </td>
+	    	        
+                    </td>
+                    
+                    <td>        
+        	            <div id="campos" name="id" >
+    				        <input type="text" class="form-control" name="formaPago" value= "<?php echo $formaPago; ?>" readonly required>
+	    	            </div>
+	    	        
+                    </td>   
+                    
+	    	        
+	    	        
                     <td>        
                         <div id="campos" name="id" >
     				        <input type="text" class="form-control" name="nombre" value= "<?php echo $row['Nombre_Apellido'] ?>" readonly required>
@@ -182,14 +188,6 @@ echo '<script>window.location="admin"</script>';
 	    	        </td>
                     
         	        <td>        
-        	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="formaPago" value= "<?php echo $formaPago; ?>" readonly required>
-	    	            </div>
-	    	        
-                    </td>   
-                    
-                    
-                    <td>        
                         <div id="campos" class="" >
     				        <input type="text" class="form-control" name="banco" value= "<?php echo $row['Cuenta_destino'] ?>" readonly required>
 	    		        </div>
@@ -220,6 +218,11 @@ echo '<script>window.location="admin"</script>';
     				        <input type="text" class="form-control" name="telefono" value="<?php echo $row['Telefono'] ?>"  readonly required>
 	    			    </div>
 	    			</td>
+	    			<td>
+        	            <div id="campos" name="id" >
+    				        <input type="text" class="form-control" name="transf" value= "<?php echo $estatus ?>" readonly required>
+	    	            </div>
+	    	        </td>
             
                 <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
@@ -239,109 +242,97 @@ echo '<script>window.location="admin"</script>';
 		</div>
    
    
-    <div id="form2" class=" col-xs-12">
-        
-            <h1>Coincidencias Parciales</h1>
-
-        <table class="table table-striped">
-  	
-		<thead>
-		<tr>
-			<th>ID</th>
-			<th>Tasa</th>
-		    <th>Cliente</th>
-			<th>RUT</th>
-			<th>Comprobante</th>
-			<th>Nombre</th>
-			<th>Naciona.</th>
-			<th>Cedula</th>
-			<th>Banco destino</th>
-			<th>Num. Cuenta</th>
-			<th>Total Deposito</th>
-			<th>Pesos</th>
-			<th>Bs</th>
-			<th>Email</th>
-			<th>Telefono</th>
-			<th>Enviar</th>
-			
-		</tr>
-		</thead>
-		
-		<?php
-		
-            date_default_timezone_set('America/Santiago');
+   <?php
+		    date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
             $rut= $_POST['rut'];
             
-            $insertar= "SELECT ID, cliente, comprobante, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta LIMIT 1";
+            $insertar= "SELECT  Forma_pago,cliente, comprobante, rut, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta LIMIT 1";
             
             include 'conexion.php';
             
             $result = mysqli_query($conexion,$insertar);
             
 		while ($row = mysqli_fetch_array($result)){?>
-        	
-                <form name="formul2" method="POST" action="enviardatos.php">
+   
+  
+  <div id="form" class=" col-xs-4 col-xs-offset-1">
+            <h1>Coincidencias Parciales</h1>
+            
+            
+            
+                <form name="formul0" method="POST" action="guardarDatosOfic2.php">
+                	
+                	<div id="campos" class="">
+                        <label>Transaccion</label> 
+				    	<input type="text" class="form-control" name="ids" value= "<?php echo $ids; ?>" readonly required>
+                    </div>
                 
-        	    <tr>
-        	        <td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
-	    	</div></td>
-        	        
-        	        <td>        
-        	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="cliente" value= "<?php echo $tasa; ?>" readonly required>
-	    	            </div>
-	    	        
-                    </td>
+                     <div id="campos" class="">
+                            <label>TASA</label> 
+				    	    <input type="text" class="form-control" name="tasa" value="<?php echo $tasa; ?>" readonly>
+                     </div>
                     
-        	        
-        	        <td>        
+                     <div id="campos" class="">
+                        <label>TASA ESPECIAL</label> 
+				    	
+				    	<input type="text" class="form-control" name="tasaesp"  value="<?php echo $tasa; ?>" readonly>
+                    </div>    
+                    
+                  <div id="campos" class="">
+				        <label>Transferencia</label>
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" >
+				           <option value="No Verificado">No verificado</option>
+				            <option value="Pendiente">Pendiente</option>
+					   </select>
+          	        </div>
+                    
+                   <td>        
         	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="cliente1" value= "<?php echo $row['cliente']; ?>" readonly required>
+        	            	 <label>Forma de Pago</label>
+    				        <input type="text" class="form-control" name="formaPago" value= "<?php echo $row['Forma_pago']; ?>" readonly required>
 	    	            </div>
 	    	        
                     </td>   
                     
                     
-        	        <td>
-        	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="rut1" value= "<?php echo $row['rut'] ?>" required>
-	    	            </div>
-	    	        </td>
-	    	        <td>
-        	            <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="comprobante" value= "<?php echo $comprobante ?>" required>
-	    	            </div>
-	    	        </td>
-                    <td>        
-                        <div id="campos" name="id" >
-    				        <input type="text" class="form-control" name="nombre1" value= "" required>
-	    	            </div>
-	    	        </td>
-                       <td>        
-                        <div id="Cedula1" class="">
-				        
-			   	       <select id="nacionalidad1" name="nacionalidad1" class="form-control">
-				            <option value=""></option>
-					        <option value="V">V</option>
-                            <option value="E">E</option>            
-                            <option value="J">J</option>
-					    </select>
-          	          
+                    
+                    <div id="campos" class="">
+                        <label>Cliente</label> 
+				    	<input type="text" class="form-control" name="cliente" value= "<?php echo $row['cliente']; ?>" readonly required>
+                    </div>
+                    
+                    <div id="campos" class="">
+                        <label>RUT, Pasaporte o Cedula</label> 
+				    	<input type="text" class="form-control" name="rut" value= "<?php echo $row['rut']; ?>" readonly required>
+                    </div>
+                    
+                    <div id="comprobante1" class="">
+                        <label>Numero de Comprobante</label> 
+				    	<input type="text" class="form-control" name="comprobante" value= "<?php  echo $comprobante ?>" readonly required >
+                    </div>
+                        
+                    <div id="campos" class="">
+                        <label>Nombre y Apellido o Razón Social</label> 
+				    	<input type="text" class="form-control" name="nombre" value= "" required>
+                    </div>
+					 <div id="Cedula1" class="">
+				        <label>Cedula de Identidad</label>
+			   	      		 <select id="nacionalidad" name="tipodoc" class="form-control"required>
+				          		  <option value=""></option>
+					      		  <option value="V">V</option>
+                          		  <option value="E">E</option>            
+                          		  <option value="J">J</option>
+					 		   </select>
+          	        	  <input id="cedula" type="text" class="form-control" name="iddoc"  required>
 				    </div>
-	    	        </td>
-                    
-                    <td>
-                        <div id="campos" name="id" >
-                            <input type="text" class="form-control" name="cedula1" value= "" required>
-	    	            </div>
-	    	        </td>
-                    
-                    <td>        
-                        <div id="Bancob" class="">
-		    		    <select id="cambiar" name="cuentadest1" class="form-control" onchange="cambiarcampos1(this)" >
+				   
+				    
+				    
+                    <div id="Bancob" class="">
+		    		   <label>Banco del Beneficiario</label> 
+                       <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
 				           <option value="">Seleccionar</option>
 				            <option value="Banesco">Banesco</option>
                             <option value="Banco Mercantil">Banco Mercantil</option>            
@@ -380,63 +371,61 @@ echo '<script>window.location="admin"</script>';
                             <option value="SOFITASA">SOFITASA</option>
 					    </select>
 				    </div>
-	    		    </td>
-                    <td><div id="campos" class="" >
-    				        <input type="text" class="form-control" minlength=20 maxlength=20 name="numdest1" value=""  required>
-	    			    </div>
-	    			</td>
+			        
+			        
+			        
+			        
+                    <div id="CuentaBeneficiario" class="">
+				        <label>Numero de Cuenta Bancaria</label>
+				    	<input type="text" class="form-control" name="cuenta"  minlength=20 maxlength=20 value= "<?php echo $numcuenta; ?>" required>
+				    </div>
+				   
+				   
+				    
+				    <div id="campos" class="" >
+    				    <label>Total de pesos depositados</label>
+		    			<input type="number" class="form-control" name="totalpesos" value= "<?php echo $totalPesos; ?>" onchange="calcularofic()" required>
+	    			</div>
 	    			
-	    				<td>        
-                        <div id="campos" class="" >
-    				        <input type="text" class="form-control" name="totalpesos" value= "<?php echo $totalPesos ?>" readonly required>
-	    		        </div>
-	    		    </td>
-                    <td>        
-                        <div id="campos" class="" >
-    				        <input type="text" class="form-control" name="pesos2" value= "<?php echo $pesos ?>" required>
-	    		        </div>
-	    		    </td>
-                    <td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="bolivares2" value="<?php echo $bolivares ?>"  readonly required>
-	    			    </div>
-	    			</td>
-	    			
-	    			
-	    			<td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="email1" value="<?php echo $row['Email'] ?>" required>
-	    			    </div>
-	    			</td>
-	    			<td><div id="campos" class="" >
-    				        <input type="text" class="form-control" name="telefono1" value="<?php echo $row['Telefono'] ?>" required>
-	    			    </div>
-	    			</td>
-            
-                <td><div id="enviarp" method="post" >
+	    			<div id="PesosBs1" class="">
+				        <label>¿Pesos o Bolivares?</label>
+			   	       		<select id="pesosbs" name="pesosbs" onchange="cambiarcampos16(this)" class="form-control" required>
+				        		<option value="">Seleccionar</option>            
+				        		<option value="Pesos">Pesos</option>            
+                        		<option value="Bolivares">Bolivares</option>
+					    	</select>
+          	        </div>
+				   
+				    <div id="campos" class="" >
+    				    <label>Cantidad de Pesos a Enviar</label>
+		    			<input id="pesos2" type="text" class="form-control" name="pesos2" value= "<?php echo $pesos; ?>" onchange="calcularofic()" readonly required>
+	    			</div>
+                    
+                    <div id="campos" class="" >
+    				    <label>Cantidad de Bs. a Recibir</label>
+		    			<input id="bolivares2" type="text"  class="form-control" value= "<?php echo $bolivares; ?>" name="bolivares2" onchange="calcularofic2()" readonly required>
+	    			</div>
+				   
+				    
+                    <div id="campos" class="">
+				        <label>Email de Quien Envía</label>
+    					<input type="Email" class="form-control" value= "<?php echo $row['Email'] ?>" name="email">
+    				</div>
+                    <div id="campos" class="">
+				        <label>Teléfono de Quien Envía</label>
+    					<input type="text" class="form-control" value= "<?php echo $row['Telefono'] ?>" name="telefono">
+    				</div>
+    				
+                    <div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
-                </td>
-
-            </form>
-            </tr>
- <?php } ?>
-
-
-</table>
-
-		
-		
-		
-		</div>
-   
-   
-   
-   
-   
-   
-   
                     
+                </form>
+                <?php } ?>
+                <h2>Revisa los Datos Antes de Enviar</h2>
 
-
+        </div>
+ 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
     

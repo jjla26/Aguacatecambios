@@ -438,9 +438,10 @@ $insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_ap
 if ($totalPesos != $pesos){
     
     echo $dif = bcsub($totalPesos,$pesos,15);
-    echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;    
+    echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;
+    echo $dif2 = floor($dif*100)/100;
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif2','$comentarios','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
@@ -754,8 +755,10 @@ if ($totalPesos != $pesos){
     
     echo $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;   
+     echo $dif2 = floor($dif*100)/100;
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif','$usuario')";
+    
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$totalPesos','0','$dif','$bolivares','NR','$current_date','restan $dif2','$comentarios,'$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }

@@ -284,7 +284,7 @@ echo '<script>window.location="admin"</script>';
 				   
                     <div id="campos" class="">
 				        <label>Email de Quien Envía</label>
-    					<input type="Email" class="form-control" value= "" >
+    					<input type="Email" class="form-control" value= "" name ="email">
     				</div>
                     <div id="campos" class="">
 				        <label>Teléfono de Quien Envía</label>

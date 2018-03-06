@@ -68,14 +68,15 @@ $resultado = mysqli_query($conexion, $insertar);
 if ($totalPesos != $pesos){
     
     echo $dif = bcsub($totalPesos,$pesos,15);
-    echo $bolivares =  floor(bcmul($dif,$tasa,15)*100)/100;     
+    echo $bolivares =  floor(bcmul($dif,$tasa,15)*100)/100;
+    echo $dif2 = floor($dif*100)/100;
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','NR','$current_date','restan $dif','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, Email, Telefono, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','$email','$telefono','NR','$current_date','$dif2 restan','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
 
-if (!$resultado){
+if (!$resultado && !$resultado1){
 
 echo 'error';
 
@@ -116,7 +117,8 @@ if ($seleccionar-$suma >= 5 ){
 
     echo $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares =  floor(bcmul($dif,$tasa,15)*100)/100;
-    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','NR','$current_date','$dif restan','$usuario')";
+    echo $dif2 = floor($dif*100)/100;
+    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, Email, Telefono, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','$email','$telefono','NR','$current_date','$dif2 restan','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
     
 }
@@ -162,8 +164,9 @@ if ($totalPesos != $pesos){
     
    echo  $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100; 
+    echo $dif2 = floor($dif*100)/100;
     
-    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha,comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','NR','$current_date','$dif restan','$usuario')";
+    $insertar1 = "INSERT INTO transacciones1 ( tasa , cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, Email, Telefono, estatus, Fecha,comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0','$dif','$bolivares','$email','$telefono','NR','$current_date','$dif2 restan','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
 
 }
@@ -207,7 +210,8 @@ if ($seleccionar-$suma >= 5 ){
 
     echo $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100; 
-    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','NR','$current_date','restan $dif','$usuario')";
+    echo $dif2 = floor($dif*100)/100;
+    $insertar1 = "INSERT INTO transacciones1 (tasa,cliente, rut, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Diferencia, Cantidad_bs, Email, Telefono, estatus, Fecha, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$formaPago','$dif','0',$dif,'$bolivares','$email','$telefono','NR','$current_date','$dif2 restan','$usuario')";
     $resultado1 = mysqli_query($conexion, $insertar1);
     
 }
