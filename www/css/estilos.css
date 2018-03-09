@@ -152,8 +152,8 @@ section .cambio{
 	display: block;	
 }
 
-#div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb{
+#beneficiario2, #nombre2, #cedula2, #banco2, #cuenta2, #pesos2, #bolivares2, #div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb{
     
-    display:none;
+    display: none;
 
 }

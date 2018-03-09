@@ -2,7 +2,7 @@
 session_start();
 
 date_default_timezone_set('America/Santiago');
-echo $current_date = date("Y-m-d H:i:s");
+$current_date = date("Y-m-d H:i:s");
 
 if (isset($_SESSION['user'])){
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
@@ -388,8 +388,6 @@ $insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_
 $resultado3 = mysqli_query($conexion, $insertar3);
 
 
-
-
 if (!$resultado || !$resultado1 || !$resultado3 || !$actualizar)
     
     
@@ -398,8 +396,8 @@ echo 'error';
 else{
 
 
-//echo '<script>window.location="transaccionesofic.php"</script>';
-
+echo '<script>window.location="transaccionesofic.php"</script>';
+mysqli_close($conexion);
     
 }
 

@@ -56,6 +56,25 @@ echo '<script>window.location="admin"</script>';
 		
 	</head>
 <body>
+	
+	<div>
+        
+            <h4>Bienvenidos <?php echo $_SESSION['user']; ?></h4>
+            
+          
+         </div>
+   
+        <div id="enviarp">
+            <h4><a href="destroyofic.php">Cerrar Sesion</a></h4> 
+        </div>
+
+        <div id="login" >
+            <div id="logo">
+            <a href="transaccionesofic.php"><img src="img/logo.png"></a>
+            </div>
+        </div>
+
+
          <div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Calculadora de cambios</h1>
             
@@ -508,7 +527,7 @@ echo $tasa1;
           	        </div>
                     <div id="" class="">
 		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos16(this)">
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
 				           <option  value="">Seleccionar</option>
 					       <option  value="Efectivo">Efectivo</option>
                            <option  value="DepositoRut">Deposito a Cuenta Rut</option>
@@ -694,14 +713,16 @@ echo $tasa1;
 		<tr>
 		    <th>ID</th>
 		    <th>Cliente</th>
+		    <th>Comprobante</th>
 			<th>Nombre</th>
 			<th>Cedula</th>
-			<th>Banco</th>
-			<th>Numero de Cuenta</th>
+			<th>Forma de Pago</th>
+			<th>Banco Dest</th>
+			<th>Num Cuenta</th>
 			<th>Total Pesos</th>
 			<th>Pesos</th>
-			<th>Bolivares</th>
-			<th>Transferimos desde</th>
+			<th>Bs</th>
+			<th>Banco Origen</th>
 			<th>Cuenta de</th>
 			<th>Estatus</th>
 			<th>Enviar</th>
@@ -715,7 +736,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, cliente, Nombre_apellido, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'Pendiente' ORDER BY ID";
+            $insertar= "SELECT ID, cliente, comprobante, Nombre_apellido, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'Pendiente' ORDER BY ID";
       
       
             $result = mysqli_query($conexion,$insertar);
@@ -732,8 +753,10 @@ echo $tasa1;
     				    <input type="text" class="form-control" name="ids" value="<?php echo $ids=$row['ID']; ?>"  readonly required>
 				</div></td>
             <td><?php echo $row['cliente'] ?></td>
+            <td><?php echo $row['comprobante'] ?></td>
         	<td><?php echo $row['Nombre_apellido'] ?></td>
             <td><?php echo $row['Cedula'] ?></td>
+            <td><?php echo $row['Forma_pago'] ?></td>
             <td><?php echo $row['Cuenta_destino'] ?></td>
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly >
@@ -834,9 +857,9 @@ echo $tasa1;
 		    <th>ID</th>
 		    <th>Cliente</th>
 		    <th>Comprobante</th>
-		    <th>Forma de pago</th>
-			<th>Nombre</th>
+		    <th>Nombre</th>
 			<th>Cedula</th>
+			<th>Forma de pago</th>
 			<th>Banco</th>
 			<th>Numero de Cuenta</th>
 			<th>Total Pesos</th>
@@ -871,9 +894,9 @@ echo $tasa1;
 				</div></td>
             <td><?php echo $row['cliente'] ?></td>
         	<td><?php echo $row['comprobante'] ?></td>
-            <td><?php echo $row['Forma_pago'] ?></td>
-        	<td><?php echo $row['Nombre_apellido'] ?></td>
+            <td><?php echo $row['Nombre_apellido'] ?></td>
             <td><?php echo $row['Cedula'] ?></td>
+            <td><?php echo $row['Forma_pago'] ?></td>
             <td><?php echo $row['Cuenta_destino'] ?></td>
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="numCuenta" value= "<?php echo $row['Numero_cuenta'] ?>" readonly >
