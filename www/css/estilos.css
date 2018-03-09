@@ -58,7 +58,16 @@ h4{
     border-radius: 0px;
     border-right-width: medium;
     border-bottom-width: medium;
+}
+
+#cedula{
+    width: 70%;
+    margin-left: 30%;
     
+}
+#nacionalidad{
+    width: 25%;
+    position:absolute;    
     
 }
 
