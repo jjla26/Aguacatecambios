@@ -99,14 +99,14 @@ function cambiarcampos17(obj){
                 
         }else if (obj.value == 2 ){
                 console.log(obj.value);
-                document.getElementById('beneficiario2').style.display = 'block';
+                //document.getElementById('beneficiario2').style.display = 'block';
                 document.getElementById('nombre2').style.display = 'block';
                 document.getElementById('cedula2').style.display = 'block';
                 document.getElementById('cuenta2').style.display = 'block';
                 document.getElementById('banco2').style.display = 'block';
                 document.getElementById('pesos2').style.display = 'block';
                 document.getElementById('bolivares2').style.display = 'block';
-                document.getElementById('beneficiario2').required = true;
+                //document.getElementById('beneficiario2').required = true;
                 document.getElementById('nombre2').required = true;
                 document.getElementById('cedula2').required = true;
                 document.getElementById('banco2').required = false;
@@ -115,7 +115,7 @@ function cambiarcampos17(obj){
                 document.getElementById('bolivares2').required = true;
                 
         }else{
-                document.getElementById('beneficiario2').style.display = 'none';
+                //document.getElementById('beneficiario2').style.display = 'none';
                 document.getElementById('nombre2').style.display = 'none';
                 document.getElementById('cedula2').style.display = 'none';
                 document.getElementById('cuenta2').style.display = 'none';
@@ -123,7 +123,7 @@ function cambiarcampos17(obj){
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
                 
-                document.getElementById('beneficiario2').required = false;
+                //      document.getElementById('beneficiario2').required = false;
                 document.getElementById('nombre2').required = false;
                 document.getElementById('cedula2').required = false;
                 document.getElementById('cuenta2').required = false;
