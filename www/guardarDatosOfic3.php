@@ -49,6 +49,7 @@ mysqli_close($conexion);
 
 echo '<script>window.location="transaccionesofic.php"</script>';
 
+
 mysqli_close($conexion);
 
 }

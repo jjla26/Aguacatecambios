@@ -50,7 +50,7 @@
            	</header>
        <main>
 				<section id="banner" >
-					<div id="asd" class="imagenp" style="background-image: url(img/bg.png)">
+					<div class="imagenp container col-xs-12" style="background-image: url(img/bg.png)">
 					
 					<div class="container col-xs-12">
 						<h1><?php
@@ -63,7 +63,7 @@ $tasa= $tasa['Tasa'];
 echo $tasa;
 
 ?></h1>
-						<div id="tasaverde" class="container col-xs-12 col-sm-6 col-md-4 col-lg-2 col-md--3 col-md-offset-4 col-lg-offset-5">
+						<div id="tasaverde" class="container col-xs-12 col-sm-6 col-md-4 col-lg-2 col-md-offset-3 col-md-offset-4 col-lg-offset-5">
 						<p> Tasa verde de CLP a Bs</p>
 						</div>
 						<div class="container col-xs-12 ">
@@ -97,7 +97,9 @@ echo $tasa;
                 <section id="tasa">
 				
 				<div id = "tasadeldia" class="container col-xs-12 " style="top:50px; padding:10px;">
-					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 text-center">
+					
+					 	
+					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-3  text-center">
 						<h1><?php
 include 'conexion.php';
 $tasa = "SELECT Tasa FROM Tasa";
@@ -108,15 +110,35 @@ $tasa= $tasa['Tasa'];
 echo $tasa;
 
 ?></h1>
-						<p> Tasa de cambio de Pesos Chilenos a Bolivares</p>
+						<p>Tasa de cambio de CLP a Bolivares</p>
+					</div>
+					
+					
+					<div id="tasadehoy" class="panel panel-default  col-xs-4 col-sm-3 col-md-3 col-lg-2  text-center">
+						<h1><?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?></h1>
+						<p>Tasa de cambio de Dolares USD a Bolivares</p>
 					</div>
 					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2  text-center">
-						<h1>10</h1>
-						<p>Tasa de cambio de Bolivares a Pesos Chilenos</p>
-					</div>
-					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2  text-center">
-						<h1>10</h1>
-						<p>Tasa de cambio de Bolivares a Pesos Chilenos</p>
+						<h1><?php
+include 'conexion.php';
+$tasa = "SELECT Tasa FROM Tasa";
+$tasa = mysqli_query($conexion,$tasa);
+$tasa = mysqli_fetch_array($tasa);
+$tasa= $tasa['Tasa'];
+
+echo $tasa;
+
+?></h1>
+						<p>Tasa de cambio de Dolares USD a CLP</p>
 					</div>
 					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 text-center hidden-xs">
                             <span><img class="img" src="img/icon_cl.png"></span>
@@ -124,13 +146,13 @@ echo $tasa;
 							<span><img class="img" src="img/icon_vzla.png"></span>
 					</div>
 					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center hidden-xs">
-						<span><img class="img" src="img/icon_vzla.png"></span>
+						<span><img class="img" src="img/icon2_eeuu.jpg"></span>
 						<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-						<span><img class="img" src="img/icon_cl.png"></span>
+						<span><img class="img" src="img/icon_vzla.png"></span>
 					
 					</div>
 					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center hidden-xs">
-						<span><img class="img" src="img/icon_vzla.png"></span>
+						<span><img class="img" src="img/icon2_eeuu.jpg"></span>
 						<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 						<span><img class="img" src="img/icon_cl.png"></span>
 					
@@ -202,24 +224,26 @@ echo $tasa;
 							
 							<h2>Datos del Emisor, Transferencia o Deposito</h2>
 							
-						<form>
+					
+             		   <form name="formulario" method="POST"  action="enviarform.php">
+                
 								<div id="cliente" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 									<label>Nombre y Apellido</label>
-									<input type="text" class="form-control" name="email" placeholder="Ej.: Juan Perez" required>
+									<input type="text" class="form-control" name="cliente" placeholder="Ej.: Juan Perez" required>
 								</div>
 								<div id="rut" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 									<label>RUT o Pasaporte</label>
-									<input type="text" class="form-control" name="numero" placeholder="Ej.: 12345678-X" required>
+									<input type="text" class="form-control" name="rut" placeholder="Ej.: 12345678-X" required>
 								</div>							
 									
 									
 									<div id="cantidad" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Pesos Depositados</label>
-										<input type="text" class="form-control" name="nombre" placeholder="Ej.: 1000000" required>
+										<input type="text" class="form-control" name="totalpesos" placeholder="Ej.: 1000000" required>
 									</div>
 									<div id="deposito" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Adjunta la foto de tu deposito</label>
-										<input type="file" class="form-control" name="archivo" placeholder="Carga tu comprobante"  required>
+										<input type="file" class="form-control" name="archivo" placeholder="Carga tu comprobante"  >
 										
 									</div>
 									<div id="email" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
@@ -229,7 +253,7 @@ echo $tasa;
 									
 									<div id="telefono" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Numero de Telefono</label>
-										<input type="text" class="form-control" name="email" placeholder="Ej.: +56912345678" required>
+										<input type="text" class="form-control" name="telefono" placeholder="Ej.: +56912345678" required>
 									</div>
 						
 									
@@ -240,7 +264,7 @@ echo $tasa;
 									
 				                    <div id="transf" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 		    	                    	<label>Cantidad de Transferencias</label>
-		    	                    	<select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos17(this)">
+		    	                    	<select id="FormaPago" name="transf" class="form-control" onchange="cambiarcampos17(this)">
 				                           <option  value="">Cantidad de Transferencias</option>
 				                	       <option  value="1">1</option>
                                            <option  value="2">2</option>
@@ -306,9 +330,9 @@ echo $tasa;
 					    				</select>
 				    				</div>
 									
-									<div id="cuenta1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+									<!-- <div id="cuenta1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Numero de cuenta</label>
-										<input type="text" class="form-control" name="email" placeholder="Numero de cuenta" required>
+										<input type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
 									</div>
 									
 									<div id="cantidad1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
@@ -323,28 +347,35 @@ echo $tasa;
 									
 									<div id="pesos1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2 ">
 										<label>Cantidad de Pesos a enviar</label>
-											<input type="text" class="form-control" name="email" placeholder="Pesos" readonly required>
+											<input type="text" class="form-control" name="pesos" placeholder="Pesos" required>
 									</div>
                                     
 									<div id="bolivares1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input type="text" class="form-control" name="email" placeholder="Bolivares" readonly required>
+										<input type="text" class="form-control" name="bolivares" placeholder="Bolivares" required>
 									</div>
 									
 									
-          	          		     	<!--<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-lg-offset-3">
+          	          		    	<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-lg-offset-3">
           	          		     		<label>Datos Segundo Beneficiario</label>
 		    	                    		<input type="text" class="form-control" name="cuenta" placeholder="Segundo Beneficiario" readonly required>
-				                    </div>-->
+				                    </div>
 									
-									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12 col-lg-2 col-lg-4">
+									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4 ">
 										<label>Nombre y Apellido</label>
-										<input type="text" class="form-control" name="nombre" placeholder="Nombre y Apellido" required>
+										<input type="text" class="form-control" name="nombre1" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="cedula2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-										<label>Cedula</label>
-										<input type="text" class="form-control" name="cedul" placeholder="Documento de ID" required>
-									</div>
+										<label>Cedula de Identidad o RIF</label>
+											<select id="nacionalidad"  name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2"required>
+				            					<option value=""></option>
+					        					<option value="V">V</option>
+                            					<option value="E">E</option>            
+                            					<option value="J">J</option>
+										    </select>
+          	        				   			<input id="cedula" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678"  required>
+				    					
+				    				</div>
 									<div id="banco2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Banco</label>
 		    		   					 <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
@@ -387,7 +418,7 @@ echo $tasa;
 					    				</select>
 				    				</div>
 									
-									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-lg-4">
+									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12  col-lg-4">
 										<label>Numero de cuenta</label>
 										<input type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
 									</div>
@@ -403,17 +434,18 @@ echo $tasa;
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
 										<input type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly required>
-									</div>
+									</div>-->
 									
 									
 									
-									<div id="campos" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
-										<button id="botones" class="btn btn-success col-xs-12">Enviar</button> 
-									</div>
 									
 									
+									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
+    			    					<button id="botones" class="form-control btn btn-success col-xs-12" >Enviar Datos</button> 
+                   					 </div>
+                    
+                </form>
 							
-							</form>
 							<div id="campos" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
 										<button id="botones" class="btn btn-success col-xs-12" disabled>Enviar y ser cliente frecuente</button> 
 									</div>

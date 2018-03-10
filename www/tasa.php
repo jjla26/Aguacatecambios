@@ -30,7 +30,7 @@ header('Location: transaccionesofic.php');
 
 }
 }else{
-echo '<script>window.location="admin"</script>';
+header('Location: transaccionesofic.php');
 }
 //
 ?>
