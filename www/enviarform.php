@@ -29,6 +29,16 @@
 date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d H:i:s");
 
+
+/*if (isset($_SESSION['user']) && isset($_POST['cliente']) && isset($_POST['rut']) && isset($_POST['email'])&& isset($_POST['telefono']) && 
+isset($_POST['tranf']) && isset($_POST['tipodoc']) && isset($_POST['iddoc']) && isset($_POST['banco']) && isset($_POST['cuenta']) && isset($_POST['pesos']) && isset($_POST['bolivares'])){
+*/
+
+if (isset($_POST['cliente']) && isset($_POST['rut']) && isset($_POST['totalpesos']) &&  isset($_POST['email'])&& isset($_POST['telefono']) && 
+isset($_POST['transf']) && isset($_POST['nombre']) && isset($_POST['tipodoc']) && isset($_POST['iddoc']) && isset($_POST['banco']) && 
+isset($_POST['cuenta']) && isset($_POST['pesos']) && isset($_POST['bolivares'])){
+
+
 $cliente = $_POST['cliente'];
 $rut = $_POST['rut'];
 $email = $_POST['email'];
@@ -52,16 +62,12 @@ $pesos1 = $_POST['pesos1'];
 $bolivares1 = $_POST['bolivares1'];
 $estatus = 'Internet';
 
-
-if (isset($_SESSION['user']) && isset($nombre) && isset($rut) && isset($email)&& isset($telefono) && 
-isset($nombre) && isset($nacionalidad) && isset($cedula) && isset($banco) && isset($cuenta) && isset($pesos) && isset($bolivares)){
-    
-    
 }
+
 
 else{
     
-  echo '<script>alert("Faltan campos por llenar. Intente de nuevo"); window.location="index"</script>';    
+  echo '<script>alert("Faltan campos por llenar. Intente de nuevo"); window.location="index.php"</script>';    
     
 //header('Location: index.php');
 }
@@ -80,12 +86,12 @@ $insertar1 = mysqli_query($insertar1, $conexion);
 
 if(!$insertar && !$insertar1){
 
-  echo '<script>alert("Faltan campos por llenar"); window.location="index"</script>';    
+  echo '<script>alert("Faltan campos por llenar"); window.location="index.php"</script>';    
 //header('Location: index.php');
     
 }else{
   
-  echo '<script>alert("Faltan campos por llenar1"); window.location="index"</script>';    
+  echo '<script>alert("Faltan campos por llenar1"); window.location="index.php"</script>';    
 //header('Location: index.php');  
 //echo '<script>alert("Sus datos fueron enviados con exito. Agradecemos su confianza")"</script>';    
 //header('Location: index.php');

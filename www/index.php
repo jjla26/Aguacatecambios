@@ -125,7 +125,7 @@ $tasa= $tasa['Tasa'];
 echo $tasa;
 
 ?></h1>
-						<p>Tasa de cambio de Dolares USD a Bolivares</p>
+						<p>Tasa de cambio de USD a Bolivares</p>
 					</div>
 					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2  text-center">
 						<h1><?php
@@ -138,7 +138,7 @@ $tasa= $tasa['Tasa'];
 echo $tasa;
 
 ?></h1>
-						<p>Tasa de cambio de Dolares USD a CLP</p>
+						<p>Tasa de cambio de USD a CLP</p>
 					</div>
 					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 text-center hidden-xs">
                             <span><img class="img" src="img/icon_cl.png"></span>
@@ -288,7 +288,7 @@ echo $tasa;
 				    					
 				    				</div>
 				    				
-									<div id="banco1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+									 <div id="banco1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Banco</label>	
 		    		   					 <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
 				           					<option value="">Banco</option>
@@ -330,7 +330,7 @@ echo $tasa;
 					    				</select>
 				    				</div>
 									
-									<!-- <div id="cuenta1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+								<div id="cuenta1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Numero de cuenta</label>
 										<input type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
 									</div>
@@ -434,11 +434,7 @@ echo $tasa;
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
 										<input type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly required>
-									</div>-->
-									
-									
-									
-									
+									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
     			    					<button id="botones" class="form-control btn btn-success col-xs-12" >Enviar Datos</button> 
