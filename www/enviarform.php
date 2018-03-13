@@ -53,6 +53,11 @@ $cuenta = $_POST['cuenta'];
 $pesos = $_POST['pesos'];
 $bolivares= $_POST['bolivares'];
 
+if($tranf == 2){
+  
+  if(isset($_POST['nombre']) && isset($_POST['tipodoc']) && isset($_POST['iddoc']) && isset($_POST['banco']) && 
+  isset($_POST['cuenta']) && isset($_POST['pesos']) && isset($_POST['bolivares'])){
+
 $nombre1 = $_POST['nombre1'];
 $nacionalidad1 = $_POST['tipodoc1'];
 $cedula1 = $_POST['iddoc1'];
@@ -61,19 +66,6 @@ $cuenta1 = $_POST['cuenta1'];
 $pesos1 = $_POST['pesos1'];
 $bolivares1 = $_POST['bolivares1'];
 $estatus = 'Internet';
-
-}
-
-
-else{
-    
-  echo '<script>alert("Faltan campos por llenar. Intente de nuevo"); window.location="index.php"</script>';    
-    
-//header('Location: index.php');
-}
-
-
-if($tranf == 2){
 
 $insertar= "INSERT INTO transacciones1(cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
 
@@ -86,43 +78,49 @@ $insertar1 = mysqli_query($insertar1, $conexion);
 
 if(!$insertar && !$insertar1){
 
-  echo '<script>alert("Faltan campos por llenar"); window.location="index.php"</script>';    
+  echo '<script>alert("Intente Nuevamente"); window.location="index.php"</script>';    
 //header('Location: index.php');
     
 }else{
   
-  echo '<script>alert("Faltan campos por llenar1"); window.location="index.php"</script>';    
+  echo '<script>alert("Sus datos fueron enviados con exito y el número de su transaccion es el  "); window.location="index.php"</script>';    
 //header('Location: index.php');  
 //echo '<script>alert("Sus datos fueron enviados con exito. Agradecemos su confianza")"</script>';    
 //header('Location: index.php');
 
     
-}}
-
-else{
-
-$insertar= "INSERT INTO transacciones1(cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
+}}}else{
+  
+  $insertar= "INSERT INTO transacciones1(cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
 include 'conexion.php';
 
 $insertar = mysqli_query($conexion, $insertar);
 
 if(!$insertar){
 
-  echo '<script>alert("Faltan campos por llenar2); window.location="index"</script>';    
+  echo '<script>alert("Faltan campos por llenar2); window.location="index.php"</script>';    
 //header('Location: index.php');
 //echo '<script>alert("Sus datos no fueron enviados, por favor intente de nuevo")"</script>';    
 //header('Location: index.php');
     
 }else{
 
-  echo '<script>alert("Faltan campos por llenar3"); window.location="index"</script>';    
-//header('Location: index.php');
+  echo '<script>alert("Sus datos fueron enviados con existos y su numero de transaccion es el "); window.location="index.php"</script>';    
+//header('Location: index.php.php');
     
 //echo '<script>alert("Sus datos fueron enviados con exito. Agradecemos su confianza")"</script>';    
-//header('Location: index.php');
+//header('Location: index.php.php');
 
     
-}}
+}}}else{
+
+  
+  
+  echo '<script>alert("Faltan campos por llenar. Intente de nuevo"); window.location="index.php"</script>';    
+    
+//header('Location: index.php');
+
+}
 
 ?>
 

@@ -225,35 +225,35 @@ echo $tasa;
 							<h2>Datos del Emisor, Transferencia o Deposito</h2>
 							
 					
-             		   <form name="formulario" method="POST"  action="enviarform.php">
+             		   <form  name="formul0" method="POST"  action="enviarform.php">
                 
 								<div id="cliente" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 									<label>Nombre y Apellido</label>
-									<input type="text" class="form-control" name="cliente" placeholder="Ej.: Juan Perez" required>
+									<input id="cliente1" type="text" class="form-control" name="cliente" placeholder="Ej.: Juan Perez" required>
 								</div>
 								<div id="rut" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 									<label>RUT o Pasaporte</label>
-									<input type="text" class="form-control" name="rut" placeholder="Ej.: 12345678-X" required>
+									<input id="rut1" type="text" class="form-control" name="rut" placeholder="Ej.: 12345678-X" required>
 								</div>							
 									
 									
 									<div id="cantidad" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Pesos Depositados</label>
-										<input type="text" class="form-control" name="totalpesos" placeholder="Ej.: 1000000" required>
+										<input id="cantidad1" type="text" class="form-control" name="totalpesos" placeholder="Ej.: 1000000" required>
 									</div>
 									<div id="deposito" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Adjunta la foto de tu deposito</label>
-										<input type="file" class="form-control" name="archivo" placeholder="Carga tu comprobante"  >
+										<input id="deposito1" type="file" class="form-control" name="archivo" placeholder="Carga tu comprobante"  >
 										
 									</div>
 									<div id="email" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Correo Electronico</label>
-										<input type="email" class="form-control" name="email" placeholder="Ej.: ejemplo@ejemplo.com" required>
+										<input id="email1" type="email" class="form-control" name="email" placeholder="Ej.: ejemplo@ejemplo.com" required>
 									</div>
 									
 									<div id="telefono" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Numero de Telefono</label>
-										<input type="text" class="form-control" name="telefono" placeholder="Ej.: +56912345678" required>
+										<input id="telefono1" type="text" class="form-control" name="telefono" placeholder="Ej.: +56912345678" required>
 									</div>
 						
 									
@@ -264,33 +264,33 @@ echo $tasa;
 									
 				                    <div id="transf" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 		    	                    	<label>Cantidad de Transferencias</label>
-		    	                    	<select id="FormaPago" name="transf" class="form-control" onchange="cambiarcampos17(this)">
+		    	                    	<select id="transf1" name="transf" class="form-control" onchange="cambiarcampos17(this)">
 				                           <option  value="">Cantidad de Transferencias</option>
 				                	       <option  value="1">1</option>
                                            <option  value="2">2</option>
                                     	</select>
 				                    </div>
 				
-									<div id="nombre1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+									<div id="nombre" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Nombre y Apellido</label>
-										<input type="text" class="form-control" name="nombre" placeholder="Ej.: Juan Perez" required>
+										<input id="nombre1" type="text" class="form-control" name="nombre" placeholder="Ej.: Juan Perez" required>
 									</div>
 									
-									<div id="cedula1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+									<div id="cedula" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cedula de Identidad o RIF</label>
-											<select id="nacionalidad"  name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2"required>
+											<select id="tipodoc" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2"required>
 				            					<option value=""></option>
 					        					<option value="V">V</option>
                             					<option value="E">E</option>            
                             					<option value="J">J</option>
 										    </select>
-          	        				   			<input id="cedula" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678"  required>
+          	        				   			<input id="cedula1" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678"  required>
 				    					
 				    				</div>
 				    				
-									 <div id="banco1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+									 <div id="banco" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Banco</label>	
-		    		   					 <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
+		    		   					 <select id="banco1" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
 				           					<option value="">Banco</option>
 				           				    <option value="Banesco">Banesco</option>
                              				<option value="Banco Mercantil">Banco Mercantil</option>            
@@ -330,14 +330,14 @@ echo $tasa;
 					    				</select>
 				    				</div>
 									
-								<div id="cuenta1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+								<div id="cuenta" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Numero de cuenta</label>
-										<input type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
+										<input id="cuenta1" type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
 									</div>
 									
 									<div id="cantidad1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Expresar tu cantidad en Bs. o Pesos</label>
-				        				<select id="pesosbs" name="pesosbs" onchange="cambiarcampos16(this)" class="form-control"required>
+				        				<select id="pesosbs1" name="pesosbs" onchange="cambiarcampos18(this)" class="form-control"required>
 				            				<option value="">Dividir monto en:</option>            
 				            				<option value="Pesos">Pesos</option>            
                             				<option value="Bolivares">Bolivares</option>
@@ -345,40 +345,41 @@ echo $tasa;
           	          		     	</div>
           	          		     	
 									
-									<div id="pesos1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2 ">
+									<div id="pesos" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2" onchange="calcularbs()">
 										<label>Cantidad de Pesos a enviar</label>
-											<input type="text" class="form-control" name="pesos" placeholder="Pesos" required>
+											<input id="pesos1" type="text" class="form-control" name="pesos" placeholder="Pesos" required>
 									</div>
                                     
-									<div id="bolivares1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+									<div id="bolivares" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" onchange="calcularpesos()">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input type="text" class="form-control" name="bolivares" placeholder="Bolivares" required>
+										<input id="bolivares1" type="text" class="form-control" name="bolivares" placeholder="Bolivares" required>
 									</div>
 									
 									
-          	          		    	<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-lg-offset-3">
+          	          		    	<!--<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-lg-offset-3">
           	          		     		<label>Datos Segundo Beneficiario</label>
-		    	                    		<input type="text" class="form-control" name="cuenta" placeholder="Segundo Beneficiario" readonly required>
-				                    </div>
+		    	                    		<input id="beneficiario" type="text" class="form-control" name="cuenta" placeholder="Segundo Beneficiario" readonly >
+				                    </div>-->
 									
 									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4 ">
 										<label>Nombre y Apellido</label>
-										<input type="text" class="form-control" name="nombre1" placeholder="Nombre y Apellido" required>
+										<input id="nombre3" type="text" class="form-control" name="nombre1" placeholder="Nombre y Apellido">
 									</div>
 									<div id="cedula2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cedula de Identidad o RIF</label>
-											<select id="nacionalidad"  name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2"required>
+											<select id="tipodoc1" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2">
 				            					<option value=""></option>
 					        					<option value="V">V</option>
                             					<option value="E">E</option>            
                             					<option value="J">J</option>
 										    </select>
-          	        				   			<input id="cedula" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678"  required>
+          	        				   			
+          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678">
 				    					
 				    				</div>
 									<div id="banco2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Banco</label>
-		    		   					 <select id="cambiar" name="banco" class="form-control" onchange="cambiarcampos1(this)" required>
+		    		   					 <select id="banco3" name="banco" class="form-control" required>
 				           					<option value="">Banco</option>
 				           				    <option value="Banesco">Banesco</option>
                              				<option value="Banco Mercantil">Banco Mercantil</option>            
@@ -420,7 +421,7 @@ echo $tasa;
 									
 									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12  col-lg-4">
 										<label>Numero de cuenta</label>
-										<input type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
+										<input id="cuenta3" type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta">
 									</div>
 									
 								
@@ -428,12 +429,12 @@ echo $tasa;
 									
 									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Cantidad de Pesos a enviar</label>
-											<input type="text" class="form-control" name="pesos1" placeholder="Pesos" readonly required>
+											<input id="pesos3" type="text" class="form-control" name="pesos1" placeholder="Pesos" readonly>
 									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly required>
+										<input id="bolivares3" type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">

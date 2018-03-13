@@ -80,8 +80,7 @@ function cambiarcampos16(obj){
 function cambiarcampos17(obj){
         
         if(obj.value == 1){
-                console.log(obj.value);
-                document.getElementById('beneficiario2').style.display = 'none';
+
                 document.getElementById('nombre2').style.display = 'none';
                 document.getElementById('cedula2').style.display = 'none';
                 document.getElementById('cuenta2').style.display = 'none';
@@ -89,7 +88,7 @@ function cambiarcampos17(obj){
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
                 
-                document.getElementById('beneficiario2').required = false;
+
                 document.getElementById('nombre2').required = false;
                 document.getElementById('cedula2').required = false;
                 document.getElementById('cuenta2').required = false;
@@ -98,42 +97,68 @@ function cambiarcampos17(obj){
                 document.getElementById('bolivares2').required = false;
                 
         }else if (obj.value == 2 ){
-                console.log(obj.value);
-                //document.getElementById('beneficiario2').style.display = 'block';
+
+
                 document.getElementById('nombre2').style.display = 'block';
                 document.getElementById('cedula2').style.display = 'block';
-                document.getElementById('cuenta2').style.display = 'block';
                 document.getElementById('banco2').style.display = 'block';
+                document.getElementById('cuenta2').style.display = 'block';
                 document.getElementById('pesos2').style.display = 'block';
                 document.getElementById('bolivares2').style.display = 'block';
-                //document.getElementById('beneficiario2').required = true;
-                document.getElementById('nombre2').required = true;
-                document.getElementById('cedula2').required = true;
-                document.getElementById('banco2').required = false;
-                document.getElementById('cuenta2').required = true;
-                document.getElementById('pesos2').required = true;
-                document.getElementById('bolivares2').required = true;
+
+                document.getElementById('nombre3').required = true;
+                document.getElementById('tipodoc1').required = true;
+                document.getElementById('cedula3').required = true;
+                document.getElementById('banco3').required = true;
+                document.getElementById('cuenta3').required = true;
+                document.getElementById('pesos3').required = true;
+                document.getElementById('bolivares3').required = true;
+                
                 
         }else{
-                //document.getElementById('beneficiario2').style.display = 'none';
+
                 document.getElementById('nombre2').style.display = 'none';
                 document.getElementById('cedula2').style.display = 'none';
-                document.getElementById('cuenta2').style.display = 'none';
                 document.getElementById('banco2').style.display = 'none';
+                document.getElementById('cuenta2').style.display = 'none';
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
                 
-                //      document.getElementById('beneficiario2').required = false;
-                document.getElementById('nombre2').required = false;
-                document.getElementById('cedula2').required = false;
-                document.getElementById('cuenta2').required = false;
-                document.getElementById('banco2').required = false;
-                document.getElementById('pesos2').required = false;
-                document.getElementById('bolivares2').required = false;
+                document.getElementById('nombre3').required = false;
+                document.getElementById('tipodoc1').required = false;
+                document.getElementById('cedula3').required = false;
+                document.getElementById('banco3').required = false;
+                document.getElementById('cuenta3').required = false;
+                document.getElementById('pesos3').required = false;
+                document.getElementById('bolivares3').required = false;
                 
                 
         }
         
         
         
+}
+
+function cambiarcampos18(obj){
+        
+        if(obj.value =="Bolivares"){
+                
+                document.getElementById("pesos1").readOnly = true;
+                document.getElementById("bolivares1").readOnly = false;
+                document.getElementById("pesos3").readOnly = true;
+                document.getElementById("bolivares3").readOnly = false;
+        }else if(obj.value =="Pesos"){
+
+                document.getElementById("pesos1").readOnly = false;
+                document.getElementById("bolivares1").readOnly = true;
+                document.getElementById("pesos3").readOnly = false;
+                document.getElementById("bolivares3").readOnly = true;
+        }else{
+                document.getElementById("pesos1").readOnly = true;
+                document.getElementById("bolivares1").readOnly = true;
+                document.getElementById("pesos3").readOnly = true;
+                document.getElementById("bolivares3").readOnly = true;
+
+        }
+
 }
