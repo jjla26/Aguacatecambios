@@ -345,14 +345,14 @@ echo $tasa;
           	          		     	</div>
           	          		     	
 									
-									<div id="pesos" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2" onchange="calcularbs()">
+									<div id="pesos" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos1" type="text" class="form-control" name="pesos" placeholder="Pesos" readonly required>
+											<input id="pesos1" type="text" class="form-control" name="pesos" placeholder="Pesos"  onchange="calcularPesosBs()" readonly required>
 									</div>
                                     
-									<div id="bolivares" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" onchange="calcularpesos()">
+									<div id="bolivares" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" >
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares1" type="text" class="form-control" name="bolivares" placeholder="Bolivares" readonly required>
+										<input id="bolivares1" type="text" class="form-control" name="bolivares" placeholder="Bolivares" onchange="calcularBsPesos()" readonly required>
 									</div>
 									
 									
@@ -429,12 +429,12 @@ echo $tasa;
 									
 									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos3" type="text" class="form-control" name="pesos1" placeholder="Pesos" readonly required>
+											<input id="pesos3" type="text" class="form-control" name="pesos5" onchange="calcularPesosBs1()" placeholder="Pesos" readonly required>
 									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares3" type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly required>
+										<input id="bolivares3" type="text" class="form-control" name="bolivares5" onchange="calcularBsPesos1()" placeholder="Bolivares" readonly required>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
