@@ -53,7 +53,7 @@
 					<div class="imagenp container col-xs-12" style="background-image: url(img/bg.png)">
 					
 					<div class="container col-xs-12">
-						<h1><?php
+						<h1 class="entry-title"><?php
 include 'conexion.php';
 $tasa = "SELECT Tasa FROM Tasa";
 $tasa = mysqli_query($conexion,$tasa);
@@ -347,12 +347,12 @@ echo $tasa;
 									
 									<div id="pesos" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2" onchange="calcularbs()">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos1" type="text" class="form-control" name="pesos" placeholder="Pesos" required>
+											<input id="pesos1" type="text" class="form-control" name="pesos" placeholder="Pesos" readonly required>
 									</div>
                                     
 									<div id="bolivares" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" onchange="calcularpesos()">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares1" type="text" class="form-control" name="bolivares" placeholder="Bolivares" required>
+										<input id="bolivares1" type="text" class="form-control" name="bolivares" placeholder="Bolivares" readonly required>
 									</div>
 									
 									
@@ -363,18 +363,18 @@ echo $tasa;
 									
 									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4 ">
 										<label>Nombre y Apellido</label>
-										<input id="nombre3" type="text" class="form-control" name="nombre1" placeholder="Nombre y Apellido">
+										<input id="nombre3" type="text" class="form-control" name="nombre1" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="cedula2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cedula de Identidad o RIF</label>
-											<select id="tipodoc1" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2">
+											<select id="tipodoc1" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2" required>
 				            					<option value=""></option>
 					        					<option value="V">V</option>
                             					<option value="E">E</option>            
                             					<option value="J">J</option>
 										    </select>
           	        				   			
-          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678">
+          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678" required>
 				    					
 				    				</div>
 									<div id="banco2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
@@ -421,7 +421,7 @@ echo $tasa;
 									
 									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12  col-lg-4">
 										<label>Numero de cuenta</label>
-										<input id="cuenta3" type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta">
+										<input id="cuenta3" type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
 									</div>
 									
 								
@@ -429,12 +429,12 @@ echo $tasa;
 									
 									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos3" type="text" class="form-control" name="pesos1" placeholder="Pesos" readonly>
+											<input id="pesos3" type="text" class="form-control" name="pesos1" placeholder="Pesos" readonly required>
 									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares3" type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly>
+										<input id="bolivares3" type="text" class="form-control" name="bolivares1" placeholder="Bolivares" readonly required>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">

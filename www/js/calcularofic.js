@@ -51,10 +51,11 @@ function calcularofic2(){
 		
 }}
 	
-	function calcularofic(){
+function calcularPesosBs(){
 	
 	var totalpesos = (document.formul0.totalpesos.value)*1;
-	var limite = <?php echo 'hola'; ?>;
+	var h1Text = document.querySelector(".entry-title").textContent;
+	console.log(h1Text);
 	var pesos2 = (document.formul0.pesos2.value)*1;
 	if(totalpesos >= limite){
 	
@@ -73,17 +74,8 @@ function calcularofic2(){
 	
 }}
 
-function calcularofic1(){
 
-	var pesos3 = (document.formul3.pesos3.value)*1;
-
-	var total = pesos3*(document.formul3.tasa.value);
-	
-	document.formul3.bolivares3.value= total;
-	
-}
-
-function calcularofic2(){
+function calcularBsPesos(){
 	
 	var totalpesos = (document.formul0.totalpesos.value)*1;
 	var limite = 90000;
