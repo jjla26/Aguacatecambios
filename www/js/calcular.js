@@ -1,3 +1,64 @@
+function habilitarcant(){
+	
+	var totalpesos = (document.formul0.totalpesos.value)*1;
+	console.log(totalpesos);
+	if(totalpesos<7000){
+				
+				document.getElementById('pesosbs1').disabled = true;
+				document.getElementById('nombre1').disabled = true;
+                document.getElementById('tipodoc').disabled =true;
+                document.getElementById('cedula1').disabled =true;
+                document.getElementById('banco1').disabled =true;
+                document.getElementById('cuenta1').disabled = true;
+                document.getElementById('pesos1').disabled = true;
+                document.getElementById('bolivares1').disabled = true;
+                
+                
+				alert("El deposito minimo aceptado es de 7000 CLP");
+		
+		
+	}else{
+		        document.getElementById('pesosbs1').disabled = false;
+		        document.getElementById('nombre1').disabled = false;
+                document.getElementById('tipodoc').disabled = false;
+                document.getElementById('cedula1').disabled = false;
+                document.getElementById('banco1').disabled = false;
+                document.getElementById('cuenta1').disabled = false;
+                document.getElementById('pesos1').disabled = false;
+                document.getElementById('bolivares1').disabled = false;
+				
+	}
+	
+	
+	if(totalpesos>= 14000){ 
+		
+		document.getElementById("transf1").disabled = false;
+		
+		
+		
+	
+}else{
+				document.getElementById('nombre2').style.display = 'none';
+                document.getElementById('cedula2').style.display = 'none';
+                document.getElementById('banco2').style.display = 'none';
+                document.getElementById('cuenta2').style.display = 'none';
+                document.getElementById('pesos2').style.display = 'none';
+                document.getElementById('bolivares2').style.display = 'none';
+                
+                document.getElementById('nombre3').required = false;
+                document.getElementById('tipodoc1').required = false;
+                document.getElementById('cedula3').required = false;
+                document.getElementById('banco3').required = false;
+                document.getElementById('cuenta3').required = false;
+                document.getElementById('pesos3').required = false;
+                document.getElementById('bolivares3').required = false;
+	
+		document.formul0.transf1.value= 1;
+		document.getElementById("transf1").disabled = true;
+	
+}
+}
+
 function calcular(){
 	
 	var pesos = document.formul.pesos.value*1;

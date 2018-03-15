@@ -174,3 +174,17 @@ section .cambio{
     display: none;
 
 }
+
+
+
+input:focus:invalid{
+    border-color: red;
+}
+
+input {
+    border-color: #ccc;
+}
+
+input:focus:valid {
+    border-color: green;
+}
