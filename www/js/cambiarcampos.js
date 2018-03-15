@@ -145,14 +145,12 @@ function cambiarcampos18(obj){
                 
                 document.getElementById("pesos1").readOnly = true;
                 document.getElementById("bolivares1").readOnly = false;
-                document.getElementById("pesos3").readOnly = true;
-                document.getElementById("bolivares3").readOnly = false;
+                
         }else if(obj.value =="Pesos"){
 
                 document.getElementById("pesos1").readOnly = false;
                 document.getElementById("bolivares1").readOnly = true;
-                document.getElementById("pesos3").readOnly = false;
-                document.getElementById("bolivares3").readOnly = true;
+                
         }else{
                 document.getElementById("pesos1").readOnly = true;
                 document.getElementById("bolivares1").readOnly = true;

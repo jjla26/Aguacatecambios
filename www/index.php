@@ -429,22 +429,22 @@ echo $tasa;
 									
 									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos3" type="text" class="form-control" name="pesos5" onchange="calcularPesosBs1()" placeholder="Pesos" readonly required>
+											<input id="pesos3" type="text" class="form-control" name="pesos5"  placeholder="Pesos" readonly required>
 									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares3" type="text" class="form-control" name="bolivares5" onchange="calcularBsPesos1()" placeholder="Bolivares" readonly required>
+										<input id="bolivares3" type="text" class="form-control" name="bolivares5"  placeholder="Bolivares" readonly required>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
-    			    					<button id="botones" class="form-control btn btn-success col-xs-12" >Enviar Datos</button> 
+    			    					<button id="botonenv" class="form-control btn btn-success col-xs-12" disabled>Enviar Datos</button> 
                    					 </div>
                     
                 </form>
 							
 							<div id="campos" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
-										<button id="botones" class="btn btn-success col-xs-12" disabled>Enviar y ser cliente frecuente</button> 
+										<button id="botones" class=" form-control btn btn-success col-xs-12" disabled>Enviar y ser cliente frecuente</button> 
 									</div>
 						</div>
 							
