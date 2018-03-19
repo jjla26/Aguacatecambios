@@ -30,23 +30,23 @@ date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d H:i:s");
 
 $usuario= $_SESSION['user'];
-$ids  = $_POST['ids'];
-$tasa = $_POST['tasa'];
-$cliente = $_POST['cliente'];
-$rut = $_POST['rut'];
-$comprobante = $_POST['comprobante'];
-$estatus = $_POST['transf'];
-$nombre = $_POST['nombre'];
-$tipodoc = $_POST['tipodoc']; 
-$iddoc = $_POST['iddoc'];
-$formaPago = $_POST['formaPago'];
-$banco = $_POST['banco'];
-$cuenta =$_POST['cuenta'];
-$totalPesos=$_POST['totalpesos'];
-$pesos = $_POST['pesos2'];
-$bolivares = $_POST['bolivares2'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
+$ids  = $_GET['ids'];
+$tasa = $_GET['tasa'];
+$cliente = $_GET['cliente'];
+$rut = $_GET['rut'];
+$comprobante = $_GET['comprobante'];
+$estatus = $_GET['transf'];
+$nombre = $_GET['nombre'];
+$tipodoc = $_GET['tipodoc']; 
+$iddoc = $_GET['iddoc'];
+$formaPago = $_GET['formaPago'];
+$banco = $_GET['banco'];
+$cuenta =$_GET['cuenta'];
+$totalPesos=$_GET['totalpesos'];
+$pesos = $_GET['pesos2'];
+$bolivares = $_GET['bolivares2'];
+$email = $_GET['email'];
+$telefono = $_GET['telefono'];
 
 if($pesos<=$totalPesos){
     

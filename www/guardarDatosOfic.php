@@ -30,25 +30,25 @@ echo '<script>window.location="admin"</script>';
 
 
 $usuario= $_SESSION['user'];
-$cliente = $_POST['cliente'];
-$rut = $_POST['rut'];
-$tasa = $_POST['tasa'];
-$estatus = $_POST['transf'];
-$comprobante = $_POST['comprobante'];
-$nombre = $_POST['nombre'];
-$tipodoc = $_POST['tipodoc']; 
-$iddoc = $_POST['iddoc'];
-$formaPago = $_POST['formaPago'];
-$banco = $_POST['banco'];
-$cuenta =$_POST['cuenta'];
-$bancoOrigen = $_POST['bancoOrigen'];
-$cuentaOrigen = $_POST['cuentaOrigen'];
-$totalPesos = $_POST['totalpesos'];
-$pesos = $_POST['pesos2'];
-$bolivares = $_POST['bolivares2'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
-$comentarios = $_POST['comentarios'];
+$cliente = $_GET['cliente'];
+$rut = $_GET['rut'];
+$tasa = $_GET['tasa'];
+$estatus = $_GET['transf'];
+$comprobante = $_GET['comprobante'];
+$nombre = $_GET['nombre'];
+$tipodoc = $_GET['tipodoc']; 
+$iddoc = $_GET['iddoc'];
+$formaPago = $_GET['formaPago'];
+$banco = $_GET['banco'];
+$cuenta =$_GET['cuenta'];
+$bancoOrigen = $_GET['bancoOrigen'];
+$cuentaOrigen = $_GET['cuentaOrigen'];
+$totalPesos = $_GET['totalpesos'];
+$pesos = $_GET['pesos2'];
+$bolivares = $_GET['bolivares2'];
+$email = $_GET['email'];
+$telefono = $_GET['telefono'];
+$comentarios = $_GET['comentarios'];
 
 include 'conexion.php';
 

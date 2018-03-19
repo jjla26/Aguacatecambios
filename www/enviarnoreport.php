@@ -73,17 +73,17 @@ echo '<script>window.location="admin"</script>';
         
         <?php
         
-        $ids=$_POST['ids'];
-        $tasa=$_POST['tasa'];
-        $cliente= $_POST['cliente'];
-        $rut=$_POST['rut'];
-        $formaPago=$_POST['formaPago'];
-        $comprobante= $_POST['comprobante'];
-        $totalpesos=$_POST['totalpesos'];
-        $pesos= $_POST['pesos1'];
-        $bolivares= $_POST['bs1'];
-        $email = $_POST['email'];
-        $telefono = $_POST['telefono'];
+        $ids=$_GET['ids'];
+        $tasa=$_GET['tasa'];
+        $cliente= $_GET['cliente'];
+        $rut=$_GET['rut'];
+        $formaPago=$_GET['formaPago'];
+        $comprobante= $_GET['comprobante'];
+        $totalpesos=$_GET['totalpesos'];
+        $pesos= $_GET['pesos1'];
+        $bolivares= $_GET['bs1'];
+        $email = $_GET['email'];
+        $telefono = $_GET['telefono'];
         $estatus= 'Pendiente';
         
         include 'conexion.php';
@@ -98,7 +98,7 @@ echo '<script>window.location="admin"</script>';
         
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
-            <form name="formul3" method="POST" action="buscarDatosNr.php">
+            <form name="formul3" method="GET" action="buscarDatosNr.php">
             
             <div id="campos" class="">
                         <label>Dato Clave</label> 
@@ -146,13 +146,13 @@ echo '<script>window.location="admin"</script>';
 	    			</div>
 				   
             
-            <div id="enviarp" method="post" class="">
+            <div id="enviarp" method="GET" class="">
     		    	<button id="botones" class="form-control" >Buscar</button> 
             </div>
             
             </form>
                         
-                <form name="formul0" method="POST" action="guardarDatosOfic2.php">
+                <form name="formul0" method="GET" action="guardarDatosOfic2.php">
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
@@ -293,7 +293,7 @@ echo '<script>window.location="admin"</script>';
     					<input type="text" class="form-control" value= "<?php echo $telefono; ?>" name="telefono" >
     				</div>
     				
-                    <div id="enviarp" method="post" >
+                    <div id="enviarp" method="GET" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     

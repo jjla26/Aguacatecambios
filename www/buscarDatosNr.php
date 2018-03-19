@@ -107,14 +107,14 @@ echo '<script>window.location="admin"</script>';
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $tasa= $_POST['tasa'];
-            $ids = $_POST['ids'];
-            $comprobante=$_POST['comprobante1'];
-            $rut= $_POST['rut'];
-            $formaPago=$_POST['formaPago'];
-            $totalPesos=$_POST['totalpesos'];
-            $pesos=$_POST['pesos3'];
-            $bolivares=$_POST['bolivares3'];
+            $tasa= $_GET['tasa'];
+            $ids = $_GET['ids'];
+            $comprobante=$_GET['comprobante1'];
+            $rut= $_GET['rut'];
+            $formaPago=$_GET['formaPago'];
+            $totalPesos=$_GET['totalpesos'];
+            $pesos=$_GET['pesos3'];
+            $bolivares=$_GET['bolivares3'];
             $estatus='Pendiente';
             
             
@@ -126,7 +126,7 @@ echo '<script>window.location="admin"</script>';
             
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="guardarDatosOfic2.php">
+                <form name="formul2" method="GET" action="guardarDatosOfic2.php">
                 
         	    <tr>
         	    	
@@ -224,7 +224,7 @@ echo '<script>window.location="admin"</script>';
 	    	            </div>
 	    	        </td>
             
-                <td><div id="enviarp" method="post" >
+                <td><div id="enviarp" method="GET" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -246,7 +246,7 @@ echo '<script>window.location="admin"</script>';
 		    date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $rut= $_POST['rut'];
+            $rut= $_GET['rut'];
             
             $insertar= "SELECT  Forma_pago,cliente, comprobante, rut, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta LIMIT 1";
             
@@ -262,7 +262,7 @@ echo '<script>window.location="admin"</script>';
             
             
             
-                <form name="formul0" method="POST" action="guardarDatosOfic2.php">
+                <form name="formul0" method="GET" action="guardarDatosOfic2.php">
                 	
                 	<div id="campos" class="">
                         <label>Transaccion</label> 
@@ -416,7 +416,7 @@ echo '<script>window.location="admin"</script>';
     					<input type="text" class="form-control" value= "<?php echo $row['Telefono'] ?>" name="telefono">
     				</div>
     				
-                    <div id="enviarp" method="post" >
+                    <div id="enviarp" method="GET" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     

@@ -100,7 +100,7 @@ echo '<script>window.location="admin"</script>';
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $rut= $_POST['rut'];
+            $rut= $_GET['rut'];
             
             $insertar= "SELECT ID, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta";
             
@@ -110,7 +110,7 @@ echo '<script>window.location="admin"</script>';
             
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="enviardatos.php">
+                <form name="formul2" method="GET" action="enviardatos.php">
                 
         	    <tr>
         	        <td><div id="campos" name="id" >
@@ -163,7 +163,7 @@ echo '<script>window.location="admin"</script>';
 	    			    </div>
 	    			</td>
             
-                <td><div id="enviarp" method="post" >
+                <td><div id="enviarp" method="GET" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -208,7 +208,7 @@ echo '<script>window.location="admin"</script>';
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $rut= $_POST['rut'];
+            $rut= $_GET['rut'];
             
             $insertar= "SELECT ID, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Email, Telefono FROM transacciones1 WHERE Numero_cuenta != '' AND rut = '$rut' OR Telefono= '$rut' OR Email= '$rut' OR cliente LIKE '%$rut%' OR Cedula= '$rut' OR Nombre_Apellido LIKE '%$rut%' GROUP BY Numero_cuenta LIMIT 1";
             
@@ -218,7 +218,7 @@ echo '<script>window.location="admin"</script>';
             
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="enviardatos.php">
+                <form name="formul2" method="GET" action="enviardatos.php">
                 
         	    <tr>
         	        <td><div id="campos" name="id" >
@@ -315,7 +315,7 @@ echo '<script>window.location="admin"</script>';
 	    			    </div>
 	    			</td>
             
-                <td><div id="enviarp" method="post" >
+                <td><div id="enviarp" method="GET" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>

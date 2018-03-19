@@ -29,7 +29,7 @@ echo '<script>window.location="admin"</script>';
 date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d H:i:s");
 
-$ids  = $_POST['ids'];
+$ids  = $_GET['ids'];
 
 include 'conexion.php';
 

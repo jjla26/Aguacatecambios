@@ -25,16 +25,15 @@ if (isset($_SESSION['user'])){
 //}else{$_SESSION["ultimoAcceso"] = $ahora;}
 //}
 }else{
-echo '<script>window.location="admin"</script>';
 }
 
 
-$ids= $_POST['ids'];
-$ncuenta= $_POST['numCuenta'];
-$bolivares= $_POST['bs'];
-$bancoOrigen= $_POST['bancoOrg'];
-$cuentaOrigen = $_POST['cuentaOrg'];
-$estatus = $_POST['transf'];
+$ids= $_GET['ids'];
+$ncuenta= $_GET['numCuenta'];
+$bolivares= $_GET['bs'];
+$bancoOrigen= $_GET['bancoOrg'];
+$cuentaOrigen = $_GET['cuentaOrg'];
+$estatus = $_GET['transf'];
 
 include 'conexion.php';
 

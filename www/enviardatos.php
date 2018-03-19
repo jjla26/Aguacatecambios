@@ -76,20 +76,20 @@ echo '<script>window.location="admin"</script>';
         </div>
         
         <?php
-        $ids = $_POST['ids'];
-        $cliente = $_POST['cliente1'];
-        $comprobante = $_POST['comprobante'];
-        $rut= $_POST['rut1'];
-        $nombre= $_POST['nombre1'];
-        $nacionalidad= $_POST['nacionalidad1'];
-        $cedula= $_POST['cedula1'];
-        $bancodest= $_POST['cuentadest1'];
-        $numcuenta= $_POST['numdest1'];
-        $totalPesos= $_POST['totalpesos'];
-        $pesos= $_POST['pesos2'];
-        $bolivares= $_POST['bolivares2'];
-        $email= $_POST['email1'];
-        $telefono= $_POST['telefono1'];
+        $ids = $_GET['ids'];
+        $cliente = $_GET['cliente1'];
+        $comprobante = $_GET['comprobante'];
+        $rut= $_GET['rut1'];
+        $nombre= $_GET['nombre1'];
+        $nacionalidad= $_GET['nacionalidad1'];
+        $cedula= $_GET['cedula1'];
+        $bancodest= $_GET['cuentadest1'];
+        $numcuenta= $_GET['numdest1'];
+        $totalPesos= $_GET['totalpesos'];
+        $pesos= $_GET['pesos2'];
+        $bolivares= $_GET['bolivares2'];
+        $email= $_GET['email1'];
+        $telefono= $_GET['telefono1'];
         
         include 'conexion.php';
         $actualizar = "UPDATE transacciones1 SET rut='$rut', email='$email', telefono='$telefono' WHERE ID='$ids'";
@@ -100,7 +100,7 @@ echo '<script>window.location="admin"</script>';
         <div id="form" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
-                <form name="formul0" method="POST" action="guardarDatosOfic.php">
+                <form name="formul0" method="GET" action="guardarDatosOfic.php">
                 
                      <div id="campos" class="">
                             <label>TASA</label> 
@@ -223,7 +223,7 @@ echo '<script>window.location="admin"</script>';
     					<input type="text" class="form-control" value= "<?php echo $telefono; ?>" name="telefono" readonly >
     				</div>
     				
-                    <div id="enviarp" method="post" >
+                    <div id="enviarp" method="GET" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     

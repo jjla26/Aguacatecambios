@@ -471,7 +471,7 @@ echo $disp_mercantil_juridica;
         <div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
-            <form name="formul3" method="POST" action="buscarDatos.php">
+            <form name="formul3" method="get" action="buscarDatos.php">
             
             <div id="campos" class="">
                         <label>Dato Clave</label> 
@@ -479,14 +479,14 @@ echo $disp_mercantil_juridica;
                     
             </div>
             
-            <div id="enviarp" method="post" class="">
+            <div id="enviarp" method="get" class="">
     		    	<button id="botones" class="form-control" >Buscar</button> 
             </div>
             
             </form>
             
             
-                <form name="formul0" method="POST" enctype="multipart/form-data" action="guardarDatosOfic.php">
+                <form name="formul0" method="GET" enctype="multipart/form-data" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
@@ -691,7 +691,7 @@ echo $tasa1;
     					<input type="text" class="form-control" name="comentarios">
     				</div>
     				
-                    <div id="enviarp" method="post" >
+                    <div id="enviarp" method="get" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     
@@ -745,7 +745,7 @@ echo $tasa1;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
+                <form name="formul2" method="get" action="guardarDatosOfic1.php">
                 
         	<tr>
         	
@@ -828,7 +828,7 @@ echo $tasa1;
 				<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
 	    			</div></td>
-                <td><div id="enviarp" method="post" >
+                <td><div id="enviarp" method="get" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -885,7 +885,7 @@ echo $tasa1;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="guardarDatosOfic3.php">
+                <form name="formul2" method="get" action="guardarDatosOfic3.php">
                 
         	<tr>
         	
@@ -935,7 +935,7 @@ echo $tasa1;
     		?>" readonly required>
 	    	</div></td>
             
-                <td><div id="enviarp" method="post" >
+                <td><div id="enviarp" method="get" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -995,7 +995,7 @@ echo $tasa1;
 
 		while ($row = mysqli_fetch_array($result)){?>
         	
-            <form name="formul3" method="POST" action="enviarnoreport.php">
+            <form name="formul3" method="get" action="enviarnoreport.php">
                 
             <tr>
 
@@ -1078,7 +1078,7 @@ echo $tasa1;
 	    			</div></td>
 	    			
 	    			
-                <td><div id="enviarp" method="post" >
+                <td><div id="enviarp" method="get" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -1104,7 +1104,7 @@ echo $tasa1;
         <div id="form" class=" col-xs-4 col-xs-offset-0">
             <h1>Saldos Iniciales Cuentas Chile</h1>
             
-                <form name="formul1" method="post" action="saldosiniciales.php">
+                <form name="formul1" method="get" action="saldosiniciales.php">
                 
                     <div id="campos" class="">
                         <label>Efectivo</label> 
@@ -1158,7 +1158,7 @@ echo $tasa1;
                         <label>Banesco Juridica</label> 
 				    	<input type="text" class="form-control" name="inicial_banesco_juridica">
                     </div>                    
-                    <div id="enviarp" method="post">
+                    <div id="enviarp" method="get">
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </form>
@@ -1172,7 +1172,7 @@ echo $tasa1;
         <div id="form" class=" col-xs-4">
             <h1>Abonos Cuentas Chile</h1>
             
-                <form name="formul2" method="post" action="abonos.php">
+                <form name="formul2" method="get" action="abonos.php">
                     <div id="campos" class="">
                         <label>Efectivo</label> 
 				    	<input type="text" class="form-control" name="abono_efec">
@@ -1228,7 +1228,7 @@ echo $tasa1;
                         <label>Comentario</label> 
 				    	<input type="text" class="form-control" name="comentario">
                     </div>                                                    
-                    <div id="enviarp" method="post">
+                    <div id="enviarp" method="get">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
                     </div>
 
@@ -1243,7 +1243,7 @@ echo $tasa1;
         <div id="form" class=" col-xs-4">
             <h1>Debitos Cuentas Chile</h1>
             
-                <form name="formul3" method="post" action="debitos.php">
+                <form name="formul3" method="get" action="debitos.php">
                 
                     <div id="campos" class="">
                         <label>Efectivo</label> 
@@ -1359,7 +1359,7 @@ echo $tasa1;
 				    	<input type="text" class="form-control" name="comentario">
                     </div>
                                         
-                    <div id="enviarp" method="post">
+                    <div id="enviarp" method="get">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
                     </div>
                     
