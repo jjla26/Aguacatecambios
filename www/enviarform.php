@@ -55,7 +55,7 @@ echo $cuenta = $_POST['cuenta'];
 echo $pesos = $_POST['pesos'];
 echo $bolivares= $_POST['bolivares'];
 
-include "conexion.php";
+include 'conexion.php';
 
 $tasa = "SELECT Tasa from Tasa";
 $tasa = mysqli_query($conexion, $tasa);
@@ -63,9 +63,9 @@ $tasa = mysqli_fetch_array($tasa);
 $tasa = $tasa['Tasa'];
 
 $tasaesp = "SELECT Tasa from Tasa1";
-$tasaesp = mysqli_query($conexion, $tasa);
-$tasaesp = mysqli_fetch_array($tasa);
-$tasaesp = $tasa['Tasa'];
+$tasaesp = mysqli_query($conexion, $tasaesp);
+$tasaesp = mysqli_fetch_array($tasaesp);
+$tasaesp = $tasaesp['Tasa'];
 
 $tasacalc = $pesos / $bolivares;
 
@@ -95,17 +95,17 @@ $bolivares = $pesos*$tasa;
 
 $bolivares1 = $pesos*$tasa;
 
-$insertar =  "INSERT INTO transacciones1 (cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
+$insertar =  "INSERT INTO transacciones1 (cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
 
-$insertar1 = "INSERT INTO transacciones1 (cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre1, $nacionalidad1, $cedula1, $banco1, $cuenta1, $totalPesos1, $pesos1, $bolilvares1, $estatus) ";
+$insertar1 = "INSERT INTO transacciones1 (cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre1, $nacionalidad1, $cedula1, $banco1, $cuenta1, $totalPesos1, $pesos1, $bolilvares1, $estatus) ";
 
-$insertar = mysqli_query($conexion, $insertar);
-$insertar1 = mysqli_query($conexion, $insertar);
+$insertar  = mysqli_query($conexion, $insertar);
+$insertar1 = mysqli_query($conexion, $insertar1);
 
 if(!$insertar || !$insertar1){
 
 
-  echo '<script>alert("Intente Nuevamente, Sus datos no fueron enviados"); window.location="index.php"</script>';    
+  echo '<script>alert("Error 3"); window.location="index.php"</script>';    
 //header('Location: index.php');
     
 }else{
@@ -122,16 +122,16 @@ $bolivares = $pesos*$tasaesp;
 
 $bolivares1 = $pesos*$tasaesp;
 
-$insertar =  "INSERT INTO transacciones1 (cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
+$insertar =  "INSERT INTO transacciones1 (cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
 
-$insertar1 = "INSERT INTO transacciones1 (cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre1, $nacionalidad1, $cedula1, $banco1, $cuenta1, $totalPesos1, $pesos1, $bolilvares1, $estatus) ";
+$insertar1 = "INSERT INTO transacciones1 (cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre1, $nacionalidad1, $cedula1, $banco1, $cuenta1, $totalPesos1, $pesos1, $bolilvares1, $estatus) ";
 
-$insertar = mysqli_query($conexion, $insertar);
-$insertar1 = mysqli_query($conexion, $insertar);
+$insertar =  mysqli_query($conexion, $insertar);
+$insertar1 = mysqli_query($conexion, $insertar1);
 
 if(!$insertar || !$insertar1){
 
-  echo '<script>alert("Intente Nuevamente, Sus datos no fueron enviados"); window.location="index.php"</script>';    
+  echo '<script>alert("Error 1"); window.location="index.php"</script>';    
 //header('Location: index.php');
     
 }else{
@@ -144,13 +144,13 @@ if(!$insertar || !$insertar1){
   
 $bolivares = $pesos*$tasaesp;
 
-$insertar =  "INSERT INTO transacciones1 (cliente, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pessos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
+$insertar =  "INSERT INTO transacciones1 (cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus) VALUES($cliente, $rut, $nombre, $nacionalidad, $cedula, $banco, $cuenta, $totalPesos, $pesos, $bolilvares, $estatus) "; 
 
 $insertar = mysqli_query($conexion, $insertar);
 
-if(!$insertar || !$insertar1){
+if(!$insertar){
 
-  echo '<script>alert("Intente Nuevamente, Sus datos no fueron enviados"); window.location="index.php"</script>';    
+  echo '<script>alert("Error 2"); window.location="index.php"</script>';    
 //header('Location: index.php');
     
 }else{
