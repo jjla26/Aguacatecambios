@@ -262,9 +262,9 @@ echo $tasa;
 									</div>							
 									
 									
-				                    <div id="transf" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+				                    <div id="transf2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 		    	                    	<label>Cantidad de Transferencias</label>
-		    	                    	<select id="transf1" name="transf" class="form-control" onchange="cambiarcampos17(this)" disabled>
+		    	                    	<select id="transf1" name="transf2" class="form-control" onchange="cambiarcampos17(this)" disabled>
 				                           <option  value="1">1</option>
                                            <option  value="2">2</option>
                                     	</select>
@@ -362,23 +362,23 @@ echo $tasa;
 									
 									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4 ">
 										<label>Nombre y Apellido</label>
-										<input id="nombre3" type="text" class="form-control" name="nombre1" placeholder="Nombre y Apellido" required>
+										<input id="nombre3" type="text" class="form-control" name="nombre2" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="cedula2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cedula de Identidad o RIF</label>
-											<select id="tipodoc1" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2" required>
+											<select id="tipodoc1" name="tipodoc2" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2" required>
 				            					<option value=""></option>
 					        					<option value="V">V</option>
                             					<option value="E">E</option>            
                             					<option value="J">J</option>
 										    </select>
           	        				   			
-          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678" required>
+          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc2" placeholder="Ej.: 12345678" required>
 				    					
 				    				</div>
 									<div id="banco2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Banco</label>
-		    		   					 <select id="banco3" name="banco" class="form-control" required>
+		    		   					 <select id="banco3" name="banco2" class="form-control" required>
 				           					<option value="">Banco</option>
 				           				    <option value="Banesco">Banesco</option>
                              				<option value="Banco Mercantil">Banco Mercantil</option>            
@@ -420,7 +420,7 @@ echo $tasa;
 									
 									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12  col-lg-4">
 										<label>Numero de cuenta</label>
-										<input id="cuenta3" type="text" class="form-control" name="cuenta" placeholder="Numero de cuenta" required>
+										<input id="cuenta3" type="text" class="form-control" name="cuenta2" placeholder="Numero de cuenta" required>
 									</div>
 									
 								
