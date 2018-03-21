@@ -61,12 +61,21 @@ function habilitarcant(){
 
 function calcular(){
 	
+	var h1Text = document.querySelector(".entry-title").textContent;
 	var pesos = document.formul.pesos.value*1;
-	
-	var total = pesos*(document.formul.tasacalc.value);
+	var total = pesos*h1Text;
 	
 	document.formul.bolivares.value= total;
 	
+}
+
+function calcular1(){
+		
+	var h1Text = document.querySelector(".entry-title").textContent;
+	var bolivares1= (document.formul.bolivares1.value)*1;
+	var total1= bolivares1/h1Text;
+	
+	document.formul.pesos1.value= Math.round(total1);
 }
 
 function calcularPesosBs(){
@@ -129,17 +138,17 @@ function calcularBsPesos(){
 		
 	var total = bolivares1/h1Text;
 	
-	document.formul0.pesos.value = total;
-	document.formul0.pesos5.value = totalpesos- (bolivares1/h1Text);
-	document.formul0.bolivares5.value = (totalpesos*h1Text)-bolivares1;
+	document.formul0.pesos.value = Math.round(total);
+	document.formul0.pesos5.value = Math.round(totalpesos- (bolivares1/h1Text));
+	document.formul0.bolivares5.value = Math.round((totalpesos*h1Text)-bolivares1);
 	
 	}else{
 		
 	var total = bolivares1/h1Text;
 
-	document.formul0.pesos.value= total;
-	document.formul0.pesos5.value= totalpesos- (bolivares1/h1Text);
-	document.formul0.bolivares5.value = (totalpesos*h1Text)-bolivares1;	
+	document.formul0.pesos.value= Math.round(total);
+	document.formul0.pesos5.value= Math.round(totalpesos- (bolivares1/h1Text));
+	document.formul0.bolivares5.value = Math.round((totalpesos*h1Text)-bolivares1);	
 }}else{
 		document.getElementById("botonenv").disabled= true;
 		alert("El minimo a transferir es de $7.000 CLP");

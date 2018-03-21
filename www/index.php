@@ -164,7 +164,7 @@ echo $tasa;
              <section id="calculadora">
 					<div class="container col-xs-12 text-center" style="background-image: url(img/bg_dolar.png); top:50px; padding:10px; color: white;" >
 										
-						<div class=" col-xs-8 col-xs-offset-2 text-center">
+						<div class="container col-md-12 col-md-12 col-md-12 col-lg-8 col-lg-offset-2 text-center align-center">
 							<a name="calculadora"><h1>Calculadora de cambio</h1></a>
 						<p>aqui puedes calcular rapidamente la cantidad que necesitas</p>
 							<form name="formul">
@@ -190,13 +190,13 @@ echo $tasa;
 									<input type="text" name="pesos" class="form-control" placeholder="Pesos Chilenos" >
 								</div>
 								<div id="div2"  class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
-									<input type="text" name="bolivares" class="form-control" placeholder="Bolivares">
+									<input type="text" name="bolivares" class="form-control" placeholder="Bolivares" readonly>
 								</div>
 								<div id="div4" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 									<input  type="text" name="bolivares1" class="form-control" placeholder="Bolivares">
 								</div>
 								<div id="div3" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
-									<input type="text" name="pesos1" class="form-control" placeholder="Pesos chilenos">
+									<input type="text" name="pesos1" class="form-control" placeholder="Pesos chilenos" readonly>
 								</div>
 								<div id="div5" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-4">
 									<a id="botones" class="btn btn-success col-xs-12 success" onclick="calcular();">Calcular</a> 
@@ -226,20 +226,25 @@ echo $tasa;
 							
 					
              		   <form  name="formul0" method="POST"  action="enviarform.php">
+             		   	
+             		   			<div id="tasap" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+									<label>Tasa</label>
+									<input id="tasap1" type="text" class="form-control" name="tasap" value="<?php echo $tasa; ?>" placeholder="Ej.: Juan Perez" required>
+								</div>
                 
 								<div id="cliente" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 									<label>Nombre y Apellido</label>
-									<input id="cliente1" type="text" class="form-control" name="cliente" pattern = "[A-Za-z ]*" title="Solo letras" placeholder="Ej.: Juan Perez" required>
+									<input id="cliente1" type="text" class="form-control" name="cliente" maxlength=31 pattern = "[a-zA-Z ]{2,30}" title="Solo letras" placeholder="Ej.: Juan Perez" required>
 								</div>
 								<div id="rut" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 									<label>RUT o Pasaporte</label>
-									<input id="rut1" type="text" class="form-control" name="rut" pattern = "[0-9k-]*+-[0-9k]{1}" title="Solo letras" placeholder="Ej.: 12345678-X" required>
+									<input id="rut1" type="text" class="form-control" name="rut" pattern = "[\d]{7,11}(-?)?[k\d]?" maxlength=11 title="Solo letras" placeholder="Ej.: 12345678-X" required>
 								</div>							
 									
 									
 									<div id="cantidad" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Pesos Depositados</label>
-										<input id="cantidad1" type="text" class="form-control" name="totalpesos" onchange="habilitarcant()" placeholder="Ej.: 1000000" required>
+										<input id="cantidad1" type="text" class="form-control" name="totalpesos" minlength=4 onchange="habilitarcant()" placeholder="Ej.: 1000000" required>
 									</div>
 									<div id="deposito" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Adjunta la foto de tu deposito</label>
@@ -253,7 +258,7 @@ echo $tasa;
 									
 									<div id="telefono" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Numero de Telefono</label>
-										<input id="telefono1" type="text" class="form-control" name="telefono" placeholder="Ej.: +56912345678" required>
+										<input id="telefono1" type="text" class="form-control" name="telefono" pattern = "\+[0-9]{10,15}" placeholder="Ej.: +56912345678" required>
 									</div>
 						
 									
@@ -272,7 +277,7 @@ echo $tasa;
 				
 									<div id="nombre" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Nombre y Apellido</label>
-										<input id="nombre1" type="text" class="form-control" name="nombre" placeholder="Ej.: Juan Perez" required disabled>
+										<input id="nombre1" type="text" class="form-control" name="nombre" maxlength=31 pattern = "[a-zA-Z ]{2,30}" title="Solo letras" placeholder="Ej.: Juan Perez" required disabled>
 									</div>
 									
 									<div id="cedula" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
@@ -283,7 +288,7 @@ echo $tasa;
                             					<option value="E">E</option>            
                             					<option value="J">J</option>
 										    </select>
-          	        				   			<input id="cedula1" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" placeholder="Ej.: 12345678"  required disabled>
+          	        				   			<input id="cedula1" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc" minlength=7 maxlength=9 placeholder="Ej.: 12345678"  required disabled>
 				    					
 				    				</div>
 				    				
@@ -346,12 +351,12 @@ echo $tasa;
 									
 									<div id="pesos" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos1" type="text" class="form-control" name="pesos" placeholder="Pesos"  onchange="calcularPesosBs()" readonly required>
+											<input id="pesos1" type="text" class="form-control" name="pesos" minlength=4  placeholder="Pesos"  onchange="calcularPesosBs()" readonly required>
 									</div>
                                     
 									<div id="bolivares" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" >
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares1" type="text" class="form-control" name="bolivares" placeholder="Bolivares" onchange="calcularBsPesos()" readonly required>
+										<input id="bolivares1" type="text" class="form-control" name="bolivares" minlength=6  placeholder="Bolivares" onchange="calcularBsPesos()" readonly required>
 									</div>
 									
 									
@@ -362,7 +367,7 @@ echo $tasa;
 									
 									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4 ">
 										<label>Nombre y Apellido</label>
-										<input id="nombre3" type="text" class="form-control" name="nombre2" placeholder="Nombre y Apellido" required>
+										<input id="nombre3" type="text" class="form-control" name="nombre2" maxlength=31 pattern = "[a-zA-Z ]{2,30}" title="Solo letras" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="cedula2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cedula de Identidad o RIF</label>
@@ -373,7 +378,7 @@ echo $tasa;
                             					<option value="J">J</option>
 										    </select>
           	        				   			
-          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc2" placeholder="Ej.: 12345678" required>
+          	        				   	<input id="cedula3" type="text" class="form-control col-xs-8 col-sm-8 col-md-12 col-lg-2" name="iddoc2" minlength=7 maxlength=9 placeholder="Ej.: 12345678" required>
 				    					
 				    				</div>
 									<div id="banco2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
@@ -420,7 +425,7 @@ echo $tasa;
 									
 									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12  col-lg-4">
 										<label>Numero de cuenta</label>
-										<input id="cuenta3" type="text" class="form-control" name="cuenta2" placeholder="Numero de cuenta" required>
+										<input id="cuenta3" type="text" class="form-control" name="cuenta2" minlength=20 maxlength=20  placeholder="Numero de cuenta" required>
 									</div>
 									
 								
@@ -428,12 +433,12 @@ echo $tasa;
 									
 									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Cantidad de Pesos a enviar</label>
-											<input id="pesos3" type="text" class="form-control" name="pesos5"  placeholder="Pesos" readonly required>
+											<input id="pesos3" type="text" class="form-control" name="pesos5" minlength=4   placeholder="Pesos" readonly required>
 									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
-										<input id="bolivares3" type="text" class="form-control" name="bolivares5"  placeholder="Bolivares" readonly required>
+										<input id="bolivares3" type="text" class="form-control" name="bolivares5" minlength=6   placeholder="Bolivares" readonly required>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">

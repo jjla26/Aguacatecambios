@@ -89,17 +89,19 @@ function cambiarcampos17(obj){
                 document.getElementById('bolivares2').style.display = 'none';
                 
 
-                document.getElementById('nombre2').required = false;
-                document.getElementById('cedula2').required = false;
-                document.getElementById('cuenta2').required = false;
-                document.getElementById('banco2').required = false;
-                document.getElementById('pesos2').required = false;
-                document.getElementById('bolivares2').required = false;
+                document.getElementById('nombre3').required = false;
+                document.getElementById('tipodoc1').required = false;
+                document.getElementById('cedula3').required = false;
+                document.getElementById('cuenta3').required = false;
+                document.getElementById('banco3').required = false;
+                document.getElementById('pesos3').required = false;
+                document.getElementById('bolivares3').required = false;
                 
         }else if (obj.value == 2 ){
 
 
                 document.getElementById('nombre2').style.display = 'block';
+                
                 document.getElementById('cedula2').style.display = 'block';
                 document.getElementById('banco2').style.display = 'block';
                 document.getElementById('cuenta2').style.display = 'block';
@@ -118,6 +120,7 @@ function cambiarcampos17(obj){
         }else{
 
                 document.getElementById('nombre2').style.display = 'none';
+                
                 document.getElementById('cedula2').style.display = 'none';
                 document.getElementById('banco2').style.display = 'none';
                 document.getElementById('cuenta2').style.display = 'none';

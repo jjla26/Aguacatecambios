@@ -131,8 +131,8 @@ h4{
 }
 
 #calculadora img{
-	width:100%;
-	height: auto;
+	width:10%;
+	height: 500px;
 }
 
 #banner {
@@ -149,13 +149,12 @@ h4{
 	}
 
 
-
-	#calculadora .container {
+#calculadora .container {
 	background-image: url("img/bg_dolar.png");
-	top:50px; 
-	padding:10px;
-
-	}
+	min-height: 29em;
+	color: white;
+	height: auto;
+}
 	
 	
 	
@@ -169,7 +168,7 @@ section .cambio{
 	display: block;	
 }
 
-#beneficiario2, #nombre2, #cedula2, #banco2, #cuenta2, #pesos2, #bolivares2, #div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb{
+#beneficiario2, #nombre2, #cedula2, #banco2, #cuenta2, #pesos2, #bolivares2, #div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb, #tasap{
     
     display: none;
 
