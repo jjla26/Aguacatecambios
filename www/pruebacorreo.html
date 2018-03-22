@@ -1,0 +1,15 @@
+<HTML>
+<HEAD>
+<TITLE>Binario a BD</TITLE>
+</HEAD>
+<BODY>
+<?php
+if (isset($_GET['proceso']))
+echo $_GET['proceso']
+?>
+<FORM enctype="multipart/form-data" method="post" action="insertar.php" required>
+Archivo: <INPUT type="file" name="archivo" size="30">
+<INPUT type="submit" name="submit" value="Subir archivo">
+</FORM>
+</BODY>
+</HTML>
