@@ -248,7 +248,7 @@ echo $tasa;
 									</div>
 									<div id="deposito" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Adjunta la foto de tu deposito</label>
-										<input id="deposito1" type="file" class="form-control" name="archivo" placeholder="Carga tu comprobante"  >
+										<input id="deposito1" type="file" class="form-control" name="archivo" placeholder="Carga tu comprobante" required>
 										
 									</div>
 									<div id="email" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
