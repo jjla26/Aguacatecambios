@@ -12,7 +12,6 @@ include 'conexion.php';
 
 // archivo temporal (ruta y nombre).
 $binario_nombre_temporal=$_FILES['archivo']['tmp_name'] ;
-
 // leer del archvio temporal .. el binario subido.
 // "rb" para Windows .. Linux parece q con "r" sobra ...
 $binario_contenido = addslashes(fread(fopen($binario_nombre_temporal, "rb"), filesize($binario_nombre_temporal)));
