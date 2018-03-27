@@ -23,28 +23,28 @@
    		<header>
    		   
 				<nav id="barra" class="navbar navbar-inverse navbar-static-top col-xs-12" style="margin-bottom:0;">
-					<div class="container">
-						<div class="navbar-header">
-							<a href="index.html" class="navbar-left"><img src="img/logo.png"></a>
-							<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
+						<div class="container">
+							<div class="navbar-header">
+								<a href="index.html" class="navbar-left"><img src="img/logo.png"></a>
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
 					
 					
-						<div id="navbar" class="navbar-collapse collapse">
-							<ul class="nav navbar-nav navbar-right ">
-								<li class=""><a href="#formulario">Formulario de envio</a></li>
-								<li class=""><a href="#">Preguntas Frecuentes</a></li>
-								<li class=""><a href="#">Testimonios</a></li>
-								<li class=""><a href="#">Contacto</a></li>
-								<li class=""><a href="#">SIGN UP</a></li>
-							</ul>
+							<div id="navbar" class="navbar-collapse collapse">
+								<ul class="nav navbar-nav navbar-right ">
+									<li class=""><a href="#formulario">Formulario de envio</a></li>
+									<li class=""><a href="#">Preguntas Frecuentes</a></li>
+									<li class=""><a href="#">Testimonios</a></li>
+									<li class=""><a href="#">Contacto</a></li>
+									<li class=""><a href="#">SIGN UP</a></li>
+								</ul>
+							</div>
 						</div>
-					</div>
 				</nav>
 								
            	</header>
