@@ -19,82 +19,82 @@
 		<script src="js/cambiarcampos.js"></script>
 		
 	</head>
-<body>
-   		<header>
-   		   
-				<nav id="barra" class="navbar navbar-inverse navbar-static-top col-xs-12" style="margin-bottom:0;">
-						<div class="container">
-							<div class="navbar-header">
-								<a href="index.html" class="navbar-left"><img src="img/logo.png"></a>
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-							</div>
-					
-					
-							<div id="navbar" class="navbar-collapse collapse">
-								<ul class="nav navbar-nav navbar-right ">
-									<li class=""><a href="#formulario">Formulario de envio</a></li>
-									<li class=""><a href="#">Preguntas Frecuentes</a></li>
-									<li class=""><a href="#">Testimonios</a></li>
-									<li class=""><a href="#">Contacto</a></li>
-									<li class=""><a href="#">SIGN UP</a></li>
-								</ul>
-							</div>
+	<body>
+		
+		<header>
+   		  
+			<nav id="barra" class="navbar navbar-inverse navbar-static-top col-xs-12 ">
+					<div class="container">
+						<div class="navbar-header">
+							<a id= "logo" href="index.html" class="navbar-left"><img src="img/logo.png"></a>
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
 						</div>
-				</nav>
-								
-           	</header>
-       <main>
-				<section id="banner" >
-					<div class="imagenp container col-xs-12" style="background-image: url(img/bg.png)">
-					
-					<div class="container col-xs-12">
-						<h1 class="entry-title"><?php
-include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa";
-$tasa = mysqli_query($conexion,$tasa);
-$tasa = mysqli_fetch_array($tasa);
-$tasa= $tasa['Tasa'];
-
-echo $tasa;
-
-?></h1>
-						<div id="tasaverde" class="container col-xs-12 col-sm-6 col-md-4 col-lg-2 col-md-offset-3 col-md-offset-4 col-lg-offset-5">
-						<p> Tasa verde de CLP a Bs</p>
-						</div>
-						<div class="container col-xs-12 ">
-							<span><img id="bandera" class="img" src="img/icon_cl.png"></span>
-							<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-							<span><img id="bandera" class="img" src="img/icon_vzla.png"></span>
-						</div>
-						<div id="slogan" class="container col-xs-12 text-center">
 						
-							<h3>SOMOS PROFESIONALES</h3>
-							<h4>EN EL ENVIO DE DINERO</h4>
+						<div id="navbar" class="navbar-collapse collapse ">
+							<ul class="nav navbar-nav navbar-right ">
+								<li class=""><a href="#formulario">Formulario de envio</a></li>
+								<li class=""><a href="#">Preguntas Frecuentes</a></li>
+								<li class=""><a href="#">Testimonios</a></li>
+								<li class=""><a href="#">Contacto</a></li>
+								<li class=""><a href="#">SIGN UP</a></li>
+							</ul>
 						</div>
 					</div>
-					</div>
+			</nav>
+							
+        </header>
+        
+        <main>
+			<section id="banner" >
+					<div id="bannerimg" class="imagenp container col-xs-12" >
 					
+						<div class="container col-xs-12">
+							<h1 class="entry-title"><?php
+													include 'conexion.php';
+													$tasa = "SELECT Tasa FROM Tasa";
+													$tasa = mysqli_query($conexion,$tasa);
+													$tasa = mysqli_fetch_array($tasa);
+													$tasa= $tasa['Tasa'];
+													
+													echo $tasa;
+
+							?></h1>
+							<div id="tasaverde" class="container col-xs-12 col-sm-6 col-md-4 col-lg-2 col-sm-offset-3 col-md-offset-4 col-lg-offset-5">
+								<p> Tasa verde de CLP a Bs</p>
+							</div>
+							<div class="container col-xs-12 ">
+								<span><img id="bandera" class="img" src="img/icon_cl.png"></span>
+								<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+								<span><img id="bandera" class="img" src="img/icon_vzla.png"></span>
+							</div>
+							<div id="slogan" class="container col-xs-12 text-center">
+						
+								<h3>SOMOS PROFESIONALES</h3>
+								<h4>EN EL ENVIO DE DINERO</h4>
+							</div>
+						</div>
+					</div>
 				</section>
-                               
-                <section>
+				
+				<section>
 			
         		<div class="container col-xs-12" style="background-color:#f7f7f7" >
 						<div class="col-xs-8 col-xs-offset-2 text-center hidden-xs " style="padding-top:15px; padding-bottom:15px;">	
 							<p>Aguacatecambios es una empresa profesional de envío de remesas entre Chile-Venezuela comprometida contigo, somos una plataforma digital que te permite velar por el bienestar de los tuyos alrededor de toda Venezuela y a lo largo de chile con toda la seguridad y la confianza que una empresa establecida puede brindarte</p>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-sm-offset-4" style="padding-top:15px; padding-bottom:15px;">	
-							<a id="botones" class="btn btn-success col-xs-12 success" href="#formulario" role="button">Cambia aquí</a>
+							<a id="botonescam" class="btn btn-success col-xs-12 success" href="#formulario" role="button">ENVIAR YA</a>
 						</div>
 					</div>
                     
 				</section>
-               
-                <section id="tasa">
+				
+				<section id="tasa">
 				
 				<div id = "tasadeldia" class="container col-xs-12 " style="top:50px; padding:10px;">
 					
@@ -138,20 +138,20 @@ $tasa= $tasa['Tasa'];
 echo $tasa;
 
 ?></h1>
-						<p>Tasa de cambio de USD a CLP</p>
+						<p>Tasa de cambio de USD a Pesos Chilenos</p>
 					</div>
-					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 text-center hidden-xs">
+					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 text-center ">
                             <span><img class="img" src="img/icon_cl.png"></span>
 							<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 							<span><img class="img" src="img/icon_vzla.png"></span>
 					</div>
-					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center hidden-xs">
+					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center ">
 						<span><img class="img" src="img/icon2_eeuu.jpg"></span>
 						<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 						<span><img class="img" src="img/icon_vzla.png"></span>
 					
 					</div>
-					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center hidden-xs">
+					<div id="tasadehoy" class="panel panel-default col-xs-4 col-sm-3 col-md-3 col-lg-2 text-center ">
 						<span><img class="img" src="img/icon2_eeuu.jpg"></span>
 						<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
 						<span><img class="img" src="img/icon_cl.png"></span>
@@ -159,12 +159,11 @@ echo $tasa;
 					</div>
 				</div>
 				</section>
-            	
-            
-             <section id="calculadora">
-					<div class="container col-xs-12 text-center" style="background-image: url(img/bg_dolar.png); top:50px; padding:10px; color: white;" >
+				
+				<section id="calculadora">
+					<div id="calculadora1" class="container col-xs-12 text-center" style="background-image: url(img/bg_dolar.png); top:50px; padding:10px; color: white;" >
 										
-						<div class="container col-md-12 col-md-12 col-md-12 col-lg-8 col-lg-offset-2 text-center align-center">
+						<div id="calculadora2" class="container col-md-12 col-md-12 col-md-12 col-lg-8 col-lg-offset-2">
 							<a name="calculadora"><h1>Calculadora de cambio</h1></a>
 						<p>aqui puedes calcular rapidamente la cantidad que necesitas</p>
 							<form name="formul">
@@ -211,10 +210,8 @@ echo $tasa;
 						</div>
 					</div>
 				</section>
-             
-             
-              
-              <section>
+				
+				<section>
                   
                     <div class="container col-xs-12 text-center" style="top:50px; " >
 						
@@ -453,56 +450,50 @@ echo $tasa;
 						</div>
 							
 				    </div>
-                  </div>
+                  
               </section>
-       
-        
-               
-                      
-                             
-                                    
-               
-               <footer>
-					<div class="container col-xs-12" style="background-color:#000; top:100px; padding:1px;">
-						<h1> Encuentranos</h1>
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8748898444314!2d-70.61828268500295!3d-33.42650598078083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf6383ac6e6b%3A0x24d2440872142db9!2sAv.+Providencia+1650%2C+Providencia%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses-419!2scl!4v1520094298458" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-						
-					</div>
-				
+              
+
+   		
+           	
+              
+              <footer>
+					<div >    
+        			    <h5>Copyright © 2017 Diseñado por <a href="https://www.behance.net/adrizapiain" target="_blank">@Adriana</a> Desarrollado por <a href="https://www.instagram.com/juliojla/" target="_blank">@JulioLopez</a>  - Todos los derechos reservados  <a href="https://www.instagram.com/aguacatecambios/" target="_blank" class="icon-instagram "></a><a href="https://es-la.facebook.com/aguacatecambios/" target="_blank" class="icon-facebook-squared"></a> <a href="#" class="icon-gmail"></a></h5>
+        			</div>
 				</footer>
                 
         </main>
+        
+        
+        
+               
 				
 
-
-
-
-       
         <script>
-function myFunction() {
-    alert("Se enviaron los datos de transferencia al correo con tu ¡¡Codigo Verde!! IMPORTANTE: Si no llega el correo revisa la carpeta de spam o  contáctanos!");
-}
-
-
-</script>   
+			function myFunction() {
+				 alert("Se enviaron los datos de transferencia al correo con tu ¡¡Codigo Verde!! IMPORTANTE: Si no llega el correo revisa la carpeta de spam o  contáctanos!");
+			}
+		</script>   
+    
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         
         
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/5aa2d6d24b401e45400d948f/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+		<!--Start of Tawk.to Script-->
+		<script type="text/javascript">
+			var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+			(function(){
+			var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+			s1.async=true;
+			s1.src='https://embed.tawk.to/5aa2d6d24b401e45400d948f/default';
+			s1.charset='UTF-8';
+			s1.setAttribute('crossorigin','*');
+			s0.parentNode.insertBefore(s1,s0);
+			})();
+		</script>
+		<!--End of Tawk.to Script-->
 
     
-</body>
+	</body>
 </html>
