@@ -8,6 +8,10 @@ h2{
 
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 h3 {
     font-size: 3em;
     font-weight: 900;
@@ -154,7 +158,7 @@ h4{
 }
 
 
-#beneficiario2, #nombre2, #cedula2, #banco2, #cuenta2, #pesos2, #bolivares2, #div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb, #tasap{
+ #beneficiario2, #nombre2, #cedula2, #banco2, #cuenta2, #pesos2, #bolivares2, #div4, #div3, #div6, #div1, #div2, #cantidadp, #nombresolp, #emailsolp, #cedulasolp, #cantidadb, #nombresolb, #emailsolb, #cedulasolb, #enviarp, #enviarb, #tasap{
     
     display: none;
 
@@ -207,7 +211,20 @@ section{
 	width: 100%;
 	
 }
+#calculadorac{
+     color:white;
+     font-weight: 900;
+}
+#formulario{
+     color: black;
+     font-weight: 900;
+    
+}
 
+#resena{
+    padding-top:15px; 
+    padding-bottom:15px;
+}
 
 footer{
     background-color: black;

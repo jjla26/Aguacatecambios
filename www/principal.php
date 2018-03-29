@@ -15,13 +15,11 @@
 	    <script src="js/mostrarsolicitud.js"></script>
 		<script src="js/mostrar.js"></script>
 		<script src="js/calcular.js"></script>
-		<script src="js/calcular1.js"></script>
 		<script src="js/cambiarcampos.js"></script>
 		
 	</head>
 	<body>
-		
-		<header>
+   		<header>
    		  
 			<nav id="barra" class="navbar navbar-inverse navbar-static-top col-xs-12 ">
 					<div class="container">
@@ -81,10 +79,10 @@
 					</div>
 				</section>
 				
-				<section>
+				                <section>
 			
         		<div class="container col-xs-12" style="background-color:#f7f7f7" >
-						<div class="col-xs-8 col-xs-offset-2 text-center hidden-xs " style="padding-top:15px; padding-bottom:15px;">	
+						<div id = "resena" class="col-xs-8 col-xs-offset-2 text-center hidden-xs ">	
 							<p>Aguacatecambios es una empresa profesional de envío de remesas entre Chile-Venezuela comprometida contigo, somos una plataforma digital que te permite velar por el bienestar de los tuyos alrededor de toda Venezuela y a lo largo de chile con toda la seguridad y la confianza que una empresa establecida puede brindarte</p>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 col-sm-offset-4" style="padding-top:15px; padding-bottom:15px;">	
@@ -164,7 +162,7 @@ echo $tasa;
 					<div id="calculadora1" class="container col-xs-12 text-center" style="background-image: url(img/bg_dolar.png); top:50px; padding:10px; color: white;" >
 										
 						<div id="calculadora2" class="container col-md-12 col-md-12 col-md-12 col-lg-8 col-lg-offset-2">
-							<a name="calculadora"><h1>Calculadora de cambio</h1></a>
+							<a id="calculadorac" name="calculadora"><h1>Calculadora de cambio</h1></a>
 						<p>aqui puedes calcular rapidamente la cantidad que necesitas</p>
 							<form name="formul">
 								
@@ -242,6 +240,10 @@ echo $tasa;
 									<div id="cantidad" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Pesos Depositados</label>
 										<input id="cantidad1" type="text" class="form-control" name="totalpesos" minlength=4 onchange="habilitarcant()" placeholder="Ej.: 1000000" required>
+									</div>
+									<div id="cantidadoc" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+										<label>Cantidad de Pesos Depositados</label>
+										<input id="cantidad2" type="text" class="form-control" name="totalpesos10" minlength=4 readonly required>
 									</div>
 									<div id="deposito" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Adjunta la foto de tu deposito</label>
@@ -350,10 +352,18 @@ echo $tasa;
 										<label>Cantidad de Pesos a enviar</label>
 											<input id="pesos1" type="text" class="form-control" name="pesos" minlength=4  placeholder="Pesos"  onchange="calcularPesosBs()" readonly required>
 									</div>
+									<div id="pesos9" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2">
+										<label>Cantidad de Pesos a enviar</label>
+											<input id="pesos10" type="text" class="form-control" name="pesos11" minlength=4  placeholder="Pesos"  readonly required>
+									</div>
                                     
 									<div id="bolivares" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" >
 										<label>Cantidad de Bolivares a recibir</label>
 										<input id="bolivares1" type="text" class="form-control" name="bolivares" minlength=6  placeholder="Bolivares" onchange="calcularBsPesos()" readonly required>
+									</div>
+									<div id="bolivares9" class="col-xs-12 col-sm-12 col-md-12 col-lg-4" >
+										<label>Cantidad de Bolivares a recibir</label>
+										<input id="bolivares10" type="text" class="form-control" name="bolivares11" minlength=6  placeholder="Bolivares" readonly required>
 									</div>
 									
 									
@@ -432,10 +442,18 @@ echo $tasa;
 										<label>Cantidad de Pesos a enviar</label>
 											<input id="pesos3" type="text" class="form-control" name="pesos5" minlength=4   placeholder="Pesos" readonly required>
 									</div>
+									<div id="pesos6" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+										<label>Cantidad de Pesos a enviar</label>
+											<input id="pesos7" type="text" class="form-control" name="pesos8" minlength=4   placeholder="Pesos" readonly required>
+									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
 										<input id="bolivares3" type="text" class="form-control" name="bolivares5" minlength=6   placeholder="Bolivares" readonly required>
+									</div>
+									<div id="bolivares6" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+										<label>Cantidad de Bolivares a recibir</label>
+										<input id="bolivares7" type="text" class="form-control" name="bolivares8" minlength=6   placeholder="Bolivares" readonly required>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
@@ -453,15 +471,16 @@ echo $tasa;
                   
               </section>
               
-
-   		
-           	
+           	<section >
+       				<div id = "mapa" class="container col-xs-12">
+						<h1> Encuentranos</h1>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.8748898444314!2d-70.61828268500295!3d-33.42650598078083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf6383ac6e6b%3A0x24d2440872142db9!2sAv.+Providencia+1650%2C+Providencia%2C+Regi%C3%B3n+Metropolitana!5e0!3m2!1ses-419!2scl!4v1520094298458" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+						
+					</div>
+				
+			</section>
               
-              <footer>
-					<div >    
-        			    <h5>Copyright © 2017 Diseñado por <a href="https://www.behance.net/adrizapiain" target="_blank">@Adriana</a> Desarrollado por <a href="https://www.instagram.com/juliojla/" target="_blank">@JulioLopez</a>  - Todos los derechos reservados  <a href="https://www.instagram.com/aguacatecambios/" target="_blank" class="icon-instagram "></a><a href="https://es-la.facebook.com/aguacatecambios/" target="_blank" class="icon-facebook-squared"></a> <a href="#" class="icon-gmail"></a></h5>
-        			</div>
-				</footer>
+           
                 
         </main>
         
@@ -478,7 +497,7 @@ echo $tasa;
     
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        
+        <script src="js/formatNumber.js"></script>
         
 		<!--Start of Tawk.to Script-->
 		<script type="text/javascript">

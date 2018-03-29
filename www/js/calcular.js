@@ -1,7 +1,8 @@
 function habilitarcant(){
 	
-	var totalpesos = (document.formul0.totalpesos.value)*1;
-	console.log(totalpesos);
+	var totalpesos = document.formul0.totalpesos.value
+	var totalpesos = totalpesos.toString().replace(/\./g,'');
+	var totalpesos = totalpesos.replace(/\,/g,'.')
 	if(totalpesos<7000){
 				
 				document.getElementById('pesosbs1').disabled = true;
@@ -26,6 +27,7 @@ function habilitarcant(){
                 document.getElementById('cuenta1').disabled = false;
                 document.getElementById('pesos1').disabled = false;
                 document.getElementById('bolivares1').disabled = false;
+                document.formul0.totalpesos10.value = totalpesos;
 				
 	}
 	
@@ -34,9 +36,6 @@ function habilitarcant(){
 		
 		document.getElementById("transf1").disabled = false;
 		
-		
-		
-	
 }else{
 				document.getElementById('nombre2').style.display = 'none';
                 document.getElementById('cedula2').style.display = 'none';
@@ -79,55 +78,59 @@ function calcular1(){
 }
 
 function calcularPesosBs(){
-	var limite = 10000;
-	var totalpesos = (document.formul0.totalpesos.value)*1;
-	var h1Text = document.querySelector(".entry-title").textContent;
-	console.log(h1Text);
-	console.log(h1Text);
-	var pesos2 = (document.formul0.pesos.value)*1;
-	console.log(pesos2);
-	console.log(totalpesos);
 	
+	var limite = 90000;
+	var totalpesos = document.formul0.totalpesos10.value;
+	totalpesos = Number(totalpesos);
+	console.log(totalpesos);
+	var h1Text = document.querySelector(".entry-title").textContent;
+	var pesos2 = document.formul0.pesos.value;
+	pesos2 = pesos2.toString().replace(/\./g,'');
+	pesos2 = pesos2.replace(/\,/g,'.');
+	document.formul0.pesos11.value = pesos2;
+	console.log(pesos2);
+	pesos2 = Number(pesos2)
 
-	if(pesos2<= totalpesos){
-	if(pesos2>=7000){
+	if(pesos2 <= totalpesos){
+	if(pesos2 >=7000){
 	if(totalpesos >= limite){
 		
 		document.getElementById("botonenv").disabled= false;
 	
 	var total = pesos2*h1Text;
-	console.log(total);
 
-	document.formul0.bolivares.value= total;
-	document.formul0.bolivares5.value= (totalpesos*h1Text)-total;
-	document.formul0.pesos5.value= totalpesos-pesos2;
+	document.formul0.bolivares.value= (total).toString().replace(/\./g,',');
+	document.formul0.bolivares5.value= ((totalpesos*h1Text)-total).toString().replace(/\./g,',');
+	document.formul0.pesos5.value= (totalpesos-pesos2).toString().replace(/\./g,',');
 	}else{
 		
 	var total = pesos2*h1Text;
 	
 
-	document.formul0.bolivares.value= total;
-	document.formul0.bolivares5.value= (totalpesos*h1Text)-total;
-	document.formul0.pesos5.value= totalpesos-pesos2;
+	document.formul0.bolivares.value= (total).toString().replace(/\./g,',');
+	document.formul0.bolivares5.value= ((totalpesos*h1Text)-total).toString().replace(/\./g,',');
+	document.formul0.pesos5.value= (totalpesos-pesos2).toString().replace(/\./g,',');
 		
 	}}else{
 		document.getElementById("botonenv").disabled= true;
 		alert("El deposito minimo es de $7.000 CLP");
 	}}else{
 		document.getElementById("botonenv").disabled= true;
-		
+		console.log(pesos2);
+		console.log(totalpesos);
 		alert("La cantidad de pesos no puede ser mayor a la cantidad depositada");
 		
 		
 	}}
 
 
-function calcularBsPesos(){
+/*function calcularBsPesos(){
 	
 	var limite = 90000;
-	var totalpesos = (document.formul0.totalpesos.value)*1;
-	var pesos2	= (document.formul0.pesos.value)*1;
+	var totalpesos = document.formul0.totalpesos10.value;
 	var bolivares1 = (document.formul0.bolivares.value)*1;
+	bolivares1 = bolivares1.toString().replace(/\./g,'');
+	bolivares1 = bolivares1.replace(/\,/g,'.');
 	var h1Text = document.querySelector(".entry-title").textContent;
 	
 	if((bolivares1/h1Text)<= totalpesos){
@@ -160,6 +163,6 @@ function calcularBsPesos(){
 		
 	}}
 
-
+*/
 
 

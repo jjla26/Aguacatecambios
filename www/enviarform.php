@@ -34,12 +34,17 @@ $current_date = date("Y-m-d H:i:s");
 isset($_POST['tranf']) && isset($_POST['tipodoc']) && isset($_POST['iddoc']) && isset($_POST['banco']) && isset($_POST['cuenta']) && isset($_POST['pesos']) && isset($_POST['bolivares'])){
 */
 
+if (empty($_FILES['archivo']['name'])){
+header("location: formulario.php?proceso=falta_indicar_fichero"); //o como se llame el formulario ..
+exit;
+}
+
 if (isset($_POST['tasap']) && isset($_POST['cliente']) && isset($_POST['rut']) && isset($_POST['totalpesos']) &&  isset($_POST['email'])&& isset($_POST['telefono']) && 
 isset($_POST['transf2']) && isset($_POST['nombre']) && isset($_POST['tipodoc']) && isset($_POST['iddoc']) && isset($_POST['banco']) && 
 isset($_POST['cuenta']) && isset($_POST['pesos']) && isset($_POST['bolivares'])){
 
   $tasap = $_POST['tasap'];
-  $totalpesos = $_POST['totalpesos'];
+  $totalpesos = $_POST['totalpesos10'];
   $pesos = $_POST['pesos'];
   
   include 'conexion.php';
