@@ -53,6 +53,7 @@ echo '<script>window.location="admin"</script>';
 		<script src="js/cambiarcampos.js"></script>
 		<script src="js/cambiarcampos2.js"></script>
 		<script src="js/cambiarcampos3.js"></script>
+		<script src="js/formatNumber.js"></script>
 		
 	</head>
 <body>
@@ -136,7 +137,7 @@ echo $tasa;
 						
 					<div id="campos" class="col-xs-6" >
     				    <label>Efectivo</label>
-		    			<input type="text" class="form-control" name="Efec" value="<?php 
+		    			<input id="saldo1" type="text" class="form-control" name="Efec" value="<?php 
 include 'conexion.php';
 $saldo_efec = "SELECT saldo_efec FROM saldos1 order by ID desc Limit 1";
 $saldo_efec = mysqli_query($conexion,$saldo_efec);
@@ -149,7 +150,7 @@ echo $saldo_efec;
 							
 							<div id="campos" class="col-xs-6" >
     				    <label>Cuenta RUT</label>
-		    			<input type="text" class="form-control" name="CuentaRut" value="<?php 
+		    			<input id="saldo2" type="text" class="form-control" name="CuentaRut" value="<?php 
 include 'conexion.php';
 $saldo_rut = "SELECT saldo_rut FROM saldos1 order by ID desc Limit 1";
 $saldo_rut = mysqli_query($conexion,$saldo_rut);
@@ -161,7 +162,7 @@ echo $saldo_rut;
 	    			</div>
                         <div id="campos" class="col-xs-6" >
     				    <label>Cuenta Vista</label>
-		    			<input type="text" class="form-control" name="CuentaVista" value= "<?php 
+		    			<input id="saldo3" type="text" class="form-control" name="CuentaVista" value= "<?php 
 include 'conexion.php';
 $saldo_vista = "SELECT saldo_vista FROM saldos1 order by ID desc Limit 1";
 $saldo_vista = mysqli_query($conexion,$saldo_vista);
@@ -179,7 +180,7 @@ echo $saldo_vista;
 
                     <div id="campos" class="col-xs-6">
 				        <label>Cuenta Ahorros</label>
-    					<input type="text" class="form-control" name="CuentaAhorros" value="<?php 
+    					<input id="saldo4" type="text" class="form-control" name="CuentaAhorros" value="<?php 
 include 'conexion.php';
 $saldo_ahorro = "SELECT saldo_ahorro FROM saldos1 order by ID desc Limit 1";
 $saldo_ahorro = mysqli_query($conexion,$saldo_ahorro);
@@ -192,7 +193,7 @@ echo $saldo_ahorro;
 </div>
 <div id="campos" class="col-xs-6">
 				        <label>Saldo Necesario</label>
-    					<input type="text" class="form-control" name="Saldo Necesario" value= "<?php 
+    					<input id="saldo5" type="text" class="form-control" name="Saldo Necesario" value= "<?php 
 include 'conexion.php';
 $saldo_necesario = "SELECT SUM(Cantidad_bs) FROM transacciones1 WHERE estatus = 'Pendiente' OR estatus='NR'";
 $saldo_necesario = mysqli_query($conexion,$saldo_necesario);
@@ -205,7 +206,7 @@ echo $saldo_necesario;
     				
 <div id="campos" class="col-xs-6">
 				        <label>Total Pesos del día</label>
-    					<input type="text" class="form-control" name="PesosDia" value= "<?php 
+    					<input id="saldo6" type="text" class="form-control" name="PesosDia" value= "<?php 
 include 'conexion.php';
 $saldo = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
 $saldo1 = "SELECT SUM(Diferencia) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
@@ -222,7 +223,7 @@ echo $saldo+$saldo1;
     				
      				<div id="campos" class="col-xs-6" >
     				    <label>Banesco Juridica 2197</label>
-		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
+		    			<input id="saldo7" type="text" class="form-control" name="BanescoJuridica" value="<?php 
 include 'conexion.php';
 $saldo_banesco_juridica = "SELECT saldo_banesco_juridica FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_juridica = mysqli_query($conexion,$saldo_banesco_juridica);
@@ -235,7 +236,7 @@ echo $saldo_banesco_juridica;
 	    			
 	    			<div id="campos" class="col-xs-6" >
     				    <label>Disp Banesco Juridica 2197</label>
-		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
+		    			<input id="saldo8" type="text" class="form-control" name="BanescoJuridica" value="<?php 
 include 'conexion.php';
 $disp_banesco_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Juridica' AND DATE(Fecha) like '%$current_date%'";
 $debito_juridica_otro = "SELECT SUM(abono_banesco_juridica) FROM saldos1 WHERE b7='1' AND DATE(Fecha) like '%$current_date%'";
@@ -250,7 +251,7 @@ echo $disp_banesco_juridica;
 	    			</div>
 	    			<div id="campos" class="col-xs-6" >
     				    <label>Banesco Carlos 2008</label>
-		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
+		    			<input id="saldo9" type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $saldo_banesco_carlos = "SELECT saldo_banesco_carlos FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_carlos = mysqli_query($conexion,$saldo_banesco_carlos);
@@ -263,7 +264,7 @@ echo $saldo_banesco_carlos;
 	    			
 <div id="campos" class="col-xs-6" >
     				    <label>Disp Banesco Carlos 2008</label>
-		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
+		    			<input id="saldo10" type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $disp_banesco_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos' AND DATE(Fecha) like '%$current_date%'";
 $debito_carlos_otro = "SELECT SUM(abono_banesco_carlos) FROM saldos1 WHERE b4='1' AND DATE(Fecha) like '%$current_date%'";
@@ -280,7 +281,7 @@ echo $disp_banesco_carlos;
 
     				<div id="campos" class="col-xs-6">
 				        <label>Banesco Carlos Papa 7088</label>
-    					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
+    					<input id="saldo11" type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $saldo_banesco_carlos_papa = "SELECT saldo_banesco_carlos_papa FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_carlos_papa = mysqli_query($conexion,$saldo_banesco_carlos_papa);
@@ -293,7 +294,7 @@ echo $saldo_banesco_carlos_papa;
  			
             	<div id="campos" class="col-xs-6">
 				        <label> Disp Banesco Carlos Papa 7088</label>
-    					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
+    					<input id="saldo12" type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $disp_banesco_carlos_papa = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos Papa' AND DATE(Fecha) like '%$current_date%'";
 $debito_carlosp_otro = "SELECT SUM(abono_banesco_carlos_papa) FROM saldos1 WHERE b8='1' AND DATE(Fecha) like '%$current_date%'";
@@ -309,7 +310,7 @@ echo $disp_banesco_carlos_papa;
 	    			
                     <div id="campos" class="col-xs-6">
 				        <label>Banesco Marola 2176</label>
-    					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
+    					<input id="saldo13" type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $saldo_banesco_marola = "SELECT saldo_banesco_marola FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_marola = mysqli_query($conexion,$saldo_banesco_marola);
@@ -323,7 +324,7 @@ echo $saldo_banesco_marola;
     
                     <div id="campos" class="col-xs-6">
 				        <label>Disp Banesco Marola 2176</label>
-    					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
+    					<input id="saldo14" type="text" class="form-control" name="BanescoMarola" onload = "format_number(this.value)" value="<?php 
 include 'conexion.php';
 $disp_banesco_marola = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Marola' AND DATE(Fecha) like '%$current_date%'";
 $debito_marola_otro = "SELECT SUM(abono_banesco_marola) FROM saldos1 WHERE b5='1' AND DATE(Fecha) like '%$current_date%'";
@@ -338,7 +339,7 @@ echo $disp_banesco_marola;
     				</div>
     				<div id="campos" class="col-xs-6" >
     				    <label>Banesco Sonalys 4568</label>
-		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
+		    			<input id="saldo15" type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $saldo_banesco_sonalys = "SELECT saldo_banesco_sonalys FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_sonalys = mysqli_query($conexion,$saldo_banesco_sonalys);
@@ -350,7 +351,7 @@ echo $saldo_banesco_sonalys;
 	    			</div>
     				<div id="campos" class="col-xs-6" >
     				    <label>Disp Banesco Sonalys 4568</label>
-		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
+		    			<input id="saldo16" type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $disp_banesco_sonalys = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Sonalys' AND DATE(Fecha) like '%$current_date%'";
 $debito_sonalys_otro = "SELECT SUM(abono_banesco_sonalys) FROM saldos1 WHERE b6='1' AND DATE(Fecha) like '%$current_date%'";
@@ -365,7 +366,7 @@ echo $disp_banesco_sonalys;
 	    			</div>
                         <div id="campos" class="col-xs-6" >
     				    <label>Mercantil Carlos</label>
-		    			<input type="text" class="form-control" name="MercantilCarlos" value= "<?php 
+		    			<input id="saldo17" type="text" class="form-control" name="MercantilCarlos" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_carlos = "SELECT saldo_mercantil_carlos FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_carlos = mysqli_query($conexion,$saldo_mercantil_carlos);
@@ -378,7 +379,7 @@ echo $saldo_mercantil_carlos;
 	    			
 <div id="campos" class="col-xs-6" >
     				    <label> Disp Mercantil Carlos</label>
-		    			<input type="text" class="form-control" name="MercantilCarlos" value= "<?php 
+		    			<input id="saldo18" type="text" class="form-control" name="MercantilCarlos" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Carlos' AND DATE(Fecha) like '%$current_date%'";
 $debito_mcarlos_otro = "SELECT SUM(abono_mercantil_carlos) FROM saldos1 WHERE b2='1' AND DATE(Fecha) like '%$current_date%'";
@@ -394,7 +395,7 @@ echo $disp_mercantil_carlos;
 	    			
                     <div id="campos" class="col-xs-6">
 				        <label>Mercantil Mariana</label>
-    					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
+    					<input id="saldo19" type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_mariana = "SELECT saldo_mercantil_mariana FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_mariana = mysqli_query($conexion,$saldo_mercantil_mariana);
@@ -406,7 +407,7 @@ echo $saldo_mercantil_mariana;
     				</div>
     				<div id="campos" class="col-xs-6">
 				        <label> Disp Mercantil Mariana</label>
-    					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
+    					<input id="saldo20" type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_mariana = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Mariana' AND DATE(Fecha) like '%$current_date%'";
 $debito_mariana_otro = "SELECT SUM(abono_mercantil_mariana) FROM saldos1 WHERE b1='1' AND DATE(Fecha) like '%$current_date%'";
@@ -422,7 +423,7 @@ echo $disp_mercantil_mariana;
 
     				<div id="campos" class="col-xs-6">
 				        <label>Mercantil Juridica</label>
-    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input id="saldo21" type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_juridica = "SELECT saldo_mercantil_juridica FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_juridica = mysqli_query($conexion,$saldo_mercantil_juridica);
@@ -440,7 +441,7 @@ echo $saldo_mercantil_juridica;
                         
                         				<div id="campos" class="col-xs-6">
 				        <label> Disp Mercantil Juridica</label>
-    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input id="saldo22" type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Juridica' AND DATE(Fecha) like '%$current_date%'";
 $debito_mjuridica_otro = "SELECT SUM(abono_mercantil_juridica) FROM saldos1 WHERE b3='1' AND DATE(Fecha) like '%$current_date%'";
@@ -1492,6 +1493,60 @@ echo $tasa1;
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script>
+        	
+        		/* Without prefix */
+	
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input2 = document.getElementById('saldo1').value;
+	document.getElementById('saldo1').value =  format_number(input);
+	var input3 = document.getElementById('saldo2').value;
+	document.getElementById('saldo2').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input2 = document.getElementById('saldo1').value;
+	document.getElementById('saldo1').value =  format_number(input);
+	var input3 = document.getElementById('saldo2').value;
+	document.getElementById('saldo2').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	var input = document.getElementById('ddd').value;
+	
+	document.getElementById('ddd').value =  format_number(input);var input = document.getElementById('ddd').value;
+	document.getElementById('ddd').value =  format_number(input);
+	/* Function */
+function format_number(number, prefix, thousand_separator, decimal_separator)
+	{
+		var thousand_separator = thousand_separator || '.',
+			decimal_separator = decimal_separator || ',',
+			regex		= new RegExp('[^' + decimal_separator + '\\d]', 'g'),
+			number_string = number.replace(regex, '').toString(),
+			split	  = number_string.split(decimal_separator),
+			rest 	  = split[0].length % 3,
+			result 	  = split[0].substr(0, rest),
+			thousands = split[0].substr(rest).match(/\d{3}/g);
+		
+		if (thousands) {
+			separator = rest ? thousand_separator : '';
+			result += separator + thousands.join(thousand_separator);
+		}
+		result = split[1] != undefined ? result + decimal_separator + split[1] : result;
+		return prefix == undefined ? result : (result ? prefix + result : '');
+	};
+
+        </script>
     
    
 </body>

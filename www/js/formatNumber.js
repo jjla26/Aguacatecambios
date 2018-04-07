@@ -21,7 +21,7 @@
 		
 	
 	/* Function */
- export function format_number(number, prefix, thousand_separator, decimal_separator)
+function format_number(number, prefix, thousand_separator, decimal_separator)
 	{
 		var thousand_separator = thousand_separator || '.',
 			decimal_separator = decimal_separator || ',',
