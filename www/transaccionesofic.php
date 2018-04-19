@@ -6,6 +6,8 @@ $current_date = date("Y-m-d");
 
 
 if (isset($_SESSION['user'])){
+   if($_SESSION['user'] == 'jlopez'|| $_SESSION['user'] == 'caldazoro' || $_SESSION['user'] == 'gcarrillo'){
+                
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
 //
 //    $ahora = date("Y-n-j H:i:s");
@@ -25,6 +27,11 @@ if (isset($_SESSION['user'])){
 //    
 //}else{$_SESSION["ultimoAcceso"] = $ahora;}
 //}
+}else{
+    
+header('Location: admin');
+
+}
 }else{
 echo '<script>window.location="admin"</script>';
 }
@@ -528,7 +535,7 @@ echo $tasa1;
           	        </div>
                     <div id="" class="">
 		    		   <label>Forma de pago</label> 
-                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
+                       <select id="formadPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
 				           <option  value="">Seleccionar</option>
 					       <option  value="Efectivo">Efectivo</option>
                            <option  value="DepositoRut">Deposito a Cuenta Rut</option>
@@ -1483,9 +1490,6 @@ echo $tasa1;
 
 </table>
 
-		
-		
-		
 		</div>
    
 
@@ -1493,61 +1497,7 @@ echo $tasa1;
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script>
-        	
-        		/* Without prefix */
-	
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input2 = document.getElementById('saldo1').value;
-	document.getElementById('saldo1').value =  format_number(input);
-	var input3 = document.getElementById('saldo2').value;
-	document.getElementById('saldo2').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input2 = document.getElementById('saldo1').value;
-	document.getElementById('saldo1').value =  format_number(input);
-	var input3 = document.getElementById('saldo2').value;
-	document.getElementById('saldo2').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	var input = document.getElementById('ddd').value;
-	
-	document.getElementById('ddd').value =  format_number(input);var input = document.getElementById('ddd').value;
-	document.getElementById('ddd').value =  format_number(input);
-	/* Function */
-function format_number(number, prefix, thousand_separator, decimal_separator)
-	{
-		var thousand_separator = thousand_separator || '.',
-			decimal_separator = decimal_separator || ',',
-			regex		= new RegExp('[^' + decimal_separator + '\\d]', 'g'),
-			number_string = number.replace(regex, '').toString(),
-			split	  = number_string.split(decimal_separator),
-			rest 	  = split[0].length % 3,
-			result 	  = split[0].substr(0, rest),
-			thousands = split[0].substr(rest).match(/\d{3}/g);
-		
-		if (thousands) {
-			separator = rest ? thousand_separator : '';
-			result += separator + thousands.join(thousand_separator);
-		}
-		result = split[1] != undefined ? result + decimal_separator + split[1] : result;
-		return prefix == undefined ? result : (result ? prefix + result : '');
-	};
-
-        </script>
-    
+       
    
 </body>
 

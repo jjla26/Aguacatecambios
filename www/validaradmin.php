@@ -22,6 +22,9 @@ if(isset($_POST['submit'])){
                 $ahora = date("Y-n-j H:i:s");
                 $_SESSION['user']= $usuario;
                 $_SESSION['ultimoAcceso']= $ahora;
+                if ($_SESSION['user']== mlopez)
+                header("Location: transferencias.php");
+                else
                 header("Location: transaccionesofic.php");
             }else{
                 echo '<script>alert("Contrasena Incorrecta");window.location="admin"</script>';

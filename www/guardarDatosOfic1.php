@@ -393,11 +393,14 @@ if (!$resultado || !$resultado1 || !$resultado3 || !$actualizar)
 echo 'error';
 
 else{
-
-
-echo '<script>window.location="transaccionesofic.php"</script>';
-mysqli_close($conexion);
     
+    if ($_SESSION['user']== mlopez){
+                header("Location: transferencias.php");
+                mysqli_close($conexion);}
+                else{
+                header("Location: transaccionesofic.php");
+                mysqli_close($conexion);}
+
 }
 
 //

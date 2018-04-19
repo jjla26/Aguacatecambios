@@ -1,0 +1,96 @@
+ <script>
+        	
+        		/* Without prefix */
+
+	var input = document.getElementById('saldo1').value;
+	document.getElementById('saldo1').value =  format_number(input);
+	
+	var input1 = document.getElementById('saldo2').value;
+	document.getElementById('saldo2').value =  format_number(input1);
+	
+	var input2 = document.getElementById('saldo3').value;
+	document.getElementById('saldo3').value =  format_number(input2);
+	
+	var input3 = document.getElementById('saldo4').value;
+	document.getElementById('saldo4').value =  format_number(input3);
+	
+	var input4 = document.getElementById('saldo5').value;
+	document.getElementById('saldo5').value =  format_number(input4);
+	
+	var input5 = document.getElementById('saldo6').value;
+	document.getElementById('saldo6').value =  format_number(input5);
+	
+	var input6 = document.getElementById('saldo7').value;
+	document.getElementById('saldo7').value =  format_number(input6);
+	
+	var input7 = document.getElementById('saldo8').value;
+	document.getElementById('saldo8').value =  format_number(input7);
+	
+	var input8 = document.getElementById('saldo9').value;
+	document.getElementById('saldo9').value =  format_number(input8);
+	
+	var input9 = document.getElementById('saldo9').value;
+	document.getElementById('saldo9').value =  format_number(input9);
+	
+	var input10 = document.getElementById('saldo10').value;
+	document.getElementById('saldo10').value =  format_number(input10);
+	
+	var input11 = document.getElementById('saldo11').value;
+	document.getElementById('saldo11').value =  format_number(input11);
+	
+	var input12 = document.getElementById('saldo12').value;
+	document.getElementById('saldo12').value =  format_number(input12);
+	
+	var input13 = document.getElementById('saldo13').value;
+	document.getElementById('saldo13').value =  format_number(input13);
+	
+	var input14 = document.getElementById('saldo14').value;
+	document.getElementById('saldo14').value =  format_number(input14);
+	
+	var input15 = document.getElementById('saldo15').value;
+	document.getElementById('saldo15').value =  format_number(input15);
+	
+	var input16 = document.getElementById('saldo16').value;
+	document.getElementById('saldo16').value =  format_number(input16);
+	
+	var input17 = document.getElementById('saldo17').value;
+	document.getElementById('saldo17').value =  format_number(input17);
+	
+	var input18 = document.getElementById('saldo17').value;
+	document.getElementById('saldo18').value =  format_number(input18);
+	
+	var input19 = document.getElementById('saldo19').value;
+	document.getElementById('saldo19').value =  format_number(input19);
+	
+	var input20 = document.getElementById('saldo20').value;
+	document.getElementById('saldo20').value =  format_number(input20);
+	
+	var input21 = document.getElementById('saldo21').value;
+	document.getElementById('saldo21').value =  format_number(input21);
+	
+	var input22 = document.getElementById('saldo22').value;
+	document.getElementById('saldo22').value =  format_number(input22);
+	
+	
+	/* Function */
+function format_number(number, prefix, thousand_separator, decimal_separator)
+	{
+		var thousand_separator = thousand_separator || '.',
+			decimal_separator = decimal_separator || ',',
+			regex		= new RegExp('[^' + decimal_separator + '\\d]', 'g'),
+			number_string = number.replace(regex, '').toString(),
+			split	  = number_string.split(decimal_separator),
+			rest 	  = split[0].length % 3,
+			result 	  = split[0].substr(0, rest),
+			thousands = split[0].substr(rest).match(/\d{3}/g);
+		
+		if (thousands) {
+			separator = rest ? thousand_separator : '';
+			result += separator + thousands.join(thousand_separator);
+		}
+		result = split[1] != undefined ? result + decimal_separator + split[1] : result;
+		return prefix == undefined ? result : (result ? prefix + result : '');
+	};
+
+        </script>
+    
