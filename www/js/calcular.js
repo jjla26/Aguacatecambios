@@ -79,7 +79,7 @@ function calcular1(){
 
 function calcularPesosBs(){
 	
-	var limite = 90000;
+	var limite = 100000;
 	var totalpesos = document.formul0.totalpesos10.value;
 	totalpesos = Number(totalpesos);
 	console.log(totalpesos);
@@ -89,11 +89,11 @@ function calcularPesosBs(){
 	pesos2 = pesos2.replace(/\,/g,'.');
 	document.formul0.pesos11.value = pesos2;
 	console.log(pesos2);
-	pesos2 = Number(pesos2)
+	pesos2 = Number(pesos2);
 
 	if(pesos2 <= totalpesos){
-	if(pesos2 >=7000){
-	if(totalpesos >= limite){
+	if(pesos2 >=10000){
+	 if(totalpesos >= limite){
 		
 		document.getElementById("botonenv").disabled= false;
 	
@@ -103,6 +103,7 @@ function calcularPesosBs(){
 	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
 	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
 	}else{
+		document.getElementById("botonenv").disabled= false;
 		
 	var total = pesos2*h1Text;
 	
@@ -113,7 +114,7 @@ function calcularPesosBs(){
 		
 	}}else{
 		document.getElementById("botonenv").disabled= true;
-		alert("El deposito minimo es de $7.000 CLP");
+		alert("El deposito minimo es de $10.000 CLP");
 	}}else{
 		document.getElementById("botonenv").disabled= true;
 		console.log(pesos2);
@@ -124,21 +125,29 @@ function calcularPesosBs(){
 	}}
 
 
-/*function calcularBsPesos(){
+function calcularBsPesos(){
 	
-	var limite = 90000;
+
+	var limite = 100000;
 	var totalpesos = document.formul0.totalpesos10.value;
-	var bolivares1 = (document.formul0.bolivares.value)*1;
+	totalpesos = Number(totalpesos);
+	console.log(totalpesos);
+	var h1Text = document.querySelector(".entry-title").textContent;
+	var bolivares1 = document.formul0.bolivares.value;
 	bolivares1 = bolivares1.toString().replace(/\./g,'');
 	bolivares1 = bolivares1.replace(/\,/g,'.');
-	var h1Text = document.querySelector(".entry-title").textContent;
+	document.formul0.bolivares11.value = bolivares1;
+	console.log(bolivares1);
+	bolivares1 = Number(bolivares1);
 	
+	console.log(bolivares1/h1Text);
+
 	if((bolivares1/h1Text)<= totalpesos){
-	if((bolivares1/h1Text)>=7000){
+	if((bolivares1/h1Text)>=10000){
 	if(totalpesos>= limite){
 		
 	document.getElementById("botonenv").disabled= false;
-		
+	
 	var total = bolivares1/h1Text;
 	
 	document.formul0.pesos.value = Math.round(total);
@@ -146,6 +155,8 @@ function calcularPesosBs(){
 	document.formul0.bolivares5.value = Math.round((totalpesos*h1Text)-bolivares1);
 	
 	}else{
+	
+	document.getElementById("botonenv").disabled= false;
 		
 	var total = bolivares1/h1Text;
 
@@ -154,7 +165,7 @@ function calcularPesosBs(){
 	document.formul0.bolivares5.value = Math.round((totalpesos*h1Text)-bolivares1);	
 }}else{
 		document.getElementById("botonenv").disabled= true;
-		alert("El minimo a transferir es de $7.000 CLP");
+		alert("El minimo a transferir es de $10.000 CLP");
 	}}else{
 		document.getElementById("botonenv").disabled= true;
 		
@@ -163,7 +174,7 @@ function calcularPesosBs(){
 		
 	}}
 
-*/
+
 
 function format_number(number, prefix, thousand_separator, decimal_separator)
 	{
