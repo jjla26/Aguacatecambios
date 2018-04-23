@@ -269,6 +269,7 @@ echo $tasa;
 				                    <div id="transf2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 		    	                    	<label>Cantidad de Transferencias</label>
 		    	                    	<select id="transf1" name="transf2" class="form-control" onchange="cambiarcampos17(this)" disabled>
+		    	                    	   <option value= "">Cantidad</option>
 				                           <option  value="1">1</option>
                                            <option  value="2">2</option>
                                     	</select>

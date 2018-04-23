@@ -3,9 +3,8 @@ function habilitarcant(){
 	var totalpesos = document.formul0.totalpesos.value
 	var totalpesos = totalpesos.toString().replace(/\./g,'');
 	var totalpesos = totalpesos.replace(/\,/g,'.')
-	if(totalpesos<7000){
+	if(totalpesos<10000){
 				
-				document.getElementById('pesosbs1').disabled = true;
 				document.getElementById('nombre1').disabled = true;
                 document.getElementById('tipodoc').disabled =true;
                 document.getElementById('cedula1').disabled =true;
@@ -15,11 +14,10 @@ function habilitarcant(){
                 document.getElementById('bolivares1').disabled = true;
                 
                 
-				alert("El deposito minimo aceptado es de 7000 CLP");
+				alert("El deposito minimo aceptado es de 10000 CLP");
 		
 		
 	}else{
-		        document.getElementById('pesosbs1').disabled = false;
 		        document.getElementById('nombre1').disabled = false;
                 document.getElementById('tipodoc').disabled = false;
                 document.getElementById('cedula1').disabled = false;
@@ -32,7 +30,7 @@ function habilitarcant(){
 	}
 	
 	
-	if(totalpesos>= 14000){ 
+	if(totalpesos>= 20000){ 
 		
 		document.getElementById("transf1").disabled = false;
 		

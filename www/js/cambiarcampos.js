@@ -88,7 +88,7 @@ function cambiarcampos17(obj){
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
                 
-
+                
                 document.getElementById('nombre3').required = false;
                 document.getElementById('tipodoc1').required = false;
                 document.getElementById('cedula3').required = false;
@@ -96,7 +96,43 @@ function cambiarcampos17(obj){
                 document.getElementById('banco3').required = false;
                 document.getElementById('pesos3').required = false;
                 document.getElementById('bolivares3').required = false;
+                document.getElementById('pesosbs1').disabled= true;
+                document.getElementById('pesosbs1').required = false;                
+                var limite = 100000;
+	        var totalpesos = document.formul0.totalpesos10.value;
+	        totalpesos = Number(totalpesos);
+	        console.log(totalpesos);
+	       	var h1Text = document.querySelector(".entry-title").textContent;
+        	pesos2 = totalpesos.toString().replace(/\./g,'');
+        	pesos2 = totalpesos.replace(/\,/g,'.');
+        	document.formul0.pesos11.value = pesos2;
+        	console.log(pesos2);
+        	pesos2 = Number(pesos2);
+        
+        	
+                if(totalpesos >= limite){
+		
+		document.getElementById("botonenv").disabled= false;
+	
+        	var total = pesos2*h1Text;
                 
+                document.formul0.pesos.value = totalpesos;
+        	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
+        	
+        	}else{
+        		document.getElementById("botonenv").disabled= false;
+        		
+        	var total = pesos2*h1Text;
+        	
+        
+        	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
+        	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
+        	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
+        		
+        	}
+		
+		
+	
         }else if (obj.value == 2 ){
 
 
@@ -115,7 +151,8 @@ function cambiarcampos17(obj){
                 document.getElementById('cuenta3').required = true;
                 document.getElementById('pesos3').required = true;
                 document.getElementById('bolivares3').required = true;
-                
+                document.getElementById('pesosbs1').disabled= false;
+                document.getElementById('pesosbs1').required = true;
                 
         }else{
 
@@ -163,3 +200,4 @@ function cambiarcampos18(obj){
         }
 
 }
+
