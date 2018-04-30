@@ -98,17 +98,15 @@ function cambiarcampos17(obj){
                 document.getElementById('bolivares3').required = false;
                 document.getElementById('pesosbs1').disabled= true;
                 document.getElementById('pesosbs1').required = false;                
+                
                 var limite = 100000;
-	        var totalpesos = document.formul0.totalpesos10.value;
-	        totalpesos = Number(totalpesos);
-	        console.log(totalpesos);
-	       	var h1Text = document.querySelector(".entry-title").textContent;
-        	pesos2 = totalpesos.toString().replace(/\./g,'');
-        	pesos2 = totalpesos.replace(/\,/g,'.');
+                var totalpesos  = document.formul0.totalpesos.value;
+	        var totalpesos2 = document.formul0.totalpesos10.value;
+	        var h1Text = document.querySelector(".entry-title").textContent;
+        	var pesos = totalpesos;
+        	var pesos2 = totalpesos2;
+        	document.formul0.pesos.value = pesos;
         	document.formul0.pesos11.value = pesos2;
-        	console.log(pesos2);
-        	pesos2 = Number(pesos2);
-        
         	
                 if(totalpesos >= limite){
 		
@@ -124,8 +122,7 @@ function cambiarcampos17(obj){
         		
         	var total = pesos2*h1Text;
         	
-        
-        	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
+                document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
         	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
         	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
         		
@@ -152,7 +149,14 @@ function cambiarcampos17(obj){
                 document.getElementById('pesos3').required = true;
                 document.getElementById('bolivares3').required = true;
                 document.getElementById('pesosbs1').disabled= false;
-                document.getElementById('pesosbs1').required = true;
+                document.getElementById('pesos1').value = "";
+                document.getElementById('bolivares1').value = "";
+                document.getElementById('pesos10').value = "";
+                document.getElementById('bolivares10').value = "";
+                document.getElementById('pesos3').value = "";
+                document.getElementById('bolivares3').value = "";
+                document.getElementById('pesos7').value = "";
+                document.getElementById('bolivares7').value = "";
                 
         }else{
 
@@ -171,7 +175,14 @@ function cambiarcampos17(obj){
                 document.getElementById('cuenta3').required = false;
                 document.getElementById('pesos3').required = false;
                 document.getElementById('bolivares3').required = false;
-                
+                document.getElementById('pesos1').value = "";
+                document.getElementById('bolivares1').value = "";
+                document.getElementById('pesos10').value = "";
+                document.getElementById('bolivares10').value = "";
+                document.getElementById('pesos3').value = "";
+                document.getElementById('bolivares3').value = "";
+                document.getElementById('pesos7').value = "";
+                document.getElementById('bolivares7').value = "";
                 
         }
         

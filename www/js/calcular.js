@@ -1,9 +1,10 @@
 function habilitarcant(){
 	
-	var totalpesos = document.formul0.totalpesos.value
+	var totalpesos = document.formul0.totalpesos.value;
 	var totalpesos = totalpesos.toString().replace(/\./g,'');
 	var totalpesos = totalpesos.replace(/\,/g,'.')
 	if(totalpesos<10000){
+				
 				
 				document.getElementById('nombre1').disabled = true;
                 document.getElementById('tipodoc').disabled =true;
@@ -12,12 +13,24 @@ function habilitarcant(){
                 document.getElementById('cuenta1').disabled = true;
                 document.getElementById('pesos1').disabled = true;
                 document.getElementById('bolivares1').disabled = true;
+                document.getElementById('pesos1').value = "";
+                document.getElementById('bolivares1').value = "";
+                
                 
                 
 				alert("El deposito minimo aceptado es de 10000 CLP");
 		
 		
-	}else{
+	}else if (totalpesos >= 10000 && totalpesos < 20000) {
+		
+				document.getElementById('nombre3').required = false;
+        		document.getElementById('tipodoc1').required = false;
+        		document.getElementById('cedula3').required = false;
+        		document.getElementById('banco3').required = false;
+        		document.getElementById('cuenta3').required = false;
+        		document.getElementById('pesos3').required = false;
+        		document.getElementById('bolivares3').required = false;
+                document.getElementById("transf1").disabled = false;
 		        document.getElementById('nombre1').disabled = false;
                 document.getElementById('tipodoc').disabled = false;
                 document.getElementById('cedula1').disabled = false;
@@ -25,34 +38,56 @@ function habilitarcant(){
                 document.getElementById('cuenta1').disabled = false;
                 document.getElementById('pesos1').disabled = false;
                 document.getElementById('bolivares1').disabled = false;
+                
                 document.formul0.totalpesos10.value = totalpesos;
+                document.formul0.transf1.value= 1;
+                
+                var limite = 100000;
+                var totalpesos  = document.formul0.totalpesos.value
+	        var totalpesos2 = document.formul0.totalpesos10.value;
+	        console.log(totalpesos);
+	       	var h1Text = document.querySelector(".entry-title").textContent;
+        	pesos = totalpesos;
+        	pesos2 = totalpesos2;
+        	document.formul0.pesos.value = pesos;
+        	document.formul0.pesos11.value = pesos2;
+        	console.log(pesos2);
+        	
+        
+        	
+                if(totalpesos >= limite){
+		
+		document.getElementById("botonenv").disabled= false;
+	
+        	var total = pesos2*h1Text;
+                
+                document.formul0.pesos.value = totalpesos;
+        	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
+        	
+        	}else{
+        		document.getElementById("botonenv").disabled= false;
+        		
+        	var total = pesos2*h1Text;
+        	
+        
+        	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
+        	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
+        	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
+        		
+        	}
+                
 				
 	}
 	
 	
-	if(totalpesos>= 20000){ 
+	else{ 
 		
 		document.getElementById("transf1").disabled = false;
-		
-}else{
-				document.getElementById('nombre2').style.display = 'none';
-                document.getElementById('cedula2').style.display = 'none';
-                document.getElementById('banco2').style.display = 'none';
-                document.getElementById('cuenta2').style.display = 'none';
-                document.getElementById('pesos2').style.display = 'none';
-                document.getElementById('bolivares2').style.display = 'none';
-                
-                document.getElementById('nombre3').required = false;
-                document.getElementById('tipodoc1').required = false;
-                document.getElementById('cedula3').required = false;
-                document.getElementById('banco3').required = false;
-                document.getElementById('cuenta3').required = false;
-                document.getElementById('pesos3').required = false;
-                document.getElementById('bolivares3').required = false;
-	
-		document.formul0.transf1.value= 1;
-		document.getElementById("transf1").disabled = true;
-	
+		document.formul0.totalpesos10.value = totalpesos;
+		document.getElementById('pesos1').value = "";
+        document.getElementById('bolivares1').value = "";
+
+      
 }
 }
 
