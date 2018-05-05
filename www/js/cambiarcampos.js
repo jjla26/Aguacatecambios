@@ -97,7 +97,8 @@ function cambiarcampos17(obj){
                 document.getElementById('pesos3').required = false;
                 document.getElementById('bolivares3').required = false;
                 document.getElementById('pesosbs1').disabled= true;
-                document.getElementById('pesosbs1').required = false;                
+                document.getElementById('pesosbs1').required = false;
+                document.getElementById("botonenv").disabled= false;
                 
                 var limite = 100000;
                 var totalpesos  = document.formul0.totalpesos.value;
@@ -157,17 +158,18 @@ function cambiarcampos17(obj){
                 document.getElementById('bolivares3').value = "";
                 document.getElementById('pesos7').value = "";
                 document.getElementById('bolivares7').value = "";
+                document.getElementById("botonenv").disabled= false;
                 
         }else{
 
-                document.getElementById('nombre2').style.display = 'none';
                 
+                
+                document.getElementById('nombre2').style.display = 'none';
                 document.getElementById('cedula2').style.display = 'none';
                 document.getElementById('banco2').style.display = 'none';
                 document.getElementById('cuenta2').style.display = 'none';
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
-                
                 document.getElementById('nombre3').required = false;
                 document.getElementById('tipodoc1').required = false;
                 document.getElementById('cedula3').required = false;
@@ -183,6 +185,7 @@ function cambiarcampos17(obj){
                 document.getElementById('bolivares3').value = "";
                 document.getElementById('pesos7').value = "";
                 document.getElementById('bolivares7').value = "";
+                document.getElementById("botonenv").disabled= true;
                 
         }
         

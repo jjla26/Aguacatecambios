@@ -36,10 +36,10 @@
 						<div id="navbar" class="navbar-collapse collapse ">
 							<ul class="nav navbar-nav navbar-right ">
 								<li class=""><a href="#formulario">Formulario de envio</a></li>
-								<li class=""><a href="#">Preguntas Frecuentes</a></li>
+								<!-- <li class=""><a href="#">Preguntas Frecuentes</a></li>
 								<li class=""><a href="#">Testimonios</a></li>
 								<li class=""><a href="#">Contacto</a></li>
-								<li class=""><a href="#">SIGN UP</a></li>
+								<li class=""><a href="#">SIGN UP</a></li> -->
 							</ul>
 						</div>
 					</div>
@@ -341,7 +341,7 @@ echo $tasa;
 									
 									<div id="cantidad1" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 										<label>Expresar tu cantidad en Bs. o Pesos</label>
-				        				<select id="pesosbs1" name="pesosbs" onchange="cambiarcampos18(this)" class="form-control"required disabled>
+				        				<select id="pesosbs1" name="pesosbs" onchange="cambiarcampos18(this)" class="form-control" required disabled>
 				            				<option value="">Dividir monto en:</option>            
 				            				<option value="Pesos">Pesos</option>            
                             				<option value="Bolivares">Bolivares</option>
