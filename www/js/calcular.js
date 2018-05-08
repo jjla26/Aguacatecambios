@@ -99,7 +99,7 @@ function habilitarcant(){
 	        document.getElementById('cuenta1').disabled = false;
 	        document.getElementById('pesos1').disabled = false;
 	        document.getElementById('bolivares1').disabled = false;
-	        document.formul0.transf1.value= 1;
+	        document.formul0.transf1.value= "";
 	        document.getElementById("botonenv").disabled= false;
 	        document.getElementById('pesosbs1').value = "";
       
@@ -151,9 +151,8 @@ function calcularPesosBs(){
 	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
 	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
 	document.formul0.bolivares11.value = pesos2*h1Text;
-	document.formul0.pesos11.value = Math.round(total);
-	document.formul0.pesos8.value = Math.round((totalpesos-(bolivares1/h1Text)));
-	document.formul0.bolivares8.value = Math.round((totalpesos*h1Text)-bolivares1);
+	document.formul0.pesos8.value = Math.round(totalpesos-pesos2);
+	document.formul0.bolivares8.value = Math.round((totalpesos-pesos2)*h1Text);
 	 	
 	 }else{
 		document.getElementById("botonenv").disabled= false;
@@ -165,9 +164,8 @@ function calcularPesosBs(){
 	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
 	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
 	document.formul0.bolivares11.value = pesos2*h1Text;
-	document.formul0.pesos11.value = Math.round(total);
-	document.formul0.pesos8.value = Math.round((totalpesos-(bolivares1/h1Text)));
-	document.formul0.bolivares8.value = Math.round((totalpesos*h1Text)-bolivares1);
+	document.formul0.pesos8.value = Math.round(totalpesos-pesos2);
+	document.formul0.bolivares8.value = Math.round((totalpesos-pesos2)*h1Text);
 		
 	}}else{
 		document.getElementById("botonenv").disabled= true;
@@ -219,7 +217,6 @@ function calcularBsPesos(){
 	document.getElementById("botonenv").disabled= false;
 		
 	var total = bolivares1/h1Text;
-
 	document.formul0.pesos.value = format_number((Math.round(total)).toString().replace(/\./g,','));
 	document.formul0.pesos5.value= format_number((Math.round(totalpesos- (bolivares1/h1Text))).toString().replace(/\./g,','));
 	document.formul0.bolivares5.value = format_number((Math.round((totalpesos*h1Text)-bolivares1)).toString().replace(/\./g,','));	
