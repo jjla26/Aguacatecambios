@@ -20,13 +20,12 @@ function habilitarcant(){
                 document.getElementById("botonenv").disabled= true;
                 document.getElementById('pesosbs1').value = "";
                 
-                
-				alert("El deposito minimo aceptado es de 10000 CLP");
+               alert("El deposito minimo aceptado es de 10000 CLP");
 		
 		
 	}else if (totalpesos >= 10000 && totalpesos < 20000) {
 		
-			document.getElementById('nombre3').required = false;
+				document.getElementById('nombre3').required = false;
         		document.getElementById('tipodoc1').required = false;
         		document.getElementById('cedula3').required = false;
         		document.getElementById('banco3').required = false;
@@ -57,8 +56,8 @@ function habilitarcant(){
 				var totalpesos2 = document.formul0.totalpesos10.value;
 	        	console.log(totalpesos);
 	       		var h1Text = document.querySelector(".entry-title").textContent;
-        		pesos = totalpesos;
-        		pesos2 = totalpesos2;
+        		var pesos = totalpesos;
+        		var pesos2 = totalpesos2;
         		document.formul0.pesos.value = pesos;
         		document.formul0.pesos11.value = pesos2;
         		console.log(pesos2);
@@ -67,23 +66,19 @@ function habilitarcant(){
         	
         		if(totalpesos >= limite){
 		
-				document.getElementById("botonenv").disabled= false;
-	
-        			var total = pesos2*h1Text;
-                
-            			document.formul0.pesos.value = totalpesos;
+					document.getElementById("botonenv").disabled= false;
+	       			var total = pesos2*h1Text;
+                	document.formul0.pesos.value = totalpesos;
         			document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
-        	
+        			document.formul0.bolivares11.value = pesos2*h1Text;
         		}else{
+        			
         			document.getElementById("botonenv").disabled= false;
-        		
         			var total = pesos2*h1Text;
-        	
-        
         			document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
         			document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
         			document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
-        		
+        			document.formul0.bolivares11.value = pesos2*h1Text;
         		}
                 
 				
@@ -155,7 +150,12 @@ function calcularPesosBs(){
 	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
 	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
 	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
-	}else{
+	document.formul0.bolivares11.value = pesos2*h1Text;
+	document.formul0.pesos11.value = Math.round(total);
+	document.formul0.pesos8.value = Math.round((totalpesos-(bolivares1/h1Text)));
+	document.formul0.bolivares8.value = Math.round((totalpesos*h1Text)-bolivares1);
+	 	
+	 }else{
 		document.getElementById("botonenv").disabled= false;
 		
 	var total = pesos2*h1Text;
@@ -164,6 +164,10 @@ function calcularPesosBs(){
 	document.formul0.bolivares.value= format_number((total).toString().replace(/\./g,','));
 	document.formul0.bolivares5.value= format_number(((totalpesos*h1Text)-total).toString().replace(/\./g,','));
 	document.formul0.pesos5.value= format_number((totalpesos-pesos2).toString().replace(/\./g,','));
+	document.formul0.bolivares11.value = pesos2*h1Text;
+	document.formul0.pesos11.value = Math.round(total);
+	document.formul0.pesos8.value = Math.round((totalpesos-(bolivares1/h1Text)));
+	document.formul0.bolivares8.value = Math.round((totalpesos*h1Text)-bolivares1);
 		
 	}}else{
 		document.getElementById("botonenv").disabled= true;
@@ -203,23 +207,32 @@ function calcularBsPesos(){
 	
 	var total = bolivares1/h1Text;
 	
-	document.formul0.pesos.value = Math.round(total);
-	document.formul0.pesos5.value = Math.round(totalpesos- (bolivares1/h1Text));
-	document.formul0.bolivares5.value = Math.round((totalpesos*h1Text)-bolivares1);
-	
+	document.formul0.pesos.value = format_number((Math.round(total)).toString().replace(/\./g,','));
+	document.formul0.pesos5.value= format_number((Math.round(totalpesos-(bolivares1/h1Text))).toString().replace(/\./g,','));
+	document.formul0.bolivares5.value = format_number((Math.round((totalpesos*h1Text)-bolivares1)).toString().replace(/\./g,','));
+	document.formul0.pesos11.value = Math.round(total);
+	document.formul0.pesos8.value = Math.round((totalpesos-(bolivares1/h1Text)));
+	document.formul0.bolivares8.value = Math.round((totalpesos*h1Text)-bolivares1);
+
 	}else{
 	
 	document.getElementById("botonenv").disabled= false;
 		
 	var total = bolivares1/h1Text;
 
-	document.formul0.pesos.value= Math.round(total);
-	document.formul0.pesos5.value= Math.round(totalpesos- (bolivares1/h1Text));
-	document.formul0.bolivares5.value = Math.round((totalpesos*h1Text)-bolivares1);	
+	document.formul0.pesos.value = format_number((Math.round(total)).toString().replace(/\./g,','));
+	document.formul0.pesos5.value= format_number((Math.round(totalpesos- (bolivares1/h1Text))).toString().replace(/\./g,','));
+	document.formul0.bolivares5.value = format_number((Math.round((totalpesos*h1Text)-bolivares1)).toString().replace(/\./g,','));	
+	document.formul0.pesos11.value = Math.round(total);
+	document.formul0.pesos8.value = Math.round((totalpesos-(bolivares1/h1Text)));
+	document.formul0.bolivares8.value = Math.round((totalpesos*h1Text)-bolivares1);
+	
+	
 }}else{
 		document.getElementById("botonenv").disabled= true;
 		alert("El minimo a transferir es de $10.000 CLP");
 	}}else{
+		
 		document.getElementById("botonenv").disabled= true;
 		
 		alert("La cantidad de pesos no puede ser mayor a la cantidad depositada");
