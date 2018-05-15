@@ -130,6 +130,14 @@ echo "\n";
               
           }else{
             
+          $to = "julioj.lopeza@gmail.com"; // <– replace with your address here
+          $subject = "Test mail";
+          $message = "Hello! This is a simple test email message.";
+          $from = "support@aguacatecambios.com";
+          $headers = "From:" . $from;
+          mail($to,$subject,$message,$headers);
+          echo "Mail Sent.";
+            
           echo '<script>alert("Sus datos fueron enviados con exito y el número de su transaccion es el  "); window.location="principal.php"</script>';    
           //header('Location: principal.php');  
           //echo '<script>alert("Sus datos fueron enviados con exito. Agradecemos su confianza")"</script>';    
@@ -160,6 +168,14 @@ echo "\n";
             //header('Location: principal.php');
                 
             }else{
+              
+            $to = "julioj.lopeza@gmail.com"; // <– replace with your address here
+            $subject = "Test mail";
+            $message = "Hello! This is a simple test email message.";
+            $from = "support@aguacatecambios.com";
+            $headers = "From:" . $from;
+            mail($to,$subject,$message,$headers);
+            echo "Mail Sent.";
               
             echo '<script>alert("Sus datos fueron enviados con exito y el número de su transaccion es el  "); window.location="principal.php"</script>';    
             //header('Location: principal.php');  
@@ -194,10 +210,21 @@ echo "\n";
           
       }else{
         
+      $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
+      $subject = 'Test mail';
+      $message = 'Hello! This is a simple test email message';
+      $from = 'support@aguacatecambios.com';
+      $headers = 'From:' . $from;
+      mail($to,$subject,$message,$headers);
+      echo 'Mail Sent';
+      
       echo '<script>alert("Sus datos fueron enviados con exito y el número de su transaccion es el  "); window.location="principal.php"</script>';    
       //header('Location: principal.php');  
       //echo '<script>alert("Sus datos fueron enviados con exito. Agradecemos su confianza")"</script>';    
       //header('Location: principal.php');  
+      
+        
+        
         
   
   
@@ -207,20 +234,7 @@ echo "\n";
             //header('Location: principal.php');  
             //echo '<script>alert("Sus datos fueron enviados con exito. Agradecemos su confianza")"</script>';    
             //header('Location: principal.php');
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+         
             
   }
     }

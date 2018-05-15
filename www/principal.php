@@ -1,3 +1,43 @@
+<?php
+session_start();
+date_default_timezone_set('America/Santiago');
+$current_date = date("Y-m-d");
+
+
+
+if (isset($_SESSION['user'])){
+   if($_SESSION['user'] == 'jlopez'|| $_SESSION['user'] == 'caldazoro' || $_SESSION['user'] == 'gcarrillo'){
+                
+//    $fechaGuardada = $_SESSION['ultimoAcceso'];
+//
+//    $ahora = date("Y-n-j H:i:s");
+//    if($_SESSION['user']!=true){
+//        echo '<script>window.location="admin"</script>';
+//        return false;
+//        
+//    }else{
+//$tiempo_transcurrido = (strtotime($ahora)-strtotime($fechaGuardada));
+//if($tiempo_transcurrido >= 8640){ // 1 x 60 x 60 = 1 horas...
+//session_destroy();
+//
+//echo '<script>alert("Su sesion ha caducado");window.location="admin"</script>'; // 
+//
+//return false;
+//
+//    
+//}else{$_SESSION["ultimoAcceso"] = $ahora;}
+//}
+}else{
+    
+header('Location: admin');
+
+}
+}else{
+echo '<script>window.location="index"</script>';
+}
+//
+?>
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -490,12 +530,6 @@ echo $tasa;
                
 				
 
-        <script>
-			function myFunction() {
-				 alert("Se enviaron los datos de transferencia al correo con tu ¡¡Codigo Verde!! IMPORTANTE: Si no llega el correo revisa la carpeta de spam o  contáctanos!");
-			}
-		</script>   
-    
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/formatNumber.js"></script>

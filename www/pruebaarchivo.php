@@ -1,5 +1,16 @@
 <?php
-ini_set('display_errors',1);
+
+   $to = "julioj.lopeza@gmail.com"; // <– replace with your address here
+   $subject = "Test mail";
+   $message = "Hello! This is a simple test email message.";
+   $from = "support@aguacatecambios.com";
+   $headers = "From:" . $from;
+   mail($to,$subject,$message,$headers);
+   echo "Mail Sent.";
+
+
+
+/*ini_set('display_errors',1);
 require("PHPMailer/class.phpmailer.php");
 require("PHPMailer/class.smtp.php");
 
@@ -59,7 +70,7 @@ function send($correo,$nombre,$descripcion)
 			return false;
 			die();
 		}
-	}
+	}*/
 
 //function sendgmail($correo,$nombre)
 //{

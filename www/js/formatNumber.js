@@ -33,7 +33,7 @@ function format_number(number, prefix, thousand_separator, decimal_separator)
 			thousands = split[0].substr(rest).match(/\d{3}/g);
 		
 		if (thousands) {
-			separator = rest ? thousand_separator : '';
+			var separator = rest ? thousand_separator : '';
 			result += separator + thousands.join(thousand_separator);
 		}
 		result = split[1] != undefined ? result + decimal_separator + split[1] : result;
