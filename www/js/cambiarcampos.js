@@ -238,6 +238,11 @@ function cambiarcampos18(obj){
 
 }
 
+
+        
+        
+}
+
 function format_number(number, prefix, thousand_separator, decimal_separator)
 	{
 		var thousand_separator = thousand_separator || '.',
