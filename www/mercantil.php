@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+date_default_timezone_set('America/Santiago');
+$current_date = date("Y-m-d H:i:s");
+
 if (isset($_SESSION['user'])){
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
 //
@@ -25,28 +28,26 @@ if (isset($_SESSION['user'])){
 echo '<script>window.location="admin"</script>';
 }
 
-echo $id = $_POST['ids1'];
-echo $formaPago = $_POST['formaPago2'];
-echo $comprobante = $_POST['comprobante3'];
+
+echo $cuenta = $_POST['cuentab'];
+
+$consulta = "SELECT * FROM transacciones WHERE Numero_cuenta = '$cuenta' AND Transferimos_desde = 'Mercantil Juridica'";
 
 include 'conexion.php';
 
-$actualizar = "UPDATE transacciones1 SET Forma_pago = '$formaPago', estatus = 'Pendiente', comprobante = '$comprobante' WHERE ID = '$id'" ;
-
-$actualizar=mysqli_query($conexion,$actualizar);
-
-$resultado = mysqli_query($conexion,$datos);
+$resultado = mysqli_query($conexion, $consulta);
+$resultado = mysqli_fetch_array($resultado);
 
 if (!$resultado){
+    
+    echo '<script>alert("NO se ha transferido desde mercantil juridica"); window.location="transaccionesofic.php"</script>';
 
-echo 'error';
-
-mysqli_close($conexion);
-
-
+    
 }else{
-
-mysqli_close($conexion);
+    
+    echo '<script>alert("SI se ha transferido desde mercantil juridica"); window.location="transaccionesofic.php"</script>';
+    mysqli_close($conexion);
 }
+
 
 ?>

@@ -29,26 +29,26 @@ echo '<script>window.location="admin"</script>';
 }
 
 
-echo $usuario= $_SESSION['user'];
-echo $cliente = $_GET['cliente'];
-echo $rut = $_GET['rut'];
-echo $tasa = $_GET['tasa'];
-echo $estatus = $_GET['transf'];
-echo $comprobante = $_GET['comprobante'];
-echo $nombre = $_GET['nombre'];
-echo $tipodoc = $_GET['tipodoc']; 
-echo $iddoc = $_GET['iddoc'];
-echo $formaPago = $_GET['formaPago'];
-echo $banco = $_GET['banco'];
-echo $cuenta =$_GET['cuenta'];
-echo $bancoOrigen = $_GET['bancoOrigen'];
-echo $cuentaOrigen = $_GET['cuentaOrigen'];
-echo $totalPesos = $_GET['totalpesos'];
-echo $pesos = $_GET['pesos2'];
-echo $bolivares = $_GET['bolivares2'];
-echo $email = $_GET['email'];
-echo $telefono = $_GET['telefono'];
-echo $comentarios = $_GET['comentarios'];
+$usuario= $_SESSION['user'];
+$cliente = $_GET['cliente'];
+$rut = $_GET['rut'];
+$tasa = $_GET['tasa'];
+$estatus = $_GET['transf'];
+$comprobante = $_GET['comprobante'];
+$nombre = $_GET['nombre'];
+$tipodoc = $_GET['tipodoc']; 
+$iddoc = $_GET['iddoc'];
+$formaPago = $_GET['formaPago'];
+$banco = $_GET['banco'];
+$cuenta =$_GET['cuenta'];
+$bancoOrigen = $_GET['bancoOrigen'];
+$cuentaOrigen = $_GET['cuentaOrigen'];
+$totalPesos = $_GET['totalpesos'];
+$pesos = $_GET['pesos2'];
+$bolivares = $_GET['bolivares2'];
+$email = $_GET['email'];
+$telefono = $_GET['telefono'];
+$comentarios = $_GET['comentarios'];
 
 include 'conexion.php';
 

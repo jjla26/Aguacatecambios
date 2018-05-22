@@ -532,7 +532,7 @@ echo $tasa;
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/formatNumber.js"></script>
+      <!--  <script src="js/formatNumber.js"></script>-->
         
 		<!--Start of Tawk.to Script-->
 		<script type="text/javascript">

@@ -1491,6 +1491,27 @@ echo $tasa1;
 </table>
 
 		</div>
+		
+			
+		 <div id="form2" class=" col-xs-4 col-xs-offset-1">
+            <h1>Mercantil Juridica</h1>
+            
+            <form name="formul3" method="POST" action="mercantil.php">
+            
+            <div id="campos" class="">
+                        <label>Numero de Cuenta</label> 
+				    	<input type="text" class="form-control" name="cuentab" required>
+                    
+            </div>
+            
+            <div id="enviarp" method="post" class="">
+    		    	<button id="botones" class="form-control" >Buscar</button> 
+            </div>
+            
+            </form>
+            
+            
+         </div>
    
 
 

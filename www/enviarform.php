@@ -130,13 +130,52 @@ echo "\n";
               
           }else{
             
-          $to = "julioj.lopeza@gmail.com"; // <– replace with your address here
-          $subject = "Test mail";
-          $message = "Hello! This is a simple test email message.";
-          $from = "support@aguacatecambios.com";
-          $headers = "From:" . $from;
-          mail($to,$subject,$message,$headers);
-          echo "Mail Sent.";
+           $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
+      $subject = 'Transaccion en proceso';
+// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Cabeceras adicionales
+//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
+$headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
+//$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
+//$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+
+	  $message = "<html><body>";
+	  $message .= "<p>Estimado, <b>$cliente</b></p>
+	  
+	  <p>Cumplimos con informarle que su transacción será verificada y de cumplir con los requerimientos mínimos le avisaremos apenas este lista. Los datos suministrados fueron:</p>
+	  
+	  <h4>Beneficiario 1</h4>
+	  <p><b>- Beneficiario:</b> $nombre</p>
+	  <p><b>- Cedula:</b> $nacionalidad - $cedula</p>
+	  <p><b>- Banco:</b> $banco</p>
+	  <p><b>- Cuenta:</b> $cuenta</p>
+	  <p><b>- Cantidad de pesos depositados:</b> $pesos</p>
+	  <p><b>- Cantidad de bolivares a recibir:</b> $bolivares</p>
+	  
+	  <h4>Beneficiario 2</h4>
+	  <p><b>- Beneficiario:</b> $nombre1</p>
+	  <p><b>- Cedula:</b> $nacionalidad1 - $cedula1</p>
+	  <p><b>- Banco:</b> $banco1</p>
+	  <p><b>- Cuenta:</b> $cuenta1</p>
+	  <p><b>- Cantidad de pesos depositados:</b> $pesos1</p>
+	  <p><b>- Cantidad de bolivares a recibir:</b> $bolivares1</p>
+	  
+	  
+	  <p>Si falta algún requerimiento es posible que existan retrasos y nos estaremos comunicando con ud para solicitar informacion extra.</p>
+	  
+	  <p>El identificador de su transacción es el <b>$id</b>, y su turno actual es el <b>$turno</b>.</p>
+	  
+	  <p>Gracias por su preferencia,</p>
+	  
+	  <p><b>Aguacatecambios</b></p>";
+	  
+	  $message .= "</body></html>";
+	  
+      mail($to,$subject,$message,$headers);
+      echo 'Mail Sent';
             
           echo '<script>alert("Sus datos fueron enviados con exito y el número de su transaccion es el  "); window.location="principal.php"</script>';    
           //header('Location: principal.php');  
@@ -169,13 +208,52 @@ echo "\n";
                 
             }else{
               
-            $to = "julioj.lopeza@gmail.com"; // <– replace with your address here
-            $subject = "Test mail";
-            $message = "Hello! This is a simple test email message.";
-            $from = "support@aguacatecambios.com";
-            $headers = "From:" . $from;
-            mail($to,$subject,$message,$headers);
-            echo "Mail Sent.";
+         $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
+      $subject = 'Transaccion en proceso';
+// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Cabeceras adicionales
+//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
+$headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
+//$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
+//$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+
+	  $message = "<html><body>";
+	  $message .= "<p>Estimado, <b>$cliente</b></p>
+	  
+	  <p>Cumplimos con informarle que su transacción será verificada y de cumplir con los requerimientos mínimos le avisaremos apenas este lista. Los datos suministrados fueron:</p>
+	  
+	  <h4>Beneficiario 1</h4>
+	  <p><b>- Beneficiario:</b> $nombre</p>
+	  <p><b>- Cedula:</b> $nacionalidad - $cedula</p>
+	  <p><b>- Banco:</b> $banco</p>
+	  <p><b>- Cuenta:</b> $cuenta</p>
+	  <p><b>- Cantidad de pesos depositados:</b> $pesos</p>
+	  <p><b>- Cantidad de bolivares a recibir:</b> $bolivares</p>
+	  
+	  <h4>Beneficiario 2</h4>
+	  <p><b>- Beneficiario:</b> $nombre1</p>
+	  <p><b>- Cedula:</b> $nacionalidad1 - $cedula1</p>
+	  <p><b>- Banco:</b> $banco1</p>
+	  <p><b>- Cuenta:</b> $cuenta1</p>
+	  <p><b>- Cantidad de pesos depositados:</b> $pesos1</p>
+	  <p><b>- Cantidad de bolivares a recibir:</b> $bolivares1</p>
+	  
+	  
+	  <p>Si falta algún requerimiento es posible que existan retrasos y nos estaremos comunicando con ud para solicitar informacion extra.</p>
+	  
+	  <p>El identificador de su transacción es el <b>$id</b>, y su turno actual es el <b>$turno</b>.</p>
+	  
+	  <p>Gracias por su preferencia,</p>
+	  
+	  <p><b>Aguacatecambios</b></p>";
+	  
+	  $message .= "</body></html>";
+	  
+      mail($to,$subject,$message,$headers);
+      echo 'Mail Sent';
               
             echo '<script>alert("Sus datos fueron enviados con exito y el número de su transaccion es el  "); window.location="principal.php"</script>';    
             //header('Location: principal.php');  
@@ -211,10 +289,40 @@ echo "\n";
       }else{
         
       $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
-      $subject = 'Test mail';
-      $message = 'Hello! This is a simple test email message';
-      $from = 'support@aguacatecambios.com';
-      $headers = 'From:' . $from;
+      $subject = 'Transaccion en proceso';
+// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Cabeceras adicionales
+//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
+$headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
+//$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
+//$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+
+	  $message = "<html><body>";
+	  $message .= "<p>Estimado, <b>$cliente</b></p>
+	  
+	  <p>Cumplimos con informarle que su transacción será verificada y de cumplir con los requerimientos mínimos le avisaremos apenas este lista. Los datos suministrados fueron:</p>
+	  
+	  <p><b>- Beneficiario:</b> $nombre</p>
+	  <p><b>- Cedula:</b> $nacionalidad - $cedula</p>
+	  <p><b>- Banco:</b> $banco</p>
+	  <p><b>- Cuenta:</b> $cuenta</p>
+	  <p><b>- Cantidad de pesos depositados:</b> $pesos</p>
+	  <p><b>- Cantidad de bolivares a recibir:</b> $bolivares</p>
+	  	
+		
+	  <p>Si falta algún requerimiento es posible que existan retrasos y nos estaremos comunicando con ud para solicitar informacion extra.</p>
+	  
+	  <p>El identificador de su transacción es el <b>$id</b>, y su turno actual es el <b>$turno</b>.</p>
+	  
+	  <p>Gracias por su preferencia,</p>
+	  
+	  <p><b>Aguacatecambios</b></p>";
+	  
+	  $message .= "</body></html>";
+	  
       mail($to,$subject,$message,$headers);
       echo 'Mail Sent';
       

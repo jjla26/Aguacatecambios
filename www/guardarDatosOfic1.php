@@ -394,6 +394,46 @@ echo 'error';
 
 else{
     
+    
+    
+    
+     $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
+      $subject = 'Transaccion en proceso';
+// Para enviar un correo HTML, debe establecerse la cabecera Content-type
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+// Cabeceras adicionales
+//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
+$headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
+//$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
+//$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+
+	  $message = "<html><body>";
+	  $message .= "<p>Estimado, <b>$cliente</b></p>
+	  
+	  <p>Cumplimos con informarle que se ejecutó bajo el numero de transaccion $referencia desde $banco. Le detallamos su transaccion a continuacion: </p>
+	  
+	  <p><b>-- Cliente:</b> $cliente</p>
+	  <p><b>- Beneficiario:</b> $nombre</p>
+	  <p><b>- Cedula:</b> $nacionalidad - $cedula</p>
+	  <p><b>- Banco:</b> $banco</p>
+	  <p><b>- Cuenta:</b> $cuenta</p>
+	  <p><b>- Cantidad de bolivares depositados:</b> $bolivares</p>
+	  
+	  <p>Si falta algún requerimiento es posible que existan retrasos y nos estaremos comunicando con ud para solicitar informacion extra.</p>
+	  
+	  <p>El identificador de su transacción es el <b>$id</b>, y su turno actual es el <b>$turno</b>.</p>
+	  
+	  <p>Gracias por su preferencia,</p>
+	  
+	  <p><b>Aguacatecambios</b></p>";
+	  
+	  $message .= "</body></html>";
+	  
+      mail($to,$subject,$message,$headers);
+      echo 'Mail Sent';
+    
     if ($_SESSION['user']== mlopez){
                 header("Location: transferencias.php");
                 mysqli_close($conexion);}
