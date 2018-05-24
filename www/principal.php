@@ -406,7 +406,7 @@ echo $tasa;
 									
           	          		    	<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           	          		     		<label>Datos Segundo Beneficiario</label>
-		    	                    		<input id="beneficiario" type="text" class="form-control" name="" placeholder="Segundo Beneficiario" readonly >
+		    	                    		<input id="beneficiario" type="text" class="form-control" name="cuenta" placeholder="Segundo Beneficiario" readonly >
 				                    </div>
 									
 									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4  ">
@@ -531,7 +531,6 @@ echo $tasa;
 				 alert("Se enviaron los datos de transferencia al correo con tu ¡¡Codigo Verde!! IMPORTANTE: Si no llega el correo revisa la carpeta de spam o  contáctanos!");
 			}
 		</script>   
-		<script>
 		
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
