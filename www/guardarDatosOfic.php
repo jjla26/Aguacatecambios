@@ -30,29 +30,32 @@ echo '<script>window.location="admin"</script>';
 
 
 $usuario= $_SESSION['user'];
-$cliente = $_GET['cliente'];
-$rut = $_GET['rut'];
-$tasa = $_GET['tasa'];
-$estatus = $_GET['transf'];
-$comprobante = $_GET['comprobante'];
-$nombre = $_GET['nombre'];
-$tipodoc = $_GET['tipodoc']; 
-$iddoc = $_GET['iddoc'];
-$formaPago = $_GET['formaPago'];
-$banco = $_GET['banco'];
-$cuenta =$_GET['cuenta'];
-$bancoOrigen = $_GET['bancoOrigen'];
-$cuentaOrigen = $_GET['cuentaOrigen'];
-$totalPesos = $_GET['totalpesos'];
-$pesos = $_GET['pesos2'];
-$bolivares = $_GET['bolivares2'];
-$email = $_GET['email'];
-$telefono = $_GET['telefono'];
-$comentarios = $_GET['comentarios'];
+$cliente = $_POST['cliente'];
+echo $transaccion = $_POST['transaccion'];
+$rut = $_POST['rut'];
+$tasa = $_POST['tasa'];
+$estatus1 = $_POST['transf1'];
+$estatus = $_POST['transf'];
+$comprobante = $_POST['comprobante'];
+$nombre = $_POST['nombre'];
+$tipodoc = $_POST['tipodoc']; 
+$iddoc = $_POST['iddoc'];
+$formaPago = $_POST['formaPago'];
+$banco = $_POST['banco'];
+$cuenta =$_POST['cuenta'];
+$bancoOrigen = $_POST['bancoOrigen'];
+$cuentaOrigen = $_POST['cuentaOrigen'];
+$totalPesos = $_POST['totalpesos'];
+$pesos = $_POST['pesos2'];
+$bolivares = $_POST['bolivares2'];
+$email = $_POST['email'];
+$telefono = $_POST['telefono'];
+$comentarios = $_POST['comentarios'];
+$idi = $_POST['idi'];
 
 include 'conexion.php';
 
-if($totalPesos>=90000){
+if($totalPesos>=100000){
     $tasa= "SELECT Tasa FROM Tasa3";
     $tasa = mysqli_query($conexion,$tasa);
     $tasa = mysqli_fetch_array($tasa);
@@ -128,7 +131,7 @@ $bolivaresCom = $bolivares;
 
 $insertar1 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*-1))";
 
-$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, comentarios, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$usuario')";
+$insertar = "INSERT INTO transacciones1(tasa, cliente, comprobante, Forma_pago, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, comentarios, idi, user) VALUES ('$tasa','$cliente','$comprobante','$formaPago','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$idi','$usuario')";
 
 $resultado = mysqli_query($conexion, $insertar);
 
@@ -137,7 +140,7 @@ $resultado1 = mysqli_query($conexion, $insertar1);
 $ID=mysqli_insert_id($conexion)-1;
 
 
-if($formaPago == "Efectivo"){
+if($formaPago == "Efectivo" &&  $transaccion != '2'){
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
@@ -152,7 +155,7 @@ $abono_efec1= $abono_efec1['saldo_efec'];
     
 }
 
-if($formaPago == "DepositoRut"){
+if($formaPago == "DepositoRut" &&  $transaccion != '2'){
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
@@ -164,7 +167,7 @@ $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
 $abono_rut1= $abono_rut1['saldo_rut'];    
 }
-if($formaPago == "DepositoVista"){
+if($formaPago == "DepositoVista" &&  $transaccion != '2'){
 
 $abono_vista1 = "SELECT saldo_vista FROM saldos1 WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);
@@ -179,7 +182,7 @@ $abono_vista1 = mysqli_fetch_array($abono_vista1);
 $abono_vista1= $abono_vista1['saldo_vista'];
     
 }
-if($formaPago == "DepositoAhorro"){
+if($formaPago == "DepositoAhorro" &&  $transaccion != '2'){
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
 $abono_ahorro1 = mysqli_query($conexion,$abono_ahorro1);
 $abono_ahorro1 = mysqli_fetch_array($abono_ahorro1);
@@ -405,7 +408,7 @@ $disponible_banesco_juridica = $disponible_banesco_juridica['disp_banesco_juridi
 
 $ID=$ID+1;
 
-$insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_carlos_papa='$abono_banesco_carlos_papa1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_carlos_papa='$disponible_banesco_carlos_papa', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha='$current_date' WHERE ID= '$ID'";
+$insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_carlos_papa='$abono_banesco_carlos_papa1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_carlos_papa='$disponible_banesco_carlos_papa', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha='$current_date', transaccion= '$ID' WHERE ID= '$ID'";
 
 $resultado3 = mysqli_query($conexion, $insertar3);
 
@@ -435,7 +438,7 @@ $insertar2 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*
 
 $insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus, comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$usuario')";
 
-if ($totalPesos != $pesos){
+if ($totalPesos != $pesos && $estatus1 != 'Recibida'){
     
     echo $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;
@@ -456,7 +459,7 @@ $ID=mysqli_insert_id($conexion)-1;
 
 
 
-if($formaPago == "Efectivo"){
+if($formaPago == "Efectivo" &&  $transaccion != '2'){
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
@@ -471,7 +474,7 @@ $abono_efec1= $abono_efec1['saldo_efec'];
     
 }
 
-if($formaPago == "DepositoRut"){
+if($formaPago == "DepositoRut" &&  $transaccion != '2'){
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
@@ -483,7 +486,7 @@ $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
 $abono_rut1= $abono_rut1['saldo_rut'];    
 }
-if($formaPago == "DepositoVista"){
+if($formaPago == "DepositoVista" &&  $transaccion != '2'){
 
 $abono_vista1 = "SELECT saldo_vista FROM saldos1 WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);
@@ -498,7 +501,7 @@ $abono_vista1 = mysqli_fetch_array($abono_vista1);
 $abono_vista1= $abono_vista1['saldo_vista'];
     
 }
-if($formaPago == "DepositoAhorro"){
+if($formaPago == "DepositoAhorro" &&  $transaccion != '2'){
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
 $abono_ahorro1 = mysqli_query($conexion,$abono_ahorro1);
 $abono_ahorro1 = mysqli_fetch_array($abono_ahorro1);
@@ -723,9 +726,13 @@ $ID=$ID+1;
 
 $insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_carlos_papa='$abono_banesco_carlos_papa1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_carlos_papa ='$disponible_banesco_carlos_papa', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha='$current_date' WHERE ID= '$ID'";
 
+$actualizar1 = "UPDATE transacciones1 SET estatus = 'Enviada' WHERE ID = '$idi'";
+
+$actualizar1 = mysqli_query($conexion,$actualizar1);
+
 $resultado3 = mysqli_query($conexion, $insertar3);
 
-if (!$resultado && !$resultado1 && !$resultado2 && !$resultado3){
+if (!$resultado && !$resultado1 && !$resultado2 && !$resultado3 && !$actualizar1){
     
     
 echo 'error';
@@ -751,7 +758,7 @@ $insertar2 = "INSERT INTO saldos1( disp_mercantil_mariana)VALUES(($bolivaresCom*
 
 $insertar = "INSERT INTO transacciones1(tasa,cliente, rut, comprobante,Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Transferimos_desde, Total_pesos, Cantidad_pesos, Cantidad_bs, Bolivares_com, Email, Telefono, Fecha, estatus,comentarios, user) VALUES ('$tasa','$cliente','$rut','$comprobante','$nombre','$tipodoc','$iddoc','$formaPago','$banco','$cuenta','$cuentaOrigen','$totalPesos','$pesos','$bolivares','$bolivaresCom','$email','$telefono','$current_date','$estatus','$comentarios','$usuario')";
 
-if ($totalPesos != $pesos){
+if ($totalPesos != $pesos && $estatus1 != 'Recibida'){
     
     echo $dif = bcsub($totalPesos,$pesos,15);
     echo $bolivares = floor(bcmul($dif,$tasa,15)*100)/100;   
@@ -773,7 +780,7 @@ $ID=mysqli_insert_id($conexion)-1;
 
 
 
-if($formaPago == "Efectivo"){
+if($formaPago == "Efectivo" &&  $transaccion != '2'){
 $abono_efec1 = "SELECT saldo_efec FROM saldos1 WHERE ID = '$ID'";
 $abono_efec1 = mysqli_query($conexion,$abono_efec1);
 $abono_efec1 = mysqli_fetch_array($abono_efec1);
@@ -788,7 +795,7 @@ $abono_efec1= $abono_efec1['saldo_efec'];
     
 }
 
-if($formaPago == "DepositoRut"){
+if($formaPago == "DepositoRut" &&  $transaccion != '2'){
 $abono_rut1 = "SELECT saldo_rut FROM saldos1 WHERE ID = '$ID'";
 $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
@@ -800,7 +807,7 @@ $abono_rut1 = mysqli_query($conexion,$abono_rut1);
 $abono_rut1 = mysqli_fetch_array($abono_rut1);
 $abono_rut1= $abono_rut1['saldo_rut'];    
 }
-if($formaPago == "DepositoVista"){
+if($formaPago == "DepositoVista" &&  $transaccion != '2'){
 
 $abono_vista1 = "SELECT saldo_vista FROM saldos1 WHERE ID = '$ID'";
 $abono_vista1 = mysqli_query($conexion,$abono_vista1);
@@ -815,7 +822,7 @@ $abono_vista1 = mysqli_fetch_array($abono_vista1);
 $abono_vista1= $abono_vista1['saldo_vista'];
     
 }
-if($formaPago == "DepositoAhorro"){
+if($formaPago == "DepositoAhorro" &&  $transaccion != '2'){
 $abono_ahorro1 = "SELECT saldo_ahorro FROM saldos1 WHERE ID = '$ID'";
 $abono_ahorro1 = mysqli_query($conexion,$abono_ahorro1);
 $abono_ahorro1 = mysqli_fetch_array($abono_ahorro1);
@@ -1040,16 +1047,18 @@ $ID=$ID+1;
 
 $insertar3 = "UPDATE saldos1 SET saldo_efec ='$abono_efec1', saldo_rut ='$abono_rut1', saldo_ahorro ='$abono_ahorro1', saldo_vista= '$abono_vista1', saldo_mercantil_mariana='$abono_mercantil_mariana1', saldo_mercantil_carlos='$abono_mercantil_carlos1', saldo_mercantil_juridica='$abono_mercantil_juridica1', saldo_banesco_carlos='$abono_banesco_carlos1', saldo_banesco_carlos_papa='$abono_banesco_carlos_papa1', saldo_banesco_marola='$abono_banesco_marola1', saldo_banesco_sonalys='$abono_banesco_sonalys1', saldo_banesco_juridica ='$abono_banesco_juridica1', disp_mercantil_mariana='$disponible_mercantil_mariana', disp_mercantil_carlos='$disponible_mercantil_carlos', disp_mercantil_juridica='$disponible_mercantil_juridica', disp_banesco_carlos='$disponible_banesco_carlos', disp_banesco_carlos_papa ='$disponible_banesco_carlos_papa', disp_banesco_marola='$disponible_banesco_marola', disp_banesco_sonalys='$disponible_banesco_sonalys', disp_banesco_juridica ='$disponible_banesco_juridica', Fecha='$current_date' WHERE ID= '$ID'";
 
+$actualizar1 = "UPDATE transacciones1 SET estatus = 'Enviada' WHERE ID = '$idi'";
+
+$actualizar1 = mysqli_query($conexion,$actualizar1);
+
 $resultado3 = mysqli_query($conexion, $insertar3);
 
-if (!$resultado && !$resultado1 && !$resultado2 && !$resultado3){
-    
+if (!$resultado && !$resultado1 && !$resultado2 && !$resultado3 && !$actualizar1){
     
 echo 'error';
 mysqli_close($conexion);
 
 }else{
-
 
 echo '<script>window.location="transaccionesofic.php"</script>';
 

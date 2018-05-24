@@ -28,12 +28,13 @@ if (isset($_SESSION['user'])){
 }
 
 
-$ids= $_GET['ids'];
-$ncuenta= $_GET['numCuenta'];
-$bolivares= $_GET['bs'];
-$bancoOrigen= $_GET['bancoOrg'];
-$cuentaOrigen = $_GET['cuentaOrg'];
-$estatus = $_GET['transf'];
+echo $ids= $_POST['ids'];
+echo $ncuenta= $_POST['numCuenta'];
+echo $bolivares= $_POST['bs'];
+echo $bancoOrigen= $_POST['bancoOrg'];
+echo $cuentaOrigen = $_POST['cuentaOrg'];
+$estatus = $_POST['transf'];
+echo $referencia = $_POST['referencia'];
 
 include 'conexion.php';
 
@@ -48,7 +49,7 @@ while ($row = mysqli_fetch_array($datos)) {
     
 }
 
-$actualizar = "UPDATE transacciones1 SET Banco_origen='$bancoOrigen',Transferimos_desde ='$cuentaOrigen', Cantidad_bs= '$bolivares', Fecha='$current_date', estatus='Realizada'  WHERE ID= '$ids' " ;
+$actualizar = "UPDATE transacciones1 SET Banco_origen='$bancoOrigen',Transferimos_desde ='$cuentaOrigen', Cantidad_bs= '$bolivares', Fecha='$current_date', estatus='Realizada', referencia = '$referencia'  WHERE ID= '$ids' " ;
 
 $actualizar=mysqli_query($conexion,$actualizar);
 
@@ -394,25 +395,22 @@ echo 'error';
 
 else{
     
-    
-    
-    
-     $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
-      $subject = 'Transaccion en proceso';
-// Para enviar un correo HTML, debe establecerse la cabecera Content-type
-$headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+     $to = $email; // <– replace with your address here
+     $subject = 'Transaccion en proceso';
+     // Para enviar un correo HTML, debe establecerse la cabecera Content-type
+     $headers  = 'MIME-Version: 1.0' . "\r\n";
+     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+     
+     // Cabeceras adicionales
+     //$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
+     $headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
+     $headers .= 'Cc: support@aguacatecambios.com' . "\r\n";
+     //$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
 
-// Cabeceras adicionales
-//$headers .= 'To: Mary <mary@example.com>, Kelly <kelly@example.com>' . "\r\n";
-$headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
-//$headers .= 'Cc: birthdayarchive@example.com' . "\r\n";
-//$headers .= 'Bcc: birthdaycheck@example.com' . "\r\n";
-
-	  $message = "<html><body>";
-	  $message .= "<p>Estimado, <b>$cliente</b></p>
+	 $message = "<html><body>";
+	 $message .= "<p>Estimado, <b>$cliente</b></p>
 	  
-	  <p>Cumplimos con informarle que se ejecutó bajo el numero de transaccion $referencia desde $banco. Le detallamos su transaccion a continuacion: </p>
+	 <p>Cumplimos con informarle que su transacción se ejecutó bajo el numero $referencia desde $banco. Le detallamos su transaccion a continuacion: </p>
 	  
 	  <p><b>-- Cliente:</b> $cliente</p>
 	  <p><b>- Beneficiario:</b> $nombre</p>
@@ -421,9 +419,7 @@ $headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
 	  <p><b>- Cuenta:</b> $cuenta</p>
 	  <p><b>- Cantidad de bolivares depositados:</b> $bolivares</p>
 	  
-	  <p>Si falta algún requerimiento es posible que existan retrasos y nos estaremos comunicando con ud para solicitar informacion extra.</p>
-	  
-	  <p>El identificador de su transacción es el <b>$id</b>, y su turno actual es el <b>$turno</b>.</p>
+	  <p>El identificador de su transacción es el <b>$id</b>, si tiene algun inconveniente nos puede contactar con su identificador a la mano.</p>
 	  
 	  <p>Gracias por su preferencia,</p>
 	  

@@ -6,7 +6,7 @@ $current_date = date("Y-m-d");
 
 
 if (isset($_SESSION['user'])){
-   if($_SESSION['user'] == 'jlopez'|| $_SESSION['user'] == 'caldazoro' || $_SESSION['user'] == 'gcarrillo'){
+    if($_SESSION['user'] == 'jlopez'|| $_SESSION['user'] == 'caldazoro' || $_SESSION['user'] == 'gcarrillo'){
                 
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
 //
@@ -64,8 +64,8 @@ echo '<script>window.location="admin"</script>';
 		
 	</head>
 <body>
-	
-	<div>
+
+<div>
         
             <h4>Bienvenidos <?php echo $_SESSION['user']; ?></h4>
             
@@ -83,6 +83,9 @@ echo '<script>window.location="admin"</script>';
         </div>
 
 
+
+
+
          <div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Calculadora de cambios</h1>
             
@@ -93,10 +96,10 @@ echo '<script>window.location="admin"</script>';
 				    	
 				    	<input type="text" class="form-control" name="tasacalc" value="<?php
 include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa2";
+$tasa = "SELECT Tasa FROM Tasa";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
-$tasa = $tasa['Tasa'];
+$tasa= $tasa['Tasa'];
 
 echo $tasa;
 
@@ -144,7 +147,7 @@ echo $tasa;
 						
 					<div id="campos" class="col-xs-6" >
     				    <label>Efectivo</label>
-		    			<input id="saldo1" type="text" class="form-control" name="Efec" value="<?php 
+		    			<input type="text" class="form-control" name="Efec" value="<?php 
 include 'conexion.php';
 $saldo_efec = "SELECT saldo_efec FROM saldos1 order by ID desc Limit 1";
 $saldo_efec = mysqli_query($conexion,$saldo_efec);
@@ -157,7 +160,7 @@ echo $saldo_efec;
 							
 							<div id="campos" class="col-xs-6" >
     				    <label>Cuenta RUT</label>
-		    			<input id="saldo2" type="text" class="form-control" name="CuentaRut" value="<?php 
+		    			<input type="text" class="form-control" name="CuentaRut" value="<?php 
 include 'conexion.php';
 $saldo_rut = "SELECT saldo_rut FROM saldos1 order by ID desc Limit 1";
 $saldo_rut = mysqli_query($conexion,$saldo_rut);
@@ -169,7 +172,7 @@ echo $saldo_rut;
 	    			</div>
                         <div id="campos" class="col-xs-6" >
     				    <label>Cuenta Vista</label>
-		    			<input id="saldo3" type="text" class="form-control" name="CuentaVista" value= "<?php 
+		    			<input type="text" class="form-control" name="CuentaVista" value= "<?php 
 include 'conexion.php';
 $saldo_vista = "SELECT saldo_vista FROM saldos1 order by ID desc Limit 1";
 $saldo_vista = mysqli_query($conexion,$saldo_vista);
@@ -187,7 +190,7 @@ echo $saldo_vista;
 
                     <div id="campos" class="col-xs-6">
 				        <label>Cuenta Ahorros</label>
-    					<input id="saldo4" type="text" class="form-control" name="CuentaAhorros" value="<?php 
+    					<input type="text" class="form-control" name="CuentaAhorros" value="<?php 
 include 'conexion.php';
 $saldo_ahorro = "SELECT saldo_ahorro FROM saldos1 order by ID desc Limit 1";
 $saldo_ahorro = mysqli_query($conexion,$saldo_ahorro);
@@ -200,9 +203,9 @@ echo $saldo_ahorro;
 </div>
 <div id="campos" class="col-xs-6">
 				        <label>Saldo Necesario</label>
-    					<input id="saldo5" type="text" class="form-control" name="Saldo Necesario" value= "<?php 
+    					<input type="text" class="form-control" name="Saldo Necesario" value= "<?php 
 include 'conexion.php';
-$saldo_necesario = "SELECT SUM(Cantidad_bs) FROM transacciones1 WHERE estatus = 'Pendiente' OR estatus='NR'";
+$saldo_necesario = "SELECT SUM(Cantidad_bs) FROM transacciones1 WHERE estatus = 'Pendiente'";
 $saldo_necesario = mysqli_query($conexion,$saldo_necesario);
 $saldo_necesario = mysqli_fetch_array($saldo_necesario);
 $saldo_necesario = $saldo_necesario['SUM(Cantidad_bs)'];
@@ -213,7 +216,7 @@ echo $saldo_necesario;
     				
 <div id="campos" class="col-xs-6">
 				        <label>Total Pesos del día</label>
-    					<input id="saldo6" type="text" class="form-control" name="PesosDia" value= "<?php 
+    					<input type="text" class="form-control" name="PesosDia" value= "<?php 
 include 'conexion.php';
 $saldo = "SELECT SUM(Cantidad_pesos) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
 $saldo1 = "SELECT SUM(Diferencia) FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%'";
@@ -228,37 +231,9 @@ echo $saldo+$saldo1;
 ?>" readonly >
     				</div>
     				
-     				<div id="campos" class="col-xs-6" >
-    				    <label>Banesco Juridica 2197</label>
-		    			<input id="saldo7" type="text" class="form-control" name="BanescoJuridica" value="<?php 
-include 'conexion.php';
-$saldo_banesco_juridica = "SELECT saldo_banesco_juridica FROM saldos1 order by ID desc Limit 1";
-$saldo_banesco_juridica = mysqli_query($conexion,$saldo_banesco_juridica);
-$saldo_banesco_juridica = mysqli_fetch_array($saldo_banesco_juridica);
-$saldo_banesco_juridica = $saldo_banesco_juridica['saldo_banesco_juridica'];
-echo $saldo_banesco_juridica;
-
-?>" readonly>
-	    			</div>
-	    			
-	    			<div id="campos" class="col-xs-6" >
-    				    <label>Disp Banesco Juridica 2197</label>
-		    			<input id="saldo8" type="text" class="form-control" name="BanescoJuridica" value="<?php 
-include 'conexion.php';
-$disp_banesco_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Juridica' AND DATE(Fecha) like '%$current_date%'";
-$debito_juridica_otro = "SELECT SUM(abono_banesco_juridica) FROM saldos1 WHERE b7='1' AND DATE(Fecha) like '%$current_date%'";
-$debito_juridica_otro = mysqli_query($conexion,$debito_juridica_otro);
-$debito_juridica_otro = mysqli_fetch_array($debito_juridica_otro);
-$disp_banesco_juridica = mysqli_query($conexion,$disp_banesco_juridica);
-$disp_banesco_juridica = mysqli_fetch_array($disp_banesco_juridica);
-$disp_banesco_juridica = $saldo_banesco_juridica + $disp_banesco_juridica['SUM(Bolivares_com)']-$debito_juridica_otro['SUM(abono_banesco_juridica)'];
-echo $disp_banesco_juridica;
-
-?>" readonly>
-	    			</div>
 	    			<div id="campos" class="col-xs-6" >
     				    <label>Banesco Carlos 2008</label>
-		    			<input id="saldo9" type="text" class="form-control" name="BanescoCarlos" value="<?php 
+		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $saldo_banesco_carlos = "SELECT saldo_banesco_carlos FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_carlos = mysqli_query($conexion,$saldo_banesco_carlos);
@@ -271,7 +246,7 @@ echo $saldo_banesco_carlos;
 	    			
 <div id="campos" class="col-xs-6" >
     				    <label>Disp Banesco Carlos 2008</label>
-		    			<input id="saldo10" type="text" class="form-control" name="BanescoCarlos" value="<?php 
+		    			<input type="text" class="form-control" name="BanescoCarlos" value="<?php 
 include 'conexion.php';
 $disp_banesco_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos' AND DATE(Fecha) like '%$current_date%'";
 $debito_carlos_otro = "SELECT SUM(abono_banesco_carlos) FROM saldos1 WHERE b4='1' AND DATE(Fecha) like '%$current_date%'";
@@ -285,10 +260,40 @@ echo $disp_banesco_carlos;
 ?>" readonly>
 </div>
 
+     				<div id="campos" class="col-xs-6" >
+    				    <label>Banesco Juridica 2197</label>
+		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
+include 'conexion.php';
+$saldo_banesco_juridica = "SELECT saldo_banesco_juridica FROM saldos1 order by ID desc Limit 1";
+$saldo_banesco_juridica = mysqli_query($conexion,$saldo_banesco_juridica);
+$saldo_banesco_juridica = mysqli_fetch_array($saldo_banesco_juridica);
+$saldo_banesco_juridica = $saldo_banesco_juridica['saldo_banesco_juridica'];
+echo $saldo_banesco_juridica;
+
+?>" readonly>
+	    			</div>
+	    			
+	    			<div id="campos" class="col-xs-6" >
+    				    <label>Disp Banesco Juridica 2197</label>
+		    			<input type="text" class="form-control" name="BanescoJuridica" value="<?php 
+include 'conexion.php';
+$disp_banesco_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Juridica' AND DATE(Fecha) like '%$current_date%'";
+$debito_juridica_otro = "SELECT SUM(abono_banesco_juridica) FROM saldos1 WHERE b7='1' AND DATE(Fecha) like '%$current_date%'";
+$debito_juridica_otro = mysqli_query($conexion,$debito_juridica_otro);
+$debito_juridica_otro = mysqli_fetch_array($debito_juridica_otro);
+$disp_banesco_juridica = mysqli_query($conexion,$disp_banesco_juridica);
+$disp_banesco_juridica = mysqli_fetch_array($disp_banesco_juridica);
+$disp_banesco_juridica = $saldo_banesco_juridica + $disp_banesco_juridica['SUM(Bolivares_com)']-$debito_juridica_otro['SUM(abono_banesco_juridica)'];
+echo $disp_banesco_juridica;
+
+?>" readonly>
+	    			</div>
+
+
 
     				<div id="campos" class="col-xs-6">
-				        <label>Banesco Carlos Papa 7088</label>
-    					<input id="saldo11" type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
+				        <label>Banesco PAPA 7088 </label>
+    					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $saldo_banesco_carlos_papa = "SELECT saldo_banesco_carlos_papa FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_carlos_papa = mysqli_query($conexion,$saldo_banesco_carlos_papa);
@@ -300,8 +305,8 @@ echo $saldo_banesco_carlos_papa;
     				</div>
  			
             	<div id="campos" class="col-xs-6">
-				        <label> Disp Banesco Carlos Papa 7088</label>
-    					<input id="saldo12" type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
+				        <label> Disp Banesco PAPA 7088 </label>
+    					<input type="text" class="form-control" name="BanescoCarlosPapa" value= "<?php 
 include 'conexion.php';
 $disp_banesco_carlos_papa = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Carlos Papa' AND DATE(Fecha) like '%$current_date%'";
 $debito_carlosp_otro = "SELECT SUM(abono_banesco_carlos_papa) FROM saldos1 WHERE b8='1' AND DATE(Fecha) like '%$current_date%'";
@@ -317,7 +322,7 @@ echo $disp_banesco_carlos_papa;
 	    			
                     <div id="campos" class="col-xs-6">
 				        <label>Banesco Marola 2176</label>
-    					<input id="saldo13" type="text" class="form-control" name="BanescoMarola" value="<?php 
+    					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $saldo_banesco_marola = "SELECT saldo_banesco_marola FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_marola = mysqli_query($conexion,$saldo_banesco_marola);
@@ -331,7 +336,7 @@ echo $saldo_banesco_marola;
     
                     <div id="campos" class="col-xs-6">
 				        <label>Disp Banesco Marola 2176</label>
-    					<input id="saldo14" type="text" class="form-control" name="BanescoMarola" onload = "format_number(this.value)" value="<?php 
+    					<input type="text" class="form-control" name="BanescoMarola" value="<?php 
 include 'conexion.php';
 $disp_banesco_marola = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Marola' AND DATE(Fecha) like '%$current_date%'";
 $debito_marola_otro = "SELECT SUM(abono_banesco_marola) FROM saldos1 WHERE b5='1' AND DATE(Fecha) like '%$current_date%'";
@@ -346,7 +351,7 @@ echo $disp_banesco_marola;
     				</div>
     				<div id="campos" class="col-xs-6" >
     				    <label>Banesco Sonalys 4568</label>
-		    			<input id="saldo15" type="text" class="form-control" name="BanescoSonalys" value="<?php 
+		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $saldo_banesco_sonalys = "SELECT saldo_banesco_sonalys FROM saldos1 order by ID desc Limit 1";
 $saldo_banesco_sonalys = mysqli_query($conexion,$saldo_banesco_sonalys);
@@ -358,7 +363,7 @@ echo $saldo_banesco_sonalys;
 	    			</div>
     				<div id="campos" class="col-xs-6" >
     				    <label>Disp Banesco Sonalys 4568</label>
-		    			<input id="saldo16" type="text" class="form-control" name="BanescoSonalys" value="<?php 
+		    			<input type="text" class="form-control" name="BanescoSonalys" value="<?php 
 include 'conexion.php';
 $disp_banesco_sonalys = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banesco' AND Transferimos_desde= 'Banesco Sonalys' AND DATE(Fecha) like '%$current_date%'";
 $debito_sonalys_otro = "SELECT SUM(abono_banesco_sonalys) FROM saldos1 WHERE b6='1' AND DATE(Fecha) like '%$current_date%'";
@@ -373,7 +378,7 @@ echo $disp_banesco_sonalys;
 	    			</div>
                         <div id="campos" class="col-xs-6" >
     				    <label>Mercantil Carlos</label>
-		    			<input id="saldo17" type="text" class="form-control" name="MercantilCarlos" value= "<?php 
+		    			<input type="text" class="form-control" name="MercantilCarlos" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_carlos = "SELECT saldo_mercantil_carlos FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_carlos = mysqli_query($conexion,$saldo_mercantil_carlos);
@@ -386,7 +391,7 @@ echo $saldo_mercantil_carlos;
 	    			
 <div id="campos" class="col-xs-6" >
     				    <label> Disp Mercantil Carlos</label>
-		    			<input id="saldo18" type="text" class="form-control" name="MercantilCarlos" value= "<?php 
+		    			<input type="text" class="form-control" name="MercantilCarlos" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_carlos = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Carlos' AND DATE(Fecha) like '%$current_date%'";
 $debito_mcarlos_otro = "SELECT SUM(abono_mercantil_carlos) FROM saldos1 WHERE b2='1' AND DATE(Fecha) like '%$current_date%'";
@@ -402,7 +407,7 @@ echo $disp_mercantil_carlos;
 	    			
                     <div id="campos" class="col-xs-6">
 				        <label>Mercantil Mariana</label>
-    					<input id="saldo19" type="text" class="form-control" name="MercantilMariana" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_mariana = "SELECT saldo_mercantil_mariana FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_mariana = mysqli_query($conexion,$saldo_mercantil_mariana);
@@ -414,7 +419,7 @@ echo $saldo_mercantil_mariana;
     				</div>
     				<div id="campos" class="col-xs-6">
 				        <label> Disp Mercantil Mariana</label>
-    					<input id="saldo20" type="text" class="form-control" name="MercantilMariana" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilMariana" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_mariana = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Mariana' AND DATE(Fecha) like '%$current_date%'";
 $debito_mariana_otro = "SELECT SUM(abono_mercantil_mariana) FROM saldos1 WHERE b1='1' AND DATE(Fecha) like '%$current_date%'";
@@ -430,7 +435,7 @@ echo $disp_mercantil_mariana;
 
     				<div id="campos" class="col-xs-6">
 				        <label>Mercantil Juridica</label>
-    					<input id="saldo21" type="text" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $saldo_mercantil_juridica = "SELECT saldo_mercantil_juridica FROM saldos1 order by ID desc Limit 1";
 $saldo_mercantil_juridica = mysqli_query($conexion,$saldo_mercantil_juridica);
@@ -448,7 +453,7 @@ echo $saldo_mercantil_juridica;
                         
                         				<div id="campos" class="col-xs-6">
 				        <label> Disp Mercantil Juridica</label>
-    					<input id="saldo22" type="text" class="form-control" name="MercantilJuridica" value= "<?php 
+    					<input type="text" class="form-control" name="MercantilJuridica" value= "<?php 
 include 'conexion.php';
 $disp_mercantil_juridica = "SELECT SUM(Bolivares_com) FROM transacciones1 WHERE Cuenta_destino != 'Banco Mercantil' AND Transferimos_desde= 'Mercantil Juridica' AND DATE(Fecha) like '%$current_date%'";
 $debito_mjuridica_otro = "SELECT SUM(abono_mercantil_juridica) FROM saldos1 WHERE b3='1' AND DATE(Fecha) like '%$current_date%'";
@@ -479,7 +484,7 @@ echo $disp_mercantil_juridica;
         <div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Ingrese Datos del cliente</h1>
             
-            <form name="formul3" method="get" action="buscarDatos.php">
+            <form name="formul3" method="POST" action="buscarDatos.php">
             
             <div id="campos" class="">
                         <label>Dato Clave</label> 
@@ -487,21 +492,21 @@ echo $disp_mercantil_juridica;
                     
             </div>
             
-            <div id="enviarp" method="get" class="">
+            <div id="enviarp" method="post" class="">
     		    	<button id="botones" class="form-control" >Buscar</button> 
             </div>
             
             </form>
             
             
-                <form name="formul0" method="GET" enctype="multipart/form-data" action="guardarDatosOfic.php">
+                <form name="formul0" method="POST" enctype="multipart/form-data" action="guardarDatosOfic.php">
                 
                     <div id="campos" class="">
                         <label>TASA</label> 
 				    	
 				    	<input type="text" class="form-control" name="tasa" value="<?php
 include 'conexion.php';
-$tasa = "SELECT Tasa FROM Tasa2";
+$tasa = "SELECT Tasa FROM Tasa";
 $tasa = mysqli_query($conexion,$tasa);
 $tasa = mysqli_fetch_array($tasa);
 $tasa= $tasa['Tasa'];
@@ -516,7 +521,7 @@ echo $tasa;
 				    	
 				    	<input type="text" class="form-control" name="tasaesp" value="<?php
 include 'conexion.php';
-$tasa1 = "SELECT Tasa FROM Tasa3";
+$tasa1 = "SELECT Tasa FROM Tasa1";
 $tasa1 = mysqli_query($conexion,$tasa1);
 $tasa1 = mysqli_fetch_array($tasa1);
 $tasa1 = $tasa1['Tasa'];
@@ -527,7 +532,7 @@ echo $tasa1;
                     </div>
                     <div id="campos" class="">
 				        <label>Transferencia</label>
-			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)" >
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)"required>
 				           <option value="No Verificado">No verificado</option>
 				            <option value="Pendiente">Pendiente</option>
 				            <option value="NR">No Reportado</option>
@@ -535,7 +540,7 @@ echo $tasa1;
           	        </div>
                     <div id="" class="">
 		    		   <label>Forma de pago</label> 
-                       <select id="formadPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)" required>
 				           <option  value="">Seleccionar</option>
 					       <option  value="Efectivo">Efectivo</option>
                            <option  value="DepositoRut">Deposito a Cuenta Rut</option>
@@ -597,7 +602,7 @@ echo $tasa1;
                             <option value="BANCO ESPIRITO SANTO S.A.">BANCO ESPIRITO SANTO S.A.</option>
                             <option value="BANCO EXTERIOR C.A.">BANCO EXTERIOR C.A.</option>
                             <option value="BANCO INTERNACIONAL DE DESARROLLO, C.A.">BANCO INTERNACIONAL DE DESARROLLO, C.A.</option>
-                            <option value="BANCO MERCANTIL C.A.">BANCO MERCANTIL C.A.</option>
+                            <option value="Banco Mercantil">BANCO MERCANTIL C.A.</option>
                             <option value="BANCO NACIONAL DE CREDITO ">BANCO NACIONAL DE CREDITO </option>
                             <option value="BANCO OCCINDENTAL DE DESCUENTO ">BANCO OCCINDENTAL DE DESCUENTO </option>
                             <option value="BANCO PLAZA">BANCO PLAZA</option>
@@ -699,7 +704,7 @@ echo $tasa1;
     					<input type="text" class="form-control" name="comentarios">
     				</div>
     				
-                    <div id="enviarp" method="get" >
+                    <div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                     
@@ -733,6 +738,7 @@ echo $tasa1;
 			<th>Banco Origen</th>
 			<th>Cuenta de</th>
 			<th>Estatus</th>
+			<th>Ref.</th>
 			<th>Enviar</th>
 			
 
@@ -744,7 +750,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d H:i:s");
             
-            $insertar= "SELECT ID, cliente, comprobante, Nombre_apellido, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'Pendiente' ORDER BY ID";
+            $insertar= "SELECT ID, cliente, comprobante, Nombre_apellido, Tipo_doc, Cedula, Forma_pago, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE estatus = 'Pendiente' ORDER BY ID";
       
       
             $result = mysqli_query($conexion,$insertar);
@@ -753,7 +759,7 @@ echo $tasa1;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="get" action="guardarDatosOfic1.php">
+                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
                 
         	<tr>
         	
@@ -763,7 +769,7 @@ echo $tasa1;
             <td><?php echo $row['cliente'] ?></td>
             <td><?php echo $row['comprobante'] ?></td>
         	<td><?php echo $row['Nombre_apellido'] ?></td>
-            <td><?php echo $row['Cedula'] ?></td>
+            <td><?php echo $row['Tipo_doc']; echo '-'; echo $row['Cedula'] ?></td>
             <td><?php echo $row['Forma_pago'] ?></td>
             <td><?php echo $row['Cuenta_destino'] ?></td>
             <td><div id="campos" class="" >
@@ -782,14 +788,14 @@ echo $tasa1;
     				    if($pesos==$bs){
     				        if($pesos>=90000){
 	                            include 'conexion.php';
-                                $tasa2 = "SELECT Tasa FROM Tasa2";
+                                $tasa2 = "SELECT Tasa FROM Tasa1";
                                 $tasa2 = mysqli_query($conexion,$tasa2);
                                 $tasa2 = mysqli_fetch_array($tasa2);
                                 $tasa2 = $tasa2['Tasa'];
     		                    echo $bs=$bs*$tasa2;
     		                }else{
     		                    include 'conexion.php';
-                                $tasa2 = "SELECT Tasa FROM Tasa3";
+                                $tasa2 = "SELECT Tasa FROM Tasa";
                                 $tasa2 = mysqli_query($conexion,$tasa2);
                                 $tasa2 = mysqli_fetch_array($tasa2);
                                 $tasa2 = $tasa2['Tasa'];
@@ -836,7 +842,11 @@ echo $tasa1;
 				<td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="transf" value="<?php echo $row['estatus'] ?>" readonly>
 	    			</div></td>
-                <td><div id="enviarp" method="get" >
+	    		<td><div id="campos" class="" >
+    				    <input type="text" class="form-control" name="referencia" value="<?php echo $row['referencia'] ?>" required>
+	    			</div></td>
+	    		
+                <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -893,7 +903,7 @@ echo $tasa1;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="get" action="guardarDatosOfic3.php">
+                <form name="formul2" method="POST" action="guardarDatosOfic3.php">
                 
         	<tr>
         	
@@ -914,22 +924,27 @@ echo $tasa1;
 	    			</div></td>
 	    		
             <td><div id="campos" class="" >
-    				    <input type="text" class="form-control" name="pesos" value="<?php echo $row['Cantidad_pesos'] ?>"  readonly required>
-	    			</div></td>
+    				    <input type="text" class="form-control" name="pesos1" value="<?php 
+                        $pesos= $row['Cantidad_pesos'];
+                        if($pesos == 0 )
+    				    echo $totalp;
+    				    else
+    				    echo $pesos ?>"  readonly required>
+	    	</div></td>
             <td><div id="campos" class="" >
     				    <input type="text" class="form-control" name="bs" value= "<?php
     		$bs=$row['Cantidad_bs'];
     				    if($pesos==$bs){
     				        if($pesos>=90000){
 	                            include 'conexion.php';
-                                $tasa2 = "SELECT Tasa FROM Tasa2";
+                                $tasa2 = "SELECT Tasa FROM Tasa1";
                                 $tasa2 = mysqli_query($conexion,$tasa2);
                                 $tasa2 = mysqli_fetch_array($tasa2);
                                 $tasa2 = $tasa2['Tasa'];
     		                    echo $bs=$bs*$tasa2;
     		                }else{
     		                    include 'conexion.php';
-                                $tasa2 = "SELECT Tasa FROM Tasa3";
+                                $tasa2 = "SELECT Tasa FROM Tasa";
                                 $tasa2 = mysqli_query($conexion,$tasa2);
                                 $tasa2 = mysqli_fetch_array($tasa2);
                                 $tasa2 = $tasa2['Tasa'];
@@ -943,7 +958,7 @@ echo $tasa1;
     		?>" readonly required>
 	    	</div></td>
             
-                <td><div id="enviarp" method="get" >
+                <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -1003,7 +1018,7 @@ echo $tasa1;
 
 		while ($row = mysqli_fetch_array($result)){?>
         	
-            <form name="formul3" method="get" action="enviarnoreport.php">
+            <form name="formul3" method="POST" action="enviarnoreport.php">
                 
             <tr>
 
@@ -1012,7 +1027,7 @@ echo $tasa1;
     				    <input type="text" class="form-control" name="ids" value= "<?php echo $ids=$row['ID']; ?>" readonly>
 	    	</div></td>
             <td><div id="campos" name="id" >
-    				    <input type="text" class="form-control" name="tasa" value= "<?php echo $row['tasa']; ?>"   required>
+    				    <input type="text" class="form-control" name="tasa" value= "<?php echo $row['tasa']; ?>"  readonly required>
 	    	</div></td>
 	    	<td><div id="campos" name="id" >
     				    <input type="text" class="form-control" name="cliente" value= "<?php echo $row['cliente']; ?>" readonly>
@@ -1047,14 +1062,14 @@ echo $tasa1;
     				    if($pesos==$bs){
     				        if($pesos>=90000){
 	                            include 'conexion.php';
-                                $tasa2 = "SELECT Tasa FROM Tasa3";
+                                $tasa2 = "SELECT Tasa FROM Tasa1";
                                 $tasa2 = mysqli_query($conexion,$tasa2);
                                 $tasa2 = mysqli_fetch_array($tasa2);
                                 $tasa2 = $tasa2['Tasa'];
     		                    echo $bs=$bs*$tasa2;
     		                }else{
     		                    include 'conexion.php';
-                                $tasa2 = "SELECT Tasa FROM Tasa2";
+                                $tasa2 = "SELECT Tasa FROM Tasa";
                                 $tasa2 = mysqli_query($conexion,$tasa2);
                                 $tasa2 = mysqli_fetch_array($tasa2);
                                 $tasa2 = $tasa2['Tasa'];
@@ -1086,7 +1101,7 @@ echo $tasa1;
 	    			</div></td>
 	    			
 	    			
-                <td><div id="enviarp" method="get" >
+                <td><div id="enviarp" method="post" >
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </td>
@@ -1112,7 +1127,7 @@ echo $tasa1;
         <div id="form" class=" col-xs-4 col-xs-offset-0">
             <h1>Saldos Iniciales Cuentas Chile</h1>
             
-                <form name="formul1" method="get" action="saldosiniciales.php">
+                <form name="formul1" method="post" action="saldosiniciales.php">
                 
                     <div id="campos" class="">
                         <label>Efectivo</label> 
@@ -1166,7 +1181,7 @@ echo $tasa1;
                         <label>Banesco Juridica</label> 
 				    	<input type="text" class="form-control" name="inicial_banesco_juridica">
                     </div>                    
-                    <div id="enviarp" method="get">
+                    <div id="enviarp" method="post">
     			    	<button id="botones" class="form-control" >Enviar Datos</button> 
                     </div>
                 </form>
@@ -1180,7 +1195,7 @@ echo $tasa1;
         <div id="form" class=" col-xs-4">
             <h1>Abonos Cuentas Chile</h1>
             
-                <form name="formul2" method="get" action="abonos.php">
+                <form name="formul2" method="post" action="abonos.php">
                     <div id="campos" class="">
                         <label>Efectivo</label> 
 				    	<input type="text" class="form-control" name="abono_efec">
@@ -1236,7 +1251,7 @@ echo $tasa1;
                         <label>Comentario</label> 
 				    	<input type="text" class="form-control" name="comentario">
                     </div>                                                    
-                    <div id="enviarp" method="get">
+                    <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
                     </div>
 
@@ -1251,7 +1266,7 @@ echo $tasa1;
         <div id="form" class=" col-xs-4">
             <h1>Debitos Cuentas Chile</h1>
             
-                <form name="formul3" method="get" action="debitos.php">
+                <form name="formul3" method="post" action="debitos.php">
                 
                     <div id="campos" class="">
                         <label>Efectivo</label> 
@@ -1367,7 +1382,7 @@ echo $tasa1;
 				    	<input type="text" class="form-control" name="comentario">
                     </div>
                                         
-                    <div id="enviarp" method="get">
+                    <div id="enviarp" method="post">
     			    	<button id="botones" onclick="myFunction()" class="form-control" >Enviar Datos</button> 
                     </div>
                     
@@ -1389,12 +1404,14 @@ echo $tasa1;
 		<tr>
 		    <th>ID</th>
 		    <th>Cliente</th>
+			<th>Beneficario</th>
 			<th>Forma de Pago</th>
 			<th>Cuenta destino</th>
 			<th>Cuenta Origen</th>
 			<th>Cantidad de Pesos</th>
 			<th>Cantidad Bolivares</th>
 			<th>Estatus</th>
+			
 
 		</tr>
 		</thead>
@@ -1403,7 +1420,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d");
             
-            $insertar= "SELECT ID, cliente, Forma_pago, Cuenta_destino, Transferimos_desde, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%' AND estatus = 'Realizada' ORDER BY ID";
+            $insertar= "SELECT ID, cliente, Nombre_apellido, Forma_pago, Cuenta_destino, Transferimos_desde, Cantidad_pesos, Cantidad_bs, estatus FROM transacciones1 WHERE DATE(Fecha) like '%$current_date%' AND estatus = 'Realizada' ORDER BY Fecha";
             
             include 'conexion.php';
             
@@ -1414,11 +1431,11 @@ echo $tasa1;
             
         	<tr>
         	
-        	<td><div id="campos" class="" >
     		 
 			<td><?php echo $row['ID'] ?></td>
             <td><?php echo $row['cliente'] ?></td>
-        	<td><?php echo $row['Forma_pago'] ?></td>
+        	<td><?php echo $row['Nombre_apellido'] ?></td>
+			<td><?php echo $row['Forma_pago'] ?></td>
         	<td><?php echo $row['Cuenta_destino'] ?></td>
         	<td><?php echo $row['Transferimos_desde'] ?></td>
             <td><?php echo $row['Cantidad_pesos'] ?></td>
@@ -1448,8 +1465,9 @@ echo $tasa1;
 			<th>Abonos Efectivo</th>
 			<th>Abonos RUT</th>
 		    <th>Abonos AHORRO</th>
-		    <th>Abonos VISTA</th>
-		    <th>Abonos Carlos</th>
+			<th>Abonos VISTA</th>
+		    <th>Abonos Merc. Jurid.</th>
+			<th>Abonos Carlos</th>
 		    <th>Abonos Carlos Papa</th>
 		    <th>Abonos Marola</th>
 			<th>Abonos Sonalys</th>
@@ -1463,7 +1481,7 @@ echo $tasa1;
             date_default_timezone_set('America/Santiago');
             $current_date = date("Y-m-d");
             
-            $insertar= "SELECT abono_efec, abono_rut, abono_ahorro, abono_vista, abono_banesco_carlos, abono_banesco_carlos_papa, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, comentarios FROM saldos1 WHERE (abono_efec!= '0' OR abono_rut!='0' OR abono_ahorro!='0' OR abono_vista!='0' OR abono_banesco_carlos!='0' OR abono_banesco_marola!='0' OR abono_banesco_sonalys!='0' OR abono_banesco_carlos_papa!='0' OR abono_banesco_juridica!='0') AND DATE(Fecha) like '%$current_date%'";
+            $insertar= "SELECT abono_efec, abono_rut, abono_ahorro, abono_vista, abono_mercantil_juridica, abono_banesco_carlos, abono_banesco_carlos_papa, abono_banesco_marola, abono_banesco_sonalys, abono_banesco_juridica, comentarios FROM saldos1 WHERE (abono_efec!= '0' OR abono_rut!='0' OR abono_ahorro!='0' OR abono_vista!='0'OR abono_mercantil_juridica!='0' OR abono_banesco_carlos!='0' OR abono_banesco_marola!='0' OR abono_banesco_sonalys!='0' OR abono_banesco_carlos_papa!='0' OR abono_banesco_juridica!='0') AND DATE(Fecha) like '%$current_date%' ORDER BY Fecha";
             
             include 'conexion.php';
             
@@ -1477,6 +1495,7 @@ echo $tasa1;
         	<td><?php echo $row['abono_rut'] ?></td>
             <td><?php echo $row['abono_ahorro'] ?></td>
             <td><?php echo $row['abono_vista'] ?></td>
+			<td><?php echo $row['abono_mercantil_juridica'] ?></td>
         	<td><?php echo $row['abono_banesco_carlos'] ?></td>
             <td><?php echo $row['abono_banesco_carlos_papa'] ?></td>
             <td><?php echo $row['abono_banesco_marola'] ?></td>
@@ -1490,10 +1509,13 @@ echo $tasa1;
 
 </table>
 
+		
+		
+		
 		</div>
 		
-			
-		 <div id="form2" class=" col-xs-4 col-xs-offset-1">
+		
+		<div id="form2" class=" col-xs-4 col-xs-offset-1">
             <h1>Mercantil Juridica</h1>
             
             <form name="formul3" method="POST" action="mercantil.php">
@@ -1512,13 +1534,220 @@ echo $tasa1;
             
             
          </div>
+		
+		<div id="form2" class=" col-xs-12">
+        
+            <h1>Transacciones Pagina WEB</h1>
+			
+
+        <table class="table table-striped">
+  	
+		<thead>
+		<tr>
+		    <th>ID</th>
+		    <th>Cliente</th>
+		    <th>transaccion</th>
+			<th>Beneficiario</th>
+			<th>Cantidad de Pesos</th>
+			<th>Cantidad de Bs</th>
+			<th>Forma de Pago</th>
+			<th>Numero de comprobante</th>
+			<th>Estatus</th>	
+			<th>Enviar</th>
+			
+		
+
+		</tr>
+		</thead>
+		
+		<?php
+		
+            date_default_timezone_set('America/Santiago');
+            $current_date = date("Y-m-d");
+            
+            $consulta= "SELECT ID, archivo_binario, cliente, transaccion, rut, Nombre_apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, telefono, email, estatus FROM transacciones1 WHERE estatus = 'Recibida'";
+            
+            include 'conexion.php';
+            
+            $result = mysqli_query($conexion,$consulta);
+            
+		while ($row = mysqli_fetch_array($result)){?>
+		
+		<form name="formul2" method="POST" action="guardarDatosOfic.php">
+		
+		<tr>
+		
+			<td>				
+				<div id="idi1" class="" >
+    				    <input type="text" class="form-control" name="idi" value="<?php echo $ids=$row['ID']; ?>"  >
+				</div>
+			</td>
+
+		    <div id="tasan" class="">
+                        <label>TASA</label> 
+				    	
+				    	<input type="text" class="form-control" name="tasa" value="<?php
+							include 'conexion.php';
+							$tasa = "SELECT Tasa FROM Tasa";
+							$tasa = mysqli_query($conexion,$tasa);
+							$tasa = mysqli_fetch_array($tasa);
+							$tasa= $tasa['Tasa'];
+							
+							echo $tasa;
+							
+							?>" readonly>
+            </div>
+			
+                    
+            <div id="tasae" class="">
+                        			    	
+				    	<input type="text" class="form-control" name="tasaesp" value="<?php
+							include 'conexion.php';
+							$tasa1 = "SELECT Tasa FROM Tasa1";
+							$tasa1 = mysqli_query($conexion,$tasa1);
+							$tasa1 = mysqli_fetch_array($tasa1);
+							$tasa1 = $tasa1['Tasa'];
+							
+							echo $tasa1;
+							
+							?>" readonly>
+            </div>
+			
+                
+            <td>        <div id="clientei" class="">
+                         	<input type="text" class="form-control" value="<?php echo $ids=$row['cliente']; ?>" name="cliente" >
+                    </div>
+            </td>
+            
+            <td>        <div id="transaccioni" class="">
+                         	<input type="text" class="form-control" value="<?php echo $ids=$row['transaccion']; ?>" name="transaccion" >
+                    </div>
+            </td>
+            
+					<div id="ruti" class="">
+				    	<input type="text" class="form-control" value="<?php echo $ids=$row['rut']; ?>" name="rut" >
+                    </div>
+                  
+			
+			<td>        <div id="Nombre1" class="">
+				    	<input type="text" class="form-control" value="<?php echo $ids=$row['Nombre_apellido']; ?>" name="nombre"  >
+                    </div>
+			</td>
+			
+		
+                    <div id="cedulai" class="">
+			   	       <input id="nacionalidad" name="tipodoc" value="<?php echo $ids=$row['Tipo_doc']; ?>" class="form-control" >
+				            
+					    
+          	          <input id="cedula" type="text" class="form-control" value="<?php echo $ids=$row['Cedula']; ?>" name="iddoc" >
+				    </div>
+			
+				    
+				    
+             
+				<div id="bancoi" class="">
+                       <input id="cambiar" name="banco" class="form-control" value="<?php echo $ids=$row['Cuenta_destino']; ?>">
+				          
+				    </div>
+			
+                <div id="cuentai" class="">
+					<input type="text" class="form-control" value="<?php echo $ids=$row['Numero_cuenta']; ?>" name="cuenta" minlength=20 maxlength=20 >
+				</div>
+				    
+				   
+    		<td>	
+				<div id="campos" class="" >
+    		    	<input type="number" class="form-control" name="totalpesos" value="<?php echo $ids=$row['Total_pesos']; ?>" onchange="calcularofic()" >
+    	    	</div>
+    	    </td>			
+    	    	<td>	
+				<div id="campos" class="" >
+    		    	<input type="number" class="form-control" name="pesos2" value="<?php echo $ids=$row['Cantidad_pesos']; ?>" onchange="calcularofic()" >
+    	    	</div>
+    	    </td>
+    	    <td>	
+				<div id="campos" class="" >
+    		    	<input type="number" class="form-control" name="bolivares2" value="<?php echo $ids=$row['Cantidad_bs']; ?>" onchange="calcularofic()" >
+    	    	</div>
+    	    </td>
    
+    				   
+    		 
+				<div id="emaili" class="">
+					<input type="Email" class="form-control" value="<?php echo $ids=$row['email']; ?>"  name="email">
+    			</div>
+			
+            
+			
+				<div id="telefonoi" class="">
+					<input type="text" class="form-control" value="<?php echo $ids=$row['telefono']; ?>"  name="telefono">
+    			</div>
+    			 
+    					
+			
+    		
+			        	
+			<td><a href="<?php echo "https://www.aguacatecambios.com/ver.php?id="; echo $row['ID'];?>" target="_blank">foto</a></td>
+			
+			
+					
+				
+			
+			<td>
+				<div id="campos" class="" >
+    				    <input id = "transf1" type="text" class="form-control"  value="<?php echo $ids=$row['estatus']; ?>" name="transf1" >
+	    		</div>
+			</td>
+			
+				<td>	    <div id="comprobante1" class="">
+				    	<input id="comprobante" type="text" class="form-control" name="comprobante" >
+                    </div>
+            </td>            
+            
+			
+			<td>        <div id="transfi" class="">
+			
+			   	       <select id="Transferencia" name="transf"  class="form-control" onchange ="cambiarcampos2(this)">
+				           <option value="No Verificado">No verificado</option>
+				            <option value="Pendiente">Pendiente</option>
+				            <option value="NR">No Reportado</option>
+					   </select>
+          	        </div>
+			</td>
+            <td>       <div id="formaPagoi" class="">
+
+                       <select id="FormaPago" name="formaPago" class="form-control" onchange="cambiarcampos11(this)">
+				           <option  value="">Seleccionar</option>
+                           <option  value="DepositoRut">Deposito a Cuenta Rut</option>
+                           <option  value="DepositoVista">Deposito a Cuenta Vista</option>
+                           <option  value="DepositoAhorro">Deposito a Cuenta Ahorro</option>
+                        </select>
+				    </div>
+            </td>
+			
+			<td>
+				<div id="enviarp" method="post" >
+    			    	<button id="botones" class="form-control" >Enviar Datos</button> 
+                </div>
+            </td>
+	
+			
+			
+            </tr>
+			
+			</form>
+
+ <?php } ?>
 
 
+</table>
+
+		
+</div>
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-       
+    
    
 </body>
 

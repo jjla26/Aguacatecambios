@@ -34,61 +34,71 @@ $current_date = date("Y-m-d H:i:s");
 !empty($_POST['tranf']) && !empty($_POST['tipodoc']) && !empty($_POST['iddoc']) && !empty($_POST['banco']) && !empty($_POST['cuenta']) && !empty($_POST['pesos']) && !empty($_POST['bolivares'])){
 */
 
-/*if (empty($_FILES['archivo']['name'])){
-header("location: formulario.php?proceso=falta_indicar_fichero"); //o como se llame el formulario ..
+if (empty($_FILES['archivo']['name'])){
+	
+	
+    echo '<script>alert("Por favor adjuntar el comprobante de pago!. "); window.location="principal.php"</script>';    
+   //header("location: formulario.php?proceso=falta_indicar_fichero"); //o como se llame el formulario ..
 exit;
-}*/
+}
 
 if (!empty($_POST['tasap']) && !empty($_POST['cliente']) && !empty($_POST['rut']) && !empty($_POST['totalpesos']) &&  !empty($_POST['email'])&& !empty($_POST['telefono']) && 
 !empty($_POST['transf2']) && !empty($_POST['nombre']) && !empty($_POST['tipodoc']) && !empty($_POST['iddoc']) && !empty($_POST['banco']) && 
 !empty($_POST['cuenta']) && !empty($_POST['pesos']) && !empty($_POST['bolivares'])){
 
 echo  $tasap = $_POST['tasap'];
-echo "\n";
 echo  $totalpesos = $_POST['totalpesos10'];
-echo "\n";
+
 echo  $pesos = $_POST['pesos11'];
-echo "\n";  
   include 'conexion.php';
   
   $tasa = "SELECT Tasa from Tasa";
   $tasa = mysqli_query($conexion, $tasa);
   $tasa = mysqli_fetch_array($tasa);
 echo  $tasa = $tasa['Tasa'];
-echo "\n";  
+ 
   $tasaesp = "SELECT Tasa from Tasa1";
   $tasaesp = mysqli_query($conexion, $tasaesp);
   $tasaesp = mysqli_fetch_array($tasaesp);
 echo  $tasaesp = $tasaesp['Tasa'];
-echo "\n";  
+
   if( $tasap == $tasa){
     if ($pesos >= 10000 && $totalpesos >= 10000){
 
+$binario_nombre_temporal=$_FILES['archivo']['tmp_name'] ;
+// leer del archvio temporal .. el binario subido.
+// "rb" para Windows .. Linux parece q con "r" sobra ...
+$binario_contenido = addslashes(fread(fopen($binario_nombre_temporal, "rb"), filesize($binario_nombre_temporal)));
+
+// Obtener del array FILES (superglobal) los datos del binario .. nombre, tabamo y tipo.
+$binario_nombre=$_FILES['archivo']['name'];
+$binario_peso=$_FILES['archivo']['size'];
+$binario_tipo=$_FILES['archivo']['type'];
 
 echo  $cliente = $_POST['cliente'];
-echo "\n";
+
 echo  $rut = $_POST['rut'];
-echo "\n";
+
 echo  $email = $_POST['email'];
-echo "\n";
+
 echo  $telefono = $_POST['telefono'];
-echo "\n";
+
 echo  $transf = $_POST['transf2'];
-echo "\n";  
+  
 echo  $nombre = $_POST['nombre'];
-echo "\n";
+
 echo  $nacionalidad = $_POST['tipodoc'];
-echo "\n";
+
 echo  $cedula = $_POST['iddoc'];
-echo "\n";
+
 echo  $banco = $_POST['banco'];
-echo "\n";
+
 echo  $cuenta = $_POST['cuenta'];
-echo "\n";  
+  
 echo  $bolivares= $_POST['bolivares11'];
-echo "\n";
-echo  $estatus = 'Internet';
-echo "\n";
+
+echo  $estatus = 'Recibida';
+
 
   if($transf == 2){
 
@@ -115,9 +125,9 @@ echo "\n";
         echo $pesos = floor($pesos);
         echo $pesos1 = floor($pesos1);
         
-        $insertar =  "INSERT INTO transacciones1 (tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '$cliente', '$rut', '$nombre', '$nacionalidad', '$cedula', '$banco','$cuenta', '$totalpesos', '$pesos', '$bolivares','$email','$telefono', '$estatus') "; 
+        $insertar =  "INSERT INTO transacciones1 (tasa, transaccion, archivo_binario, archivo_nombre, archivo_peso, archivo_tipo, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '1','$binario_contenido', '$binario_nombre', '$binario_peso', '$binario_tipo', '$cliente', '$rut', '$nombre', '$nacionalidad', '$cedula', '$banco','$cuenta', '$totalpesos', '$pesos', '$bolivares','$email','$telefono', '$estatus') "; 
         
-        $insertar1 = "INSERT INTO transacciones1 (tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '$cliente', '$rut', '$nombre1', '$nacionalidad1', '$cedula1', '$banco1', '$cuenta1','$totalpesos1', '$pesos1', '$bolivares1','$email','$telefono', '$estatus') ";
+        $insertar1 = "INSERT INTO transacciones1 (tasa, transaccion, archivo_binario, archivo_nombre, archivo_peso, archivo_tipo, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '2', '$binario_contenido', '$binario_nombre', '$binario_peso', '$binario_tipo', '$cliente', '$rut', '$nombre1', '$nacionalidad1', '$cedula1', '$banco1', '$cuenta1','$totalpesos', '$pesos1', '$bolivares1','$email','$telefono', '$estatus') ";
         
         $insertar  = mysqli_query($conexion, $insertar);
         $insertar1 = mysqli_query($conexion, $insertar1);
@@ -130,7 +140,7 @@ echo "\n";
               
           }else{
             
-           $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
+      $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
       $subject = 'Transaccion en proceso';
 // Para enviar un correo HTML, debe establecerse la cabecera Content-type
 $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -194,9 +204,9 @@ $headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
           $pesos = floor($pesos);
           $pesos1 = floor($pesos1);
           
-          $insertar =  "INSERT INTO transacciones1 (tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '$cliente', '$rut', '$nombre', '$nacionalidad', '$cedula', '$banco', '$cuenta', '$totalpesos', '$pesos', '$bolivares','$email','$telefono', '$estatus') "; 
+          $insertar =  "INSERT INTO transacciones1 (tasa, transaccion ,archivo_binario, archivo_nombre, archivo_peso, archivo_tipo, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '1', '$binario_contenido', '$binario_nombre', '$binario_peso', '$binario_tipo', '$cliente', '$rut', '$nombre', '$nacionalidad', '$cedula', '$banco', '$cuenta', '$totalpesos', '$pesos', '$bolivares','$email','$telefono', '$estatus') "; 
           
-          $insertar1 = "INSERT INTO transacciones1 (tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '$cliente', '$rut', '$nombre1', '$nacionalidad1', '$cedula1', '$banco1', '$cuenta1', '$totalpesos1', '$pesos1', '$bolivares1','$email','$telefono', '$estatus') ";
+          $insertar1 = "INSERT INTO transacciones1 (tasa, transaccion ,archivo_binario, archivo_nombre, archivo_peso, archivo_tipo, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES('$tasa', '2','$binario_contenido', '$binario_nombre', '$binario_peso', '$binario_tipo', '$cliente', '$rut', '$nombre1', '$nacionalidad1', '$cedula1', '$banco1', '$cuenta1', '$totalpesos', '$pesos1', '$bolivares1','$email','$telefono', '$estatus') ";
           
           $insertar =  mysqli_query($conexion, $insertar);
           $insertar1 = mysqli_query($conexion, $insertar1);
@@ -208,7 +218,7 @@ $headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
                 
             }else{
               
-         $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
+          $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
       $subject = 'Transaccion en proceso';
 // Para enviar un correo HTML, debe establecerse la cabecera Content-type
 $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -277,7 +287,7 @@ $headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
     $bolivares = floor($bolivares);
     $pesos = floor($pesos);
     
-    $insertar =  "INSERT INTO transacciones1 (tasa, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES ('$tasa', '$cliente', '$rut', '$nombre', '$nacionalidad','$cedula', '$banco', '$cuenta', '$totalpesos', '$pesos', '$bolivares', '$email', '$telefono', '$estatus') "; 
+    $insertar =  "INSERT INTO transacciones1 (tasa, transaccion, archivo_binario, archivo_nombre, archivo_peso, archivo_tipo, cliente, rut, Nombre_Apellido, Tipo_doc, Cedula, Cuenta_destino, Numero_cuenta, Total_pesos, Cantidad_pesos, Cantidad_bs, Email, Telefono, estatus) VALUES ('$tasa', '0','$binario_contenido', '$binario_nombre', '$binario_peso', '$binario_tipo', '$cliente', '$rut', '$nombre', '$nacionalidad','$cedula', '$banco', '$cuenta', '$totalpesos', '$pesos', '$bolivares', '$email', '$telefono', '$estatus') "; 
     
     $insertar = mysqli_query($conexion, $insertar);
     
@@ -287,6 +297,18 @@ $headers .= 'From: Aguacatecambios <support@aguacatecambios.com>' . "\r\n";
       //header('Location: principal.php');
           
       }else{
+		  
+		  
+  $id = "SELECT Tasa from Tasa";
+  $tasa = mysqli_query($conexion, $tasa);
+  $tasa = mysqli_fetch_array($tasa);
+echo  $tasa = $tasa['Tasa'];
+
+
+  $tasa = "SELECT Tasa from Tasa";
+  $tasa = mysqli_query($conexion, $tasa);
+  $tasa = mysqli_fetch_array($tasa);
+echo  $tasa = $tasa['Tasa'];
         
       $to = 'julioj.lopeza@gmail.com'; // <– replace with your address here
       $subject = 'Transaccion en proceso';

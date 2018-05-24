@@ -88,6 +88,7 @@ function cambiarcampos17(obj){
                 document.getElementById('banco2').style.display = 'none';
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
+				document.getElementById('beneficiario2').style.display = 'none';
                 document.getElementById('nombre3').required = false;
                 document.getElementById('tipodoc1').required = false;
                 document.getElementById('cedula3').required = false;
@@ -155,7 +156,7 @@ function cambiarcampos17(obj){
                 document.getElementById('cuenta2').style.display = 'block';
                 document.getElementById('pesos2').style.display = 'block';
                 document.getElementById('bolivares2').style.display = 'block';
-
+document.getElementById('beneficiario2').style.display = 'block';
                 document.getElementById('nombre3').required = true;
                 document.getElementById('tipodoc1').required = true;
                 document.getElementById('cedula3').required = true;
@@ -236,11 +237,6 @@ function cambiarcampos18(obj){
 
         }
 
-}
-
-
-        
-        
 }
 
 function format_number(number, prefix, thousand_separator, decimal_separator)

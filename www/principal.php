@@ -52,10 +52,7 @@ echo '<script>window.location="index"</script>';
 		<link rel="stylesheet" href="css/fontello.css">
 		<link rel="stylesheet" href="css/estilos.css">
 	    
-	    <script src="js/mostrarsolicitud.js"></script>
-		<script src="js/mostrar.js"></script>
-		<script src="js/calcular.js"></script>
-		<script src="js/cambiarcampos.js"></script>
+
 		
 	</head>
 	<body>
@@ -260,7 +257,7 @@ echo $tasa;
 							<h2>Datos del Emisor, Transferencia o Deposito</h2>
 							
 					
-             		   <form  name="formul0" method="POST"  action="enviarform.php">
+             		   <form  name="formul0" method="POST"  action="enviarform.php" enctype="multipart/form-data">
              		   	
              		   			<div id="tasap" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
 									<label>Tasa</label>
@@ -310,8 +307,8 @@ echo $tasa;
 		    	                    	<label>Cantidad de Transferencias</label>
 		    	                    	<select id="transf1" name="transf2" class="form-control" onchange="cambiarcampos17(this)" disabled required>
 		    	                    	   <option value= "">Cantidad</option>
-				                           <option  value="1">1</option>
-                                           <option  value="2">2</option>
+				                           <option  value="1">Unico Beneficiario</option>
+                                           <option  value="2">Dos Beneficiarios</option>
                                     	</select>
 				                    </div>
 				
@@ -354,7 +351,6 @@ echo $tasa;
                             				<option value="BANCO ESPIRITO SANTO S.A.">BANCO ESPIRITO SANTO S.A.</option>
                             				<option value="BANCO EXTERIOR C.A.">BANCO EXTERIOR C.A.</option>
                             				<option value="BANCO INTERNACIONAL DE DESARROLLO, C.A.">BANCO INTERNACIONAL DE DESARROLLO, C.A.</option>
-                            				<option value="BANCO MERCANTIL C.A.">BANCO MERCANTIL C.A.</option>
                             				<option value="BANCO NACIONAL DE CREDITO ">BANCO NACIONAL DE CREDITO </option>
                             				<option value="BANCO OCCINDENTAL DE DESCUENTO ">BANCO OCCINDENTAL DE DESCUENTO </option>
                             				<option value="BANCO PLAZA">BANCO PLAZA</option>
@@ -408,12 +404,12 @@ echo $tasa;
 									</div>
 									
 									
-          	          		    	<!--<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-lg-offset-3">
+          	          		    	<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           	          		     		<label>Datos Segundo Beneficiario</label>
-		    	                    		<input id="beneficiario" type="text" class="form-control" name="cuenta" placeholder="Segundo Beneficiario" readonly >
-				                    </div>-->
+		    	                    		<input id="beneficiario" type="text" class="form-control" name="" placeholder="Segundo Beneficiario" readonly >
+				                    </div>
 									
-									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4 ">
+									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4  ">
 										<label>Nombre y Apellido</label>
 										<input id="nombre3" type="text" class="form-control" name="nombre2" maxlength=31 pattern = "[a-zA-Z ]{2,30}" title="Solo letras" placeholder="Nombre y Apellido" required>
 									</div>
@@ -479,7 +475,7 @@ echo $tasa;
 								
           	          		     	
 									
-									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2 ">
 										<label>Cantidad de Pesos a enviar</label>
 											<input id="pesos3" type="text" class="form-control" name="pesos5" minlength=4   placeholder="Pesos" readonly required>
 									</div>
@@ -530,9 +526,20 @@ echo $tasa;
                
 				
 
+        <script>
+			function myFunction() {
+				 alert("Se enviaron los datos de transferencia al correo con tu ¡¡Codigo Verde!! IMPORTANTE: Si no llega el correo revisa la carpeta de spam o  contáctanos!");
+			}
+		</script>   
+		<script>
+		
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-      <!--  <script src="js/formatNumber.js"></script>-->
+        <!--  <script src="js/formatNumber.js"></script>-->
+	    <script src="js/mostrarsolicitud.js"></script>
+		<script src="js/mostrar.js"></script>
+		<script src="js/calcular.js"></script>
+		<script src="js/cambiarcampos.js"></script>
         
 		<!--Start of Tawk.to Script-->
 		<script type="text/javascript">

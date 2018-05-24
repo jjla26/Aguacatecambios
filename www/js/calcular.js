@@ -1,5 +1,5 @@
 function habilitarcant(){
-	
+	console.log("hola");
 	var totalpesos = document.formul0.totalpesos.value;
 	var totalpesos = totalpesos.toString().replace(/\./g,'');
 	var totalpesos = totalpesos.replace(/\,/g,'.')
