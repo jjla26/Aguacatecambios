@@ -759,7 +759,7 @@ echo $tasa1;
         		
 		while ($row = mysqli_fetch_array($result)){?>
         	
-                <form name="formul2" method="POST" action="guardarDatosOfic1.php">
+                <form name="formul2" method="POST" action="guardarDatosOfic4.php">
                 
         	<tr>
         	

@@ -1,0 +1,178 @@
+body{
+    font-family: 'Quicksand', sans-serif;
+ 
+}
+
+.navbar {
+    position: relative;
+    background-color: rgba(176,187,63,0.7);
+    
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+
+ul{
+    list-style: none;
+}
+
+#preguntas{
+    
+}
+
+.q{
+        cursor: pointer;
+        font-size: 20px;
+        padding: 10px;    
+        font-weight: bold;
+        text-decoration: underline;
+   
+}
+
+.qd{
+    
+        background-color:rgba(186,186,186,0.3);
+    
+    
+}
+
+.f{
+    background-color: white;
+    color: rgba(176,187,63,0.7);
+}
+
+
+.a{
+    padding: 20px;
+    margin-left: 60px;
+    list-style: square;
+    font-size: 18px;
+}
+
+
+
+#navbar, #logo{
+    padding-top:5px;
+}
+
+
+h2{
+    color: black ;
+    font-weight: bold;
+
+}
+
+
+#mapa{
+    
+    background-color: #000; 
+    top:100px; 
+    padding:1px;
+    position: relative;
+}
+
+p{
+    font-size: 1em;
+   
+}
+
+section{
+    background-color: white;
+    position:relative ;
+	width: 100%;
+	
+}
+
+
+
+footer{
+    background-color: black;
+    position:relative;
+    bottom: 0px;
+    height: 30px;
+    
+}
+
+
+
+@media(max-width: 1200px){
+  #calculadora2{
+    padding-top: 30px;
+
+}
+    
+    
+}
+
+
+@media(max-width: 992px){
+    #barra img, #navbar{
+	font-size:small;
+}
+}
+
+
+@media (max-width: 768px) {
+    .navbar {
+        background-color: rgba(176,187,63,0.7);
+    }
+    
+    h3 {
+    font-size: 2em;
+    font-weight: 900;
+    }
+    
+    #calculadora2{
+    padding-top: 0px;
+
+    }
+    
+    #botones, #botonenv{
+    background-color: #b0bb3f;
+    border-radius: 0px;
+    height: 33px;
+    color:white;
+    font-size: medium;
+    font-weight: 700;
+    }
+
+    #botonescam{
+    background-color: white;
+    border-color: #b0bb3f;
+    border-radius: 0px;
+    height: 33px;
+    color: black;
+    font-size: medium;
+    font-weight: 700;
+    
+    
+    }
+    
+    .form-control{
+    border-radius: 0px;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    
+    height: 33px;
+}
+
+
+
+
+
+footer h5{
+    font-size: small;
+    
+}
+
+#tasa img{
+    height: 16px;
+}
+
+#tasa p{
+    display: none;
+}
+}
+

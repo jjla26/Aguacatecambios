@@ -7,6 +7,14 @@ function habilitarcant(){
 	
 	if(totalpesos<10000){
 				
+//				document.getElementById('beneficiario2').style.display = 'none'
+               	document.getElementById('nombre2').style.display = 'none';
+               	document.getElementById('cedula2').style.display = 'none';
+               	document.getElementById('banco2').style.display = 'none';
+               	document.getElementById('cuenta2').style.display = 'none';
+               	document.getElementById('pesos2').style.display = 'none';
+               	document.getElementById('bolivares2').style.display = 'none';
+//				document.getElementById('beneficiario2').style.display = 'none'
 				document.getElementById('nombre1').disabled = true;
                 document.getElementById('tipodoc').disabled =true;
                 document.getElementById('cedula1').disabled =true;
@@ -14,6 +22,7 @@ function habilitarcant(){
                 document.getElementById('cuenta1').disabled = true;
                 document.getElementById('pesos1').disabled = true;
                 document.getElementById('bolivares1').disabled = true;
+                document.getElementById('pesosbs1').disabled = true;
                 document.getElementById('pesos1').value = "";
                 document.getElementById('bolivares1').value = "";
                 document.getElementById("transf1").disabled = true;
@@ -34,14 +43,18 @@ function habilitarcant(){
         		document.getElementById('bolivares3').required = false;
         		document.getElementById("transf1").disabled = true;
 		        document.getElementById('nombre1').disabled = false;
+		        document.getElementById('pesosbs1').disabled = true;
+		        document.getElementById('pesos1').readOnly = true;
 		        document.getElementById('pesosbs1').value = "Pesos";
+		        document.getElementById('bolivares1').readOnly = true;
+		        document.getElementById('bolivares1').value = "Pesos";
                	document.getElementById('tipodoc').disabled = false;
                	document.getElementById('cedula1').disabled = false;
                	document.getElementById('banco1').disabled = false;
                	document.getElementById('cuenta1').disabled = false;
                	document.getElementById('pesos1').disabled = false;
-               	document.getElementById('bolivares1').disabled = false;
                	document.getElementById("botonenv").disabled= false;
+//               	document.getElementById('beneficiario2').style.display = 'none'
                	document.getElementById('nombre2').style.display = 'none';
                	document.getElementById('cedula2').style.display = 'none';
                	document.getElementById('banco2').style.display = 'none';
@@ -87,12 +100,14 @@ function habilitarcant(){
 	
 		else{ 
 		
-		document.getElementById("transf1").disabled = false;
-		document.formul0.totalpesos10.value = totalpesos;
-		document.getElementById('pesos1').value = "";
-		document.getElementById('bolivares1').value = "";
-		document.getElementById("transf1").disabled = false;
-		document.getElementById('nombre1').disabled = false;
+			document.getElementById("transf1").disabled = false;
+			document.formul0.totalpesos10.value = totalpesos;
+			document.getElementById('pesos1').value = "";
+			document.getElementById('bolivares1').value = "";
+			document.getElementById('pesos3').value = "";
+			document.getElementById('bolivares3').value = "";
+			document.getElementById("transf1").disabled = false;
+			document.getElementById('nombre1').disabled = false;
 	        document.getElementById('tipodoc').disabled = false;
 	        document.getElementById('cedula1').disabled = false;
 	        document.getElementById('banco1').disabled = false;
@@ -102,6 +117,9 @@ function habilitarcant(){
 	        document.formul0.transf1.value= "";
 	        document.getElementById("botonenv").disabled= false;
 	        document.getElementById('pesosbs1').value = "";
+            document.getElementById('pesosbs1').disabled= true;
+            
+ 
       
 }
 }
@@ -112,7 +130,8 @@ function calcular(){
 	var pesos = document.formul.pesos.value*1;
 	var total = pesos*h1Text;
 	
-	document.formul.bolivares.value= total;
+	document.formul.pesos.value = format_number((pesos).toString().replace(/\./g,','));
+	document.formul.bolivares.value= format_number((Math.round(total)).toString().replace(/\./g,','));
 	
 }
 
@@ -121,8 +140,9 @@ function calcular1(){
 	var h1Text = document.querySelector(".entry-title").textContent;
 	var bolivares1= (document.formul.bolivares1.value)*1;
 	var total1= bolivares1/h1Text;
-	
-	document.formul.pesos1.value= Math.round(total1);
+
+	document.formul.bolivares1.value = format_number((bolivares1).toString().replace(/\./g,','));	
+	document.formul.pesos1.value= format_number((Math.round(total1)).toString().replace(/\./g,','));
 }
 
 function calcularPesosBs(){

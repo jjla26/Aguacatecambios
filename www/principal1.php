@@ -3,10 +3,8 @@ session_start();
 date_default_timezone_set('America/Santiago');
 $current_date = date("Y-m-d");
 
-
-
-if (isset($_SESSION['user'])){
-   if($_SESSION['user'] == 'jlopez'|| $_SESSION['user'] == 'caldazoro' || $_SESSION['user'] == 'gcarrillo'){
+if (!empty($_SESSION['user'])){
+	if($_SESSION['user'] == 'jlopez'|| $_SESSION['user'] == 'caldazoro' || $_SESSION['user'] == 'gcarrillo'){
                 
 //    $fechaGuardada = $_SESSION['ultimoAcceso'];
 //
@@ -35,8 +33,9 @@ header('Location: admin');
 }else{
 echo '<script>window.location="index"</script>';
 }
-//
+
 ?>
+
 
 <!doctype html>
 <html lang="es">
@@ -50,7 +49,7 @@ echo '<script>window.location="index"</script>';
 		<link rel="stylesheet" href="css/bootstrap.css">
 		
 		<link rel="stylesheet" href="css/fontello.css">
-		<link rel="stylesheet" href="css/estilos.css">
+		<link rel="stylesheet" href="css/estilos1.css">
 	    
 
 		
@@ -61,7 +60,7 @@ echo '<script>window.location="index"</script>';
 			<nav id="barra" class="navbar navbar-inverse navbar-static-top col-xs-12 ">
 					<div class="container">
 						<div class="navbar-header">
-							<a id= "logo" href="index.html" class="navbar-left"><img src="img/logo.png"></a>
+							<a id= "logo" href="principal1.php" class="navbar-left"><img src="img/logo.png"></a>
 							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>
@@ -72,9 +71,9 @@ echo '<script>window.location="index"</script>';
 						
 						<div id="navbar" class="navbar-collapse collapse ">
 							<ul class="nav navbar-nav navbar-right ">
-								<li class=""><a href="#formulario">Formulario de envio</a></li>
-								<!-- <li class=""><a href="#">Preguntas Frecuentes</a></li>
-								<li class=""><a href="#">Testimonios</a></li>
+								<li class="f"><a href="#formulario">Formulario de envio</a></li>
+								<li class=""><a href="instrucciones.php">Instrucciones y Reglas</a></li>
+								<!--<li class=""><a href="#">Testimonios</a></li>
 								<li class=""><a href="#">Contacto</a></li>
 								<li class=""><a href="#">SIGN UP</a></li> -->
 							</ul>
@@ -280,7 +279,7 @@ echo $tasa;
 									</div>
 									<div id="cantidadoc" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Pesos Depositados</label>
-										<input id="cantidad2" type="text" class="form-control" name="totalpesos10" minlength=4 readonly required>
+										<input id="cantidad2" type="text" class="form-control" name="totalpesos10" onchange="habilitarcant()" minlength=4 readonly required>
 									</div>
 									<div id="deposito" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Adjunta la foto de tu deposito</label>
@@ -304,9 +303,9 @@ echo $tasa;
 									
 									
 				                    <div id="transf2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-		    	                    	<label>Cantidad de Transferencias</label>
+		    	                    	<label>Cantidad de Beneficiarios</label>
 		    	                    	<select id="transf1" name="transf2" class="form-control" onchange="cambiarcampos17(this)" disabled required>
-		    	                    	   <option value= "">Cantidad</option>
+		    	                    	   <option value="">¿1 transferencia o 2?</option>
 				                           <option  value="1">Unico Beneficiario</option>
                                            <option  value="2">Dos Beneficiarios</option>
                                     	</select>
@@ -318,8 +317,8 @@ echo $tasa;
 									</div>
 									
 									<div id="cedula" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-										<label>Cedula de Identidad o RIF</label>
-											<select id="tipodoc" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2"required disabled>
+										<label>Cedula o RIF</label>
+											<select id="tipodoc" name="tipodoc" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2" required disabled>
 				            					<option value=""></option>
 					        					<option value="V">V</option>
                             					<option value="E">E</option>            
@@ -404,17 +403,17 @@ echo $tasa;
 									</div>
 									
 									
-          	          		    	<div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+          	          		    	<!-- <div id="beneficiario2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
           	          		     		<label>Datos Segundo Beneficiario</label>
-		    	                    		<input id="beneficiario" type="text" class="form-control" name="cuenta" placeholder="Segundo Beneficiario" readonly >
-				                    </div>
+		    	                    	<input id="beneficiario" type="text" class="form-control" name="beneficiario" placeholder="Segundo Beneficiario" readonly >
+				                    </div> -->
 									
 									<div id="nombre2" class="col-xs-12 col-sm-122 col-md-12  col-lg-4  ">
-										<label>Nombre y Apellido</label>
+										<label>Nombre y Apellido </label>
 										<input id="nombre3" type="text" class="form-control" name="nombre2" maxlength=31 pattern = "[a-zA-Z ]{2,30}" title="Solo letras" placeholder="Nombre y Apellido" required>
 									</div>
 									<div id="cedula2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-										<label>Cedula de Identidad o RIF</label>
+										<label>Cedula o RIF </label>
 											<select id="tipodoc1" name="tipodoc2" class="form-control col-xs-2 col-sm-2 col-md-12 col-lg-2" required>
 				            					<option value=""></option>
 					        					<option value="V">V</option>
@@ -426,7 +425,7 @@ echo $tasa;
 				    					
 				    				</div>
 									<div id="banco2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-										<label>Banco</label>
+										<label>Banco </label>
 		    		   					 <select id="banco3" name="banco2" class="form-control" required>
 				           					<option value="">Banco</option>
 				           				    <option value="Banesco">Banesco</option>
@@ -468,15 +467,15 @@ echo $tasa;
 				    				</div>
 									
 									<div id="cuenta2" class="col-xs-12 col-sm-12 col-md-12  col-lg-4">
-										<label>Numero de cuenta</label>
+										<label>Numero de cuenta </label>
 										<input id="cuenta3" type="text" class="form-control" name="cuenta2" minlength=20 maxlength=20  placeholder="Numero de cuenta" required>
 									</div>
 									
 								
           	          		     	
 									
-									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-lg-offset-2 ">
-										<label>Cantidad de Pesos a enviar</label>
+									<div id="pesos2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4  ">
+										<label>Cantidad de Pesos a enviar </label>
 											<input id="pesos3" type="text" class="form-control" name="pesos5" minlength=4   placeholder="Pesos" readonly required>
 									</div>
 									<div id="pesos6" class="col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
@@ -485,12 +484,15 @@ echo $tasa;
 									</div>
                                     
 									<div id="bolivares2" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-										<label>Cantidad de Bolivares a recibir</label>
+										<label>Cantidad de Bolivares a recibir </label>
 										<input id="bolivares3" type="text" class="form-control" name="bolivares5" minlength=6   placeholder="Bolivares" readonly required>
 									</div>
 									<div id="bolivares6" class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
 										<label>Cantidad de Bolivares a recibir</label>
 										<input id="bolivares7" type="text" class="form-control" name="bolivares8" minlength=6   placeholder="Bolivares" readonly required>
+									</div>
+									<div id="instrucciones" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<input type="checkbox" name="instrucciones" value="checked" required>He leido las <a href= "#"><strong>instrucciones y reglas.</strong></a> Estoy de acuerdo!<br>
 									</div>
 									
 									<div id="campos" method="post" class="col-xs-12 col-sm-3 col-md-3 col-lg-6">
@@ -532,13 +534,16 @@ echo $tasa;
 			}
 		</script>   
 		
+		
+
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <!--  <script src="js/formatNumber.js"></script>-->
-	    <script src="js/mostrarsolicitud.js"></script>
+        <script src="js/formatNumber.js"></script>
+       	<script src="js/mostrarsolicitud.js"></script>
 		<script src="js/mostrar.js"></script>
 		<script src="js/calcular.js"></script>
 		<script src="js/cambiarcampos.js"></script>
+	    
         
 		<!--Start of Tawk.to Script-->
 		<script type="text/javascript">

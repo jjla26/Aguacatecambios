@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
                 if ($_SESSION['user']== mlopez)
                 header("Location: transferencias.php");
                 else
-                header("Location: transaccionesofic.php");
+                header("Location: transaccionesofic1.php");
             }else{
                 echo '<script>alert("Contrasena Incorrecta");window.location="admin"</script>';
                 

@@ -88,8 +88,8 @@ function cambiarcampos17(obj){
                 document.getElementById('banco2').style.display = 'none';
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
-				document.getElementById('beneficiario2').style.display = 'none';
-                document.getElementById('nombre3').required = false;
+//		document.getElementById('beneficiario2').style.display = 'none';
+		document.getElementById('nombre3').required = false;
                 document.getElementById('tipodoc1').required = false;
                 document.getElementById('cedula3').required = false;
                 document.getElementById('cuenta3').required = false;
@@ -97,6 +97,7 @@ function cambiarcampos17(obj){
                 document.getElementById('pesos3').required = false;
                 document.getElementById('bolivares3').required = false;
                 document.getElementById('pesosbs1').disabled= true;
+                document.getElementById('bolivares1').readOnly = true;
                 document.getElementById('pesosbs1').required = false;
                 document.getElementById("botonenv").disabled= false;
                 document.formul0.bolivares8.value = "";
@@ -150,13 +151,12 @@ function cambiarcampos17(obj){
 
 
                 document.getElementById('nombre2').style.display = 'block';
-                
                 document.getElementById('cedula2').style.display = 'block';
                 document.getElementById('banco2').style.display = 'block';
                 document.getElementById('cuenta2').style.display = 'block';
                 document.getElementById('pesos2').style.display = 'block';
                 document.getElementById('bolivares2').style.display = 'block';
-document.getElementById('beneficiario2').style.display = 'block';
+ //               document.getElementById('beneficiario2').style.display = 'block';
                 document.getElementById('nombre3').required = true;
                 document.getElementById('tipodoc1').required = true;
                 document.getElementById('cedula3').required = true;
@@ -164,6 +164,7 @@ document.getElementById('beneficiario2').style.display = 'block';
                 document.getElementById('cuenta3').required = true;
                 document.getElementById('pesos3').required = true;
                 document.getElementById('bolivares3').required = true;
+                document.getElementById('pesosbs1').value = "";
                 document.getElementById('pesosbs1').disabled= false;
                 document.getElementById('pesos1').value = "";
                 document.getElementById('bolivares1').value = "";
@@ -177,7 +178,7 @@ document.getElementById('beneficiario2').style.display = 'block';
                 
         }else{
 
-                document.getElementById('pesosbs1').value = "Pesos";
+                document.getElementById('pesosbs1').value = "";
                 document.getElementById('pesosbs1').disabled= true;
                 document.getElementById('nombre2').style.display = 'none';
                 document.getElementById('cedula2').style.display = 'none';
@@ -185,6 +186,7 @@ document.getElementById('beneficiario2').style.display = 'block';
                 document.getElementById('cuenta2').style.display = 'none';
                 document.getElementById('pesos2').style.display = 'none';
                 document.getElementById('bolivares2').style.display = 'none';
+         //       document.getElementById('beneficiario2').style.display = 'none';
                 document.getElementById('nombre3').required = false;
                 document.getElementById('tipodoc1').required = false;
                 document.getElementById('cedula3').required = false;
@@ -192,6 +194,7 @@ document.getElementById('beneficiario2').style.display = 'block';
                 document.getElementById('cuenta3').required = false;
                 document.getElementById('pesos3').required = false;
                 document.getElementById('bolivares3').required = false;
+                document.getElementById('bolivares1').readOnly = true;
                 document.getElementById('pesos1').value = "";
                 document.getElementById('bolivares1').value = "";
                 document.getElementById('pesos10').value = "";
